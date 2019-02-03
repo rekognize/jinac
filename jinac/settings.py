@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'translations',
 
-    'jinac.journalists',
-    'jinac.jurisdiction',
-    'jinac.cases',
+    'jinac.journalists.apps.JournalistsConfig',
+    'jinac.jurisdiction.apps.JurisdictionConfig',
+    'jinac.cases.apps.CasesConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +116,7 @@ LANGUAGE_CODE = 'tr'
 
 LANGUAGES = (
     ('tr', 'Turkish'),
-    ('en', 'English'),
+#    ('en', 'English'),
 )
 
 TIME_ZONE = 'UTC'
@@ -132,3 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)

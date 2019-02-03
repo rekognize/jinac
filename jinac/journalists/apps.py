@@ -1,5 +1,7 @@
 from django.apps import AppConfig
+from django.utils.translation import ugettext_lazy as _
 
 
 class JournalistsConfig(AppConfig):
-    name = 'journalists'
+    name = 'jinac.journalists'
+    verbose_name = _('journalists')
