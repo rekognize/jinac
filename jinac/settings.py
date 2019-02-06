@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'jinac.journalists.apps.JournalistsConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
+    'jinac.institutions.apps.InstitutionsConfig',
     'jinac.cases.apps.CasesConfig',
 ]
 

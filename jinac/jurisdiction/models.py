@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
-class Location(models.Model):
+class City(models.Model):
     address = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=100)
 
@@ -28,7 +28,7 @@ class CourtType(models.Model):
 class Court(models.Model):
     name = models.CharField(_('name'), max_length=50)
     type = models.ForeignKey(CourtType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
-    location = models.ForeignKey(Location, verbose_name=_('location'), blank=True, null=True, on_delete=models.SET_NULL)
+    city = models.ForeignKey(City, verbose_name=_('city'), blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -80,6 +80,17 @@ class TrialType(models.Model):
     class Meta:
         verbose_name = _('trial type')
         verbose_name_plural = _('trial types')
+
+
+class CaseScope(models.Model):
+    scope = models.CharField(_('scope'), max_length=200)
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = _('case scope')
+        verbose_name_plural = _('case scope')
 
 
 class IndictmentType(models.Model):

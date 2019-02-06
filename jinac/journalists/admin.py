@@ -1,7 +1,18 @@
 from django.contrib import admin
-from jinac.journalists.models import Journalist, WorkPosition, Institution, JournalistInstitution
+from jinac.journalists.models import Journalist
+from jinac.cases.models import Trial, Case
 
 
-@admin.register(Journalist, WorkPosition, Institution, JournalistInstitution)
-class JournalistsAdmin(admin.ModelAdmin):
-    pass
+class TrialInline(admin.TabularInline):
+    model = Trial
+
+
+class CaseInline(admin.TabularInline):
+    model = Case
+
+
+@admin.register(Journalist)
+class JournalistAdmin(admin.ModelAdmin):
+    inlines = [
+#        CaseInline
+    ]
