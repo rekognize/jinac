@@ -3,4 +3,5 @@
 *.sqlite3
 *.pyc
 /env*
+/data/
 *.conf

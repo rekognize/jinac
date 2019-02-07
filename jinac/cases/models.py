@@ -32,7 +32,6 @@ class CaseScope(models.Model):
 
 class Case(models.Model):
     no = models.CharField(_('number'), max_length=20)
-    name = models.CharField(_('name'), max_length=250, blank=True, null=True)
     parent_case = models.ForeignKey('self', verbose_name=_('parent case'),
                                     blank=True, null=True, on_delete=models.SET_NULL)
     court = models.ForeignKey(Court, verbose_name=_('court'),
@@ -78,18 +77,19 @@ class CaseJournalist(models.Model):
             (2, _('editor')),
         )
     )
-    punishment_type = models.PositiveSmallIntegerField(
+    decision_type = models.PositiveSmallIntegerField(
         _('punishment type'), blank=True, null=True,
         choices=(
-            (1, _('imprisonment')),
+            (1, _('acquittal')),
             (2, _('fine')),
+            (3, _('imprisonment')),
         )
     )
     punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
-        verbose_name = _('case')
-        verbose_name_plural = _('cases')
+        verbose_name = _('case - journalist relation')
+        verbose_name_plural = _('case - journalist relations')
 
 
 class IndictmentType(models.Model):

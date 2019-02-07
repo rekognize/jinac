@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 from jinac.cases.models import Indictment, IndictmentType, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, NoteType, CaseJournalist, CaseScope
 
@@ -39,6 +40,13 @@ class CaseAdmin(admin.ModelAdmin):
         CaseIndictmentInline,
         CaseDocumentInline,
     ]
+    list_display = ['no', 'journalist_names', 'scope', 'court', 'parent_case']
+    list_editable = ['scope', 'parent_case']
+    search_fields = ['journalists__name', 'scope__scope', 'court__city__name']
+
+    def journalist_names(self, obj):
+        return ', '.join([j.name for j in obj.journalists.all()])
+    journalist_names.short_description = _('journalists')
 
 
 # trials
