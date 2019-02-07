@@ -66,3 +66,9 @@ class Prosecutor(Person):
         verbose_name = _('prosecutor')
         verbose_name_plural = _('prosecutors')
 
+
+class Plaintiff(Person):
+
+    class Meta:
+        verbose_name = _('plaintiff')
+        verbose_name_plural = _('plaintiffs')

@@ -1,9 +1,10 @@
 from django.contrib import admin
-from jinac.cases.models import Indictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation, \
-    Trial, TrialDocumentType, TrialDocument, Decision, TrialNote, NoteType
+from jinac.cases.models import Indictment, IndictmentType, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
+    Trial, TrialDocumentType, TrialDocument, TrialNote, NoteType, CaseJournalist, CaseScope
 
 
-@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, Decision, NoteType)
+@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, NoteType, IndictmentType,
+                CaseScope)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
@@ -25,9 +26,15 @@ class CaseDocumentInline(admin.TabularInline):
     extra = 1
 
 
+class CaseJournalistInline(admin.TabularInline):
+    model = CaseJournalist
+    extra = 1
+
+
 @admin.register(Case)
 class CaseAdmin(admin.ModelAdmin):
     inlines = [
+        CaseJournalistInline,
         CaseNoteInline,
         CaseIndictmentInline,
         CaseDocumentInline,

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from jinac.jurisdiction.models import Court
-from jinac.people.models import Journalist, Judge, Prosecutor, Attorney
+from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff
 from jinac.institutions.models import Institution
 
 
@@ -38,8 +38,11 @@ class Case(models.Model):
     court = models.ForeignKey(Court, verbose_name=_('court'),
                               blank=True, null=True, on_delete=models.SET_NULL)
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
-    scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'), blank=True, null=True, on_delete=models.SET_NULL)
+    scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
+                              blank=True, null=True, on_delete=models.SET_NULL)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
+    plaintiff = models.ForeignKey(Plaintiff, verbose_name=_('plaintiff'),
+                                  blank=True, null=True, on_delete=models.SET_NULL)
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
     judge = models.ForeignKey(Judge, verbose_name=_('judge'), blank=True, null=True, on_delete=models.SET_NULL)
@@ -75,6 +78,14 @@ class CaseJournalist(models.Model):
             (2, _('editor')),
         )
     )
+    punishment_type = models.PositiveSmallIntegerField(
+        _('punishment type'), blank=True, null=True,
+        choices=(
+            (1, _('imprisonment')),
+            (2, _('fine')),
+        )
+    )
+    punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = _('case')
@@ -99,18 +110,6 @@ class Indictment(models.Model):
         blank=True, null=True, on_delete=models.SET_NULL
     )
     details = models.TextField(_('details'), blank=True, null=True)
-    requested_punishment_type = models.PositiveSmallIntegerField(
-        _('requested punishment type'),
-        blank=True, null=True,
-        choices=(
-            (1, 'imprisonment'),
-            (2, 'fine'),
-        )
-    )
-    requested_punishment_amount = models.CharField(
-        _('requested punishment amount'),
-        max_length=100, blank=True, null=True
-    )
     date = models.DateField(_('date'))
 
     class Meta:
@@ -140,11 +139,11 @@ class CaseDocument(models.Model):
 
 class CaseNote(models.Model):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
-    note = models.TextField(_('note'))
     type = models.ForeignKey(
         NoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
     )
+    note = models.TextField(_('note'))
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -179,11 +178,11 @@ class Trial(models.Model):
 
 class TrialNote(models.Model):
     trial = models.ForeignKey('Trial', verbose_name=_('trial'), on_delete=models.CASCADE)
-    note = models.TextField(_('note'))
     type = models.ForeignKey(
         NoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
     )
+    note = models.TextField(_('note'))
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -233,30 +232,3 @@ class TrialDocument(models.Model):
     class Meta:
         verbose_name = _('trial document')
         verbose_name_plural = _('trial documents')
-
-
-class Decision(models.Model):
-    trial = models.ForeignKey(Trial, verbose_name=_('trial'), on_delete=models.CASCADE)
-    type = models.PositiveSmallIntegerField(
-        _('decision type'), blank=True, null=True,
-        choices=(
-            (1, _('interlocutory')),
-            (2, _('definitive')),
-        )
-    )
-    punishment_type = models.PositiveSmallIntegerField(
-        _('decision type'),
-        blank=True, null=True,
-        choices=(
-            (1, 'imprisonment'),
-            (2, 'fine'),
-            (3, 'probation'),
-        )
-    )
-    punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
-    date = models.DateField(_('date'))
-    journalists = models.ManyToManyField(Journalist, verbose_name=_('journalists'), blank=True)
-
-    class Meta:
-        verbose_name = _('decision')
-        verbose_name_plural = _('decisions')
