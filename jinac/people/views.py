@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from jinac.people.models import Journalist
 
-# Create your views here.
+
+class JournalistListView(ListView):
+    model = Journalist
+

@@ -1,0 +1,72 @@
+{% load staticfiles i18n %}<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="{% static "icon.png" %}">
+
+    <title>{% block title %}{% trans "Press in Arrest" %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+    {% block css %}{% endblock %}
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/" style="font-family: 'Cutive Mono', monospace; font-weight: 900">
+      <h2>{% trans "Press in Arrest" %}</h2>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+
+<p></p>
+
+{% block content %}{% endblock %}
+
+<p></p>
+
+<script>
+
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
+</script>
+
+
+{% block js %}{% endblock %}
+
+
+</body>
+
+</html>

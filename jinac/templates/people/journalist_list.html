@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles %}<!DOCTYPE html>
+
+
+{% block content %}
+
+<div class="container">
+
+    {% for journo in objects %}
+        {{ journo }}
+    {% empty %}
+        Hic gazeteci bulunamadi
+    {% endfor %}
+
+</div>
+
+{% endblock %}
