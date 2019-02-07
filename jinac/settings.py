@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'translations',
 
-    'jinac.journalists.apps.JournalistsConfig',
+    'jinac.people.apps.PeopleConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
     'jinac.institutions.apps.InstitutionsConfig',
     'jinac.cases.apps.CasesConfig',
