@@ -14,9 +14,17 @@
 
     <br>
 
-    {% for journalist in case.journalists.all %}
+    {% for casejournalist in case.casejournalist_set.all %}
 
-        <a href="{{ journalist.get_absolute_url }}">{{ journalist }}</a>
+        <a href="{{ casejournalist.journalist.get_absolute_url }}">{{ casejournalist.journalist }}</a>
+
+        {{ casejournalist.institution }}
+
+        {{ casejournalist.position }}
+
+        {{ casejournalist.get_decision_type_display }}
+
+        {{ casejournalist.punishment_amount }}
 
         <br>
 
