@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
 from django.contrib.auth.models import User
 from jinac.jurisdiction.models import Court
 from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff
@@ -36,6 +37,7 @@ class Case(models.Model):
                                     blank=True, null=True, on_delete=models.SET_NULL)
     court = models.ForeignKey(Court, verbose_name=_('court'),
                               blank=True, null=True, on_delete=models.SET_NULL)
+    filing_date = models.DateField(_('filing date'), blank=True, null=True)
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
     scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
                               blank=True, null=True, on_delete=models.SET_NULL)
@@ -56,9 +58,23 @@ class Case(models.Model):
     def __str__(self):
         return self.no
 
+    def get_absolute_url(self):
+        return reverse('case_detail', args=[self.id])
+
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')
+
+
+class WorkPosition(models.Model):
+    position = models.CharField(_('work position'), max_length=100)
+
+    def __str__(self):
+        return self.position
+
+    class Meta:
+        verbose_name = _('work position')
+        verbose_name_plural = _('work position')
 
 
 class CaseJournalist(models.Model):
@@ -70,12 +86,10 @@ class CaseJournalist(models.Model):
         blank=True, null=True,
         on_delete=models.SET_NULL,
     )
-    position = models.PositiveSmallIntegerField(
-        _('position'), blank=True, null=True,
-        choices=(
-            (1, _('reporter')),
-            (2, _('editor')),
-        )
+    position = models.ForeignKey(
+        WorkPosition,
+        verbose_name=_('work position'),
+        blank=True, null=True, on_delete=models.SET_NULL
     )
     decision_type = models.PositiveSmallIntegerField(
         _('punishment type'), blank=True, null=True,
@@ -93,10 +107,10 @@ class CaseJournalist(models.Model):
 
 
 class IndictmentType(models.Model):
-    definition = models.CharField(_('definition'), max_length=200)
+    type = models.CharField(_('type'), max_length=200)
 
     def __str__(self):
-        return self.definition
+        return self.type
 
     class Meta:
         verbose_name = _('indictment type')
@@ -112,14 +126,19 @@ class Indictment(models.Model):
     details = models.TextField(_('details'), blank=True, null=True)
     date = models.DateField(_('date'))
 
+    def __str__(self):
+        return self.type.type
+
     class Meta:
         verbose_name = _('indictment')
         verbose_name_plural = _('indictments')
 
 
 class CaseDocumentType(models.Model):
-    file = models.FileField(_('file'))
-    description = models.TextField(_('description'), blank=True, null=True)
+    type = models.CharField(_('type'), max_length=50)
+
+    def __str__(self):
+        return self.type
 
     class Meta:
         verbose_name = _('case document type')
@@ -170,6 +189,9 @@ class Trial(models.Model):
 
     def __str__(self):
         return f'{self.case}:{self.session_no}'
+
+    def get_absolute_url(self):
+        return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
 
     class Meta:
         verbose_name = _('trial')

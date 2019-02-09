@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}<!DOCTYPE html>
+{% load i18n staticfiles %}
 
 
 {% block content %}
 
 <div class="container">
 
-    {% for journo in journalist_list %}
-        {{ journo }}
+    {% for journalist in journalist_list %}
+        <a href="{{ journalist.get_absolute_url }}">{{ journalist.name }}</a>
     {% empty %}
         Hic gazeteci bulunamadi
     {% endfor %}

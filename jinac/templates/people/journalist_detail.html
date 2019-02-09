@@ -6,11 +6,22 @@
 
 <div class="container">
 
-    {% for case in case_list %}
+    <img src="{{ journalist.photo.url }}">
+
+    <br>
+
+    {{ journalist.name }}
+
+    <br>
+
+    {% for case in journalist.case_set.all %}
+
         <a href="{{ case.get_absolute_url }}">{{ case }}</a>
-    {% empty %}
-        Hic dava bulunamadi
+
+        <br>
+
     {% endfor %}
+
 
 </div>
 

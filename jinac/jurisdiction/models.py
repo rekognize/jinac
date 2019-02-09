@@ -14,9 +14,10 @@ class City(models.Model):
 
 
 class Court(models.Model):
-    name = models.CharField(_('name'), max_length=50)
+    city = models.ForeignKey(City, verbose_name=_('city'), blank=True, null=True, on_delete=models.SET_NULL)
+    no = models.PositiveSmallIntegerField(_('number'), blank=True, null=True)
     type = models.PositiveSmallIntegerField(
-        _('type'), blank=True, null=True,
+        _('type'), default=1,
         choices=(
             (1, _('penal court')),
             (2, _('criminal court')),
@@ -26,10 +27,14 @@ class Court(models.Model):
             (6, _('ECHR')),
         )
     )
-    city = models.ForeignKey(City, verbose_name=_('city'), blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        if self.no:  # agir ceza & asliye hukuk
+            return f'{self.city} {self.no}. {self.type}'
+        elif self.city:
+            return f'{self.city} {self.type}'
+        else:
+            return self.type
 
     class Meta:
         verbose_name = _('court')

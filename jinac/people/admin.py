@@ -15,4 +15,5 @@ class CaseInline(admin.TabularInline):
 
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
     inlines = [CaseInline]

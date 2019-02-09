@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles humanize %}
+
+
+{% block content %}
+
+<div class="container">
+
+    {{ case }}
+
+    <br>
+
+    yargilanan gazeteciler:
+
+    <br>
+
+    {% for journalist in case.journalists.all %}
+
+        <a href="{{ journalist.get_absolute_url }}">{{ journalist }}</a>
+
+        <br>
+
+    {% endfor %}
+
+
+    suclamalar:
+
+    <br>
+
+    {% for indictment in case.indictment_set.all %}
+
+        {{ indictment }}
+
+        <br>
+
+    {% endfor %}
+
+
+    dokumanlar:
+
+    <br>
+
+    {% for document in case.casedocument_set.all %}
+
+        <a href="{{ document.file.url }}">{{ document.type }}</a>
+
+        <br>
+
+    {% endfor %}
+
+
+    notlar:
+
+    <br>
+
+    {% for note in case.casenote_set.all %}
+
+        {{ note.type }}:
+        {{ note.note }}
+
+        <br>
+
+    {% endfor %}
+
+
+    durusmalar:
+
+    <br>
+
+    {% for trial in case.trial_set.all %}
+
+        <a href="{{ trial.get_absolute_url }}">{{ trial.time }}</a> ({{ trial.time|naturaltime }})
+
+        <br>
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

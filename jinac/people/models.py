@@ -1,10 +1,13 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
 from polymorphic.models import PolymorphicModel
 
 
 class Person(PolymorphicModel):
     name = models.CharField(_('name'), max_length=100)
+    slug = models.SlugField()
     photo = models.ImageField(_('photo'), blank=True, null=True)
     gender = models.CharField(
         _('gender'), max_length=2, blank=True, null=True,
@@ -17,6 +20,11 @@ class Person(PolymorphicModel):
 
     def __str__(self):
         return self.name
+
+    def save(self, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(**kwargs)
 
     class Meta:
         verbose_name = _('person')
@@ -33,6 +41,9 @@ class Journalist(Person):
         )
     )
     status_change_date = models.DateField(_('status change date'), blank=True, null=True)
+
+    def get_absolute_url(self):
+        return reverse('journalist_detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = _('journalist')
