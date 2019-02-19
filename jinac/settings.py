@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    'django_extensions',
+    #'django_extensions',
     'translations',
 
     'jinac.people.apps.PeopleConfig',
