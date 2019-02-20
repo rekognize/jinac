@@ -1,3 +1,4 @@
 Django==2.1.5
 django-translations==1.1.0
+django-polymorphic
 gunicorn

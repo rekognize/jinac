@@ -33,8 +33,6 @@ class CaseScope(models.Model):
 
 class Case(models.Model):
     no = models.CharField(_('number'), max_length=20)
-    parent_case = models.ForeignKey('self', verbose_name=_('parent case'),
-                                    blank=True, null=True, on_delete=models.SET_NULL)
     court = models.ForeignKey(Court, verbose_name=_('court'),
                               blank=True, null=True, on_delete=models.SET_NULL)
     filing_date = models.DateField(_('filing date'), blank=True, null=True)
@@ -51,6 +49,8 @@ class Case(models.Model):
                                    related_name='board_memberships', blank=True)
     defendant_attorneys = models.ManyToManyField(Attorney, verbose_name=_('defendant attorneys'), blank=True)
 
+    related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
+
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)
     modified = models.DateTimeField(_('modified time'), auto_now=True)
@@ -61,9 +61,37 @@ class Case(models.Model):
     def get_absolute_url(self):
         return reverse('case_detail', args=[self.id])
 
+    def status(self):
+        return self.casestatus_set.last()
+
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')
+
+
+class CaseStatus(models.Model):
+    case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
+    status = models.PositiveSmallIntegerField(default=1, choices=(
+        (1, _('appeal')),
+        (2, _('supreme',)),
+        (3, _('constitutional')),
+        (4, _('ECHR')),
+    ))
+    date = models.DateField(blank=True, null=True)
+    decision = models.PositiveSmallIntegerField(
+        choices=(
+            (1, _('approved')),
+            (2, _('denied')),
+        ), blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.get_status_display()
+
+    class Meta:
+        verbose_name = _('case status')
+        verbose_name_plural = _('case status')
+        ordering = ('date',)
 
 
 class WorkPosition(models.Model):
