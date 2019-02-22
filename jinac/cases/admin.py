@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from jinac.cases.models import Indictment, IndictmentType, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
+from jinac.cases.models import Indictment, CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, NoteType, CaseJournalist, CaseScope, WorkPosition, \
     CaseDocumentType, CaseStatus
 
 
-@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, NoteType, IndictmentType,
-                CaseScope, WorkPosition, CaseDocumentType)
+@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, NoteType,
+                CaseScope, WorkPosition, CaseDocumentType, CaseIndictment)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
@@ -14,7 +14,7 @@ class CasesAdmin(admin.ModelAdmin):
 # cases
 
 class CaseIndictmentInline(admin.TabularInline):
-    model = Indictment
+    model = CaseIndictment
     extra = 1
 
 

@@ -32,15 +32,6 @@ class Person(PolymorphicModel):
 
 
 class Journalist(Person):
-    status = models.PositiveSmallIntegerField(
-        _('status'), blank=True, null=True,
-        choices=(
-            (1, _('convict')),
-            (2, _('detained')),
-            (3, _('fugitive')),
-        )
-    )
-    status_change_date = models.DateField(_('status change date'), blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
@@ -50,9 +41,25 @@ class Journalist(Person):
         verbose_name_plural = _('journalists')
 
 
+class JournalistStatus(models.Model):
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
+    status = models.PositiveSmallIntegerField(_('status'), choices=(
+        (1, _('detained')),
+        (2, _('imprisoned')),
+        (3, _('convicted')),
+        (4, _('released')),
+        (5, _('fugitive')),
+    ))
+    date = models.DateField(_('date'), blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('journalist status')
+        verbose_name_plural = _('journalist status')
+
+
 class Attorney(Person):
     type = models.PositiveSmallIntegerField(
-        _('type'),
+        _('type'), default=1,
         choices=(
             (1, _('defence')),
             (2, _('prosecution')),

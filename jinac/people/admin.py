@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jinac.people.models import Journalist, Attorney, Prosecutor, Judge, Plaintiff
+from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff
 from jinac.cases.models import CaseJournalist
 
 
@@ -13,7 +13,16 @@ class CaseInline(admin.TabularInline):
     extra = 1
 
 
+class StatusInline(admin.TabularInline):
+    model = JournalistStatus
+    extra = 1
+
+
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
     prepopulated_fields = {"slug": ("name",)}
-    inlines = [CaseInline]
+    inlines = [
+        StatusInline,
+        CaseInline,
+    ]

@@ -9,7 +9,7 @@ from jinac.people.views import JournalistListView, JournalistDetailView
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('yonetim/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
 
     path('davalar/', CaseListView.as_view(), name='case_list'),

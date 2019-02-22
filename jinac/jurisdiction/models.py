@@ -6,7 +6,7 @@ class City(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.city
+        return self.name
 
     class Meta:
         verbose_name = _('city')
@@ -30,9 +30,9 @@ class Court(models.Model):
 
     def __str__(self):
         if self.no:  # agir ceza & asliye hukuk
-            return f'{self.city} {self.no}. {self.type}'
+            return f'{self.city} {self.no}. {self.get_type_display()}'
         elif self.city:
-            return f'{self.city} {self.type}'
+            return f'{self.city} {self.get_type_display()}'
         else:
             return self.type
 

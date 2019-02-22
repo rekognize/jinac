@@ -33,12 +33,15 @@ class CaseScope(models.Model):
 
 class Case(models.Model):
     no = models.CharField(_('number'), max_length=20)
+    name = models.CharField(_('name'), max_length=100, blank=True, null=True)
     court = models.ForeignKey(Court, verbose_name=_('court'),
                               blank=True, null=True, on_delete=models.SET_NULL)
-    filing_date = models.DateField(_('filing date'), blank=True, null=True)
+    filing_date = models.DateField(_('case filing date'), blank=True, null=True)  # iddianame tarihi
+    opening_date = models.DateField(_('case opening date'), blank=True, null=True)  # dava acilis tarihi
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
     scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
                               blank=True, null=True, on_delete=models.SET_NULL)
+    coup_related = models.BooleanField(_('coup related'), default=False)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
     plaintiff = models.ForeignKey(Plaintiff, verbose_name=_('plaintiff'),
                                   blank=True, null=True, on_delete=models.SET_NULL)
@@ -72,6 +75,7 @@ class Case(models.Model):
 class CaseStatus(models.Model):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(default=1, choices=(
+        (0, _('local')),
         (1, _('appeal')),
         (2, _('supreme',)),
         (3, _('constitutional')),
@@ -84,6 +88,7 @@ class CaseStatus(models.Model):
             (2, _('denied')),
         ), blank=True, null=True
     )
+    details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
         return self.get_status_display()
@@ -134,25 +139,43 @@ class CaseJournalist(models.Model):
         verbose_name_plural = _('case - journalist relations')
 
 
-class IndictmentType(models.Model):
-    type = models.CharField(_('type'), max_length=200)
+class Indictment(models.Model):
+    category = models.PositiveSmallIntegerField(verbose_name=_('category'), blank=True, null=True)
+    definition = models.CharField(_('type'), max_length=200)
 
     def __str__(self):
-        return self.type
+        return self.definition
 
     class Meta:
         verbose_name = _('indictment type')
         verbose_name_plural = _('indictment types')
 
 
-class Indictment(models.Model):
+class Article(models.Model):
+    type = models.PositiveSmallIntegerField(choices=(
+        (1, _('TCK')),
+        (2, _('TMK')),
+        (3, _('Constitution')),
+    ))
+    no = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.type} {self.no}"
+
+    class Meta:
+        verbose_name = _('article')
+        verbose_name_plural = _('articles')
+
+
+class CaseIndictment(models.Model):
     case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
-    type = models.ForeignKey(
-        IndictmentType, verbose_name=_('indictment type'),
+    indictmen = models.ForeignKey(
+        Indictment, verbose_name=_('indictment type'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
     details = models.TextField(_('details'), blank=True, null=True)
     date = models.DateField(_('date'))
+    articles = models.ManyToManyField(Article, verbose_name=_('articles'))
 
     def __str__(self):
         return self.type.type
