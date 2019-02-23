@@ -2,11 +2,11 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from jinac.cases.models import Indictment, CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, NoteType, CaseJournalist, CaseScope, WorkPosition, \
-    CaseDocumentType, CaseStatus
+    CaseDocumentType, CaseStatus, Article
 
 
 @admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, NoteType,
-                CaseScope, WorkPosition, CaseDocumentType, CaseIndictment)
+                CaseScope, WorkPosition, CaseDocumentType, CaseIndictment, Article)
 class CasesAdmin(admin.ModelAdmin):
     pass
 

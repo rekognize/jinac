@@ -29,9 +29,11 @@ class Person(PolymorphicModel):
     class Meta:
         verbose_name = _('person')
         verbose_name_plural = _('people')
+        ordering = ('name',)
 
 
 class Journalist(Person):
+    publish = models.BooleanField(_('publish'), default=True)
 
     def get_absolute_url(self):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
@@ -50,7 +52,8 @@ class JournalistStatus(models.Model):
         (4, _('released')),
         (5, _('fugitive')),
     ))
-    date = models.DateField(_('date'), blank=True, null=True)
+    start_date = models.DateField(_('start date'), blank=True, null=True)
+    end_date = models.DateField(_('end date'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('journalist status')

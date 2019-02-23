@@ -9,6 +9,7 @@ from jinac.institutions.models import Institution
 
 class NoteType(models.Model):
     type = models.CharField(_('type'), max_length=100)
+    publish = models.BooleanField(_('publish'), default=True)
 
     def __str__(self):
         return self.type
@@ -32,22 +33,21 @@ class CaseScope(models.Model):
 
 
 class Case(models.Model):
-    no = models.CharField(_('number'), max_length=20)
+    no = models.CharField(_('file number'), max_length=20)
+    court = models.ForeignKey(Court, verbose_name=_('court'), on_delete=models.CASCADE)
     name = models.CharField(_('name'), max_length=100, blank=True, null=True)
-    court = models.ForeignKey(Court, verbose_name=_('court'),
-                              blank=True, null=True, on_delete=models.SET_NULL)
     filing_date = models.DateField(_('case filing date'), blank=True, null=True)  # iddianame tarihi
     opening_date = models.DateField(_('case opening date'), blank=True, null=True)  # dava acilis tarihi
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
     scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
                               blank=True, null=True, on_delete=models.SET_NULL)
-    coup_related = models.BooleanField(_('coup related'), default=False)
+    coup_related = models.BooleanField(_('coup attempt related'), default=False)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
     plaintiff = models.ForeignKey(Plaintiff, verbose_name=_('plaintiff'),
                                   blank=True, null=True, on_delete=models.SET_NULL)
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
-    judge = models.ForeignKey(Judge, verbose_name=_('judge'), blank=True, null=True, on_delete=models.SET_NULL)
+    judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
                                    related_name='board_memberships', blank=True)
     defendant_attorneys = models.ManyToManyField(Attorney, verbose_name=_('defendant attorneys'), blank=True)
@@ -59,7 +59,7 @@ class Case(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        return self.no
+        return f"{self.court} / {self.no}"
 
     def get_absolute_url(self):
         return reverse('case_detail', args=[self.id])
@@ -125,11 +125,11 @@ class CaseJournalist(models.Model):
         blank=True, null=True, on_delete=models.SET_NULL
     )
     decision_type = models.PositiveSmallIntegerField(
-        _('punishment type'), blank=True, null=True,
+        _('decision type'), blank=True, null=True,
         choices=(
-            (1, _('acquittal')),
-            (2, _('fine')),
-            (3, _('imprisonment')),
+            (0, _('acquittal')),
+            (1, _('fine')),
+            (2, _('imprisonment')),
         )
     )
     punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
@@ -158,9 +158,18 @@ class Article(models.Model):
         (3, _('Constitution')),
     ))
     no = models.CharField(max_length=20)
+    punishment_type = models.PositiveSmallIntegerField(
+        _('punishment type'), blank=True, null=True,
+        choices=(
+            (1, _('fine')),
+            (2, _('imprisonment')),
+        )
+    )
+    punishment_amount_min = models.CharField(_('minimum punishment due'), max_length=100, blank=True, null=True)
+    punishment_amount_max = models.CharField(_('maximum punishment due'), max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.type} {self.no}"
+        return f"{self.get_type_display()} {self.no}"
 
     class Meta:
         verbose_name = _('article')
@@ -169,13 +178,12 @@ class Article(models.Model):
 
 class CaseIndictment(models.Model):
     case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
-    indictmen = models.ForeignKey(
+    indictment = models.ForeignKey(
         Indictment, verbose_name=_('indictment type'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
-    details = models.TextField(_('details'), blank=True, null=True)
-    date = models.DateField(_('date'))
     articles = models.ManyToManyField(Article, verbose_name=_('articles'))
+    details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
         return self.type.type
@@ -201,6 +209,7 @@ class CaseDocument(models.Model):
     file = models.FileField(_('file'))
     type = models.ForeignKey(CaseDocumentType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(_('description'), blank=True, null=True)
+    publish = models.BooleanField(_('publish'), default=True)
 
     class Meta:
         verbose_name = _('case document')
@@ -229,7 +238,8 @@ class CaseNote(models.Model):
 class Trial(models.Model):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
     session_no = models.PositiveIntegerField(_('session'))
-    time = models.DateTimeField(_('time'))
+    time_announced = models.DateTimeField(_('announced time'))
+    time_start = models.DateTimeField(_('start time'), blank=True, null=True)
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
     summary = models.TextField(_('summary'), blank=True, null=True)
     next_time = models.DateTimeField(_('next trial time'), blank=True, null=True)
@@ -253,9 +263,10 @@ class TrialNote(models.Model):
     trial = models.ForeignKey('Trial', verbose_name=_('trial'), on_delete=models.CASCADE)
     type = models.ForeignKey(
         NoteType, verbose_name=_('type'),
-        blank=True, null=True, on_delete=models.SET_NULL,
+        blank=True, null=True,
+        on_delete=models.SET_NULL,
     )
-    note = models.TextField(_('note'))
+    note = models.TextField(_('note'), blank=True, null=True)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -288,8 +299,7 @@ class TrialViolation(models.Model):
 
 
 class TrialDocumentType(models.Model):
-    file = models.FileField(_('file'))
-    description = models.TextField(_('description'), blank=True, null=True)
+    type = models.CharField(_('type'), max_length=50)
 
     class Meta:
         verbose_name = _('trial document type')
