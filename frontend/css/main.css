@@ -1,3 +1,6 @@
+
+/* Anasayfa ve Gazeteci Listesi */
+
 html,
 body,
 #cover{
@@ -115,8 +118,23 @@ padding-bottom: 30px;
   margin-top: 85px;
 }
 
+.yaklasandurusmalar-top h3{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 85px;
+  margin-top: 85px;
+}
+
 
 #gazeteciler{
+  background-color: #f7f7f7;
+  padding-top: 110px;
+  padding-bottom: 70px;
+}
+
+#yaklasandurusmalar{
   background-color: #f7f7f7;
   padding-top: 110px;
   padding-bottom: 70px;
@@ -126,7 +144,12 @@ padding-bottom: 30px;
   border-style: none;
 }
 
-.gazetecicard{
+.gazetecicard {
+  width: 20rem;
+  height: 550px;
+}
+
+.yaklasandurusmalarcard{
   width: 20rem;
   height: 550px;
 }
@@ -134,6 +157,11 @@ padding-bottom: 30px;
 .gazeteciler-content .row{
   margin-bottom: 50px;
 }
+
+.yaklasandurusmalar-content .row{
+  margin-bottom: 50px;
+}
+
 
 .card-block{
   font-family: 'Raleway', sans-serif;
@@ -170,5 +198,59 @@ padding-bottom: 30px;
   word-spacing: 10px;
 }
 
+/* Gazeteci Detay */
+
+.gazetecidetaygorseli{
+  width:250px; height: 250px; border-radius: 10px;
+
+}
+
+.card-text{
+  font-size: 15px;
+}
+
+
+.nav-item{
+  font-size: 15px;
+
+}
+
+.nav-link{
+  color:black;
+}
+
+.nav-item:hover{
+color: #0B9296;
+}
+
+.pointer {cursor: pointer;}
+
+/* Analiz */
+
+.analizgorseli {
+  width:250px; height: 250px; border-radius: 10px;
+}
+
+.analizdetaygorseli{
+
+  width:700px; height: 350px; border-radius: 10px;
+
+}
+
+/* Duruşmalar Detay */
+
+#durusmalar{
+  background-color: #f7f7f7;
+  
+}
+
+.tab-content{
+  font-size:14px;
+}
+
+
+.durusma-nav{
+  font-size: 14px;
+}
 
 
