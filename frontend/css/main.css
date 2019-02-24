@@ -97,6 +97,7 @@ padding-bottom: 30px;
 
 .gazetecigorseli{
   width:200px; height: 200px; border-radius: 100px;
+  color:black
 }
 
 .veriler-content h4{
@@ -147,6 +148,7 @@ padding-bottom: 30px;
 .gazetecicard {
   width: 20rem;
   height: 550px;
+  padding-top: 10px;
 }
 
 .yaklasandurusmalarcard{
@@ -198,6 +200,7 @@ padding-bottom: 30px;
   word-spacing: 10px;
 }
 
+
 /* Gazeteci Detay */
 
 .gazetecidetaygorseli{
@@ -225,6 +228,42 @@ color: #0B9296;
 
 .pointer {cursor: pointer;}
 
+
+.gazeteci-detay-card-header{
+  background-color: white;
+}
+
+
+.card-nav-tab{
+  padding-top:20px;
+}
+
+.gazeteci-modal-body{
+  text-align:justify; 
+  font-size: 16px;
+}
+
+#hukukimodal{
+  margin:auto;
+}
+
+#gozaltimodal{
+   margin:auto;
+}
+
+#iddianamemodal{
+  margin:auto;
+}
+
+#yargilamamodal{
+   margin:auto;
+}
+
+.tab-pane{
+  color:black;
+  text-align: justify;
+}
+
 /* Analiz */
 
 .analizgorseli {
@@ -236,6 +275,32 @@ color: #0B9296;
   width:700px; height: 350px; border-radius: 10px;
 
 }
+
+.analiz{
+  background-color:#f7f7f7;
+  text-align: justify;
+}
+
+
+.analiz-card-header{
+  background-color: white
+
+}
+
+.analiz-detay-text{
+  text-align: justify;
+}
+
+.analiz-detay-header{
+  background-color: white;
+}
+
+/* Ne yapıyoruz? */
+
+.ne-yapiyoruz{
+  text-align: justify;
+}
+
 
 /* Duruşmalar Detay */
 
@@ -251,6 +316,10 @@ color: #0B9296;
 
 .durusma-nav{
   font-size: 14px;
+}
+
+.durusma-card{
+  margin-left: 100px;
 }
 
 
