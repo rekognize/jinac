@@ -25,7 +25,7 @@ SECRET_KEY = 'zlnn)wlli0d3u_e8$o##_h%qy924%mfm6h#*+r^_av1=tos1_q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['local.host', 'pressinarrest.rekognize.io', 'pressinarrest.com']
+ALLOWED_HOSTS = ['local.host', '127.0.0.1', 'pressinarrest.rekognize.io', 'pressinarrest.com']
 
 
 # Application definition
