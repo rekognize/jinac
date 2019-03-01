@@ -6,11 +6,43 @@
 
 <div class="container">
 
-    {% for journalist in journalist_list %}
-        <a href="{{ journalist.get_absolute_url }}">{{ journalist.name }}</a>
-    {% empty %}
-        Hic gazeteci bulunamadi
-    {% endfor %}
+
+      <div class="container">
+        <div class="gazeteciler-top text-center">
+          <h3> YARGILANAN GAZETECİLER </h3>
+
+          <div class="gazeteciler-content text-center">
+            <div class="row">
+
+
+            {% for journalist in journalist_list %}
+
+                      <div class="col-md-4">
+                        <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+                         <div style="padding-top: 10px;">
+                            <div class="card-header" style="background-color:white;">
+                                <div>
+                                  <a href= "{{ journalist.get_absolute_url }}" style="color:black"><img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}"/> </a>
+                                  </div>
+                                  <div>
+                               <h4 class="card-title card-block"> {{ journalist.name }}</h4>
+                                </div>
+                            </div>
+                            <div>
+                              <br/>
+                              <span>{{ journalist.bio }}</span>
+                            </div>
+                         </div>
+                        </div>
+                      </div>
+
+                {% if forloop.counter|divisibleby:3 %}
+                    </div><div class="row">
+                {% endif %}
+
+            {% endfor %}
+
+            </div>
 
 </div>
 
