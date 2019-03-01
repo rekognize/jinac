@@ -1,0 +1,325 @@
+
+/* Anasayfa ve Gazeteci Listesi */
+
+html,
+body,
+#cover{
+  height: 100%;
+}
+
+#cover{
+  background: no-repeat center right ;
+  background-position: 100%;
+}
+
+.navbar{
+  font-family: 'Raleway', sans-serif;
+}
+
+a.nav-link:hover{
+  color: #0B9296!important;
+  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+}
+
+.fixed-top{
+  max-width: 1140px;
+  margin: 5px auto;
+  background-color: white;
+  transition: 0.2s all linear;
+}
+
+
+.btn{
+  color: #0B9296;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn:hover{
+background-color: #0B9296;
+color: white;
+}
+
+.welcome{
+  margin-top: 10%;
+  font-family: 'Monoton', cursive;
+  word-spacing: 10px;
+}
+
+h2{
+font-family: 'Raleway', sans-serif;
+padding-bottom: 30px;
+}
+
+.item-circle{
+  font-family: 'Raleway', sans-serif;
+}
+
+
+.veriler-top h3{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 85px;
+  margin-top: 85px;
+  padding-top:110px;
+}
+
+.item-circle{
+  
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 75px;
+  line-height: 125px;
+}
+
+.c1{
+  background-color: #0B9296 ;
+  border:3px solid #0B9296;
+  color:white;
+}
+
+.c2{
+  background-color: #ED8A15;
+  border:3px solid #ED8A15;
+  color:white;
+}
+
+.c3{
+  background-color: #2A2857;
+  border:3px solid #2A2857;
+  color:white;
+}
+
+.gazetecigorseli{
+  width:200px; height: 200px; border-radius: 100px;
+  color:black
+}
+
+.veriler-content h4{
+  font-family: 'Raleway', sans-serif;
+}
+
+.veriler-content p{
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  font-size: 40px;
+}
+
+.gazeteciler-top h3{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 85px;
+  margin-top: 85px;
+}
+
+.yaklasandurusmalar-top h3{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 85px;
+  margin-top: 85px;
+}
+
+
+#gazeteciler{
+  background-color: #f7f7f7;
+  padding-top: 110px;
+  padding-bottom: 70px;
+}
+
+#yaklasandurusmalar{
+  background-color: #f7f7f7;
+  padding-top: 110px;
+  padding-bottom: 70px;
+}
+
+.card{
+  border-style: none;
+}
+
+.gazetecicard {
+  width: 20rem;
+  height: 550px;
+  padding-top: 10px;
+}
+
+.yaklasandurusmalarcard{
+  width: 20rem;
+  height: 550px;
+}
+
+.gazeteciler-content .row{
+  margin-bottom: 50px;
+}
+
+.yaklasandurusmalar-content .row{
+  margin-bottom: 50px;
+}
+
+
+.card-block{
+  font-family: 'Raleway', sans-serif;
+  font-size:20px; margin-top: 10px;
+
+}
+
+.fixed-top.change-fixed-top{
+  margin-top: 0;
+  background-color: muted;
+}
+
+#contact{
+  background: url('../images/background.jpg') no-repeat center;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 85px;
+  margin-top: 0px;
+  padding-top: 110px;
+  padding-bottom: 70px;
+}
+
+.subscription-row{
+  padding-top: 30px;
+}
+
+.icons{
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+  word-spacing: 10px;
+}
+
+
+/* Gazeteci Detay */
+
+.gazetecidetaygorseli{
+  width:250px; height: 250px; border-radius: 10px;
+
+}
+
+.card-text{
+  font-size: 15px;
+}
+
+
+.nav-item{
+  font-size: 15px;
+
+}
+
+.nav-link{
+  color:black;
+}
+
+.nav-item:hover{
+color: #0B9296;
+}
+
+.pointer {cursor: pointer;}
+
+
+.gazeteci-detay-card-header{
+  background-color: white;
+}
+
+
+.card-nav-tab{
+  padding-top:20px;
+}
+
+.gazeteci-modal-body{
+  text-align:justify; 
+  font-size: 16px;
+}
+
+#hukukimodal{
+  margin:auto;
+}
+
+#gozaltimodal{
+   margin:auto;
+}
+
+#iddianamemodal{
+  margin:auto;
+}
+
+#yargilamamodal{
+   margin:auto;
+}
+
+.tab-pane{
+  color:black;
+  text-align: justify;
+}
+
+/* Analiz */
+
+.analizgorseli {
+  width:250px; height: 250px; border-radius: 10px;
+}
+
+.analizdetaygorseli{
+
+  width:700px; height: 350px; border-radius: 10px;
+
+}
+
+.analiz{
+  background-color:#f7f7f7;
+  text-align: justify;
+}
+
+
+.analiz-card-header{
+  background-color: white
+
+}
+
+.analiz-detay-text{
+  text-align: justify;
+}
+
+.analiz-detay-header{
+  background-color: white;
+}
+
+/* Ne yapıyoruz? */
+
+.ne-yapiyoruz{
+  text-align: justify;
+}
+
+
+/* Duruşmalar Detay */
+
+#durusmalar{
+  background-color: #f7f7f7;
+  
+}
+
+.tab-content{
+  font-size:14px;
+}
+
+
+.durusma-nav{
+  font-size: 14px;
+}
+
+.durusma-card{
+  margin-left: 100px;
+}
+
+

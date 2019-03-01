@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <img src="{{ journalist.photo.url }}">
+    <img src="{% if journlist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}">
 
     <br>
 
