@@ -242,7 +242,6 @@ class Trial(models.Model):
     time_start = models.DateTimeField(_('start time'), blank=True, null=True)
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
     summary = models.TextField(_('summary'), blank=True, null=True)
-    next_time = models.DateTimeField(_('next trial time'), blank=True, null=True)
 
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)

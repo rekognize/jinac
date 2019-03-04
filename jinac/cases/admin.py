@@ -47,13 +47,18 @@ class CaseAdmin(admin.ModelAdmin):
         CaseDocumentInline,
         CaseStatusInline,
     ]
-    list_display = ['no', 'journalist_names', 'scope', 'court', 'status']
+    list_display = ['no', 'journalist_names', 'scope', 'court', 'status', 'reporter']
     list_editable = ['scope']
     search_fields = ['journalists__name', 'scope__scope', 'court__city__name']
+    exclude = ['reporter']
 
     def journalist_names(self, obj):
         return ', '.join([j.name for j in obj.journalists.all()])
     journalist_names.short_description = _('journalists')
+
+    def save_model(self, request, obj, form, change):
+        obj.reporter = request.user
+        super().save_model(request, obj, form, change)
 
 
 # trials
@@ -80,3 +85,9 @@ class TrialAdmin(admin.ModelAdmin):
         TrialNoteInline,
         TrialDocumentInline,
     ]
+    list_display = ['case', 'session_no', 'reporter']
+    exclude = ['reporter']
+
+    def save_model(self, request, obj, form, change):
+        obj.reporter = request.user
+        super().save_model(request, obj, form, change)

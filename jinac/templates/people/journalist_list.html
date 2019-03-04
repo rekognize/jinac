@@ -22,7 +22,7 @@
                          <div style="padding-top: 10px;">
                             <div class="card-header" style="background-color:white;">
                                 <div>
-                                  <a href= "{{ journalist.get_absolute_url }}" style="color:black"><img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}"/> </a>
+                                  <a href= "{{ journalist.get_absolute_url }}" style="color:black"><img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}"/> </a>
                                   </div>
                                   <div>
                                <h4 class="card-title card-block"> {{ journalist.name }}</h4>
@@ -30,7 +30,13 @@
                             </div>
                             <div>
                               <br/>
-                              <span>{{ journalist.bio }}</span>
+                              <span>
+                                  {% if journalist.bio %}
+                                      {{ journalist.bio }}
+                                  {% else %}
+                                      <span class="text-muted">yakinda</span>
+                                  {% endif %}
+                              </span>
                             </div>
                          </div>
                         </div>
