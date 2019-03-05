@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from django.contrib.auth.models import User
+from translations.models import Translatable
 from jinac.jurisdiction.models import Court
 from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff
 from jinac.institutions.models import Institution
@@ -50,11 +51,11 @@ class Case(models.Model):
     judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
                                    related_name='board_memberships', blank=True)
-    defendant_attorneys = models.ManyToManyField(Attorney, verbose_name=_('defendant attorneys'), blank=True)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
 
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
+    publish = models.BooleanField(_('publish'), default=False)
     added = models.DateTimeField(_('added time'), auto_now_add=True)
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
@@ -70,6 +71,7 @@ class Case(models.Model):
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')
+        ordering = ('-modified',)
 
 
 class CaseStatus(models.Model):
@@ -124,6 +126,16 @@ class CaseJournalist(models.Model):
         verbose_name=_('work position'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
+    attorneys = models.ManyToManyField(Attorney, verbose_name=_('attorney'))
+
+    class Meta:
+        verbose_name = _('case - journalist relation')
+        verbose_name_plural = _('case - journalist relations')
+
+
+class CaseDecision(models.Model):
+    case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalists'), on_delete=models.CASCADE)
     decision_type = models.PositiveSmallIntegerField(
         _('decision type'), blank=True, null=True,
         choices=(
@@ -135,8 +147,8 @@ class CaseJournalist(models.Model):
     punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
-        verbose_name = _('case - journalist relation')
-        verbose_name_plural = _('case - journalist relations')
+        verbose_name = _('case - decision relation')
+        verbose_name_plural = _('case - decision relations')
 
 
 class Indictment(models.Model):
@@ -178,15 +190,16 @@ class Article(models.Model):
 
 class CaseIndictment(models.Model):
     case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
     indictment = models.ForeignKey(
         Indictment, verbose_name=_('indictment type'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
-    articles = models.ManyToManyField(Article, verbose_name=_('articles'))
+    articles = models.ManyToManyField(Article, verbose_name=_('articles'), blank=True)
     details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
-        return self.type.type
+        return self.indictment.definition
 
     class Meta:
         verbose_name = _('indictment')
@@ -209,14 +222,14 @@ class CaseDocument(models.Model):
     file = models.FileField(_('file'))
     type = models.ForeignKey(CaseDocumentType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(_('description'), blank=True, null=True)
-    publish = models.BooleanField(_('publish'), default=True)
+    publish = models.BooleanField(_('publish'), default=False)
 
     class Meta:
         verbose_name = _('case document')
         verbose_name_plural = _('case documents')
 
 
-class CaseNote(models.Model):
+class CaseNote(Translatable):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
     type = models.ForeignKey(
         NoteType, verbose_name=_('type'),
@@ -229,8 +242,11 @@ class CaseNote(models.Model):
         return self.note
 
     class Meta:
-        verbose_name = _('note')
-        verbose_name_plural = _('notes')
+        verbose_name = _('case note')
+        verbose_name_plural = _('case notes')
+
+    class TranslatableMeta:
+        fields = ['note']
 
 
 # trials
@@ -243,6 +259,7 @@ class Trial(models.Model):
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
     summary = models.TextField(_('summary'), blank=True, null=True)
 
+    publish = models.BooleanField(_('publish'), default=False)
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)
     modified = models.DateTimeField(_('added time'), auto_now=True)
@@ -256,6 +273,7 @@ class Trial(models.Model):
     class Meta:
         verbose_name = _('trial')
         verbose_name_plural = _('trials')
+        ordering = ('-modified',)
 
 
 class TrialNote(models.Model):
@@ -272,8 +290,8 @@ class TrialNote(models.Model):
         return self.note
 
     class Meta:
-        verbose_name = _('note')
-        verbose_name_plural = _('notes')
+        verbose_name = _('trial note')
+        verbose_name_plural = _('trial notes')
 
 
 class ViolationType(models.Model):

@@ -7,8 +7,6 @@ from polymorphic.models import PolymorphicModel
 
 class Person(PolymorphicModel):
     name = models.CharField(_('name'), max_length=100)
-    slug = models.SlugField()
-    photo = models.ImageField(_('photo'), blank=True, null=True)
     gender = models.CharField(
         _('gender'), max_length=2, blank=True, null=True,
         choices=(
@@ -21,11 +19,6 @@ class Person(PolymorphicModel):
     def __str__(self):
         return self.name
 
-    def save(self, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
-        return super().save(**kwargs)
-
     class Meta:
         verbose_name = _('person')
         verbose_name_plural = _('people')
@@ -33,7 +26,14 @@ class Person(PolymorphicModel):
 
 
 class Journalist(Person):
+    slug = models.SlugField()
+    photo = models.ImageField(_('photo'), blank=True, null=True)
     publish = models.BooleanField(_('publish'), default=True)
+
+    def save(self, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(**kwargs)
 
     def get_absolute_url(self):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
@@ -46,14 +46,15 @@ class Journalist(Person):
 class JournalistStatus(models.Model):
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(_('status'), choices=(
-        (1, _('detained')),
-        (2, _('imprisoned')),
-        (3, _('convicted')),
-        (4, _('released')),
+        (1, _('not detained')),
+        (2, _('detained')),
+        (3, _('imprisoned')),
+        (4, _('convicted')),
         (5, _('fugitive')),
     ))
     start_date = models.DateField(_('start date'), blank=True, null=True)
     end_date = models.DateField(_('end date'), blank=True, null=True)
+    case = models.ForeignKey('cases.Case', verbose_name=_('case'), blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = _('journalist status')
