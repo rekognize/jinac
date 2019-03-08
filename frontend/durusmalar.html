@@ -58,13 +58,13 @@
         </div>
       </div>
 
-  <section style="font-family: 'Raleway', sans-serif; padding-top:40px;">
+  <section style="font-family: 'Raleway', sans-serif; padding-top:7%;">
     <div class="tab-content">
       <div class="card border-dark col-md-10 shadow p-3 mb-5 bg-white rounded justify-content-center durusma-card">
           <div class="col-md-12 px-3">
             <div class="container" >
               <h4 class="card-title"><b>AHMET ALTAN CUMHURBAŞKANINA HAKARET 6. DURUŞMA (20 ARALIK 2018)</b></h4>
-              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:10px;">
+              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
                 <li><a data-toggle="tab" href="#kunye" style="color:black;">Duruşma Künyesi</a></li>
                 <li><a data-toggle="tab" href="#gecmis" style="color:black;">Dava Geçmişi</a></li>
                 <li><a data-toggle="tab" href="#durusmaoncesi" style="color:black;">Duruşma Öncesi</a></li>
@@ -76,6 +76,7 @@
                 <li><a data-toggle="tab" href="#tutanak" style="color:black;">Tutanak</a></li>
               </ul>
               <div class="tab-content">
+
                 <div id="kunye" class="tab-pane fade in">
                   <p>
                     <br/>
@@ -166,13 +167,13 @@
     </div>
   </section>
 
-  <section style="font-family: 'Raleway', sans-serif; padding-top:10px;">
+  <section style="font-family: 'Raleway', sans-serif; padding-top:7%;">
     <div class="tab-content">
       <div class="card border-dark shadow col-md-10 p-3 mb-5 bg-white rounded justify-content-center durusma-card">
           <div class="col-md-12 px-3">
             <div class="container" >
               <h4 class="card-title"><b>AHMET ALTAN, MEHMET ALTAN VE NAZLI ILICAK İSTİNAF DURUŞMASI (21 EYLÜL 2018)</b></h4>
-              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:10px;">
+              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
                 <li><a data-toggle="tab" href="#kunye1" style="color:black;">Duruşma Künyesi</a></li>
                 <li><a data-toggle="tab" href="#gecmis1" style="color:black;">Dava Geçmişi</a></li>
                 <li><a data-toggle="tab" href="#durusmaoncesi1" style="color:black;">Duruşma Öncesi</a></li>
@@ -344,13 +345,13 @@
     </div>
   </section>
 
-   <section style="font-family: 'Raleway', sans-serif; padding-top:10px; background-color: ">
+   <section style="font-family: 'Raleway', sans-serif; padding-top:7%; background-color: ">
     <div class="tab-content">
       <div class="card border-dark shadow col-md-10 p-3 mb-5 bg-white rounded justify-content-center durusma-card">
           <div class="col-md-12 px-3">
             <div class="container" >
               <h4 class="card-title"><b>ALİ SÖNMEZ KAYAR 2. DURUŞMA (31 EKİM 2018)</b></h4>
-              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:10px;">
+              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
                 <li><a data-toggle="tab" href="#kunye2" style="color:black;">Duruşma Künyesi</a></li>
                 <li><a data-toggle="tab" href="#gecmis2" style="color:black;">Dava Geçmişi</a></li>
                 <li><a data-toggle="tab" href="#durusmaoncesi2" style="color:black;">Duruşma Öncesi</a></li>
@@ -452,13 +453,13 @@
       </div>
   </section>
 
-  <section style="font-family: 'Raleway', sans-serif; padding-top:40px;">
+  <section style="font-family: 'Raleway', sans-serif; padding-top:7%">
     <div class="tab-content">
       <div class="card border-dark col-md-10 shadow p-3 mb-5 bg-white rounded justify-content-center durusma-card">
           <div class="col-md-12 px-3">
             <div class="container" >
               <h4 class="card-title"><b>ÇAĞDAŞ ERDOĞAN 4. DURUŞMA (2 KASIM 2018)</b></h4>
-              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:10px;">
+              <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%; ">
                 <li><a data-toggle="tab" href="#kunye3" style="color:black;">Duruşma Künyesi</a></li>
                 <li><a data-toggle="tab" href="#gecmis3" style="color:black;">Dava Geçmişi</a></li>
                 <li><a data-toggle="tab" href="#durusmaoncesi3" style="color:black;">Duruşma Öncesi</a></li>
@@ -549,7 +550,20 @@
   </section>
 </section>
 
-
-
   </body>
 </html>
+
+<!-- Tab açma kapama -->
+
+<script>
+	$('[data-toggle=tab]').click(function(){
+  if ($(this).parent().hasClass('active')){
+    var url = $(this).attr('href');
+    var tid = url.split('#')[1];
+    console.log(tid);
+    $('#'+tid).toggleClass('active');
+    document.location.hash = '';
+  }
+});
+
+</script>
