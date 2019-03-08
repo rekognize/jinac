@@ -329,6 +329,9 @@ class TrialViolation(models.Model):
 class TrialDocumentType(models.Model):
     type = models.CharField(_('type'), max_length=50)
 
+    def __str__(self):
+        return self.type
+
     class Meta:
         verbose_name = _('trial document type')
         verbose_name_plural = _('trial document types')
