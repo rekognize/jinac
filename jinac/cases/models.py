@@ -186,7 +186,7 @@ class CaseIndictment(models.Model):
     details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
-        return self.case
+        return f'{self.case.__str__()}'
 
     class Meta:
         verbose_name = _('indictment')
