@@ -48,7 +48,7 @@ class Case(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        return f"{self.court} / {self.no}"
+        return f"{self.court} / {self.name} / {self.no}"
 
     def get_absolute_url(self):
         return reverse('case_detail', args=[self.id])
@@ -186,7 +186,7 @@ class CaseIndictment(models.Model):
     details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
-        return self.indictment.definition
+        return self.case
 
     class Meta:
         verbose_name = _('indictment')
