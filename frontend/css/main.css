@@ -18,7 +18,7 @@ body,
 }
 
 a.nav-link:hover{
-  color: #0B9296!important;
+  color: #2980b9 !important;
   transition: color 0.5s ease;
   -webkit-transition: color 0.5s ease;
   -moz-transition: color 0.5s ease;
@@ -34,12 +34,12 @@ a.nav-link:hover{
 
 
 .btn{
-  color: #0B9296;
+  color: #2980b9;
   font-family: 'Raleway', sans-serif;
 }
 
-.btn:hover{
-background-color: #0B9296;
+.btn .hover{
+background-color: #2980b9;
 color: white;
 }
 
@@ -289,6 +289,10 @@ color: #0B9296;
 
 }
 
+.analiz.detay{
+  background-color: #f7f7f7;
+}
+
 .analiz-detay-text{
   text-align: justify;
 }
@@ -325,3 +329,66 @@ color: #0B9296;
 }
 
 
+
+/* Search button */
+
+
+.wrapper {
+  text-align: center; 
+}
+
+.icon-search-container {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  transition: width 0.2s ease-out;
+  backface-visibility: hidden; }
+  
+.icon-search-container.active {
+  width: 250px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 40px;}
+    
+.icon-search-container.active .fa-times-circle{
+  opacity: 1;}
+  
+.icon-search-container.active .search-input{
+      width: 150px;}
+  
+  
+.fa-search {
+    color: #2980b9;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    cursor: pointer;}
+
+  .fa-times-circle {
+    opacity: 0;
+    color: #d9d9d9;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;}
+  
+  .search-input {
+    position: absolute;
+    cursor: default;
+    left: 45px;
+    top: 6px;
+    width: 0;
+    padding: 4px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    line-height: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    transition: width 0.2s ease-out;}
+
+    /* Calendar */
+  
