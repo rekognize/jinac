@@ -61,6 +61,38 @@ class JournalistStatus(models.Model):
         verbose_name_plural = _('journalist status')
 
 
+class JournalistNoteType(models.Model):
+    type = models.CharField(_('type'), max_length=100)
+    publish = models.BooleanField(_('publish'), default=True)
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = _('case note type')
+        verbose_name_plural = _('case note types')
+
+
+class JournalistNote(models.Model):
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
+    type = models.ForeignKey(
+        JournalistNoteType, verbose_name=_('type'),
+        blank=True, null=True, on_delete=models.SET_NULL,
+    )
+    note = models.TextField(_('note'))
+    time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.note
+
+    class Meta:
+        verbose_name = _('journalist note')
+        verbose_name_plural = _('journalist notes')
+
+    class TranslatableMeta:
+        fields = ['note']
+
+
 class Attorney(Person):
     type = models.PositiveSmallIntegerField(
         _('type'), default=1,

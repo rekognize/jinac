@@ -8,18 +8,6 @@ from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plainti
 from jinac.institutions.models import Institution
 
 
-class NoteType(models.Model):
-    type = models.CharField(_('type'), max_length=100)
-    publish = models.BooleanField(_('publish'), default=True)
-
-    def __str__(self):
-        return self.type
-
-    class Meta:
-        verbose_name = _('note type')
-        verbose_name_plural = _('note types')
-
-
 # cases
 
 class CaseScope(models.Model):
@@ -34,9 +22,9 @@ class CaseScope(models.Model):
 
 
 class Case(models.Model):
+    name = models.CharField(_('case name'), max_length=100)
     no = models.CharField(_('file number'), max_length=20)
     court = models.ForeignKey(Court, verbose_name=_('court'), on_delete=models.CASCADE)
-    name = models.CharField(_('name'), max_length=100, blank=True, null=True)
     filing_date = models.DateField(_('case filing date'), blank=True, null=True)  # iddianame tarihi
     opening_date = models.DateField(_('case opening date'), blank=True, null=True)  # dava acilis tarihi
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
@@ -152,7 +140,6 @@ class CaseDecision(models.Model):
 
 
 class Indictment(models.Model):
-    category = models.PositiveSmallIntegerField(verbose_name=_('category'), blank=True, null=True)
     definition = models.CharField(_('type'), max_length=200)
 
     def __str__(self):
@@ -229,10 +216,22 @@ class CaseDocument(models.Model):
         verbose_name_plural = _('case documents')
 
 
+class CaseNoteType(models.Model):
+    type = models.CharField(_('type'), max_length=100)
+    publish = models.BooleanField(_('publish'), default=True)
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = _('case note type')
+        verbose_name_plural = _('case note types')
+
+
 class CaseNote(Translatable):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
     type = models.ForeignKey(
-        NoteType, verbose_name=_('type'),
+        CaseNoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
     )
     note = models.TextField(_('note'))
@@ -276,10 +275,22 @@ class Trial(models.Model):
         ordering = ('-modified',)
 
 
+class TrialNoteType(models.Model):
+    type = models.CharField(_('type'), max_length=100)
+    publish = models.BooleanField(_('publish'), default=True)
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = _('trial note type')
+        verbose_name_plural = _('trial note types')
+
+
 class TrialNote(models.Model):
     trial = models.ForeignKey('Trial', verbose_name=_('trial'), on_delete=models.CASCADE)
     type = models.ForeignKey(
-        NoteType, verbose_name=_('type'),
+        TrialNoteType, verbose_name=_('type'),
         blank=True, null=True,
         on_delete=models.SET_NULL,
     )

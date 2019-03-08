@@ -3,12 +3,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from translations.admin import TranslatableAdmin, TranslationInline
 from jinac.cases.models import Indictment, CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
-    Trial, TrialDocumentType, TrialDocument, TrialNote, NoteType, CaseJournalist, CaseScope, WorkPosition, \
-    CaseDocumentType, CaseStatus, Article, CaseDecision
+    Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, CaseScope, \
+    WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision
 
 
-@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument, NoteType,
-                CaseScope, WorkPosition, CaseDocumentType, CaseIndictment, Article)
+@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument,
+                CaseNoteType, TrialNoteType, CaseScope, WorkPosition, CaseDocumentType, CaseIndictment, Article)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
@@ -68,10 +68,9 @@ class CaseAdmin(admin.ModelAdmin):
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
-        reporter_group = Group.objects.filter(name='Raportör').first()
-        if reporter_group:
-            if reporter_group in request.user.groups.all():
-                fields.remove('publish')
+        is_reporter = request.user.groups.filter(name='Raportör').first()
+        if is_reporter:
+            fields.remove('publish')
         return fields
 
     def get_queryset(self, request):
@@ -118,10 +117,9 @@ class TrialAdmin(admin.ModelAdmin):
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
-        reporter_group = Group.objects.filter(name='Raportör').first()
-        if reporter_group:
-            if reporter_group in request.user.groups.all():
-                fields.remove('publish')
+        is_reporter = request.user.groups.filter(name='Raportör').first()
+        if is_reporter:
+            fields.remove('publish')
         return fields
 
     def get_queryset(self, request):
@@ -133,4 +131,3 @@ class TrialAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.reporter = request.user
         super().save_model(request, obj, form, change)
-
