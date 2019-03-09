@@ -129,7 +129,10 @@ class CaseDecision(models.Model):
         )
     )
     articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
-    punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
+    punishment_year = models.CharField(_('year'), max_length=100, blank=True, null=True)
+    punishment_month = models.CharField(_('month'), max_length=100, blank=True, null=True)
+    punishment_day = models.CharField(_('day'), max_length=100, blank=True, null=True)
+    punishment_fine = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = _('case - decision relation')
@@ -156,7 +159,7 @@ class Article(models.Model):
     punishment_amount_max = models.CharField(_('maximum punishment due'), max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.get_type_display()} {self.no}"
+        return f"{self.get_type_display()} {self.no} {self.indictment}"
 
     class Meta:
         verbose_name = _('article')
