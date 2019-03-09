@@ -6,7 +6,7 @@ from polymorphic.models import PolymorphicModel
 
 
 class Person(PolymorphicModel):
-    name = models.CharField(_('name'), max_length=100)
+    name = models.CharField(_('name'), max_length=100, unique=True)
     gender = models.CharField(
         _('gender'), max_length=2, blank=True, null=True,
         choices=(
@@ -51,6 +51,8 @@ class JournalistStatus(models.Model):
         (3, _('imprisoned')),
         (4, _('convicted')),
         (5, _('fugitive')),
+        (6, _('postponed')),
+        (7, _('judgement receded')),
     ))
     start_date = models.DateField(_('start date'), blank=True, null=True)
     end_date = models.DateField(_('end date'), blank=True, null=True)

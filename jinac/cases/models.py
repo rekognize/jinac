@@ -32,13 +32,9 @@ class Case(models.Model):
                               blank=True, null=True, on_delete=models.SET_NULL)
     coup_related = models.BooleanField(_('coup attempt related'), default=False)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
-    plaintiff = models.ForeignKey(Plaintiff, verbose_name=_('plaintiff'),
-                                  blank=True, null=True, on_delete=models.SET_NULL)
-    prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('prosecutor'),
+    plaintiff = models.ManyToManyField(Plaintiff, verbose_name=_('plaintiff'), blank=True)
+    prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
-    judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
-    board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
-                                   related_name='board_memberships', blank=True)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
 
@@ -132,22 +128,12 @@ class CaseDecision(models.Model):
             (2, _('imprisonment')),
         )
     )
+    articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
     punishment_amount = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = _('case - decision relation')
         verbose_name_plural = _('case - decision relations')
-
-
-class Indictment(models.Model):
-    definition = models.CharField(_('type'), max_length=200)
-
-    def __str__(self):
-        return self.definition
-
-    class Meta:
-        verbose_name = _('indictment type')
-        verbose_name_plural = _('indictment types')
 
 
 class Article(models.Model):
@@ -156,6 +142,8 @@ class Article(models.Model):
         (2, _('TMK')),
         (3, _('Constitution')),
     ))
+    description = models.TextField(_('article'), blank=True, null=True)
+    indictment = models.CharField(_('indictment'), max_length=200, blank=True, null=True)
     no = models.CharField(max_length=20)
     punishment_type = models.PositiveSmallIntegerField(
         _('punishment type'), blank=True, null=True,
@@ -178,10 +166,6 @@ class Article(models.Model):
 class CaseIndictment(models.Model):
     case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
-    indictment = models.ForeignKey(
-        Indictment, verbose_name=_('indictment type'),
-        blank=True, null=True, on_delete=models.SET_NULL
-    )
     articles = models.ManyToManyField(Article, verbose_name=_('articles'), blank=True)
     details = models.TextField(_('details'), blank=True, null=True)
 
@@ -255,8 +239,14 @@ class Trial(models.Model):
     session_no = models.PositiveIntegerField(_('session'))
     time_announced = models.DateTimeField(_('announced time'))
     time_start = models.DateTimeField(_('start time'), blank=True, null=True)
+    time_next = models.DateTimeField(_('next trial time'), blank=True, null=True)
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
     summary = models.TextField(_('summary'), blank=True, null=True)
+    judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
+    board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
+                                   related_name='board_memberships', blank=True)
+    prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
+                                   blank=True, null=True, on_delete=models.SET_NULL)
 
     publish = models.BooleanField(_('publish'), default=False)
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)

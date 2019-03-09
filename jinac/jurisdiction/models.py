@@ -11,6 +11,7 @@ class City(models.Model):
     class Meta:
         verbose_name = _('city')
         verbose_name_plural = _('cities')
+        ordering = ('name',)
 
 
 class Court(models.Model):
@@ -19,11 +20,11 @@ class Court(models.Model):
     type = models.PositiveSmallIntegerField(
         _('type'), default=1,
         choices=(
-            (1, _('penal court')),
-            (2, _('criminal court')),
-            (3, _('court of appeal')),
-            (4, _('supreme court')),
-            (5, _('constitutional court')),
+            (1, _('Penal Court')),
+            (2, _('Criminal Court')),
+            (3, _('Court of Appeal')),
+            (4, _('Supreme Court')),
+            (5, _('Constitutional Court')),
             (6, _('ECHR')),
         )
     )
@@ -39,6 +40,7 @@ class Court(models.Model):
     class Meta:
         verbose_name = _('court')
         verbose_name_plural = _('courts')
+        ordering = ('city',)
 
 
 class Prison(models.Model):
