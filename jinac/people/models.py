@@ -6,7 +6,7 @@ from polymorphic.models import PolymorphicModel
 
 
 class Person(PolymorphicModel):
-    name = models.CharField(_('name'), max_length=100, unique=True)
+    name = models.CharField(_('name'), max_length=100)
     gender = models.CharField(
         _('gender'), max_length=2, blank=True, null=True,
         choices=(
