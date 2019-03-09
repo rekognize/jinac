@@ -129,9 +129,9 @@ class CaseDecision(models.Model):
         )
     )
     articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
-    punishment_year = models.CharField(_('year'), max_length=100, blank=True, null=True)
-    punishment_month = models.CharField(_('month'), max_length=100, blank=True, null=True)
-    punishment_day = models.CharField(_('day'), max_length=100, blank=True, null=True)
+    punishment_year = models.PositiveSmallIntegerField(_('year'), blank=True, null=True)
+    punishment_month = models.PositiveSmallIntegerField(_('month'), blank=True, null=True)
+    punishment_day = models.PositiveSmallIntegerField(_('day'), blank=True, null=True)
     punishment_fine = models.CharField(_('punishment amount'), max_length=100, blank=True, null=True)
 
     class Meta:
