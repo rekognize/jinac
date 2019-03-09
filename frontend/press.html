@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+
 
 	<title> Press in Arrest </title>
 </head>
@@ -74,7 +76,7 @@
 								<div class="wrapper" >
 									<div class="icon-search-container" data-ic-class="search-trigger">
 										<span class="fa fa-search" ></span>
-										<input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+										<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
 										<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
 									</div>
 								</div>
@@ -156,7 +158,7 @@
 		</div>
 	</section>
 
-	<section id="yaklasandurusmalar">
+	<section id="yaklasandurusmalar" >
 		<div class="container">
 			<div class="yaklasandurusmalar-top text-center">
 				<div class="yaklasandurusmalar-content">
@@ -166,7 +168,7 @@
 							<div class="card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard">
 								<div style="padding-top: 10px;"> 
 									<div class="card-header" style="background-color:white;"> 
-										<h4 class="card-title card-block">Son Gelişmeler/ Analizler</h4>
+										<h4 class="card-title card-block">Son Gelişmeler</h4>
 									</div>
 									<div>
 										<br/>
@@ -181,7 +183,7 @@
 									<div class="card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard">
 										<div style="padding-top: 10px;"> 
 											<div class="card-header" style="background-color:white;"> 
-												<h4 class="card-title card-block">Son Gelişmeler/ Analizler</h4>
+												<h4 class="card-title card-block">Son Gelişmeler</h4>
 											</div>
 											<div>
 												<br/>
@@ -196,101 +198,113 @@
 										<div class="card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard">
 											<div style="padding-top: 10px;"> 
 												<div class="card-header" style="background-color:white;"> 
-													<h4 class="card-title card-block">Dava Takvimi</h4>
+													<h4 class="card-title card-block">Son Gelişmeler</h4>
 												</div>
 												<div>
-													
+													<br/>
+													<span class="card-text">Tarih: 30 Ocak 2012, Yer: Ankara Ticaret Odası Kongre ve Sergi Sarayı. Tayyip Erdoğan o gece; bir basın kuruluşunu “ateşte açan bir çiçek” olarak tanımladı. “Sadece bir gazete olmadığını, çeyrek asrın kaydını tuttuğunu” söyledi. “En zor zamanlarda doğruyu söylemenin bedel gerektirdiği, manşetlerin gazete binalarının dışında kurgulandığı dönemlerde Anadolu’nun hissiyatını dile getirdiğini” ifade etti. “Temiz gazeteciliğin örneği” olduğunu vurguladı.Dönemin başbakanı Cumhurbaşkanı Tayyip Erdoğan, o gecenin baş konuğuydu. Yanında Başbakan yardımcıları Bülent Arınç, Bekir Bozdağ, Dışişleri Bakanı Ahmet Davutoğlu, AKP Genel Başkan Yardımcısı Hüseyin Çelik de vardı… 3 bin 500’den fazla konuk arasında CHP’liler de vardı, MHP’liler de, üst düzey bürokratlar da….
+														<a href= "analiz-detay1.html" style="color:black">(Devamı için tıklayınız)</a></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class= "row">
+										<div class="col-lg-12" >
+										<div>
+											<span style="text-align: center; font-family: 'Raleway', sans-serif; font-size: 25px; font-weight: bold;">Dava Takvimi</span>
+											<br/>
+											<br/>
+											<br/>
+										</div>										
+											<div>
+												<div id="calendar"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section class="contact-section my-5">
+						<div class="card" style="margin-left: 100px;">
+							<div class="row">
+								<div class="col-lg-8">
+									<div class="card-body form">
+										<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>İletişim:</h3>
+										<br/>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="md-form mb-0">
+													<input type="text" id="form-contact-name" class="form-control" placeholder="İsim">
+													<br/>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="md-form mb-0">
+													<input type="text" id="form-contact-email" class="form-control" placeholder="Mail">
+													<br/>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+
+											<div class="col-md-6">
+												<div class="md-form mb-0">
+													<textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="Mesajınız"></textarea>
+													<br/>
+													<a class=" btn-lg ">
+														<button><i class="far fa-paper-plane"> Gönder</i> </button>
+													</a>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</section>
 
+								<div class="col-lg-4">
+									<div class="card-body contact text-center h-100 white-text" style="margin-right:100px;">
+										<br/>
+										<br/>
+										<br/>
 
+										<h3 class="my-4">İletişim Bilgilerimiz:</h3>
+										<ul class="list-unstyled ml-4">
+											<li>
+												<p><i class="fas fa-envelope"></i> contact@example.com</p>
 
-
-				<section class="contact-section my-5">
-					<div class="card" style="margin-left: 100px;">
-						<div class="row">
-							<div class="col-lg-8">
-								<div class="card-body form">
-									<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>İletişim:</h3>
-									<br/>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="md-form mb-0">
-												<input type="text" id="form-contact-name" class="form-control" placeholder="İsim">
-												<br/>
-											</div>
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-6">
-											<div class="md-form mb-0">
-												<input type="text" id="form-contact-email" class="form-control" placeholder="Mail">
-												<br/>
-											</div>
-										</div>
-									</div>
-
-									<div class="row">
-
-										<div class="col-md-6">
-											<div class="md-form mb-0">
-												<textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="Mesajınız"></textarea>
-												<br/>
-												<a class=" btn-lg ">
-													<button><i class="far fa-paper-plane"> Gönder</i> </button>
+											</li>
+										</ul>
+										<hr class="hr-light my-4">
+										<ul class="list-inline text-center list-unstyled">
+											<li class="list-inline-item">
+												<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+													<i class="fab fa-twitter"></i>
 												</a>
-											</div>
-										</div>
+											</li>
+										</ul>
+
 									</div>
-								</div>
-							</div>
-
-							<div class="col-lg-4">
-								<div class="card-body contact text-center h-100 white-text" style="margin-right:100px;">
-									<br/>
-									<br/>
-									<br/>
-
-									<h3 class="my-4">İletişim Bilgilerimiz:</h3>
-									<ul class="list-unstyled ml-4">
-										<li>
-											<p><i class="fas fa-envelope"></i> contact@example.com</p>
-
-										</li>
-									</ul>
-									<hr class="hr-light my-4">
-									<ul class="list-inline text-center list-unstyled">
-										<li class="list-inline-item">
-											<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
-												<i class="fab fa-twitter"></i>
-											</a>
-										</li>
-									</ul>
 
 								</div>
-
 							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 
 
 
-				<script src="js/jquery-3.1.1.min.js"></script>
-				<script src="js/bootstrap.min.js"></script>
-				<script src="js/wow.js"></script>
-				<script>
-					new WOW().init();
-				</script>
-				<script src="js/main.js"></script>
+					<script src="js/jquery-3.1.1.min.js"></script>
+					<script src="js/bootstrap.min.js"></script>
+					<script src="js/wow.js"></script>
+					<script>
+						new WOW().init();
+					</script>
+					<script src="js/main.js"></script>
 
-			</body>
-			</html>
+				</body>
+				</html>
