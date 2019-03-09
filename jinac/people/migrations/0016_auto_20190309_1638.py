@@ -10,14 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='journalist',
-            name='slug',
-            field=models.SlugField(unique=True),
-        ),
-        migrations.AlterField(
-            model_name='person',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='name'),
-        ),
     ]

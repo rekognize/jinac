@@ -10,14 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='journaliststatus',
-            name='status',
-            field=models.PositiveSmallIntegerField(choices=[(1, 'not detained'), (2, 'detained'), (3, 'imprisoned'), (4, 'convicted'), (5, 'fugitive'), (6, 'postponed'), (7, 'judgement receded')], verbose_name='status'),
-        ),
-        migrations.AlterField(
-            model_name='person',
-            name='name',
-            field=models.CharField(max_length=100, unique=True, verbose_name='name'),
-        ),
     ]
