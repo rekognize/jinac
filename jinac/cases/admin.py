@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from translations.admin import TranslatableAdmin, TranslationInline
-from jinac.cases.models import Indictment, CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
+from jinac.cases.models import CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, CaseScope, \
     WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision
 
 
-@admin.register(Indictment, ViolationType, TrialViolation, TrialDocumentType, TrialDocument,
+@admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument,
                 CaseNoteType, TrialNoteType, CaseScope, WorkPosition, CaseDocumentType, CaseIndictment, Article)
 class CasesAdmin(admin.ModelAdmin):
     pass
@@ -59,7 +59,7 @@ class CaseAdmin(admin.ModelAdmin):
     list_editable = ['scope']
     search_fields = ['journalists__name', 'scope__scope', 'court__city__name']
     exclude = ['reporter']
-    filter_horizontal = ['board', 'related_cases']
+    filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'scope', 'coup_related', 'reporter']
 
     def journalist_names(self, obj):
@@ -112,7 +112,7 @@ class TrialAdmin(admin.ModelAdmin):
     ]
     list_display = ['case', 'session_no', 'reporter']
     exclude = ['reporter']
-    filter_horizontal = ['observers']
+    filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_start', 'modified', 'reporter']
 
     def get_fields(self, request, obj=None):
