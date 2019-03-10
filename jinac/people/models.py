@@ -26,7 +26,7 @@ class Person(PolymorphicModel):
 
 
 class Journalist(Person):
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     photo = models.ImageField(_('photo'), blank=True, null=True)
     publish = models.BooleanField(_('publish'), default=True)
 
