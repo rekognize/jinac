@@ -249,7 +249,7 @@ class Trial(models.Model):
     judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
                                    related_name='board_memberships', blank=True)
-    prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
+    prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('trial prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
 
     publish = models.BooleanField(_('publish'), default=False)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 12:49+0000\n"
+"POT-Creation-Date: 2019-03-10 18:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1291,7 +1291,7 @@ msgstr "darbe girişimi kapsamında"
 msgid "plaintiff"
 msgstr "davacı"
 
-#: jinac/cases/models.py:37 jinac/cases/models.py:252
+#: jinac/cases/models.py:37
 msgid "indictment prosecutor"
 msgstr "iddianame savcısı"
 
@@ -1550,6 +1550,10 @@ msgstr "mahkeme başkanı"
 #: jinac/cases/models.py:250
 msgid "board of judges"
 msgstr "mahkeme heyeti"
+
+#: jinac/cases/models.py:252
+msgid "trial prosecutor"
+msgstr "duruşma savcı"
 
 #: jinac/cases/models.py:267 jinac/cases/models.py:285
 #: jinac/cases/models.py:314 jinac/cases/models.py:335
