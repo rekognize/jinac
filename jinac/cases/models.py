@@ -28,6 +28,7 @@ class Case(models.Model):
     filing_date = models.DateField(_('case filing date'), blank=True, null=True)  # iddianame tarihi
     opening_date = models.DateField(_('case opening date'), blank=True, null=True)  # dava acilis tarihi
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
+    journalist_defendant_count = models.PositiveIntegerField(_('journalist defendant count'), blank=True, null=True)
     scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
                               blank=True, null=True, on_delete=models.SET_NULL)
     coup_related = models.BooleanField(_('coup attempt related'), default=False)
