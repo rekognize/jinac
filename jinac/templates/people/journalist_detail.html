@@ -23,6 +23,18 @@
     {% endfor %}
 
 
+    {% for note in journalist.journalistnote_set.all %}
+
+        <h4>{{ note.type }}</h4>
+
+        <p>
+            {{ note.note }}
+        </p>
+
+
+    {% endfor %}
+
+
 </div>
 
 {% endblock %}
