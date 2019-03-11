@@ -3,5 +3,6 @@
 *.sqlite3
 *.pyc
 /env*
+/media/
 /data/
 *.conf
