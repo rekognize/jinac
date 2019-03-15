@@ -194,7 +194,7 @@ class CaseDocumentType(models.Model):
 
 class CaseDocument(models.Model):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
-    file = models.FileField(_('file'))
+    file = models.FileField(_('file'), upload_to='documents')
     type = models.ForeignKey(CaseDocumentType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(_('description'), blank=True, null=True)
     publish = models.BooleanField(_('publish'), default=False)
@@ -333,7 +333,7 @@ class TrialDocumentType(models.Model):
 
 class TrialDocument(models.Model):
     trial = models.ForeignKey(Trial, verbose_name=_('trial'), on_delete=models.CASCADE)
-    file = models.FileField(_('file'))
+    file = models.FileField(_('file'), upload_to='documents')
     type = models.ForeignKey(TrialDocumentType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(_('description'), blank=True, null=True)
 
