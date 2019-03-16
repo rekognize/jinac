@@ -27,7 +27,7 @@ class Person(PolymorphicModel):
 
 class Journalist(Person):
     slug = models.SlugField(unique=True)
-    photo = models.ImageField(_('photo'), blank=True, null=True)
+    photo = models.ImageField(_('photo'), upload_to='journalists/', blank=True, null=True)
     publish = models.BooleanField(_('publish'), default=True)
 
     def save(self, **kwargs):

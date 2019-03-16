@@ -25,7 +25,11 @@ SECRET_KEY = 'zlnn)wlli0d3u_e8$o##_h%qy924%mfm6h#*+r^_av1=tos1_q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['local.host', '127.0.0.1', 'pressinarrest.rekognize.io', 'pressinarrest.com']
+ALLOWED_HOSTS = [
+    'local.host', '127.0.0.1',
+    'ec2-3-92-31-176.compute-1.amazonaws.com',
+    'pressinarrest.rekognize.io', 'pressinarrest.com',
+]
 
 
 # Application definition
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'jinac.jurisdiction.apps.JurisdictionConfig',
     'jinac.institutions.apps.InstitutionsConfig',
     'jinac.cases.apps.CasesConfig',
+    'jinac.news.apps.NewsConfig',
 ]
 
 MIDDLEWARE = [
@@ -143,4 +148,10 @@ LOCALE_PATHS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-#MEDIA_URL = 'http://rekognize-reports.s3.amazonaws.com/'
+#MEDIA_URL = 'http://pressinarrest.s3.amazonaws.com/'
+
+
+try:
+    from .settings_local import *
+except ImportError:
+    pass

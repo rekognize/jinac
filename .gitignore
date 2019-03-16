@@ -6,3 +6,6 @@
 /media/
 /data/
 *.conf
+settings_local.py
+
+jinac/settings_local.py
