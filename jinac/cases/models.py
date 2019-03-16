@@ -10,17 +10,6 @@ from jinac.institutions.models import Institution
 
 # cases
 
-class CaseScope(models.Model):
-    scope = models.CharField(_('scope'), max_length=200)  # feto, pkk, kck, ...
-
-    def __str__(self):
-        return self.scope
-
-    class Meta:
-        verbose_name = _('case scope')
-        verbose_name_plural = _('case scope')
-
-
 class Case(models.Model):
     name = models.CharField(_('case name'), max_length=100)
     no = models.CharField(_('file number'), max_length=20)
@@ -29,8 +18,6 @@ class Case(models.Model):
     opening_date = models.DateField(_('case opening date'), blank=True, null=True)  # dava acilis tarihi
     defendant_count = models.PositiveIntegerField(_('defendant count'), blank=True, null=True)
     journalist_defendant_count = models.PositiveIntegerField(_('journalist defendant count'), blank=True, null=True)
-    scope = models.ForeignKey(CaseScope, verbose_name=_('case scope'),
-                              blank=True, null=True, on_delete=models.SET_NULL)
     coup_related = models.BooleanField(_('coup attempt related'), default=False)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
     plaintiff = models.ManyToManyField(Plaintiff, verbose_name=_('plaintiff'), blank=True)
@@ -127,6 +114,8 @@ class CaseDecision(models.Model):
             (0, _('acquittal')),
             (1, _('fine')),
             (2, _('imprisonment')),
+            (6, _('postponed')),
+            (7, _('judgement receded')),
         )
     )
     articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
@@ -156,8 +145,6 @@ class Article(models.Model):
             (2, _('imprisonment')),
         )
     )
-    punishment_amount_min = models.CharField(_('minimum punishment due'), max_length=100, blank=True, null=True)
-    punishment_amount_max = models.CharField(_('maximum punishment due'), max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f"{self.get_type_display()} {self.no} {self.indictment}"

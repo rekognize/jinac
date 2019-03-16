@@ -3,12 +3,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from translations.admin import TranslatableAdmin, TranslationInline
 from jinac.cases.models import CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
-    Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, CaseScope, \
+    Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, \
     WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision
 
 
 @admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument,
-                CaseNoteType, TrialNoteType, CaseScope, WorkPosition, CaseDocumentType, CaseIndictment, Article)
+                CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType, CaseIndictment, Article)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
@@ -55,12 +55,11 @@ class CaseAdmin(admin.ModelAdmin):
         CaseCaseDecisionInline,
         CaseStatusInline,
     ]
-    list_display = ['no', 'journalist_names', 'scope', 'court', 'status', 'reporter']
-    list_editable = ['scope']
-    search_fields = ['journalists__name', 'scope__scope', 'court__city__name']
+    list_display = ['no', 'journalist_names', 'court', 'status', 'reporter']
+    search_fields = ['journalists__name', 'court__city__name']
     exclude = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
-    list_filter = ['publish', 'opening_date', 'modified', 'scope', 'coup_related', 'reporter']
+    list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
 
     def journalist_names(self, obj):
         return ', '.join([j.name for j in obj.journalists.all()])

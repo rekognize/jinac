@@ -1734,7 +1734,7 @@ msgstr "erteleme"
 
 #: jinac/people/models.py:55
 msgid "judgement receded"
-msgstr "hükmün açıklanmasının geri bırakılması"
+msgstr "HAGB"
 
 #: jinac/people/models.py:57
 msgid "start date"
