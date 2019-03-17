@@ -10,66 +10,83 @@
 
     <title>{% block title %}{% trans "Press in Arrest" %}{% endblock %}</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link rel="stylesheet"type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Raleway|Monoton" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css"%}">
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Monoton" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-    {% block css %}{% endblock %}
+    {% block head %}{% endblock %}
 
 </head>
 
 <body>
 
-  <nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+{% block navbar %}
 
-      {% url 'case_list' as case_list_url %}
-      {% url 'journalist_list' as journalist_list_url %}
+  {% url 'case_list' as case_list_url %}
+  {% url 'journalist_list' as journalist_list_url %}
 
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-            <a class="nav-link" href="/">Anasayfa{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
-          </li>
-          <li class="nav-item {% if request.path == case_list_url %}active{% endif %}">
-            <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path == case_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
-          </li>
-          <li class="nav-item {% if request.path == journalist_list_url %}active{% endif %}">
-            <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path == journalist_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Duruşma takvimi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Analizler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Ne yapıyoruz?</a>
-          </li>
-        </ul>
-
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn my-2 my-sm-0" type="submit">
-            <i class="fas fa-search"></i>
+  <section id="gazeteciler">
+    <div class="container">
+      <div class="row">
+        <nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <img src="{% static 'PiA_logo_tr.png' %}" style="width: 150px; height: 48px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </form>
-      </div>
-  </nav>
 
-<div class="w-100 mt-5"></div>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav" >
+            <ul class="navbar-nav">
+              <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <a class="nav-link" href="/">Anasayfa{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+              <li class="nav-item {% if request.path == case_list_url %}active{% endif %}">
+                <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path == case_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+              <li class="nav-item {% if request.path == journalist_list_url %}active{% endif %}">
+                <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path == journalist_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+
+
+              <li class="nav-item active">
+                <a class="nav-link" href="analiz.html"> Analizler<span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="durusmalar.html">Duruşma Raporları</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="neyapiyoruz.html">Ne yapıyoruz?</a>
+              </li>
+
+              <li>
+                <div class="wrapper" >
+                  <div class="icon-search-container" data-ic-class="search-trigger">
+                    <span class="fa fa-search" ></span>
+                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+                    <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div style="font-family: 'Raleway', sans-serif; font-size:14px; margin-left:90%">
+          Türkçe | <a href= "#">English</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
 
 {% block content %}
 
