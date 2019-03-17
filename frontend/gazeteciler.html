@@ -15,328 +15,323 @@
   <title> Gazeteciler </title>
 
 </head>
-
 <body>
   <section id="gazeteciler">
     <div class="container">
       <div class="row">
-
         <nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="#">
+            <img src="images/PiA_logo_tr-ConvertImage.png" style="width: 150px; height: 48px;">
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-             <div style="position:fixed;left:12%;">
-              <li class="nav-item">
-                <img src="images/PiA_logo_tr-ConvertImage.png" style="width: 150px; height: 48px;">
+              <li class="nav-item active">
+                <a class="nav-link" href="gazeteciler.html">Gazeteciler<span class="sr-only">(current)</span></a>
               </li>
-            </div>
-            <li class="nav-item active">
-              <a class="nav-link" href="gazeteciler.html">Gazeteciler<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="press.html">Anasayfa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="durusmalar.html">Duruşma Raporları</a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link" href="analiz.html">Analizler</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="neyapiyoruz.html">Ne yapıyoruz?</a>
-            </li>
-            <li>
-              <div class="wrapper" >
-                <div class="icon-search-container" data-ic-class="search-trigger">
-                  <span class="fa fa-search" ></span>
-                  <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
-                  <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+              <li class="nav-item">
+                <a class="nav-link" href="press.html">Anasayfa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="durusmalar.html">Duruşma Raporları</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="analiz.html">Analizler</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="neyapiyoruz.html">Ne yapıyoruz?</a>
+              </li>
+              <li>
+                <div class="wrapper" >
+                  <div class="icon-search-container" data-ic-class="search-trigger">
+                    <span class="fa fa-search" ></span>
+                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+                    <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>            
+              </li>
+            </ul>            
+          </div>
+        </nav>
+        <div style="margin-left:90%; margin-bottom:3%; font-family: 'Raleway', sans-serif; font-size:14px;">
+          Türkçe | <a href= "#">English</a>
         </div>
-      </nav>
-      <div style="margin-left:90%; margin-bottom:3%; font-family: 'Raleway', sans-serif; font-size:14px;">
-        Türkçe | <a href= "#">English</a>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="gazeteciler-top text-center" onclick="myFunction()">
-      <button class="btn" value="" onclick="filter(event);">All</button>
-      <button class="btn" value="A" onclick="filter(event);">A</button>
-      <button class="btn" value="B" onclick="filter(event);">B</button>
-      <button class="btn" value="C" onclick="filter(event);">C</button>
-      <button class="btn" value="D" onclick="filter(event);">D</button>
-      <button class="btn" value="E" onclick="filter(event);">E</button>
-      <button class="btn" value="F" onclick="filter(event);">F</button>
-      <button class="btn" value="G" onclick="filter(event);">G</button>
-      <button class="btn" value="H" onclick="filter(event);">H</button>
-      <button class="btn" value="I" onclick="filter(event);">I</button>
-      <button class="btn" value="J" onclick="filter(event);">J</button>
-      <button class="btn" value="K" onclick="filter(event);">K</button>
-      <button class="btn" value="L" onclick="filter(event);">L</button>
-      <button class="btn" value="M" onclick="filter(event);">M</button>
-      <button class="btn" value="N" onclick="filter(event);">N</button>
-      <button class="btn" value="O" onclick="filter(event);">O</button>
-      <button class="btn" value="P" onclick="filter(event);">P</button>
-      <button class="btn" value="Q" onclick="filter(event);">Q</button>
-      <button class="btn" value="R" onclick="filter(event);">R</button>
-      <button class="btn" value="S" onclick="filter(event);">S</button>
-      <button class="btn" value="T" onclick="filter(event);">T</button>
-      <button class="btn" value="U" onclick="filter(event);">U</button>
-      <button class="btn" value="V" onclick="filter(event);">V</button>
-      <button class="btn" value="W" onclick="filter(event);">W</button>
-      <button class="btn" value="X" onclick="filter(event);">X</button>
-      <button class="btn" value="Y" onclick="filter(event);">Y</button>
-      <button class="btn" value="Z" onclick="filter(event);">Z</button>
+    <div class="container">
+      <div class="gazeteciler-top text-center" onclick="myFunction()">
+        <button class="btn" value="" onclick="filter(event);">All</button>
+        <button class="btn" value="A" onclick="filter(event);">A</button>
+        <button class="btn" value="B" onclick="filter(event);">B</button>
+        <button class="btn" value="C" onclick="filter(event);">C</button>
+        <button class="btn" value="D" onclick="filter(event);">D</button>
+        <button class="btn" value="E" onclick="filter(event);">E</button>
+        <button class="btn" value="F" onclick="filter(event);">F</button>
+        <button class="btn" value="G" onclick="filter(event);">G</button>
+        <button class="btn" value="H" onclick="filter(event);">H</button>
+        <button class="btn" value="I" onclick="filter(event);">I</button>
+        <button class="btn" value="J" onclick="filter(event);">J</button>
+        <button class="btn" value="K" onclick="filter(event);">K</button>
+        <button class="btn" value="L" onclick="filter(event);">L</button>
+        <button class="btn" value="M" onclick="filter(event);">M</button>
+        <button class="btn" value="N" onclick="filter(event);">N</button>
+        <button class="btn" value="O" onclick="filter(event);">O</button>
+        <button class="btn" value="P" onclick="filter(event);">P</button>
+        <button class="btn" value="Q" onclick="filter(event);">Q</button>
+        <button class="btn" value="R" onclick="filter(event);">R</button>
+        <button class="btn" value="S" onclick="filter(event);">S</button>
+        <button class="btn" value="T" onclick="filter(event);">T</button>
+        <button class="btn" value="U" onclick="filter(event);">U</button>
+        <button class="btn" value="V" onclick="filter(event);">V</button>
+        <button class="btn" value="W" onclick="filter(event);">W</button>
+        <button class="btn" value="X" onclick="filter(event);">X</button>
+        <button class="btn" value="Y" onclick="filter(event);">Y</button>
+        <button class="btn" value="Z" onclick="filter(event);">Z</button>
 
-      <br/>
-      <br/>
+        <br/>
+        <br/>
 
-      <div class="gazeteciler-content text-center">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-              <div style="padding-top: 7%;">
+        <div class="gazeteciler-content text-center">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+                <div style="padding-top: 7%;">
+                  <div class="card-header" style="background-color:white;">
+                    <div>
+                      <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ahmet-Turan-Alkan.png"/> </a>
+                    </div>
+                    <div>
+                      <h4 class="card-title card-block"> Ahmet Turan Alkan</h4>
+                    </div>
+                  </div>
+                  <div>
+                    <br/>
+                    <span>20 yıl boyunca Zaman Gazetesi’nde yazarlık yaptı. 27 Temmuz 2016’da gözaltına alındı, 30 Temmuz’da “örgüt üyesi olmak” iddiasıyla tutuklandı. 6 Temmuz 2018’de 8 yıl 9 ay hapis cezası verildi. Kararla adli kontrol koşulu ile tahliye edildi. İstinaf süreci devam ediyor.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+               <div style="padding-top: 7%;">
                 <div class="card-header" style="background-color:white;">
                   <div>
-                    <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ahmet-Turan-Alkan.png"/> </a>
+                    <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Bulac.png"/><a>
+                    </div>
+                    <div>
+                      <h4 class="card-title card-block">Ali Bulaç</h4>
+                    </div>
                   </div>
                   <div>
-                    <h4 class="card-title card-block"> Ahmet Turan Alkan</h4>
+                    <br/>
+                    <span>Kapatılan Zaman Gazetesi yazarı. 27 Temmuz 2016’da gözaltına alındı. 31 Temmuz 2016’da tutuklandı. Yaklaşık iki yıl sonra tahliye oldu. Yargılamanın sonunda 8 yıl 9 ay hapis cezası verildi. Yargılamanın istinaf süreci devam ediyor.</span>
                   </div>
-                </div>
-                <div>
-                  <br/>
-                  <span>20 yıl boyunca Zaman Gazetesi’nde yazarlık yaptı. 27 Temmuz 2016’da gözaltına alındı, 30 Temmuz’da “örgüt üyesi olmak” iddiasıyla tutuklandı. 6 Temmuz 2018’de 8 yıl 9 ay hapis cezası verildi. Kararla adli kontrol koşulu ile tahliye edildi. İstinaf süreci devam ediyor.</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-             <div style="padding-top: 7%;">
-              <div class="card-header" style="background-color:white;">
-                <div>
-                  <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Bulac.png"/><a>
+            <div class="col-md-4">
+              <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+               <div style="padding-top: 7%;">
+                 <div class="card-header" style="background-color:white;">
+                  <div>
+                    <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Sonmez-Kayar.png"/></a>
                   </div>
                   <div>
-                    <h4 class="card-title card-block">Ali Bulaç</h4>
-                  </div>
-                </div>
-                <div>
-                  <br/>
-                  <span>Kapatılan Zaman Gazetesi yazarı. 27 Temmuz 2016’da gözaltına alındı. 31 Temmuz 2016’da tutuklandı. Yaklaşık iki yıl sonra tahliye oldu. Yargılamanın sonunda 8 yıl 9 ay hapis cezası verildi. Yargılamanın istinaf süreci devam ediyor.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-             <div style="padding-top: 7%;">
-               <div class="card-header" style="background-color:white;">
-                <div>
-                  <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Sonmez-Kayar.png"/></a>
-                </div>
-                <div>
-                 <h4 class="card-title card-block">Ali Sönmez Kayar</h4>
+                   <h4 class="card-title card-block">Ali Sönmez Kayar</h4>
+                 </div>
                </div>
-             </div>
-             <div>
-              <br/>
-              <span>ETHA muhabiri olan Kayar, 1 Şubat 2018’de gözaltına alındı. “Örgüt üyesi olmak” iddiasıyla 7 Şubat’ta tutuklandı. Tutuklu yargılandığı davanın 31 Ekim 2018’deki ikinci duruşmasında tahliye oldu. Yargılaması tutuksuz olarak devam ediyor.</span>
+               <div>
+                <br/>
+                <span>ETHA muhabiri olan Kayar, 1 Şubat 2018’de gözaltına alındı. “Örgüt üyesi olmak” iddiasıyla 7 Şubat’ta tutuklandı. Tutuklu yargılandığı davanın 31 Ekim 2018’deki ikinci duruşmasında tahliye oldu. Yargılaması tutuksuz olarak devam ediyor.</span>
+              </div>
             </div>
+          </div>
+        </div>          
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+           <div style="padding-top: 7%;">
+            <div class="card-header" style="background-color:white;">
+              <div>
+                <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Unal.png"/></a>
+              </div>
+              <div>
+               <h4 class="card-title card-block">Ali Ünal</h4>
+             </div>
+           </div>
+           <div>
+            <br/>
+            <span>Tutukluluğunun 26. ayında yargılama sona erdi ve “silahlı terör örgütünü kurmak ve yönetmek” suçundan 19 yıl 6 ay hapisle cezalandırıldı.</span>
           </div>
         </div>
-      </div>          
+      </div>
     </div>
 
-    <div class="row">
-
-      <div class="col-md-4">
-        <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-         <div style="padding-top: 7%;">
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
           <div class="card-header" style="background-color:white;">
             <div>
-              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ali-Unal.png"/></a>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Asli-Erdogan.png"/></a>
             </div>
             <div>
-             <h4 class="card-title card-block">Ali Ünal</h4>
+              <h4 class="card-title card-block">Aslı Erdoğan</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Kapatılan Özgür Gündem Gazetesi’nin Yayın Danışma Kurulu üyesiydi. 16 Ağustos 2016’da gözaltına alındı, 19 Ağustos’ta tutuklandı. 29 Aralık 2016’da görülen ilk duruşmada tahliye oldu. Dava İstanbul 23. Ağır Ceza Mahkemesi’nde devam ediyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Bilge-Contepe.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Bilge Contepe</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Kapatılan Özgür Gündem Gazetesi’nin Yayın Danışma Kurulu üyesi. 16 Ağustos 2016’da hakkında gözaltı kararı verildi. Ancak kendisine ulaşılamadı. 2 Ocak 2017’deki 2. duruşmaya katılıp savunmasını vermesiyle mahkeme yakalama kararını kaldırdı. Yargılama devam ediyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">            
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Cagdas-Erdogan.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Çağdaş Erdoğan</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>İstanbul Kadıköy’de 2 Eylül 2017 günü “MİT sosyal tesislerinin fotoğraflarını çektiği” iddiasıyla gözaltına alınıp, tutuklandı. 13 Şubat 2018 günü görülen ilk duruşmada tahliye edildi. Yargılaması tutuksuz olarak devam ediliyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Cigdem-Toker.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Çiğdem Toker</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Cumhuriyet Gazetesi’nde köşe yazarı iken Bayburt Grup’un iki şirketi hakkında yazdığı iki ayrı yazı nedeniyle 3 milyon TL’lik manevi tazminat davası açıldı. 1.5 milyon TL manevi tazminat talepli dava reddedildi, diğer davanın yargılaması sürüyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ece-Sevim-Ozturk.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Ece Sevim Öztürk</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Çağdaş Ses internet haber sitesinin Sahibi ve Genel Yayın Yönetmeni. 8 Haziran 2018 günü gözaltına alındı, 24 Haziran’da tutuklandı. 11 Aralık 2018’de görülen ikinci duruşmada 3 yıl 1 ay 15 gün hapis cezası verilerek, tahliye edildi. Yargılamanın istinaf süreci devam ediyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">            
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Erdem-Ozden.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Erdem Özden</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Mavi Didim gazetesi çalışanı Özden, gazetede 24 Ocak 2018 tarihinde “Afrin operasyonu dursun, Afrin’de halkların kardeşliği bombalanıyor ve Türkiye bölgesel savaş batağına sürükleniyor” başlığıyla yayımlanan haber nedeniyle tutuksuz olarak yargılanıyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+              <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Erdogan-Alayumat.png"/></a>
+            </div>
+            <div>
+              <h4 class="card-title card-block">Erdoğan Alayumat</h4>
+            </div>
+          </div>
+          <div>
+            <br/>
+            <span>Dihaber muhabiriydi. 27 Temmuz 2017'de “örgüt üyesi olmak”, “örgüte yardım ve yataklık etmek”, “örgüt adına milis ve işbirlikçilik faaliyetinde bulunmak” ve “Türkiye Cumhuriyeti Devleti’nin gizli kalması gereken sırlarını ifşa etmek” gerekçeleriyle tutuklandı. 23 Mayıs 2018’de tahliye oldu. Tutuksuz yargılanıyor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+        <div style="padding-top: 7%;">
+          <div class="card-header" style="background-color:white;">
+            <div>
+             <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Eren-Keskin.png"/></a>
            </div>
-         </div>
-         <div>
-          <br/>
-          <span>Tutukluluğunun 26. ayında yargılama sona erdi ve “silahlı terör örgütünü kurmak ve yönetmek” suçundan 19 yıl 6 ay hapisle cezalandırıldı.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Asli-Erdogan.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Aslı Erdoğan</h4>
+           <div>
+            <h4 class="card-title card-block">Eren Keskin</h4>
           </div>
         </div>
         <div>
           <br/>
-          <span>Kapatılan Özgür Gündem Gazetesi’nin Yayın Danışma Kurulu üyesiydi. 16 Ağustos 2016’da gözaltına alındı, 19 Ağustos’ta tutuklandı. 29 Aralık 2016’da görülen ilk duruşmada tahliye oldu. Dava İstanbul 23. Ağır Ceza Mahkemesi’nde devam ediyor.</span>
+          <span>Özgür Gündem gazetesi eş yayın yönetmenliği yaptı. Hakkında birçok dava açıldı. Mayıs 2016’da “örgüt propagandası” gerekçesiyle toplam 7 yıl 6 ay hapis cezasına çarptırıldı. Özgür Gündem ana davası olmak üzere hakkındaki çeşitli davalarda tutuksuz olarak yargılaması sürüyor.</span>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Bilge-Contepe.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Bilge Contepe</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>Kapatılan Özgür Gündem Gazetesi’nin Yayın Danışma Kurulu üyesi. 16 Ağustos 2016’da hakkında gözaltı kararı verildi. Ancak kendisine ulaşılamadı. 2 Ocak 2017’deki 2. duruşmaya katılıp savunmasını vermesiyle mahkeme yakalama kararını kaldırdı. Yargılama devam ediyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">            
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Cagdas-Erdogan.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Çağdaş Erdoğan</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>İstanbul Kadıköy’de 2 Eylül 2017 günü “MİT sosyal tesislerinin fotoğraflarını çektiği” iddiasıyla gözaltına alınıp, tutuklandı. 13 Şubat 2018 günü görülen ilk duruşmada tahliye edildi. Yargılaması tutuksuz olarak devam ediliyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Cigdem-Toker.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Çiğdem Toker</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>Cumhuriyet Gazetesi’nde köşe yazarı iken Bayburt Grup’un iki şirketi hakkında yazdığı iki ayrı yazı nedeniyle 3 milyon TL’lik manevi tazminat davası açıldı. 1.5 milyon TL manevi tazminat talepli dava reddedildi, diğer davanın yargılaması sürüyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Ece-Sevim-Ozturk.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Ece Sevim Öztürk</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>Çağdaş Ses internet haber sitesinin Sahibi ve Genel Yayın Yönetmeni. 8 Haziran 2018 günü gözaltına alındı, 24 Haziran’da tutuklandı. 11 Aralık 2018’de görülen ikinci duruşmada 3 yıl 1 ay 15 gün hapis cezası verilerek, tahliye edildi. Yargılamanın istinaf süreci devam ediyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">            
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Erdem-Ozden.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Erdem Özden</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>Mavi Didim gazetesi çalışanı Özden, gazetede 24 Ocak 2018 tarihinde “Afrin operasyonu dursun, Afrin’de halkların kardeşliği bombalanıyor ve Türkiye bölgesel savaş batağına sürükleniyor” başlığıyla yayımlanan haber nedeniyle tutuksuz olarak yargılanıyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-            <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Erdogan-Alayumat.png"/></a>
-          </div>
-          <div>
-            <h4 class="card-title card-block">Erdoğan Alayumat</h4>
-          </div>
-        </div>
-        <div>
-          <br/>
-          <span>Dihaber muhabiriydi. 27 Temmuz 2017'de “örgüt üyesi olmak”, “örgüte yardım ve yataklık etmek”, “örgüt adına milis ve işbirlikçilik faaliyetinde bulunmak” ve “Türkiye Cumhuriyeti Devleti’nin gizli kalması gereken sırlarını ifşa etmek” gerekçeleriyle tutuklandı. 23 Mayıs 2018’de tahliye oldu. Tutuksuz yargılanıyor.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-      <div style="padding-top: 7%;">
-        <div class="card-header" style="background-color:white;">
-          <div>
-           <a href= "gazeteci-detay.html" style="color:black"><img class="gazetecigorseli" src="images/Eren-Keskin.png"/></a>
-         </div>
-         <div>
-          <h4 class="card-title card-block">Eren Keskin</h4>
-        </div>
-      </div>
-      <div>
-        <br/>
-        <span>Özgür Gündem gazetesi eş yayın yönetmenliği yaptı. Hakkında birçok dava açıldı. Mayıs 2016’da “örgüt propagandası” gerekçesiyle toplam 7 yıl 6 ay hapis cezasına çarptırıldı. Özgür Gündem ana davası olmak üzere hakkındaki çeşitli davalarda tutuksuz olarak yargılaması sürüyor.</span>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 
 <div class="row">
