@@ -27,6 +27,7 @@ class JournalistNoteInline(admin.TabularInline):
 
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
+    list_display = ['name', 'reporter', 'added', 'modified']
     search_fields = ('name',)
     prepopulated_fields = {"slug": ("name",)}
     inlines = [
@@ -41,3 +42,7 @@ class JournalistAdmin(admin.ModelAdmin):
         if is_reporter:
             fields.remove('publish')
         return fields
+
+    def save_model(self, request, obj, form, change):
+        obj.reporter = request.user
+        super().save_model(request, obj, form, change)

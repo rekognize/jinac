@@ -55,7 +55,7 @@ class CaseAdmin(admin.ModelAdmin):
         CaseCaseDecisionInline,
         CaseStatusInline,
     ]
-    list_display = ['no', 'journalist_names', 'court', 'status', 'reporter']
+    list_display = ['no', 'journalist_names', 'court', 'status', 'reporter', 'added', 'modified']
     search_fields = ['journalists__name', 'court__city__name']
     exclude = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
@@ -109,7 +109,7 @@ class TrialAdmin(admin.ModelAdmin):
         TrialNoteInline,
         TrialDocumentInline,
     ]
-    list_display = ['case', 'session_no', 'reporter']
+    list_display = ['case', 'session_no', 'reporter', 'added', 'modified']
     exclude = ['reporter']
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_start', 'modified', 'reporter']
