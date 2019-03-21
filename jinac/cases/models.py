@@ -242,7 +242,7 @@ class Trial(models.Model):
     publish = models.BooleanField(_('publish'), default=False)
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)
-    modified = models.DateTimeField(_('added time'), auto_now=True)
+    modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
         return f'{self.case}:{self.session_no}'

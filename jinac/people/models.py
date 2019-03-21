@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 from polymorphic.models import PolymorphicModel
 
 
@@ -15,6 +16,10 @@ class Person(PolymorphicModel):
         )
     )
     bio = models.TextField(_('biography'), blank=True, null=True)
+
+    reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
+    added = models.DateTimeField(_('added time'), auto_now_add=True)
+    modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
         return self.name
