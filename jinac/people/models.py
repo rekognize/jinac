@@ -60,6 +60,7 @@ class Journalist(Person):
     class Meta:
         verbose_name = _('journalist')
         verbose_name_plural = _('journalists')
+        ordering = ('name',)
 
 
 class JournalistStatus(models.Model):
@@ -127,6 +128,7 @@ class Attorney(Person):
     class Meta:
         verbose_name = _('attorney')
         verbose_name_plural = _('attorneys')
+        ordering = ('name',)
 
 
 class Judge(Person):
@@ -134,6 +136,7 @@ class Judge(Person):
     class Meta:
         verbose_name = _('judge')
         verbose_name_plural = _('judges')
+        ordering = ('name',)
 
 
 class Prosecutor(Person):
@@ -141,6 +144,7 @@ class Prosecutor(Person):
     class Meta:
         verbose_name = _('prosecutor')
         verbose_name_plural = _('prosecutors')
+        ordering = ('name',)
 
 
 class Plaintiff(Person):
@@ -148,3 +152,4 @@ class Plaintiff(Person):
     class Meta:
         verbose_name = _('plaintiff')
         verbose_name_plural = _('plaintiffs')
+        ordering = ('name',)

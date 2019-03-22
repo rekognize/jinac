@@ -11,3 +11,4 @@ class Institution(models.Model):
     class Meta:
         verbose_name = _('institution')
         verbose_name_plural = _('institutions')
+        ordering = ('name',)
