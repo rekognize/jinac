@@ -2,39 +2,170 @@
 {% load i18n staticfiles %}
 
 
+{% block title %}{{ journalist.name }} - {{ block.super }}{% endblock %}
+
+
 {% block content %}
 
-<div class="container">
 
-    <img src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}">
+<section>
+  <div class="container py-3">
+    <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
+      <div class="row card-header gazeteci-detay-card-header">
+        <div class="col-md-4">
+          <img src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
+        </div>
+        <div class="col-md-8 px-3">
+          <div class="card-block">
+            <h4 class="card-title">{{ journalist.name }}</h4>
+            {% if journalist.bio %}
+            <p class="card-text align-middle">
+                {{ journalist.bio }}
+            </p>
+            {% endif %}
 
-    <br>
+                {% with journalist.journaliststatus_set.all as statuses %}
+                    {% if statuses %}
+                    <p>
+                        {% trans "Legal status" %}: {{ statuses.0.get_status_display }}
+                    </p>
+                    {% endif %}
+                {% endwith %}
+          </div>
+        </div>
+      </div>
 
-    {{ journalist.name }}
+      {% with journalist.journalistnote_set.all as notes %}
+      {% with journalist.casejournalist_set.all as journalist_cases %}
+      {% with journalist.get_related_docs as docs %}
 
-    <br>
+      <div class="col col-md-12 card-nav-tab">
 
-    {% for case in journalist.case_set.all %}
+        <ul class="nav nav-tabs">
+          {% if notes %}
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-notes" role="tab">
+                    {% trans "Trial Summary" %}
+                </a>
+            </li>
+          {% endif %}
+          {% if journalist_cases %}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-cases" role="tab">
+                    {% trans "Trial Details" %}
+                </a>
+            </li>
+          {% endif %}
+          {% if docs %}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-docs" role="tab">
+                    {% trans "Documents" %}
+                </a>
+            </li>
+          {% endif %}
+        </ul>
 
-        <a href="{{ case.get_absolute_url }}">{{ case }}</a>
+        <div class="card card-tabs-1">
+          <div class="card-block">
+            <div class="tab-content">
 
-        <br>
+              {% if notes %}
+              <div class="tab-pane active" id="tab-notes">
+              {% for note in notes %}
+                <h5 class="mt-4">{{ note.type }}</h5>
+                {{ note.note|linebreaks }}
+              {% endfor %}
+              </div>
+              {% endif %}
 
-    {% endfor %}
+              {% if journalist_cases %}
+              <div class="tab-pane" id="tab-cases">
+              {% for journalist_case in journalist_cases %}
+
+                {% with journalist_case.case as case %}
+
+                <a href="{{ case.get_absolute_url }}">
+                    <h5 class="mt-4">{{ case.name }}</h5>
+                </a>
+
+                {% with case.casestatus_set.all as statuses %}
+                    {% if statuses %}
+                    <p>
+                        {% trans "Case status" %}: {{ statuses.0.get_status_display }}
+                    </p>
+                    {% endif %}
+                {% endwith %}
+
+                {% with case.casejournalist_set.all as case_journalists %}
+                    {% if case_journalists|length > 1 %}
+                    <p>
+                        {% trans "Other journalists trialed in this case" %}:
+                        {% for case_journalist in case_journalists %}
+                            {% with case_journalist.journalist as other_journalist %}
+                                {% if journalist != other_journalist %}
+                                    <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endif %}
+                            {% endwith %}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                {% endwith %}
+
+                {% for trial in case.trial_set.all %}
+                    <a href="{{ trial.get_absolute_url }}">
+                        <h5>
+                            {{ trial.time_start|date }}
+                            {% if trial.session_no %}- {{ trial.session_no }}{% endif %}
+                        </h5>
+                    </a>
+
+                    <p>
+                        {{ trial.summary|linebreaks }}
+                    </p>
+                {% endfor %}
+
+                {% endwith %}
+
+              {% endfor %}
+              </div>
+              {% endif %}
+
+              {% if docs %}
+              <div class="tab-pane" id="tab-docs">
+                  {% for doc in docs.case_docs %}
+                      <p>
+                          {{ doc.file.url }}
+                          {% if doc.type %}{{ doc.type }}{% endif %}
+                          {% if doc.description %}{{ doc.description }}{% endif %}
+                      </p>
+                  {% endfor %}
+
+                  {% for doc in docs.trial_docs %}
+                      <p>
+                          {% if doc.type %}{{ doc.type }}{% endif %}
+                          {% if doc.description %}{{ doc.description }}{% endif %}
+                          <a href="{{ doc.file.url }}">{{ doc.file.url }}</a>
+                      </p>
+                  {% endfor %}
+              </div>
+              {% endif %}
 
 
-    {% for note in journalist.journalistnote_set.all %}
 
-        <h4>{{ note.type }}</h4>
+            </div>
+          </div>
+        </div>
 
-        <p>
-            {{ note.note }}
-        </p>
+      </div>
+
+      {% endwith %}
+      {% endwith %}
+      {% endwith %}
+
+    </div>
+  </div>
+</section>
 
 
-    {% endfor %}
-
-
-</div>
 
 {% endblock %}

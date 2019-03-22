@@ -253,7 +253,7 @@ class Trial(models.Model):
     class Meta:
         verbose_name = _('trial')
         verbose_name_plural = _('trials')
-        ordering = ('-modified',)
+        ordering = ('time_start',)
 
 
 class TrialNoteType(models.Model):

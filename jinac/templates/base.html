@@ -18,6 +18,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
     {% block head %}{% endblock %}
@@ -47,16 +48,16 @@
               <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                 <a class="nav-link" href="/">Anasayfa{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
-              <li class="nav-item {% if request.path == case_list_url %}active{% endif %}">
-                <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path == case_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
+              <li class="nav-item {% if request.path|slice:":5" == case_list_url|slice:":5" %}active{% endif %}">
+                <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path|slice:":5" == case_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
-              <li class="nav-item {% if request.path == journalist_list_url %}active{% endif %}">
-                <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path == journalist_list_url %}<span class="sr-only">(current)</span>{% endif %}</a>
+              <li class="nav-item {% if request.path|slice:":5" == journalist_list_url|slice:":5" %}active{% endif %}">
+                <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path|slice:":5" == journalist_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
 
-              <li class="nav-item active">
-                <a class="nav-link" href="analiz.html"> Analizler<span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link" href="analiz.html"> Analizler</a>
               </li>
 
               <li class="nav-item">

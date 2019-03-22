@@ -43,6 +43,20 @@ class Journalist(Person):
     def get_absolute_url(self):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
 
+    def get_related_docs(self):
+        # return related case and trial documents
+        from jinac.cases.models import CaseDocument, Trial, TrialDocument
+        documents = {}
+        case_ids = [cj.case.id for cj in self.casejournalist_set.all()]
+        case_docs = CaseDocument.objects.filter(case__id__in=case_ids)
+        if case_docs:
+            documents['case_docs'] = case_docs
+        trials = Trial.objects.filter(case__in=case_ids)
+        trial_docs = TrialDocument.objects.filter(trial__in=trials)
+        if trial_docs:
+            documents['trial_docs'] = trial_docs
+        return documents
+
     class Meta:
         verbose_name = _('journalist')
         verbose_name_plural = _('journalists')
@@ -95,6 +109,7 @@ class JournalistNote(models.Model):
     class Meta:
         verbose_name = _('journalist note')
         verbose_name_plural = _('journalist notes')
+        ordering = ('time',)
 
     class TranslatableMeta:
         fields = ['note']
