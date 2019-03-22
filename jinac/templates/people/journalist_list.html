@@ -32,7 +32,7 @@
                               <br/>
                               <span>
                                   {% if journalist.bio %}
-                                      {{ journalist.bio }}
+                                      {{ journalist.bio|truncatewords:30 }}
                                   {% else %}
                                       <span class="text-muted"></span>
                                   {% endif %}
