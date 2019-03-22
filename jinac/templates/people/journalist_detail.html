@@ -134,17 +134,17 @@
               <div class="tab-pane" id="tab-docs">
                   {% for doc in docs.case_docs %}
                       <p>
-                          {{ doc.file.url }}
-                          {% if doc.type %}{{ doc.type }}{% endif %}
+                          <a href="{{ doc.file.url }}">{% if doc.type %}{{ doc.type }}{% endif %}</a>
+                          {{ doc.case }}
                           {% if doc.description %}{{ doc.description }}{% endif %}
                       </p>
                   {% endfor %}
 
                   {% for doc in docs.trial_docs %}
                       <p>
-                          {% if doc.type %}{{ doc.type }}{% endif %}
+                          <a href="{{ doc.file.url }}">{% if doc.type %}{{ doc.type }}{% endif %}</a>
+                          {{ doc.trial }}
                           {% if doc.description %}{{ doc.description }}{% endif %}
-                          <a href="{{ doc.file.url }}">{{ doc.file.url }}</a>
                       </p>
                   {% endfor %}
               </div>

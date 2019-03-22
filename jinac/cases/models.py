@@ -32,7 +32,7 @@ class Case(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        return f"{self.court} / {self.name} / {self.no}"
+        return self.name
 
     def get_absolute_url(self):
         return reverse('case_detail', args=[self.id])
@@ -245,7 +245,7 @@ class Trial(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        return f'{self.case}:{self.session_no}'
+        return f'{self.case}: {self.session_no}'
 
     def get_absolute_url(self):
         return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
