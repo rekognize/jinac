@@ -122,6 +122,28 @@ class JournalistNote(models.Model):
         fields = ['note']
 
 
+class JournalistDocumentType(models.Model):
+    type = models.CharField(_('type'), max_length=50)
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = _('journalist document type')
+        verbose_name_plural = _('journalist document types')
+
+
+class JournalistDocument(models.Model):
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
+    file = models.FileField(_('file'), upload_to='documents/')
+    type = models.ForeignKey(JournalistDocumentType, verbose_name=_('type'), blank=True, null=True, on_delete=models.SET_NULL)
+    description = models.TextField(_('description'), blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('journalist document')
+        verbose_name_plural = _('journalist documents')
+
+
 class Attorney(Person):
     type = models.PositiveSmallIntegerField(
         _('type'), default=1,

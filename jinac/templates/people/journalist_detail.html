@@ -27,7 +27,7 @@
                 {% with journalist.current_status as current_status %}
                     {% if current_status %}
                     <p>
-                        {% trans "Legal status" %}: {{ current_status.get_status_display }}
+                        {{ current_status.get_status_display }}
                         {% if current_status.prison %}
                             / {{ current_status.prison }}
                         {% endif %}
@@ -135,19 +135,26 @@
 
               {% if docs %}
               <div class="tab-pane" id="tab-docs">
+                  {% for doc in docs.journalist_docs %}
+                      <p>
+                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                      </p>
+                  {% endfor %}
+
                   {% for doc in docs.case_docs %}
                       <p>
-                          <a href="{{ doc.file.url }}">{% if doc.type %}{{ doc.type }}{% endif %}</a>
                           {{ doc.case }}
-                          {% if doc.description %}{{ doc.description }}{% endif %}
+                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>
                   {% endfor %}
 
                   {% for doc in docs.trial_docs %}
                       <p>
-                          <a href="{{ doc.file.url }}">{% if doc.type %}{{ doc.type }}{% endif %}</a>
-                          {{ doc.trial }}
-                          {% if doc.description %}{{ doc.description }}{% endif %}
+                          {{ doc.case }}
+                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>
                   {% endfor %}
               </div>
