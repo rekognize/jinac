@@ -78,7 +78,7 @@ class JournalistStatus(models.Model):
         (6, _('Postponed')),
         (7, _('Judgement receded')),
     ))
-    prison = models.ForeignKey(Prison, verbose_name=_('journalist'), blank=True, null=True, on_delete=models.SET_NULL)
+    prison = models.ForeignKey(Prison, verbose_name=_('prison'), blank=True, null=True, on_delete=models.SET_NULL)
     start_date = models.DateField(_('start date'), blank=True, null=True)
     end_date = models.DateField(_('end date'), blank=True, null=True)
     case = models.ForeignKey('cases.Case', verbose_name=_('case'), blank=True, null=True, on_delete=models.SET_NULL)

@@ -28,6 +28,9 @@
                     {% if current_status %}
                     <p>
                         {% trans "Legal status" %}: {{ current_status.get_status_display }}
+                        {% if current_status.prison %}
+                            / {{ current_status.prison }}
+                        {% endif %}
                     </p>
                     {% endif %}
                 {% endwith %}
