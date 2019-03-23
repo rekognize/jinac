@@ -135,8 +135,17 @@
 
               {% if docs %}
               <div class="tab-pane" id="tab-docs">
-                  {% for doc in docs.journalist_docs %}
+                  {% for doc in docs.journo_case_docs %}
                       <p>
+                          {{ doc.case }}
+                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                      </p>
+                  {% endfor %}
+
+                  {% for doc in docs.journo_trial_docs %}
+                      <p>
+                          {{ doc.case }}
                           {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
                           <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>
