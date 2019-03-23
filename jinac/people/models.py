@@ -43,6 +43,9 @@ class Journalist(Person):
     def get_absolute_url(self):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
 
+    def current_status(self):
+        return self.journaliststatus_set.order_by('start_date').last()
+
     def get_related_docs(self):
         # return related case and trial documents
         from jinac.cases.models import CaseDocument, Trial, TrialDocument
@@ -66,13 +69,13 @@ class Journalist(Person):
 class JournalistStatus(models.Model):
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(_('status'), choices=(
-        (1, _('not detained')),
-        (2, _('detained')),
-        (3, _('imprisoned')),
-        (4, _('convicted')),
-        (5, _('fugitive')),
-        (6, _('postponed')),
-        (7, _('judgement receded')),
+        (1, _('Not detained')),
+        (2, _('Detained')),
+        (3, _('Imprisoned')),
+        (4, _('Convicted')),
+        (5, _('Fugitive')),
+        (6, _('Postponed')),
+        (7, _('Judgement receded')),
     ))
     start_date = models.DateField(_('start date'), blank=True, null=True)
     end_date = models.DateField(_('end date'), blank=True, null=True)
@@ -81,6 +84,7 @@ class JournalistStatus(models.Model):
     class Meta:
         verbose_name = _('journalist status')
         verbose_name_plural = _('journalist status')
+        ordering = ('-start_date',)
 
 
 class JournalistNoteType(models.Model):

@@ -6,10 +6,8 @@
 
 <div class="container">
 
-    {% for case in case_list %}
+    {% for trial in trial_list %}
         <a href="{{ case.get_absolute_url }}">{{ case }}</a>
-    {% empty %}
-        Hic dava bulunamadi
     {% endfor %}
 
 </div>

@@ -24,10 +24,10 @@
             </p>
             {% endif %}
 
-                {% with journalist.journaliststatus_set.all as statuses %}
-                    {% if statuses %}
+                {% with journalist.current_status as current_status %}
+                    {% if current_status %}
                     <p>
-                        {% trans "Legal status" %}: {{ statuses.0.get_status_display }}
+                        {% trans "Legal status" %}: {{ current_status.get_status_display }}
                     </p>
                     {% endif %}
                 {% endwith %}
