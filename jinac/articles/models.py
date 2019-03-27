@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy as _p
 from django.conf import settings
 
 
@@ -19,8 +20,8 @@ class Article(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = _('article')
-        verbose_name_plural = _('articles')
+        verbose_name = _p('blog', 'article')
+        verbose_name_plural = _p('blog', 'articles')
 
 
 class Section(models.Model):
