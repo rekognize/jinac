@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff,\
     JournalistNote, JournalistNoteType
-from jinac.cases.models import CaseJournalist
+from jinac.cases.models import CaseJournalist, CaseDocument
 
 
 @admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType)
@@ -25,6 +25,11 @@ class JournalistNoteInline(admin.TabularInline):
     extra = 1
 
 
+class CaseDocumentInline(admin.TabularInline):
+    model = CaseDocument
+    extra = 1
+
+
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
     list_display = ['name', 'reporter', 'added', 'modified']
@@ -34,6 +39,7 @@ class JournalistAdmin(admin.ModelAdmin):
         StatusInline,
         CaseInline,
         JournalistNoteInline,
+        CaseDocumentInline,
     ]
 
     def get_fields(self, request, obj=None):

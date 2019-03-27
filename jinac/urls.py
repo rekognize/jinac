@@ -5,8 +5,9 @@ from django.conf import settings
 from django.views.static import serve
 from django.conf.urls.static import static
 from jinac.views import IndexView
-from jinac.cases.views import CaseListView, CaseDetailView, TrialDetailView
+from jinac.cases.views import CaseListView, CaseDetailView, TrialListView, TrialDetailView
 from jinac.people.views import JournalistListView, JournalistDetailView
+from jinac.articles.views import ArticleListView, ArticleDetailView
 
 
 urlpatterns = [
@@ -16,10 +17,14 @@ urlpatterns = [
 
     path('davalar/', CaseListView.as_view(), name='case_list'),
     path('davalar/<int:pk>/', CaseDetailView.as_view(), name='case_detail'),
+    path('davalar/raporlar/', TrialListView.as_view(), name='trial_list'),
     path('davalar/<int:case>/<int:pk>/', TrialDetailView.as_view(), name='trial_detail'),
 
     path('gazeteciler/', JournalistListView.as_view(), name='journalist_list'),
     path('gazeteciler/<slug:slug>/', JournalistDetailView.as_view(), name='journalist_detail'),
+
+    path('analizler/', ArticleListView.as_view(), name='article_list'),
+    path('analizler/<slug:slug>/', ArticleDetailView.as_view(), name='article_detail'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

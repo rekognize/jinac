@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from jinac.articles.models import Article, Section
 
@@ -17,6 +16,7 @@ class SectionInline(admin.TabularInline):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     list_display = ['title', 'user', 'added', 'modified', 'lang', 'publish']
     search_fields = ['title', 'user', 'summary']
     exclude = ['user']

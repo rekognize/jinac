@@ -11,7 +11,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context.update({
-            'cases': Case.objects.all(),
+            'cases': Case.objects.filter(publish=True),
             'carousel': Carousel.objects.filter(publish=True),
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now())

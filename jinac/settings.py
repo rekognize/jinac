@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'jinac.institutions.apps.InstitutionsConfig',
     'jinac.cases.apps.CasesConfig',
     'jinac.news.apps.NewsConfig',
+    'jinac.articles.apps.ArticlesConfig',
 ]
 
 MIDDLEWARE = [

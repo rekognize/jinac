@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles %}
+
+
+{% block content %}
+
+<div class="container">
+
+
+      <div class="container">
+        <div class="gazeteciler-top text-center">
+          <h3>{% trans "Analysis" %}</h3>
+
+          <div class="gazeteciler-content text-center">
+            <div class="row">
+
+
+            {% for article in article_list %}
+
+            <section class="analiz">
+              <div class="container py-3">
+                <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
+                  <div class="row card-header analiz-card-header">
+                    <div class="col-md-4">
+                      <img class="analizgorseli" src="{% if article.image %}{{ article.image.url }}{% else %}http://placehold.it/160x160{% endif %}"/>
+                    </div>
+                    <div class="col-md-8 px-3">
+                      <div class="card-block">
+                        <a href= "{{ article.get_absolute_url }}" style="color:black"><h4 class="card-title">{{ artcile.title }}</h4></a>
+                        <span class="card-text">
+                            {{ article.summary }}
+                            <a href= "{{ article.get_absolute_url }}" style="color:black"> (Devamı için tıklayınız)<a>
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            {% endfor %}
+
+            </div>
+
+</div>
+
+{% endblock %}

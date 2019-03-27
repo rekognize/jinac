@@ -30,7 +30,9 @@
 {% block navbar %}
 
   {% url 'case_list' as case_list_url %}
+  {% url 'trial_list' as trial_list_url %}
   {% url 'journalist_list' as journalist_list_url %}
+  {% url 'article_list' as article_list_url %}
 
   <section id="gazeteciler">
     <div class="container">
@@ -45,24 +47,23 @@
 
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav" >
             <ul class="navbar-nav">
+
               <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                 <a class="nav-link" href="/">Anasayfa{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
-              <li class="nav-item {% if request.path|slice:":5" == case_list_url|slice:":5" %}active{% endif %}">
-                <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path|slice:":5" == case_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
+
+              <li class="nav-item {% if request.path|slice:":5" == trial_list_url|slice:":5" %}active{% endif %}">
+                <a class="nav-link" href="{{ trial_list_url }}">{% trans 'Trial Reports' %}{% if request.path|slice:":5" == trial_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
+
               <li class="nav-item {% if request.path|slice:":5" == journalist_list_url|slice:":5" %}active{% endif %}">
                 <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path|slice:":5" == journalist_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-
-              <li class="nav-item">
-                <a class="nav-link" href="analiz.html"> Analizler</a>
+              <li class="nav-item {% if request.path|slice:":5" == article_list_url|slice:":5" %}active{% endif %}">
+                <a class="nav-link" href="{{ article_list_url }}">{% trans 'Analysis' %}{% if request.path|slice:":5" == article_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="durusmalar.html">Duruşma Raporları</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="neyapiyoruz.html">Ne yapıyoruz?</a>
               </li>

@@ -51,18 +51,19 @@ class Journalist(Person):
         # return related case and trial documents
         from jinac.cases.models import CaseDocument, Trial, TrialDocument
         documents = {}
-        journo_case_docs = self.casedocument_set.all()
+        journo_case_docs = self.casedocument_set.filter(publish=True)
         if journo_case_docs:
             documents['journo_case_docs'] = journo_case_docs
-        journo_trial_docs = self.trialdocument_set.all()
+        journo_trial_docs = self.trialdocument_set.filter(publish=True)
         if journo_trial_docs:
             documents['journo_trial_docs'] = journo_trial_docs
         case_ids = [cj.case.id for cj in self.casejournalist_set.all()]
-        case_docs = CaseDocument.objects.filter(case__id__in=case_ids).filter(journalist__isnull=True)
+        case_docs = CaseDocument.objects.filter(
+            case__id__in=case_ids).filter(journalist__isnull=True).filter(publish=True)
         if case_docs:
             documents['case_docs'] = case_docs
         trials = Trial.objects.filter(case__in=case_ids)
-        trial_docs = TrialDocument.objects.filter(trial__in=trials).filter(journalist__isnull=True)
+        trial_docs = TrialDocument.objects.filter(trial__in=trials).filter(journalist__isnull=True).filter(publish=True)
         if trial_docs:
             documents['trial_docs'] = trial_docs
         return documents

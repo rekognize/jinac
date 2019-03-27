@@ -24,6 +24,7 @@
             </p>
             {% endif %}
 
+                {% comment %}
                 {% with journalist.current_status as current_status %}
                     {% if current_status %}
                     <p>
@@ -34,6 +35,8 @@
                     </p>
                     {% endif %}
                 {% endwith %}
+                {% endcomment %}
+
           </div>
         </div>
       </div>
