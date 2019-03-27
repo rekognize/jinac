@@ -251,6 +251,9 @@ class Trial(models.Model):
     def get_absolute_url(self):
         return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
 
+    def notes(self):
+        return self.trialnote_set.filter(type__publish=True)
+
     class Meta:
         verbose_name = _('trial')
         verbose_name_plural = _('trials')

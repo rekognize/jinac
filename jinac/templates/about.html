@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles %}
+
+
+{% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+
+  <section id="cover">
+    <div class="container">
+      <div class="col-md-12 px-3" align="center">
+        <div class="card-block">
+          <p class="card-text ne-yapiyoruz">
+
+            <div>
+              <img src="{% if article.image %}{{ article.image.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
+            </div>
+
+            <h2>{{ article.title }}</h2>
+            {% if article.subtitle %}
+                <h4>{{ article.subtitle }}</h4>
+            {% endif %}
+            {% if article.summary %}
+            <p class="lead">
+                {{ article.summary }}
+            </p>
+            {% endif %}
+
+            <br/>
+            <br/>
+
+              {% with article.section_set.all as section %}
+
+              <div class="row">
+                <div>
+                  <img src="{% if section.image %}{{ section.image.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
+                </div>
+                <div class="col-md-8 px-3">
+                  <div class="card-block">
+                    {% if section.title %}
+                      <h4 class="card-title">{{ section.title }}</h4>
+                    {% endif %}
+                    {% if section.text %}
+                    <p class="card-text align-middle">
+                        {{ section.text }}
+                    </p>
+                    {% endif %}
+                  </div>
+              </div>
+
+              {% endwith %}
+
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

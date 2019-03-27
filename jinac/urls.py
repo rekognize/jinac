@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from jinac.views import IndexView
 from jinac.cases.views import CaseListView, CaseDetailView, TrialListView, TrialDetailView
 from jinac.people.views import JournalistListView, JournalistDetailView
-from jinac.articles.views import ArticleListView, ArticleDetailView
+from jinac.articles.views import ArticleListView, ArticleDetailView, AboutView
 
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('analizler/', ArticleListView.as_view(), name='article_list'),
     path('analizler/<slug:slug>/', ArticleDetailView.as_view(), name='article_detail'),
+    path('ne-yapiyoruz/', AboutView.as_view(), name='about'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

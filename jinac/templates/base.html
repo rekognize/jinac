@@ -33,6 +33,7 @@
   {% url 'trial_list' as trial_list_url %}
   {% url 'journalist_list' as journalist_list_url %}
   {% url 'article_list' as article_list_url %}
+  {% url 'about' as about_url %}
 
   <section id="gazeteciler">
     <div class="container">
@@ -49,7 +50,7 @@
             <ul class="navbar-nav">
 
               <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-                <a class="nav-link" href="/">Anasayfa{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
+                <a class="nav-link" href="/">{% trans 'Homepage' %}{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
               <li class="nav-item {% if request.path|slice:":5" == trial_list_url|slice:":5" %}active{% endif %}">
@@ -64,8 +65,8 @@
                 <a class="nav-link" href="{{ article_list_url }}">{% trans 'Analysis' %}{% if request.path|slice:":5" == article_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="neyapiyoruz.html">Ne yapıyoruz?</a>
+              <li class="nav-item {% if request.path|slice:":5" == about_url|slice:":5" %}active{% endif %}">
+                <a class="nav-link" href="{{ about_url }}">{% trans 'What do we do?' %}{% if request.path|slice:":5" == about_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
               <li>

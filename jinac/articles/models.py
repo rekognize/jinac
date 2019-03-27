@@ -15,6 +15,7 @@ class Article(models.Model):
     lang = models.CharField(_('language'), max_length=5, choices=settings.LANGUAGES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
+    about_page = models.BooleanField(_('about page'), default=False)
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

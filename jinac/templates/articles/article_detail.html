@@ -35,7 +35,9 @@
         </div>
         <div class="col-md-8 px-3">
           <div class="card-block">
-            <h4 class="card-title">{{ section.title }}</h4>
+            {% if section.title %}
+              <h4 class="card-title">{{ section.title }}</h4>
+            {% endif %}
             {% if section.text %}
             <p class="card-text align-middle">
                 {{ section.text }}
