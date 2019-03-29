@@ -124,7 +124,7 @@ LANGUAGE_CODE = 'tr'
 
 LANGUAGES = (
     ('tr', 'Turkish'),
-#    ('en', 'English'),
+    ('en', 'English'),
 )
 
 TIME_ZONE = 'UTC'
