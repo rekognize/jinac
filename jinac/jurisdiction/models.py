@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class City(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
@@ -15,7 +15,7 @@ class City(models.Model):
 
 
 class Court(models.Model):
-    city = models.ForeignKey(City, verbose_name=_('city'), blank=True, null=True, on_delete=models.SET_NULL)
+    city = models.ForeignKey(City, verbose_name=_('city'), on_delete=models.CASCADE)
     no = models.PositiveSmallIntegerField(_('number'), blank=True, null=True)
     type = models.PositiveSmallIntegerField(
         _('type'), default=1,
@@ -44,7 +44,7 @@ class Court(models.Model):
 
 
 class Prison(models.Model):
-    name = models.CharField(_('name'), max_length=200)
+    name = models.CharField(_('name'), max_length=200, unique=True)
     type = models.CharField(
         _('type'), max_length=1, blank=True, null=True,
         choices=(
