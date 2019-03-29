@@ -170,6 +170,7 @@ class CaseIndictment(models.Model):
 
 class CaseDocumentType(models.Model):
     type = models.CharField(_('type'), max_length=50)
+    order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
         return self.type
@@ -177,6 +178,7 @@ class CaseDocumentType(models.Model):
     class Meta:
         verbose_name = _('case document type')
         verbose_name_plural = _('case document types')
+        ordering = ('order', 'id')
 
 
 class CaseDocument(models.Model):
@@ -190,11 +192,13 @@ class CaseDocument(models.Model):
     class Meta:
         verbose_name = _('case document')
         verbose_name_plural = _('case documents')
+        ordering = ('case', 'type')
 
 
 class CaseNoteType(models.Model):
     type = models.CharField(_('type'), max_length=100)
     publish = models.BooleanField(_('publish'), default=True)
+    order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
         return self.type
@@ -202,6 +206,7 @@ class CaseNoteType(models.Model):
     class Meta:
         verbose_name = _('case note type')
         verbose_name_plural = _('case note types')
+        ordering = ('order', 'id')
 
 
 class CaseNote(Translatable):
@@ -219,6 +224,7 @@ class CaseNote(Translatable):
     class Meta:
         verbose_name = _('case note')
         verbose_name_plural = _('case notes')
+        ordering = ('case', 'type')
 
     class TranslatableMeta:
         fields = ['note']
@@ -263,6 +269,7 @@ class Trial(models.Model):
 class TrialNoteType(models.Model):
     type = models.CharField(_('type'), max_length=100)
     publish = models.BooleanField(_('publish'), default=True)
+    order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
         return self.type
@@ -270,6 +277,7 @@ class TrialNoteType(models.Model):
     class Meta:
         verbose_name = _('trial note type')
         verbose_name_plural = _('trial note types')
+        ordering = ('order', 'id')
 
 
 class TrialNote(models.Model):
@@ -288,10 +296,12 @@ class TrialNote(models.Model):
     class Meta:
         verbose_name = _('trial note')
         verbose_name_plural = _('trial notes')
+        ordering = ('trial', 'type',)
 
 
 class ViolationType(models.Model):
     type = models.CharField(_('type'), max_length=100)
+    order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
         return self.type
@@ -299,6 +309,7 @@ class ViolationType(models.Model):
     class Meta:
         verbose_name = _('violation type')
         verbose_name_plural = _('violation types')
+        ordering = ('order', 'id')
 
 
 class TrialViolation(models.Model):
@@ -309,10 +320,12 @@ class TrialViolation(models.Model):
     class Meta:
         verbose_name = _('right violation')
         verbose_name_plural = _('right violations')
+        ordering = ('trial', 'type',)
 
 
 class TrialDocumentType(models.Model):
     type = models.CharField(_('type'), max_length=50)
+    order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
         return self.type
@@ -333,3 +346,4 @@ class TrialDocument(models.Model):
     class Meta:
         verbose_name = _('trial document')
         verbose_name_plural = _('trial documents')
+        ordering = ('trial', 'type',)
