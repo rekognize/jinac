@@ -120,6 +120,7 @@ class TrialAdmin(admin.ModelAdmin):
     ]
     list_display = ['case', 'session_no', 'reporter', 'added', 'modified']
     readonly_fields = ['reporter']
+    search_fields = ['case__name']
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_start', 'modified', 'reporter']
     actions = ['publish']
