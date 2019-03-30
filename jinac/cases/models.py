@@ -23,6 +23,7 @@ class Case(models.Model):
     plaintiff = models.ManyToManyField(Plaintiff, verbose_name=_('plaintiff'), blank=True)
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
+    summary = models.TextField(_('case summary'), blank=True, null=True)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
 
@@ -239,7 +240,7 @@ class Trial(models.Model):
     time_start = models.DateTimeField(_('start time'), blank=True, null=True)
     time_next = models.DateTimeField(_('next trial time'), blank=True, null=True)
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
-    summary = models.TextField(_('summary'), blank=True, null=True)
+    summary = models.TextField(_('case summary'))
     judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
                                    related_name='board_memberships', blank=True)
@@ -253,6 +254,12 @@ class Trial(models.Model):
 
     def __str__(self):
         return f'{self.case}: {self.session_no}'
+
+    def save(self, **kwargs):
+        case = self.case
+        case.summary = self.summary
+        case.save()
+        return super().save(kwargs)
 
     def get_absolute_url(self):
         return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})

@@ -30,8 +30,7 @@
                 </b>
             </h4>
             <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
-              <li><a data-toggle="tab" href="#kunye" style="color:black;">{% trans "Trial Brief" %}</a></li>
-              <li><a data-toggle="tab" href="#gecmis" style="color:black;">{% trans "Case History" %}</a></li>
+              <li><a data-toggle="tab" href="#kunye" style="color:black;">{% trans "Case Summary" %}</a></li>
               {% for note in trial.notes %}
                   <li><a data-toggle="tab" href="#note{{ note.id }}" style="color:black;">{{ note.type }}</a></li>
               {% endfor %}
@@ -47,11 +46,6 @@
                     <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
                   {% endif %}
 
-                </div>
-                <div id="gecmis" class="tab-pane fade">
-                  <p>
-                    <br/>
-                  </p>
                 </div>
                 {% for note in trial.notes %}
                 <div id="note{{ note.id }}" class="tab-pane">
