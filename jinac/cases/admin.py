@@ -4,10 +4,10 @@ from django.contrib.auth.models import Group
 from translations.admin import TranslatableAdmin, TranslationInline
 from jinac.cases.models import CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, \
-    WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision
+    WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision, TrialDecision
 
 
-@admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument,
+@admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument, TrialDecision,
                 CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType, CaseIndictment, Article)
 class CasesAdmin(admin.ModelAdmin):
     pass
@@ -20,7 +20,7 @@ class CaseIndictmentInline(admin.TabularInline):
     extra = 1
 
 
-class CaseCaseDecisionInline(admin.TabularInline):
+class CaseDecisionInline(admin.TabularInline):
     model = CaseDecision
     extra = 1
 
@@ -52,7 +52,7 @@ class CaseAdmin(admin.ModelAdmin):
         CaseIndictmentInline,
         CaseDocumentInline,
         CaseNoteInline,
-        CaseCaseDecisionInline,
+        CaseDecisionInline,
         CaseStatusInline,
     ]
     list_display = ['name', 'no', 'journalist_names', 'court', 'status', 'reporter', 'added', 'modified']
@@ -111,12 +111,18 @@ class TrialViolationInline(admin.TabularInline):
     extra = 1
 
 
+class TrialDecisionInline(admin.TabularInline):
+    model = TrialDecision
+    extra = 1
+
+
 @admin.register(Trial)
 class TrialAdmin(admin.ModelAdmin):
     inlines = [
         TrialViolationInline,
         TrialNoteInline,
         TrialDocumentInline,
+        TrialDecisionInline,
     ]
     list_display = ['case', 'session_no', 'reporter', 'added', 'modified']
     readonly_fields = ['reporter']
