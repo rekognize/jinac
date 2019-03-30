@@ -1337,10 +1337,8 @@ msgid "indictment prosecutor"
 msgstr "iddianame savcısı"
 
 #: jinac/cases/models.py:26 jinac/cases/models.py:243
-#, fuzzy
-#| msgid "summary"
 msgid "case summary"
-msgstr "özet"
+msgstr "dava özeti"
 
 #: jinac/cases/models.py:28
 msgid "related cases"

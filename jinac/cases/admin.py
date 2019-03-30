@@ -60,10 +60,18 @@ class CaseAdmin(admin.ModelAdmin):
     exclude = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
+    actions = ['publish']
 
     def journalist_names(self, obj):
         return ', '.join([j.name for j in obj.journalists.all()])
     journalist_names.short_description = _('journalists')
+
+    def publish(self, request, queryset):
+        for trial in queryset:
+            trial.publish = True
+            trial.save()
+            trial.trialdocument_set.update(publish=True)
+    publish.short_description = _('publish')
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
@@ -113,6 +121,14 @@ class TrialAdmin(admin.ModelAdmin):
     exclude = ['reporter']
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_start', 'modified', 'reporter']
+    actions = ['publish']
+
+    def publish(self, request, queryset):
+        for trial in queryset:
+            trial.publish = True
+            trial.save()
+            trial.trialdocument_set.update(publish=True)
+    publish.short_description = _('publish')
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
