@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
+from django.contrib.admin import SimpleListFilter
+from django.utils import timezone
 from translations.admin import TranslatableAdmin, TranslationInline
 from jinac.cases.models import CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, \
@@ -124,6 +126,21 @@ class TrialDecisionInline(admin.TabularInline):
     extra = 1
 
 
+class UpcomingTrialsFilter(SimpleListFilter):
+    title = _('upcoming trials')
+    parameter_name = 'upcoming'
+
+    def lookups(self, request, model_admin):
+        return [
+            ('u', _('Upcoming')),
+        ]
+
+    def queryset(self, request, queryset):
+        if self.value() == 'u':
+            queryset = queryset.filter(time_next__gte=timezone.now())
+        return queryset
+
+
 @admin.register(Trial)
 class TrialAdmin(admin.ModelAdmin):
     inlines = [
@@ -136,7 +153,7 @@ class TrialAdmin(admin.ModelAdmin):
     readonly_fields = ['reporter']
     search_fields = ['case__name']
     filter_horizontal = ['observers', 'board']
-    list_filter = ['publish', 'time_next', 'time_start', 'modified', 'reporter']
+    list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter']
     actions = ['publish']
 
     def get_actions(self, request):
