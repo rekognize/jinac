@@ -155,3 +155,35 @@ class TrialAdmin(admin.ModelAdmin):
         if not obj.reporter:
             obj.reporter = request.user
         super().save_model(request, obj, form, change)
+
+    def save_formset(self, request, form, formset, change):
+        # updates the CaseDecision by the TrialDecision if this is the last trial of the case
+        instances = formset.save()
+        trial_decisions_modified = False
+        for instance in instances:
+            if isinstance(instance, TrialDecision):
+                trial_decisions_modified = True
+                trial = instance.trial
+                break
+        if not trial_decisions_modified:
+            for obj in formset.deleted_objects:
+                if isinstance(obj, TrialDecision):
+                    trial_decisions_modified = True
+                    trial = obj.trial
+                    break
+        if trial_decisions_modified:
+            last_trial = trial.case.trial_set.order_by('session_no').last()
+            if trial == last_trial:
+                case = trial.case
+                case.casedecision_set.all().delete()
+                for trial_decision in trial.trialdecision_set.all():
+                    case_decision = CaseDecision.objects.create(
+                        case=case,
+                        journalist=trial_decision.journalist,
+                        decision_type=trial_decision.decision_type,
+                        punishment_year=trial_decision.punishment_year,
+                        punishment_month=trial_decision.punishment_month,
+                        punishment_day=trial_decision.punishment_day,
+                        punishment_fine=trial_decision.punishment_fine,
+                    )
+                    case_decision.articles.add(*trial_decision.articles.all())

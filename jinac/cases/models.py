@@ -259,28 +259,14 @@ class Trial(models.Model):
     def __str__(self):
         return f'{self.case}: {self.session_no}'
 
-    def save(self, **kwargs):
-        case = self.case
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        trial = Trial.objects.get(id=self.id)
+        case = trial.case
         last_trial = case.trial_set.order_by('session_no').last()
-        if not self.id or self == last_trial:
-            case.summary = self.summary
+        if trial == last_trial:
+            case.summary = trial.summary
             case.save()
-            trial_decisions = self.trialdecision_set.all()
-            if trial_decisions:
-                case.casedecision_set.all().delete()
-                for trial_decision in trial_decisions:
-                    case_decision = CaseDecision.objects.create(
-                        case=case,
-                        journalist=trial_decision.journalist,
-                        decision_type=trial_decision.decision_type,
-                        punishment_year=trial_decision.punishment_year,
-                        punishment_month=trial_decision.punishment_month,
-                        punishment_day=trial_decision.punishment_day,
-                        punishment_fine=trial_decision.punishment_fine,
-                    )
-                    for article in trial_decision.articles.all():
-                        case_decision.articles.add(article)
-        return super().save(kwargs)
 
     def get_absolute_url(self):
         return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
