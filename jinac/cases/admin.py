@@ -89,7 +89,8 @@ class CaseAdmin(admin.ModelAdmin):
         return qs
 
     def save_model(self, request, obj, form, change):
-        obj.reporter = request.user
+        if not obj.reporter:
+            obj.reporter = request.user
         super().save_model(request, obj, form, change)
 
 
@@ -144,5 +145,6 @@ class TrialAdmin(admin.ModelAdmin):
         return qs
 
     def save_model(self, request, obj, form, change):
-        obj.reporter = request.user
+        if not obj.reporter:
+            obj.reporter = request.user
         super().save_model(request, obj, form, change)
