@@ -278,7 +278,7 @@ class Trial(models.Model):
                         punishment_day=trial_decision.punishment_day,
                         punishment_fine=trial_decision.punishment_fine,
                     )
-                    for article in trial_decision.articles:
+                    for article in trial_decision.articles.all():
                         case_decision.articles.add(article)
         return super().save(kwargs)
 
