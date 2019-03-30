@@ -124,11 +124,11 @@ class TrialAdmin(admin.ModelAdmin):
         TrialDocumentInline,
         TrialDecisionInline,
     ]
-    list_display = ['case', 'session_no', 'reporter', 'added', 'modified']
+    list_display = ['case', 'session_no', 'reporter', 'added', 'modified', 'time_next']
     readonly_fields = ['reporter']
     search_fields = ['case__name']
     filter_horizontal = ['observers', 'board']
-    list_filter = ['publish', 'time_start', 'modified', 'reporter']
+    list_filter = ['publish', 'time_next', 'time_start', 'modified', 'reporter']
     actions = ['publish']
 
     def publish(self, request, queryset):
