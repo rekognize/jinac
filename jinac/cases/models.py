@@ -257,8 +257,10 @@ class Trial(models.Model):
 
     def save(self, **kwargs):
         case = self.case
-        case.summary = self.summary
-        case.save()
+        last_trial = case.trial_set.order_by('session_no').last()
+        if not self.id or self == last_trial:
+            case.summary = self.summary
+            case.save()
         return super().save(kwargs)
 
     def get_absolute_url(self):
