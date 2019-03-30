@@ -57,7 +57,7 @@ class CaseAdmin(admin.ModelAdmin):
     ]
     list_display = ['name', 'no', 'journalist_names', 'court', 'status', 'reporter', 'added', 'modified']
     search_fields = ['journalists__name', 'court__city__name']
-    exclude = ['reporter']
+    readonly_fields = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
     actions = ['publish']
@@ -119,7 +119,7 @@ class TrialAdmin(admin.ModelAdmin):
         TrialDocumentInline,
     ]
     list_display = ['case', 'session_no', 'reporter', 'added', 'modified']
-    exclude = ['reporter']
+    readonly_fields = ['reporter']
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_start', 'modified', 'reporter']
     actions = ['publish']
