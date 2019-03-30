@@ -8,6 +8,16 @@ from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plainti
 from jinac.institutions.models import Institution
 
 
+# case & trial decision types
+DECISION_TYPES = (
+    (0, _('acquittal')),
+    (1, _('fine')),
+    (2, _('imprisonment')),
+    (6, _('postponed')),
+    (7, _('judgement receded')),
+)
+
+
 # cases
 
 class Case(models.Model):
@@ -111,13 +121,7 @@ class CaseDecision(models.Model):
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalists'), on_delete=models.CASCADE)
     decision_type = models.PositiveSmallIntegerField(
         _('decision type'), blank=True, null=True,
-        choices=(
-            (0, _('acquittal')),
-            (1, _('fine')),
-            (2, _('imprisonment')),
-            (6, _('postponed')),
-            (7, _('judgement receded')),
-        )
+        choices=DECISION_TYPES
     )
     articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
     punishment_year = models.PositiveSmallIntegerField(_('year'), blank=True, null=True)
@@ -261,6 +265,21 @@ class Trial(models.Model):
         if not self.id or self == last_trial:
             case.summary = self.summary
             case.save()
+            trial_decisions = self.trialdecision_set.all()
+            if trial_decisions:
+                case.casedecision_set.all().delete()
+                for trial_decision in trial_decisions:
+                    case_decision = CaseDecision.objects.create(
+                        case=case,
+                        journalist=trial_decision.journalist,
+                        decision_type=trial_decision.decision_type,
+                        punishment_year=trial_decision.punishment_year,
+                        punishment_month=trial_decision.punishment_month,
+                        punishment_day=trial_decision.punishment_day,
+                        punishment_fine=trial_decision.punishment_fine,
+                    )
+                    for article in trial_decision.articles:
+                        case_decision.articles.add(article)
         return super().save(kwargs)
 
     def get_absolute_url(self):
@@ -356,3 +375,21 @@ class TrialDocument(models.Model):
         verbose_name = _('trial document')
         verbose_name_plural = _('trial documents')
         ordering = ('trial', 'type',)
+
+
+class TrialDecision(models.Model):
+    trial = models.ForeignKey(Trial, verbose_name=_('trial'), on_delete=models.CASCADE)
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalists'), on_delete=models.CASCADE)
+    decision_type = models.PositiveSmallIntegerField(
+        _('decision type'), blank=True, null=True,
+        choices=DECISION_TYPES
+    )
+    articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
+    punishment_year = models.PositiveSmallIntegerField(_('year'), blank=True, null=True)
+    punishment_month = models.PositiveSmallIntegerField(_('month'), blank=True, null=True)
+    punishment_day = models.PositiveSmallIntegerField(_('day'), blank=True, null=True)
+    punishment_fine = models.CharField(_('fine'), max_length=100, blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('trial - decision relation')
+        verbose_name_plural = _('trial - decision relations')
