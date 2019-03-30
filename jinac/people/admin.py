@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff,\
-    JournalistNote, JournalistNoteType
+    JournalistNote, JournalistNoteType, Complainant
 from jinac.cases.models import CaseJournalist, CaseDocument
 
 
-@admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType)
+@admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType, Complainant)
 class JurisdictionAdmin(admin.ModelAdmin):
     pass
 

@@ -166,3 +166,11 @@ class Plaintiff(Person):
         verbose_name = _('plaintiff')
         verbose_name_plural = _('plaintiffs')
         ordering = ('name',)
+
+
+class Complainant(Person):
+
+    class Meta:
+        verbose_name = _('complainant')
+        verbose_name_plural = _('complainants')
+        ordering = ('name',)

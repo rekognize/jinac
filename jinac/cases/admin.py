@@ -62,6 +62,14 @@ class CaseAdmin(admin.ModelAdmin):
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
     actions = ['publish']
 
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        is_reporter = request.user.groups.filter(name='Raportör').first()
+        if is_reporter:
+            if 'publish' in actions:
+                del actions['publish']
+        return actions
+
     def journalist_names(self, obj):
         return ', '.join([j.name for j in obj.journalists.all()])
     journalist_names.short_description = _('journalists')
@@ -130,6 +138,14 @@ class TrialAdmin(admin.ModelAdmin):
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', 'time_next', 'time_start', 'modified', 'reporter']
     actions = ['publish']
+
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        is_reporter = request.user.groups.filter(name='Raportör').first()
+        if is_reporter:
+            if 'publish' in actions:
+                del actions['publish']
+        return actions
 
     def publish(self, request, queryset):
         for trial in queryset:
