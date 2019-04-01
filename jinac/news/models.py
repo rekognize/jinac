@@ -10,7 +10,7 @@ class Carousel(models.Model):
     publish = models.BooleanField(_('publish'), default=True)
 
     def __str__(self):
-        return self.text
+        return self.text or self.image.name
 
     class Meta:
         verbose_name = _('carousel')

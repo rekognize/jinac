@@ -97,7 +97,7 @@
 	<section>
 		<div class="container">
 
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                     {% for item in carousel %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -309,6 +309,9 @@
 
 
 $(document).ready(function(){
+
+$('.carousel').carousel({});
+
 
 /* Calendar */
 
