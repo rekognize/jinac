@@ -7,7 +7,17 @@ class JournalistListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.filter(publish=True)
+        qs = qs.filter(publish=True)
+        if self.request.GET.get('f'):
+            qs = qs.filter(name__istartswith=self.request.GET.get('f'))
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'filter': self.request.GET.get('f')
+        })
+        return context
 
 
 class JournalistDetailView(DetailView):

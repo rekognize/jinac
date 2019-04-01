@@ -11,14 +11,19 @@
     <title>{% block title %}{% trans "Press in Arrest" %}{% endblock %}</title>
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<link rel="stylesheet"type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Raleway|Monoton" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
     {% block head %}{% endblock %}
@@ -76,7 +81,7 @@
                 <div class="wrapper" >
                   <div class="icon-search-container" data-ic-class="search-trigger">
                     <span class="fa fa-search" ></span>
-                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="{% trans "Search" %}"/>
                     <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
                   </div>
                 </div>

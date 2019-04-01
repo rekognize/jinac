@@ -5,11 +5,6 @@
 {% block title %}{% trans "Trial Reports" %} - {{ block.super }}{% endblock %}
 
 
-{% block head %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-{% endblock %}
-
 
 {% block content %}
 
@@ -17,52 +12,57 @@
 
     {% for trial in trial_list %}
 
-  <section style="font-family: 'Raleway', sans-serif;">
-    <div class="tab-content">
-      <div class="card border-dark col-md-10 shadow p-3 mb-5 bg-white rounded justify-content-center durusma-card">
-        <div class="col-md-12 px-3">
-          <div class="container flex-container" >
-            <h4 class="card-title">
-                <b>
-                {{ trial.case.name }}
-                {% blocktrans with trial.session_no as session_no %}{{ session_no }}. Standing{% endblocktrans %}
-                ({{ trial.time_start|date }})
-                </b>
-            </h4>
-            <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
-              <li><a data-toggle="tab" href="#kunye" style="color:black;">{% trans "Case Summary" %}</a></li>
-              {% for note in trial.notes %}
-                  <li><a data-toggle="tab" href="#note{{ note.id }}" style="color:black;">{{ note.type }}</a></li>
-              {% endfor %}
-            </ul>
-            <div class="tab-content">
+    <section style="font-family: 'Raleway', sans-serif;">
+        <div class="tab-content">
+            <div class="card border-dark col-md-10 shadow p-3 mb-5 bg-white rounded justify-content-center durusma-card">
+                <div class="col-md-12 px-3">
+                    <div class="container flex-container" >
+                        <h4 class="card-title">
+                            <b>
+                            {{ trial.case.name }}
+                            {% blocktrans with trial.session_no as session_no %}{{ session_no }}. Standing{% endblocktrans %}
+                            ({{ trial.time_start|date }})
+                            </b>
+                        </h4>
 
-              <div id="kunye" class="tab-pane fade in">
-                <p>
-                  <br/>
-                  {{ trial.summary|linebreaks }}
-                  {% if trial.time_next %}
-                    <br/><br/>
-                    <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
-                  {% endif %}
+                        <ul class="nav nav-tabs" style="font-size:13px; align-content: justify; padding-top:1%;">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
+                            </li>
+                            {% for note in trial.notes %}
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
 
+                        <div class="tab-content">
+
+                            <div id="kunye-{{ trial.id }}" class="tab-pane">
+                                <p>
+                                <br/>
+                                {{ trial.summary|linebreaks }}
+                                {% if trial.time_next %}
+                                <br/><br/>
+                                <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
+                                {% endif %}
+                            </div>
+
+                            {% for note in trial.notes %}
+                                <div id="note{{ note.id }}" class="tab-pane">
+                                    <p>
+                                        <br/>
+                                        {{ note|linebreaks }}
+                                    </p>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
                 </div>
-                {% for note in trial.notes %}
-                <div id="note{{ note.id }}" class="tab-pane">
-                  <p>
-                    <br/>
-                    {{ note|linebreaks }}
-                  </p>
-                </div>
-                {% endfor %}
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
+    </section>
 
     {% endfor %}
 

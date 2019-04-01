@@ -6,14 +6,22 @@
 
 <div class="container">
 
+      <div class="gazeteciler-top text-center">
 
-      <div class="container">
+        <br/>
+
+        <a href="" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
+
+        {% for c in "ABCÇDEFGHIİJKLMNOÖPRSTUÜVYZ" %}
+            <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
+        {% endfor %}
+
+        <br/><br/>
+
         <div class="gazeteciler-top text-center">
-          <h3> YARGILANAN GAZETECİLER </h3>
 
           <div class="gazeteciler-content text-center">
             <div class="row">
-
 
             {% for journalist in journalist_list %}
 
