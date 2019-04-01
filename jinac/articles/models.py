@@ -25,6 +25,14 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'slug': self.slug})
 
+    def get_image(self):
+        image = self.image
+        if not image:
+            section = self.section_set.exclude(image__isnull=True).exclude(image='').first()
+            if section:
+                image = section.image
+        return image
+
     class Meta:
         verbose_name = _p('blog', 'article')
         verbose_name_plural = _p('blog', 'articles')
@@ -37,7 +45,7 @@ class Section(models.Model):
     image = models.ImageField(_('image'), upload_to='articles/', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.article.title}: {self.title}'
+        return f'{self.article.title}: {self.title or "-"}'
 
     class Meta:
         verbose_name = _('section')
