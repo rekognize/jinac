@@ -31,7 +31,7 @@
                         <a href= "{{ article.get_absolute_url }}" style="color:black"><h4 class="card-title">{{ article.title }}</h4></a>
                         <span class="card-text">
                             {{ article.summary }}
-                            <a href= "{{ article.get_absolute_url }}" style="color:black"> (Devamı için tıklayınız)<a>
+                            <a href= "{{ article.get_absolute_url }}" style="color:black"> ({% trans "more" %}...)<a>
                         </span>
                         </div>
                       </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 09:06+0000\n"
+"POT-Creation-Date: 2019-04-01 12:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1229,7 +1229,7 @@ msgid "the language of the translation"
 msgstr ""
 
 #: env3/lib/python3.7/site-packages/translations/models.py:46
-#: jinac/articles/models.py:36 jinac/news/models.py:7 jinac/news/models.py:23
+#: jinac/articles/models.py:44 jinac/news/models.py:7 jinac/news/models.py:23
 msgid "text"
 msgstr ""
 
@@ -1245,7 +1245,7 @@ msgstr ""
 msgid "blog"
 msgstr "analizler"
 
-#: jinac/articles/models.py:10 jinac/articles/models.py:35
+#: jinac/articles/models.py:10 jinac/articles/models.py:43
 #: jinac/news/models.py:22
 msgid "title"
 msgstr "başlık"
@@ -1254,7 +1254,7 @@ msgstr "başlık"
 msgid "subtitle"
 msgstr "alt başlık"
 
-#: jinac/articles/models.py:13 jinac/articles/models.py:37
+#: jinac/articles/models.py:13 jinac/articles/models.py:45
 msgid "image"
 msgstr "görsel"
 
@@ -1274,16 +1274,16 @@ msgstr "yayınla"
 msgid "about page"
 msgstr "hakkımızda sayfası"
 
-#: jinac/articles/models.py:34 jinac/cases/models.py:144
+#: jinac/articles/models.py:42 jinac/cases/models.py:144
 #: jinac/cases/models.py:159
 msgid "article"
 msgstr "analiz"
 
-#: jinac/articles/models.py:43
+#: jinac/articles/models.py:51
 msgid "section"
 msgstr "bölüm"
 
-#: jinac/articles/models.py:44
+#: jinac/articles/models.py:52
 msgid "sections"
 msgstr "bölümler"
 
@@ -1894,6 +1894,10 @@ msgstr ""
 #: jinac/templates/index.html:56
 msgid "Analysis"
 msgstr "Analizler"
+
+#: jinac/templates/articles/article_list.html:34
+msgid "more"
+msgstr "devamı"
 
 #: jinac/templates/base.html:11 jinac/urls.py:35
 msgid "Press in Arrest"
