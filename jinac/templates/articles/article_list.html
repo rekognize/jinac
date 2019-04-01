@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-8 px-3">
                       <div class="card-block">
-                        <a href= "{{ article.get_absolute_url }}" style="color:black"><h4 class="card-title">{{ artcile.title }}</h4></a>
+                        <a href= "{{ article.get_absolute_url }}" style="color:black"><h4 class="card-title">{{ article.title }}</h4></a>
                         <span class="card-text">
                             {{ article.summary }}
                             <a href= "{{ article.get_absolute_url }}" style="color:black"> (Devamı için tıklayınız)<a>
@@ -39,6 +39,7 @@
                   </div>
                 </div>
             </section>
+
 
             {% endwith %}
 
