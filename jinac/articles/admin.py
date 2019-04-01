@@ -9,7 +9,7 @@ class SectionAdmin(admin.ModelAdmin):
     search_fields = ['title', 'user', 'summary']
 
 
-class SectionInline(admin.TabularInline):
+class SectionInline(admin.StackedInline):
     model = Section
     extra = 1
 

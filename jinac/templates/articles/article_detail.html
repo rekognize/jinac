@@ -9,49 +9,60 @@
 
 
 <section>
+
+
   <div class="container py-3">
     <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
-      <div class="row card-header gazeteci-detay-card-header">
-        <div class="col-md-4">
-          <img src="{% if article.image %}{{ article.image.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
-        </div>
-        <div class="col-md-8 px-3">
-          <div class="card-block">
-            <h4 class="card-title">{{ article.title }}</h4>
-            {% if article.summary %}
-            <p class="card-text align-middle">
-                {{ article.summary }}
-            </p>
-            {% endif %}
+
+      <div class="row card-header analiz-detay-header">
+
+          {% if article.image %}
+          <div class="col-md-12" align="center">
+              <img class="analizdetaygorseli" src="{{ article.image.url }}" />
           </div>
-        </div>
-      </div>
+          {%  endif %}
 
-      {% with article.section_set.all as section %}
+          <div class="col-md-12 px-3" align="center">
+            <div class="card-block">
+              <h2 class="card-title">{{ article.title }}</h2>
 
-      <div class="row">
-        <div class="col-md-4">
-          <img src="{% if section.image %}{{ section.image.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
-        </div>
-        <div class="col-md-8 px-3">
-          <div class="card-block">
-            {% if section.title %}
-              <h4 class="card-title">{{ section.title }}</h4>
-            {% endif %}
-            {% if section.text %}
-            <p class="card-text align-middle">
-                {{ section.text }}
-            </p>
-            {% endif %}
+              {% if article.subtitle %}
+              <h3 class="card-title">{{ article.subtitle }}</h3>
+              {% endif %}
+
+              <p class="card-text analiz-detay-text">
+                  {{ article.summary|linebreaks }}
+              </p>
+            </div>
           </div>
+
+
+          {% with article.section_set.all as sections %}
+          {% for section in sections %}
+
+              {% if section.title %}
+              <h3 class="card-title">{{ article.subtitle }}</h3>
+              {% endif %}
+
+              {% if section.image %}
+              <div class="col-md-12" align="center">
+                  <img class="analizdetaygorseli" src="{{ section.image.url }}" />
+              </div>
+              {%  endif %}
+
+              <p class="card-text analiz-detay-text">
+                  {{ section.text|linebreaks }}
+              </p>
+
+          {% endfor %}
+          {% endwith %}
+
       </div>
-
-      {% endwith %}
-
     </div>
   </div>
-</section>
 
+
+</section>
 
 
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 15:58+0000\n"
+"POT-Creation-Date: 2019-04-01 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1277,7 +1277,7 @@ msgstr "hakkımızda sayfası"
 #: jinac/articles/models.py:34 jinac/cases/models.py:144
 #: jinac/cases/models.py:159
 msgid "article"
-msgstr "kanun maddesi"
+msgstr "analiz"
 
 #: jinac/articles/models.py:43
 msgid "section"
