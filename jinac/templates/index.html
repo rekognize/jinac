@@ -96,31 +96,17 @@
 
 	<section>
 		<div class="container">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-
-				<div class="carousel-inner">
-
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
                     {% for item in carousel %}
-					<div class="item {% if forloop.first %}active{% endif %}">
-						<img src="{{ item.image.url }}" style="width:100%; height: 500px;">
-						<br/>
-						<p style="color: black; font-size: 20px; text-align: center; font-family: 'Raleway', sans-serif;">{{ item.text }}</p>
-					</div>
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ item.image.url }}" class="d-block w-100">
+                    </div>
                     {% endfor %}
+              </div>
+            </div>
 
-				</div>
-
-				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<span class="sr-only">{% trans "Previous" %}</span>
-				</a>
-
-				<a class="right carousel-control" href="#myCarousel" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<span class="sr-only">{% trans "Next" %}</span>
-				</a>
-			</div>
 		</div>
 	</section>
 
