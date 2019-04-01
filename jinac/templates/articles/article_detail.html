@@ -50,9 +50,11 @@
               </div>
               {%  endif %}
 
+              {% if section.text %}
               <p class="card-text analiz-detay-text">
                   {{ section.text|linebreaks }}
               </p>
+              {% endif %}
 
           {% endfor %}
           {% endwith %}
