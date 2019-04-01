@@ -25,34 +25,34 @@
 
             {% for journalist in journalist_list %}
 
-                      <div class="col-md-4">
-                        <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-                         <div style="padding-top: 10px;">
-                            <div class="card-header" style="background-color:white;">
-                                <div>
-                                  <a href= "{{ journalist.get_absolute_url }}" style="color:black"><img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}"/> </a>
-                                  </div>
-                                  <div>
-                               <h4 class="card-title card-block"> {{ journalist.name }}</h4>
-                                </div>
-                            </div>
-                            <div>
-                              <br/>
-                              <span>
-                                  {% if journalist.bio %}
-                                      {{ journalist.bio|truncatewords:30 }}
-                                  {% else %}
-                                      <span class="text-muted"></span>
-                                  {% endif %}
-                              </span>
-                            </div>
-                         </div>
+              <div class="col-md-4">
+                <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+                 <div style="padding-top: 10px;">
+                    <div class="card-header" style="background-color:white;">
+                        <div>
+                          <a href= "{{ journalist.get_absolute_url }}" style="color:black"><img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}"/> </a>
+                          </div>
+                          <div>
+                       <h4 class="card-title card-block"> {{ journalist.name }}</h4>
                         </div>
-                      </div>
+                    </div>
+                    <div>
+                      <br/>
+                      <span>
+                          {% if journalist.bio %}
+                              {{ journalist.bio|truncatewords:30 }}
+                          {% else %}
+                              <span class="text-muted"></span>
+                          {% endif %}
+                      </span>
+                    </div>
+                 </div>
+                </div>
+              </div>
 
-                {% if forloop.counter|divisibleby:3 %}
-                    </div><div class="row">
-                {% endif %}
+              {% if forloop.counter|divisibleby:3 %}
+                  </div><div class="row">
+              {% endif %}
 
             {% endfor %}
 
