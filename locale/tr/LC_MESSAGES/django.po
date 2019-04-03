@@ -1770,7 +1770,7 @@ msgstr "kadın"
 
 #: jinac/people/models.py:19
 msgid "short bio"
-msgstr ""
+msgstr "kısa özgeçmiş"
 
 #: jinac/people/models.py:20
 msgid "biography"
