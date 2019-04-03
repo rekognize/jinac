@@ -15,6 +15,7 @@
         <div class="col-md-4">
           <img src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}{% endif %}" class="gazetecidetaygorseli" >
         </div>
+
         <div class="col-md-8 px-3">
           <div class="card-block">
             <h4 class="card-title">{{ journalist.name }}</h4>
@@ -23,22 +24,9 @@
                 {{ journalist.bio }}
             </p>
             {% endif %}
-
-                {% comment %}
-                {% with journalist.current_status as current_status %}
-                    {% if current_status %}
-                    <p>
-                        {{ current_status.get_status_display }}
-                        {% if current_status.prison %}
-                            / {{ current_status.prison }}
-                        {% endif %}
-                    </p>
-                    {% endif %}
-                {% endwith %}
-                {% endcomment %}
-
           </div>
         </div>
+
       </div>
 
       {% with journalist.journalistnote_set.all as notes %}
@@ -48,13 +36,13 @@
       <div class="col col-md-12 card-nav-tab">
 
         <ul class="nav nav-tabs">
-          {% if notes %}
+          {% for note in notes %}
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tab-notes" role="tab">
-                    {% trans "Trial Summary" %}
+                <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" href="#tab-note{{ note.id }}" role="tab">
+                    {{ note.type }}
                 </a>
             </li>
-          {% endif %}
+          {% endfor %}
           {% if journalist_cases %}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tab-cases" role="tab">
@@ -75,14 +63,11 @@
           <div class="card-block">
             <div class="tab-content">
 
-              {% if notes %}
-              <div class="tab-pane active" id="tab-notes">
               {% for note in notes %}
-                <h5 class="mt-4">{{ note.type }}</h5>
+              <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
                 {{ note.note|linebreaks }}
-              {% endfor %}
               </div>
-              {% endif %}
+              {% endfor %}
 
               {% if journalist_cases %}
               <div class="tab-pane" id="tab-cases">
@@ -148,7 +133,7 @@
 
                   {% for doc in docs.journo_trial_docs %}
                       <p>
-                          {{ doc.case }}
+                          {{ doc.trial }}
                           {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
                           <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>
@@ -164,7 +149,7 @@
 
                   {% for doc in docs.trial_docs %}
                       <p>
-                          {{ doc.case }}
+                          {{ doc.trial }}
                           {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
                           <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>

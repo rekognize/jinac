@@ -110,7 +110,7 @@ class CaseJournalist(models.Model):
         verbose_name=_('work position'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
-    attorneys = models.ManyToManyField(Attorney, verbose_name=_('attorney'))
+    attorneys = models.ManyToManyField(Attorney, verbose_name=_('attorney'), blank=True)
 
     class Meta:
         verbose_name = _('case - journalist relation')
@@ -258,7 +258,8 @@ class Trial(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        return f'{self.case}: {self.session_no}'
+        standing = _("%(session_no)s. Standing" % {'session_no': self.session_no})
+        return f'{self.case}: {standing}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
