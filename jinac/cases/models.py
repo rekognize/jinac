@@ -15,6 +15,7 @@ DECISION_TYPES = (
     (2, _('imprisonment')),
     (6, _('postponed')),
     (7, _('judgement receded')),
+    (8, _('discontinued')),
 )
 
 
