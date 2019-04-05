@@ -20,6 +20,7 @@ class Court(models.Model):
     type = models.PositiveSmallIntegerField(
         _('type'), default=1,
         choices=(
+            (0, _('Civil Court')),
             (1, _('Penal Court')),
             (2, _('Criminal Court')),
             (3, _('Court of Appeal')),

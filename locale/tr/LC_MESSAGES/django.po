@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 12:20+0000\n"
+"POT-Creation-Date: 2019-04-05 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1337,7 +1337,7 @@ msgstr "dava adı"
 msgid "file number"
 msgstr "dosya numarası"
 
-#: jinac/cases/models.py:27 jinac/jurisdiction/models.py:41
+#: jinac/cases/models.py:27 jinac/jurisdiction/models.py:42
 msgid "court"
 msgstr "mahkeme"
 
@@ -1416,7 +1416,7 @@ msgstr "yargıtay"
 msgid "constitutional"
 msgstr "anayasa mahkemesi"
 
-#: jinac/cases/models.py:69 jinac/jurisdiction/models.py:28
+#: jinac/cases/models.py:69 jinac/jurisdiction/models.py:29
 msgid "ECHR"
 msgstr "AİHM"
 
@@ -1521,7 +1521,7 @@ msgstr "suçlamalar"
 #: jinac/cases/models.py:287 jinac/cases/models.py:303
 #: jinac/cases/models.py:320 jinac/cases/models.py:344
 #: jinac/cases/models.py:358 jinac/jurisdiction/models.py:21
-#: jinac/jurisdiction/models.py:49 jinac/people/models.py:101
+#: jinac/jurisdiction/models.py:50 jinac/people/models.py:101
 #: jinac/people/models.py:115 jinac/people/models.py:135
 msgid "type"
 msgstr "tip"
@@ -1697,46 +1697,50 @@ msgid "number"
 msgstr "numara"
 
 #: jinac/jurisdiction/models.py:23
+msgid "Civil Court"
+msgstr "Asliye Hukuk Mahkemesi"
+
+#: jinac/jurisdiction/models.py:24
 msgid "Penal Court"
 msgstr "Asliye Ceza Mahkemesi"
 
-#: jinac/jurisdiction/models.py:24
+#: jinac/jurisdiction/models.py:25
 msgid "Criminal Court"
 msgstr "Ağır Ceza Mahkemesi"
 
-#: jinac/jurisdiction/models.py:25
+#: jinac/jurisdiction/models.py:26
 msgid "Court of Appeal"
 msgstr "İstinaf Mahkemesi"
 
-#: jinac/jurisdiction/models.py:26
+#: jinac/jurisdiction/models.py:27
 msgid "Supreme Court"
 msgstr "Yargıtay"
 
-#: jinac/jurisdiction/models.py:27
+#: jinac/jurisdiction/models.py:28
 msgid "Constitutional Court"
 msgstr "Anayasa Mahkemesi"
 
-#: jinac/jurisdiction/models.py:42
+#: jinac/jurisdiction/models.py:43
 msgid "courts"
 msgstr "mahkemeler"
 
-#: jinac/jurisdiction/models.py:47 jinac/people/models.py:11
+#: jinac/jurisdiction/models.py:48 jinac/people/models.py:11
 msgid "name"
 msgstr "isim"
 
-#: jinac/jurisdiction/models.py:51
+#: jinac/jurisdiction/models.py:52
 msgid "Type E"
 msgstr "E tipi"
 
-#: jinac/jurisdiction/models.py:52
+#: jinac/jurisdiction/models.py:53
 msgid "Type F"
 msgstr "F tipi"
 
-#: jinac/jurisdiction/models.py:60 jinac/people/models.py:89
+#: jinac/jurisdiction/models.py:61 jinac/people/models.py:89
 msgid "prison"
 msgstr "cezaevi"
 
-#: jinac/jurisdiction/models.py:61
+#: jinac/jurisdiction/models.py:62
 msgid "prisons"
 msgstr "cezaevleri"
 
