@@ -26,7 +26,7 @@ SECRET_KEY = 'zlnn)wlli0d3u_e8$o##_h%qy924%mfm6h#*+r^_av1=tos1_q'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'local.host', '127.0.0.1',
+    'localhost', '127.0.0.1',
     'ec2-3-92-31-176.compute-1.amazonaws.com',
     'pressinarrest.rekognize.io', 'pressinarrest.com',
 ]

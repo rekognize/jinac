@@ -3,8 +3,8 @@
 
 
 {% block head %}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 {% endblock %}
 
 
@@ -13,643 +13,288 @@
 
 {% block content %}
 
-	<div id="home-header">
-        {% get_current_language as LANGUAGE_CODE %}
-		<img src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 300px; height: 100px; display: block; margin-top: 2%; margin-left: auto; margin-right: auto;">
+<div id="home-header">
+	{% get_current_language as LANGUAGE_CODE %}
+	<img src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 300px; height: 100px; display: block; margin-top: 2%; margin-left: auto; margin-right: auto;">
 
-		<div class="col-lg-9 site-title-info " style="width:60%; display: block; margin-left:24%; margin-top:2%">
-			<span>
-                Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
-                Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
-				<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
-					<i class="fab fa-twitter"></i>
-				</a>
-			</span>
-		</div>
+	<div class="col-lg-9 site-title-info " style="width:60%; display: block; margin-left:24%; margin-top:2%">
+		<span>
+			Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
+			Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
+			<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+				<i class="fab fa-twitter"></i>
+			</a>
+		</span>
 	</div>
+</div>
 
-	<br/>
-	<br/>
-	<br/>
-	<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-	<section id="cover" >
-		<div class="container">
-			<div class="row">
-				<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+<section id="cover" >
+	<div class="container">
+		<div class="row">
+			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-					<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-						<ul class="navbar-nav">
+				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+					<ul class="navbar-nav">
 
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
-							</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
+						</li>
 
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
-							</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
+						</li>
 
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'article_list' %}">{% trans 'Analysis' %}</a>
-							</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'article_list' %}">{% trans 'Analysis' %}</a>
+						</li>
 
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'about' %}">{% trans 'What do we do?' %}</a>
-							</li>
-							<li>
-								<div class="wrapper" >
-									<div class="icon-search-container" data-ic-class="search-trigger">
-										<span class="fa fa-search" ></span>
-										<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
-										<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
-									</div>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'about' %}">{% trans 'What do we do?' %}</a>
+						</li>
+						<li>
+							<div class="wrapper" >
+								<div class="icon-search-container" data-ic-class="search-trigger">
+									<span class="fa fa-search" ></span>
+									<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
+									<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
 								</div>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
 		</div>
-	</section>
-
-	<div class="pull-right" style="margin-right: 160px; font-family: 'Raleway', sans-serif;">
-
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-
-        {% for language in languages %}
-            {% if language.code != LANGUAGE_CODE %}
-                <a href="{% url 'set_lang' %}?lang={{ language.code }}">{{ language.name_local }}</a>
-            {% else %}
-                {{ language.name_local }}
-            {% endif %}
-            {% if not forloop.last %} | {% endif %}
-        {% endfor %}
-
 	</div>
-	<br/>
-	<br/>
+</section>
 
-	<section>
-		<div class="container">
+<div class="pull-right" style="margin-right: 10%; font-family: 'Raleway', sans-serif;">
 
-            <div class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                    {% for item in carousel %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <img src="{{ item.image.url }}" class="d-block w-100">
-                    </div>
-                    {% endfor %}
-              </div>
-            </div>
+	{% get_current_language as LANGUAGE_CODE %}
+	{% get_available_languages as LANGUAGES %}
+	{% get_language_info_list for LANGUAGES as languages %}
 
-		</div>
-	</section>
+	{% for language in languages %}
+	{% if language.code != LANGUAGE_CODE %}
+	<a href="{% url 'set_lang' %}?lang={{ language.code }}">{{ language.name_local }}</a>
+	{% else %}
+	{{ language.name_local }}
+	{% endif %}
+	{% if not forloop.last %} | {% endif %}
+	{% endfor %}
 
-	<section id="veriler">
-		<div class="container" style="padding-top: 50px; padding-bottom:20px;">
-			<div class="veriler-top wow fadeInDown data-wow-duration=2s">
+</div>
+<br/>
+<br/>
+
+<section>
+	<div class="container">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+			<div class="carousel-inner">
+				{% for item in carousel %}
+				<div class="carousel-item {% if forloop.first %}active{% endif %}">
+					<img src="{{ item.image.url }}" class="d-block w-100">
+					{% endfor %}
+				</div>
 			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
 
-			<div class="veriler-content text-center">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
-							<p style="margin-top: 10px; font-family: Lato;"><strong>390</strong></p>
-						</div>
-						<h4 style="margin-top:10px;"> YARGILANANLAR</h4>
-					</div>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+</section>
 
-					<div class="col-sm-4">
-						<div class="item-circle c2 wow fadeInUp data-wow-duration=2s">
-							<p style="margin-top: 10px; font-family: Lato;"><strong>59</strong></p>
-						</div>
-						<h4 style="margin-top:10px;">CEZAEVİNDEKİLER</h4>
-					</div>
+<section id="veriler">
+	<div class="container" style="padding-top: 50px; padding-bottom:20px;">
+		<div class="veriler-top wow fadeInDown data-wow-duration=2s">
+		</div>
 
-					<div class="col-sm-4">
-						<div class="item-circle c3 wow fadeInRight data-wow-duration=2s">
-							<p style="margin-top: 10px; font-family: Lato;"><strong>231</strong></p>
-						</div>
-						<h4 style="margin-top:10px;"> TUTUKSUZ YARGILANANLAR</h4>
+		<div class="veriler-content text-center">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
+						<p style="margin-top: 10px; font-family: Lato;"><strong>390</strong></p>
 					</div>
+					<h4 style="margin-top:10px;"> YARGILANANLAR</h4>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s">
+						<p style="margin-top: 10px; font-family: Lato;"><strong>59</strong></p>
+					</div>
+					<h4 style="margin-top:10px;">CEZAEVİNDEKİLER</h4>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s">
+						<p style="margin-top: 10px; font-family: Lato;"><strong>231</strong></p>
+					</div>
+					<h4 style="margin-top:10px;"> TUTUKSUZ YARGILANANLAR</h4>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<section id="yaklasandurusmalar" >
-		<div class="container">
-			<div class="yaklasandurusmalar-top text-center">
-				<div class="yaklasandurusmalar-content">
+<section id="yaklasandurusmalar" >
+	<div class="container yaklasandurusmalar-top text-center justify-content-center yaklasandurusmalar-content row card-deck">
+		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 25%">
+			<div style="padding-top: 10px;">
+				<div class="card-header" style="background-color:white;">
+					<h4 class="card-title card-block">Son Gelişmeler</h4>
+				</div>
+				{% for item in news %}
+				<div style="margin-top: 20px;">
+					<span class="card-text">
+						{{ item.title }}
+						{{ item.text }}
+						{% if item.link %}
+						<a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
+						{% endif %}
+					</span>
+					<hr>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 10%">
+			<div style="padding-top: 10px;">
+				<div class="card-header" style="background-color:white;">
+					<h4 class="card-title card-block">Yaklaşan Yargılamalar</h4>
+				</div>
+				<br>
+
+				<div class="row justify-content-center">
+					<a href="#" style="font-size: 20px; color: black;"><i class="fas fa-caret-left"></i></a>
+					<a href="javascript:void(0)">
+						<p class="pag-month" style="font-size: 18px; color: black; margin-left:10px; margin-right:10px;"> Nisan 2019 </p>
+					</a>
+					<a href="#" style="font-size: 20px; color:black"><i class="fas fa-caret-right"></i></a>
+				</div>
+
+
+				{% for trial in upcoming_trials|slice:":4" %}
+				<div style="margin-top: 20px;">
+					
+					<span class="card-text">
+						<a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"><h4 class="card-title">{{ trial.case.name }}</h4></a>
+						<i class="far fa-calendar-alt"></i>
+						<span class="card-text align-middle">{{ trial.time_next|date }}</span>
+						<div>
+							<i class="far fa-clock"></i>
+							<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+						</div>
+						<div>
+							<i class="fas fa-map-marker-alt"></i>
+							<span class="card-text align-middle">{{ trial.case.court }}</span>
+						</div>
+					</span>
+					<hr>
+				</div>
+				{% if forloop.counter|divisibleby:2 %}
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+</section>
+
+
+
+<section class="contact-section my-5">
+	<div class="card" style="margin-left: 100px;">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card-body form">
+					<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>İletişim:</h3>
+					<br/>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="md-form mb-0">
+								<input type="text" id="form-contact-name" class="form-control" placeholder="İsim">
+								<br/>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="md-form mb-0">
+								<input type="text" id="form-contact-email" class="form-control" placeholder="Mail">
+								<br/>
+							</div>
+						</div>
+					</div>
 
 					<div class="row">
 
-                        {% for item in news %}
+						<div class="col-md-6">
+							<div class="md-form mb-0">
+								<textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="Mesajınız"></textarea>
+								<br/>
+								<a class=" btn-lg ">
+									<button><i class="far fa-paper-plane"> Gönder</i> </button>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                        <div class="col-lg-4">
-                            <div class="card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard">
-                                <div style="padding-top: 10px;">
-                                    <div class="card-header" style="background-color:white;">
-                                        <h4 class="card-title card-block">{{ item.title }}</h4>
-                                    </div>
-                                    <div>
-                                        <br/>
-                                        <span class="card-text">
-                                            {{ item.text }}
-                                            {% if item.link %}
-                                                <a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
-                                            {% endif %}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+			<div class="col-lg-4">
+				<div class="card-body contact text-center h-100 white-text" style="margin-right:100px;">
+					<br/>
+					<br/>
+					<br/>
 
-                        {% endfor %}
+					<h3 class="my-4">İletişim Bilgilerimiz:</h3>
+					<ul class="list-unstyled ml-4">
+						<li>
+							<p><i class="fas fa-envelope"></i> contact@example.com</p>
 
-                    </div>
+						</li>
+					</ul>
+					<hr class="hr-light my-4">
+					<ul class="list-inline text-center list-unstyled">
+						<li class="list-inline-item">
+							<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+					</ul>
 
-                    <hr>
+				</div>
 
-                    <br/>
-
-                    <div class= "row">
-
-                        <div class="column col-lg-6" >
-                            <div> <span style="font-family: 'Raleway', sans-serif; font-size:30px; ">{% trans "Trial Calendar" %}</span> </div>
-                            <br/>
-                            <br/>
-                            <div id="calendar" style="margin-left:50px;"></div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div><span style="font-family: 'Raleway', sans-serif; font-size:30px;">{% trans "Upcoming Trials" %}</span></div>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                            <div class="container py-3">
-
-                                {% for trial in upcoming_trials|slice:":4" %}
-                                <div class="card shadow-lg p-3 mb-5 bg-white rounded col-md-6" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"><h4 class="card-title">{{ trial.case.name }}</h4></a>
-                                        <i class="far fa-calendar-alt"></i>
-                                        <span class="card-text align-middle">{{ trial.time_next|date }}</span>
-                                        <div>
-                                            <i class="far fa-clock"></i>
-                                            <span class="card-text align-middle">{{ trial.time_next|time }}</span>
-                                        </div>
-                                        <div>
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <span class="card-text align-middle">{{ trial.case.court }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {% if forloop.counter|divisibleby:2 %}
-                                    </div>
-                                    <br/><br/>
-                                    <div class="container py-3">
-                                {% endif %}
-
-                                {% endfor %}
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="contact-section my-5">
-        <div class="card" style="margin-left: 100px;">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card-body form">
-                        <h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>İletişim:</h3>
-                        <br/>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form-contact-name" class="form-control" placeholder="İsim">
-                                    <br/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form-contact-email" class="form-control" placeholder="Mail">
-                                    <br/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="Mesajınız"></textarea>
-                                    <br/>
-                                    <a class=" btn-lg ">
-                                        <button><i class="far fa-paper-plane"> Gönder</i> </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="card-body contact text-center h-100 white-text" style="margin-right:100px;">
-                        <br/>
-                        <br/>
-                        <br/>
-
-                        <h3 class="my-4">İletişim Bilgilerimiz:</h3>
-                        <ul class="list-unstyled ml-4">
-                            <li>
-                                <p><i class="fas fa-envelope"></i> contact@example.com</p>
-
-                            </li>
-                        </ul>
-                        <hr class="hr-light my-4">
-                        <ul class="list-inline text-center list-unstyled">
-                            <li class="list-inline-item">
-                                <a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
+			</div>
+		</div>
+	</div>
+</section>
 
 {% endblock %}
-
 
 {% block foot %}
 
 <script>
 
+	$(document).ready(function(){
 
+		$('.carousel').carousel({});
 
-$(document).ready(function(){
+	</script>
 
-$('.carousel').carousel({});
-
-
-/* Calendar */
-
-!function() {
-
-  var today = moment();
-
-  function Calendar(selector, events) {
-    this.el = document.querySelector(selector);
-    this.events = events;
-    this.current = moment().date(1);
-    this.draw();
-    var current = document.querySelector('.today');
-    if(current) {
-      var self = this;
-      window.setTimeout(function() {
-        self.openDay(current);
-      }, 500);
-    }
-  }
-
-  Calendar.prototype.draw = function() {
-    //Create Header
-    this.drawHeader();
-
-    //Draw Month
-    this.drawMonth();
-
-    this.drawLegend();
-  };
-
-  Calendar.prototype.drawHeader = function() {
-    var self = this;
-    if(!this.header) {
-      //Create the header elements
-      this.header = createElement('div', 'header');
-      this.header.className = 'header';
-
-      this.title = createElement('h1');
-
-      var right = createElement('div', 'right');
-      right.addEventListener('click', function() { self.nextMonth(); });
-
-      var left = createElement('div', 'left');
-      left.addEventListener('click', function() { self.prevMonth(); });
-
-      //Append the Elements
-      this.header.appendChild(this.title);
-      this.header.appendChild(right);
-      this.header.appendChild(left);
-      this.el.appendChild(this.header);
-    }
-
-    this.title.innerHTML = this.current.format('MMMM YYYY');
-  }
-
-  Calendar.prototype.drawMonth = function() {
-    var self = this;
-
-    this.events.forEach(function(ev) {
-        console.log(ev);
-        ev.date = self.current.clone().date(ev.day);
-
-    });
-
-
-    if(this.month) {
-      this.oldMonth = this.month;
-      this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-      this.oldMonth.addEventListener('webkitAnimationEnd', function() {
-        self.oldMonth.parentNode.removeChild(self.oldMonth);
-        self.month = createElement('div', 'month');
-        self.backFill();
-        self.currentMonth();
-        self.fowardFill();
-        self.el.appendChild(self.month);
-        window.setTimeout(function() {
-          self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
-        }, 16);
-      });
-    } else {
-        this.month = createElement('div', 'month');
-        this.el.appendChild(this.month);
-        this.backFill();
-        this.currentMonth();
-        this.fowardFill();
-        this.month.className = 'month new';
-    }
-  }
-
-  Calendar.prototype.backFill = function() {
-    var clone = this.current.clone();
-    var dayOfWeek = clone.day();
-
-    if(!dayOfWeek) { return; }
-
-    clone.subtract('days', dayOfWeek+1);
-
-    for(var i = dayOfWeek; i > 0 ; i--) {
-      this.drawDay(clone.add('days', 1));
-    }
-  }
-
-  Calendar.prototype.fowardFill = function() {
-    var clone = this.current.clone().add('months', 1).subtract('days', 1);
-    var dayOfWeek = clone.day();
-
-    if(dayOfWeek === 6) { return; }
-
-    for(var i = dayOfWeek; i < 6 ; i++) {
-      this.drawDay(clone.add('days', 1));
-    }
-  }
-
-  Calendar.prototype.currentMonth = function() {
-    var clone = this.current.clone();
-
-    while(clone.month() === this.current.month()) {
-      this.drawDay(clone);
-      clone.add('days', 1);
-    }
-  }
-
-  Calendar.prototype.getWeek = function(day) {
-    if(!this.week || day.day() === 0) {
-      this.week = createElement('div', 'week');
-      this.month.appendChild(this.week);
-    }
-  }
-
-  Calendar.prototype.drawDay = function(day) {
-    var self = this;
-    this.getWeek(day);
-
-    //Outer Day
-    var outer = createElement('div', this.getDayClass(day));
-    outer.addEventListener('click', function() {
-      self.openDay(this);
-    });
-
-    //Day Name
-    var name = createElement('div', 'day-name', day.format('ddd'));
-
-    //Day Number
-    var number = createElement('div', 'day-number', day.format('DD'));
-
-
-    //Events
-    var events = createElement('div', 'day-events');
-    this.drawEvents(day, events);
-
-    outer.appendChild(name);
-    outer.appendChild(number);
-    outer.appendChild(events);
-    this.week.appendChild(outer);
-  }
-
-  Calendar.prototype.drawEvents = function(day, element) {
-    if(day.month() === this.current.month()) {
-      var todaysEvents = this.events.reduce(function(memo, ev) {
-        if(ev.date.isSame(day, 'day')) {
-          memo.push(ev);
-        }
-        return memo;
-      }, []);
-
-      todaysEvents.forEach(function(ev) {
-        var evSpan = createElement('span', ev.color);
-        element.appendChild(evSpan);
-      });
-    }
-  };
-
-  Calendar.prototype.getDayClass = function(day) {
-    classes = ['day'];
-    if(day.month() !== this.current.month()) {
-      classes.push('other');
-    } else if (today.isSame(day, 'day')) {
-      classes.push('today');
-    }
-    return classes.join(' ');
-  };
-
-  Calendar.prototype.openDay = function(el) {
-    var details, arrow;
-    var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
-    var day = this.current.clone().date(dayNumber);
-
-    var currentOpened = document.querySelector('.details');
-
-    //Check to see if there is an open detais box on the current row
-    if(currentOpened && currentOpened.parentNode === el.parentNode) {
-      details = currentOpened;
-      arrow = document.querySelector('.arrow');
-    } else {
-      //Close the open events on differnt week row
-      //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
-      if(currentOpened) {
-        currentOpened.addEventListener('webkitAnimationEnd', function() {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener('oanimationend', function() {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener('msAnimationEnd', function() {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.addEventListener('animationend', function() {
-          currentOpened.parentNode.removeChild(currentOpened);
-        });
-        currentOpened.className = 'details out';
-      }
-
-      //Create the Details Container
-      details = createElement('div', 'details in');
-
-      //Create the arrow
-      var arrow = createElement('div', 'arrow');
-
-      //Create the event wrapper
-
-      details.appendChild(arrow);
-      el.parentNode.appendChild(details);
-    }
-
-    var todaysEvents = this.events.reduce(function(memo, ev) {
-      if(ev.date.isSame(day, 'day')) {
-        memo.push(ev);
-      }
-      return memo;
-    }, []);
-
-    this.renderEvents(todaysEvents, details);
-
-    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
-  };
-
-  Calendar.prototype.renderEvents = function(events, ele) {
-    //Remove any events in the current details element
-    var currentWrapper = ele.querySelector('.events');
-    var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
-
-    events.forEach(function(ev) {
-      var div = createElement('div', 'event');
-      var square = createElement('div', 'event-category ' + ev.color);
-      var span = createElement('span', '', ev.eventName);
-
-      div.appendChild(square);
-      div.appendChild(span);
-      wrapper.appendChild(div);
-    });
-
-    if(!events.length) {
-      var div = createElement('div', 'event empty');
-      var span = createElement('span', '', 'No Events');
-
-      div.appendChild(span);
-      wrapper.appendChild(div);
-    }
-
-    if(currentWrapper) {
-      currentWrapper.className = 'events out';
-      currentWrapper.addEventListener('webkitAnimationEnd', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('oanimationend', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('msAnimationEnd', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-      currentWrapper.addEventListener('animationend', function() {
-        currentWrapper.parentNode.removeChild(currentWrapper);
-        ele.appendChild(wrapper);
-      });
-    } else {
-      ele.appendChild(wrapper);
-    }
-  };
-
-  Calendar.prototype.drawLegend = function() {
-    var legend = createElement('div', 'legend');
-    var calendars = this.events.map(function(e) {
-      return e.calendar + '|' + e.color;
-    }).reduce(function(memo, e) {
-      if(memo.indexOf(e) === -1) {
-        memo.push(e);
-      }
-      return memo;
-    }, []).forEach(function(e) {
-      var parts = e.split('|');
-      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
-      legend.appendChild(entry);
-    });
-    this.el.appendChild(legend);
-  };
-
-  Calendar.prototype.nextMonth = function() {
-    this.current.add('months', 1);
-    this.next = true;
-    this.draw();
-  };
-
-  Calendar.prototype.prevMonth = function() {
-    this.current.subtract('months', 1);
-    this.next = false;
-    this.draw();
-  };
-
-  window.Calendar = Calendar;
-
-  function createElement(tagName, className, innerText) {
-    var ele = document.createElement(tagName);
-    if(className) {
-      ele.className = className;
-    }
-    if(innerText) {
-      ele.innderText = ele.textContent = innerText;
-    }
-    return ele;
-  }
-}();
-
-
-var data = [
-    {% for trial in upcoming_trials %}
-    { eventName: '{{ trial.case.name }}', calendar: 'Dava', color: 'orange', date: '{{ trial.time_next|date:"Y-m-d" }}', day: '{{ trial.time_next|date:"d" }}' }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-];
-
-var calendar = new Calendar('#calendar', data);
-
-
-});
-
-</script>
-
-{% endblock %}
+	{% endblock %}

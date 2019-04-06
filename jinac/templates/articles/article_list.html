@@ -21,8 +21,8 @@
             {% with article.get_image as thumbnail %}
 
             <section class="analiz">
-              <div class="container py-3">
-                <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
+              <div class="container py-3" style="width:100rem">
+                <div class="card border-dark shadow p-3 bg-white rounded">
                   <div class="row card-header analiz-card-header">
                     <div class="col-md-4">
                       <img class="analizgorseli" src="{% if thumbnail %}{{ thumbnail.url }}{% else %}http://placehold.it/160x160{% endif %}"/>
