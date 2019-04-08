@@ -102,15 +102,19 @@
 
 <script>
 
-// tab üzerine ikinci kez tıklayınca tab'ı kapatan kod:
+// tab üzerine ikinci kez tıklayınca tab'ı kapat
 
- $(".nav-link").click(function(){
+$('[data-toggle=tab]').click(function(){
+    console.log($(this).hasClass('active'));
     if ($(this).hasClass('active')){
-        $('#' + this.hash.substr(1).toLowerCase()).toggleClass('active');
+        var tab = $(this).data('target').substring(1);
+        console.log(tab);
+        $(this).removeClass('active');
+        $('#'+ tab).removeClass('active').removeClass('show');
+        return false;
     }
 });
 
 </script>
 
 {% endblock %}
-
