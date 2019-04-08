@@ -32,18 +32,18 @@
 
                             <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
+                                    <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
 
                                 </li>
                                 {% for note in trial.notes %}
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
+                                        <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
                                     </li>
                                 {% endfor %}
 
                                 {% if trial_documents %}
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
+                                        <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
                                     </li>
                                 {% endif %}
 

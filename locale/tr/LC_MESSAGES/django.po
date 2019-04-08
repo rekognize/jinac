@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-05 13:45+0000\n"
+"POT-Creation-Date: 2019-04-08 09:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1605,7 +1605,7 @@ msgstr "mahkeme heyeti"
 msgid "trial prosecutor"
 msgstr "duruşma savcı"
 
-#: jinac/cases/models.py:262 jinac/templates/cases/trial_list.html:27
+#: jinac/cases/models.py:262 jinac/templates/cases/trial_list.html:28
 #, python-format
 msgid "%(session_no)s. Standing"
 msgstr "%(session_no)s. Duruşma"
@@ -1940,28 +1940,28 @@ msgstr "Ne yapıyoruz?"
 msgid "Search"
 msgstr ""
 
-#: jinac/templates/cases/trial_list.html:34
+#: jinac/templates/cases/trial_list.html:35
 msgid "Case Summary"
 msgstr "Dava Özeti"
 
-#: jinac/templates/cases/trial_list.html:44
+#: jinac/templates/cases/trial_list.html:46
 #: jinac/templates/people/journalist_detail.html:56
 msgid "Documents"
 msgstr "Dokümanlar"
 
-#: jinac/templates/cases/trial_list.html:58
+#: jinac/templates/cases/trial_list.html:60
 msgid "Next Trial"
 msgstr "Gelecek Duruşma"
 
-#: jinac/templates/index.html:165
+#: jinac/templates/index.html:158
+msgid "Announcements"
+msgstr "Duyurular"
+
+#: jinac/templates/index.html:166
 msgid "Read more"
 msgstr "Daha fazla"
 
-#: jinac/templates/index.html:184
-msgid "Trial Calendar"
-msgstr "Duruşma takvimi"
-
-#: jinac/templates/index.html:191
+#: jinac/templates/index.html:178
 msgid "Upcoming Trials"
 msgstr "Yaklaşan Duruşmalar"
 
@@ -1977,10 +1977,16 @@ msgstr "Dava durumu"
 msgid "Other journalists trialed in this case"
 msgstr "Bu davada yargılanan diğer gazeteciler"
 
-#: jinac/templates/people/journalist_detail.html:130
+#: jinac/templates/people/journalist_detail.html:108
 #: jinac/templates/people/journalist_detail.html:138
-#: jinac/templates/people/journalist_detail.html:146
-#: jinac/templates/people/journalist_detail.html:154
+#: jinac/templates/people/journalist_detail.html:155
+msgid "Standing"
+msgstr ""
+
+#: jinac/templates/people/journalist_detail.html:131
+#: jinac/templates/people/journalist_detail.html:140
+#: jinac/templates/people/journalist_detail.html:148
+#: jinac/templates/people/journalist_detail.html:157
 msgid "Download"
 msgstr "İndir"
 
@@ -1995,6 +2001,9 @@ msgstr "Tutuklu Basın Yönetimi"
 #: jinac/urls.py:37
 msgid "Press in Arrest Management"
 msgstr "Tutuklu Basın Yönetimi"
+
+#~ msgid "Trial Calendar"
+#~ msgstr "Duruşma takvimi"
 
 #~ msgid "dismissed"
 #~ msgstr "düşme"
