@@ -173,18 +173,6 @@
 			
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title card-block">{% trans "Upcoming Trials" %}</h4>
-				<hr>
-				<a href="">
-					<p class="pag-month" style="font-size: 18px; color: black; margin-left:20px; margin-right:20px;"> 
-						<a href="" style="font-size: 20px; color: black;">
-							<i class="fas fa-caret-left"></i>
-						</a> 
-						Nisan 2019 
-						<a href="" style="font-size: 20px; color:black">
-							<i class="fas fa-caret-right"></i>
-						</a>
-					</p>
-				</a>
 			</div>
 			
 			
@@ -192,7 +180,9 @@
 			<br/>
 			<div class="card-header" style="background-color: white;">
 				<span class="card-text justify-content-center">
-					<a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"><h4 class="card-title">{{ trial.case.name }}</h4></a>
+					<!--a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"-->
+                        <h4 class="card-title">{{ trial.case.name }}</h4>
+                    <!--/a-->
 					<i class="far fa-calendar-alt"></i>
 					<span class="card-text align-middle">{{ trial.time_next|date }}</span>
 					<div>
@@ -205,11 +195,8 @@
 					</div>
 				</span>
 			</div>
-			{% if forloop.counter|divisibleby:2 %}
-
-
-			{% endif %}
 			{% endfor %}
+
 		</div>
 	</div>
 </div>
