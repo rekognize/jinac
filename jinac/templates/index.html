@@ -149,60 +149,71 @@
 </section>
 
 <section id="yaklasandurusmalar" >
-	<div class="container yaklasandurusmalar-top text-center justify-content-center yaklasandurusmalar-content row card-deck">
-		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 25%">
-			<div style="padding-top: 10px;">
-				<div class="card-header" style="background-color:white;">
-					<h4 class="card-title card-block">{% trans "Announcements" %}</h4>
-				</div>
-				{% for item in news %}
-				<div style="margin-top: 20px;">
-					<span class="card-text">
-						{{ item.title }}
-						{{ item.text }}
-						{% if item.link %}
-						<a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
-						{% endif %}
-					</span>
-					<hr>
-				</div>
-				{% endfor %}
+	<div class="row">
+		<div class=" yaklasandurusmalar-top yaklasandurusmalar-content col-lg-4 card border-dark shadow bg-white rounded yaklasandurusmalarcard" style="margin-left:150px;">
+			<div class="card-header" style="background-color:white;">
+				<h4 class="card-title text-center card-block">{% trans "Announcements" %}</h4>
 			</div>
+			{% for item in news %}
+			<div style="margin-top: 20px;">
+				<span class="card-text">
+					{{ item.title }}
+					{{ item.text }}
+					{% if item.link %}
+					<a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
+					{% endif %}
+				</span>
+				<hr>
+			</div>
+			{% endfor %}
 		</div>
 
-		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 10%">
-			<div style="padding-top: 10px;">
-				<div class="card-header" style="background-color:white;">
-					<h4 class="card-title card-block">{% trans "Upcoming Trials" %}</h4>
-				</div>
 
-				{% for trial in upcoming_trials|slice:":4" %}
-				<div style="margin-top: 20px;">
-					
-					<span class="card-text">
-						<a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"><h4 class="card-title">{{ trial.case.name }}</h4></a>
-						<i class="far fa-calendar-alt"></i>
-						<span class="card-text align-middle">{{ trial.time_next|date }}</span>
-						<div>
-							<i class="far fa-clock"></i>
-							<span class="card-text align-middle">{{ trial.time_next|time }}</span>
-						</div>
-						<div>
-							<i class="fas fa-map-marker-alt"></i>
-							<span class="card-text align-middle">{{ trial.case.court }}</span>
-						</div>
-					</span>
-					<hr>
-				</div>
-				{% if forloop.counter|divisibleby:2 %}
+		<div class= "text-center col-lg-4" style="margin-left: 100px;">
+			
+			<div class="card-header" style="background-color:white;">
+				<h4 class="card-title card-block">{% trans "Upcoming Trials" %}</h4>
+				<hr>
+				<a href="">
+					<p class="pag-month" style="font-size: 18px; color: black; margin-left:20px; margin-right:20px;"> 
+						<a href="" style="font-size: 20px; color: black;">
+							<i class="fas fa-caret-left"></i>
+						</a> 
+						Nisan 2019 
+						<a href="" style="font-size: 20px; color:black">
+							<i class="fas fa-caret-right"></i>
+						</a>
+					</p>
+				</a>
 			</div>
+			
+			
+			{% for trial in upcoming_trials|slice:":4" %}
+			<br/>
+			<div class="card-header" style="background-color: white;">
+				<span class="card-text justify-content-center">
+					<a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"><h4 class="card-title">{{ trial.case.name }}</h4></a>
+					<i class="far fa-calendar-alt"></i>
+					<span class="card-text align-middle">{{ trial.time_next|date }}</span>
+					<div>
+						<i class="far fa-clock"></i>
+						<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+					</div>
+					<div>
+						<i class="fas fa-map-marker-alt"></i>
+						<span class="card-text align-middle">{{ trial.case.court }}</span>
+					</div>
+				</span>
+			</div>
+			{% if forloop.counter|divisibleby:2 %}
+
+
+			{% endif %}
+			{% endfor %}
 		</div>
-		{% endif %}
-		{% endfor %}
 	</div>
+</div>
 </section>
-
-
 
 <section class="contact-section my-5">
 	<div class="card" style="margin-left: 100px;">
