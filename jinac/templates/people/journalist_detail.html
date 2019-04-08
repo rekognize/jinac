@@ -38,21 +38,21 @@
         <ul class="nav nav-tabs">
           {% for note in notes %}
             <li class="nav-item">
-                <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" href="#tab-note{{ note.id }}" role="tab">
+                <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
                     {{ note.type }}
                 </a>
             </li>
           {% endfor %}
           {% if journalist_cases %}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-cases" role="tab">
+                <a class="nav-link" data-toggle="tab" data-target="#tab-cases" role="tab">
                     {% trans "Trial Details" %}
                 </a>
             </li>
           {% endif %}
           {% if docs %}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-docs" role="tab">
+                <a class="nav-link" data-toggle="tab" data-target="#tab-docs" role="tab">
                     {% trans "Documents" %}
                 </a>
             </li>
@@ -75,9 +75,9 @@
 
                 {% with journalist_case.case as case %}
 
-                <a href="{{ case.get_absolute_url }}">
+                <!--a href="{{ case.get_absolute_url }}"-->
                     <h5 class="mt-4">{{ case.name }}</h5>
-                </a>
+                <!--/a-->
 
                 {% with case.casestatus_set.all as statuses %}
                     {% if statuses %}
@@ -103,12 +103,13 @@
                 {% endwith %}
 
                 {% for trial in case.trial_set.all %}
-                    <a href="{{ trial.get_absolute_url }}">
+                    <!--a href="{{ trial.get_absolute_url }}"-->
                         <h5>
+                            {{ trial.session_no }}. {% trans "Standing" %}
+                            -
                             {{ trial.time_start|date }}
-                            {% if trial.session_no %}- {{ trial.session_no }}{% endif %}
                         </h5>
-                    </a>
+                    <!--/a-->
 
                     <p>
                         {{ trial.summary|linebreaks }}
@@ -133,7 +134,8 @@
 
                   {% for doc in docs.journo_trial_docs %}
                       <p>
-                          {{ doc.trial }}
+                          {{ doc.trial.case }}
+                          {{ doc.trial.session_no }}. {% trans "Standing" %}
                           {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
                           <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>
@@ -149,7 +151,8 @@
 
                   {% for doc in docs.trial_docs %}
                       <p>
-                          {{ doc.trial }}
+                          {{ doc.trial.case }}
+                          {{ doc.trial.session_no }}. {% trans "Standing" %}
                           {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
                           <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                       </p>

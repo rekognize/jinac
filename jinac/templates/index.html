@@ -155,7 +155,7 @@
 		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 25%">
 			<div style="padding-top: 10px;">
 				<div class="card-header" style="background-color:white;">
-					<h4 class="card-title card-block">Son Gelişmeler</h4>
+					<h4 class="card-title card-block">{% trans "Announcements" %}</h4>
 				</div>
 				{% for item in news %}
 				<div style="margin-top: 20px;">
@@ -175,18 +175,8 @@
 		<div class="col-lg-6 card border-dark shadow p-3 mb-5 bg-white rounded yaklasandurusmalarcard" style="width: 40rem; margin-left: 10%">
 			<div style="padding-top: 10px;">
 				<div class="card-header" style="background-color:white;">
-					<h4 class="card-title card-block">Yaklaşan Yargılamalar</h4>
+					<h4 class="card-title card-block">{% trans "Upcoming Trials" %}</h4>
 				</div>
-				<br>
-
-				<div class="row justify-content-center">
-					<a href="#" style="font-size: 20px; color: black;"><i class="fas fa-caret-left"></i></a>
-					<a href="javascript:void(0)">
-						<p class="pag-month" style="font-size: 18px; color: black; margin-left:10px; margin-right:10px;"> Nisan 2019 </p>
-					</a>
-					<a href="#" style="font-size: 20px; color:black"><i class="fas fa-caret-right"></i></a>
-				</div>
-
 
 				{% for trial in upcoming_trials|slice:":4" %}
 				<div style="margin-top: 20px;">
