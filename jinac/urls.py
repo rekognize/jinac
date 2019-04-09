@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from django.views.static import serve
 from django.conf.urls.static import static
 from jinac.views import IndexView, set_language
 from jinac.cases.views import CaseListView, CaseDetailView, TrialListView, TrialDetailView

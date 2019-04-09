@@ -20,7 +20,7 @@ class ArticleDetailView(DetailView):
 
 
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'articles/article_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -18,7 +18,7 @@ class IndexView(TemplateView):
             'cases': Case.objects.filter(publish=True),
             'carousel': Carousel.objects.filter(publish=True),
             'news': News.objects.filter(publish=True)[:3],
-            'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()),
+            'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
         })
         return context
 
