@@ -2,10 +2,6 @@
 {% load i18n staticfiles %}<!DOCTYPE html>
 
 
-{% block head %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-{% endblock %}
 
 
 {% block navbar %}{% endblock %}
@@ -15,7 +11,7 @@
 
 <div id="home-header">
 	{% get_current_language as LANGUAGE_CODE %}
-	<img src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 300px; height: 100px; display: block; margin-top: 2%; margin-left: auto; margin-right: auto;">
+	<img src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 300px; height: 100px; display: block; margin-top: 8%; margin-left: auto; margin-right: auto;">
 
 	<div class="col-lg-9 site-title-info " style="width:60%; display: block; margin-left:24%; margin-top:2%">
 		<span>
@@ -36,7 +32,7 @@
 <section id="cover" >
 	<div class="container">
 		<div class="row">
-			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
+			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light" style="">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -75,7 +71,7 @@
 	</div>
 </section>
 
-<div class="pull-right" style="margin-right: 10%; font-family: 'Raleway', sans-serif;">
+<div class="float-right" style="margin-right: 15%;font-family: 'Raleway', sans-serif;">
 
 	{% get_current_language as LANGUAGE_CODE %}
 	{% get_available_languages as LANGUAGES %}
