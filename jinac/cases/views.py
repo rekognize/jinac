@@ -24,7 +24,7 @@ class TrialListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.filter(publish=True)
+        return qs.filter(publish=True).order_by('-time_start')
 
 
 class TrialDetailView(DetailView):
