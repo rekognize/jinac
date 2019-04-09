@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" href="{% static "icon.png" %}">
+    <link rel="icon" href="{% static 'icon.png' %}">
 
     <title>{% block title %}{% trans "Press in Arrest" %}{% endblock %}</title>
 
@@ -61,19 +61,19 @@
                 <a class="nav-link" href="/">{% trans 'Homepage' %}{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item {% if request.path|slice:":5" == trial_list_url|slice:":5" %}active{% endif %}">
+              <li class="nav-item {% if request.path|slice:':5' == trial_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ trial_list_url }}">{% trans 'Trial Reports' %}{% if request.path|slice:":5" == trial_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item {% if request.path|slice:":5" == journalist_list_url|slice:":5" %}active{% endif %}">
+              <li class="nav-item {% if request.path|slice:':5' == journalist_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path|slice:":5" == journalist_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item {% if request.path|slice:":5" == article_list_url|slice:":5" %}active{% endif %}">
+              <li class="nav-item {% if request.path|slice:':5' == article_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ article_list_url }}">{% trans 'Analysis' %}{% if request.path|slice:":5" == article_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
-              <li class="nav-item {% if request.path|slice:":5" == about_url|slice:":5" %}active{% endif %}">
+              <li class="nav-item {% if request.path|slice:':5' == about_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ about_url }}">{% trans 'What do we do?' %}{% if request.path|slice:":5" == about_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
@@ -81,7 +81,7 @@
                 <div class="wrapper" >
                   <div class="icon-search-container" data-ic-class="search-trigger">
                     <span class="fa fa-search" ></span>
-                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="{% trans "Search" %}"/>
+                    <input type="text" class="search-input" data-ic-class="search-input" placeholder="{% trans 'Search' %}"/>
                     <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
           </div>
         </nav>
 
-        <div style="font-family: 'Raleway', sans-serif; font-size:14px; margin-left:90%">
+        <div style="font-family: 'Raleway', sans-serif; font-size:14px; margin-left:80%; margin-top:1rem">
 
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
@@ -118,11 +118,11 @@
 {% endblock %}
 
 
-<script src="{% static "js/wow.js" %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
 <script>
   new WOW().init();
 </script>
-<script src="{%  static "js/main.js" %}"></script>
+<script src="{%  static 'js/main.js' %}"></script>
 
   <script>
 

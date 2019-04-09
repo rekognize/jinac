@@ -21,13 +21,13 @@
         <div class="gazeteciler-top text-center">
 
           <div class="gazeteciler-content text-center">
-            <div class="row">
+            <div class="row" style="display: block;">
 
             {% for journalist in journalist_list %}
 
-              <div class="col-md-4">
+              <div class="col-lg-4">
                 <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-                 <div style="padding-top: 10px;">
+                 <div style="padding-top: 7%;">
                     <div class="card-header" style="background-color:white;">
                         <div>
                           <a href= "{{ journalist.get_absolute_url }}" style="color:black">

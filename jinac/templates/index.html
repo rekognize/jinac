@@ -11,9 +11,10 @@
 
 <div id="home-header">
 	{% get_current_language as LANGUAGE_CODE %}
-	<img src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 300px; height: 100px; display: block; margin-top: 8%; margin-left: auto; margin-right: auto;">
+	<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 20rem; height: 9rem; margin-top: 6rem; display: block;">
+	<br/>
 
-	<div class="col-lg-9 site-title-info " style="width:60%; display: block; margin-left:24%; margin-top:2%">
+	<div class="col-lg-9 site-title-info mx-auto" style="width:80%; display: block; margin-left:19%; margin-top:2%">
 		<span>
 			Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
 			Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
@@ -93,20 +94,20 @@
 <section>
 	<div class="container">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
+			<ol class="carousel-indicators">
 				{% for item in carousel %}
-                  <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
-                {% endfor %}
-            </ol>
-            <div class="carousel-inner">
+				<li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+				{% endfor %}
+			</ol>
+			<div class="carousel-inner">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
 					<img src="{{ item.image.url }}" width= "1100" height="500" class="d-block w-100">				
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ item.text }}</h5>
-                    </div>
+					<div class="carousel-caption d-none d-md-block">
+						<h5>{{ item.text }}</h5>
+					</div>
 				</div>
-                {% endfor %}
+				{% endfor %}
 			</div>
 
 			<a class="carousel-control-prev" data-target="#myCarousel" role="button" data-slide="prev">
@@ -153,14 +154,15 @@
 	</div>
 </section>
 
-<section id="yaklasandurusmalar" >
-	<div class="row">
-		<div class=" yaklasandurusmalar-top yaklasandurusmalar-content col-lg-4 card border-dark shadow bg-white rounded yaklasandurusmalarcard" style="margin-left:150px;">
+<section id="yaklasandurusmalar" style="height:unset">
+	<div class="row card-group justify-content-center">
+		
+		<div class="yaklasandurusmalar-top yaklasandurusmalar-content col-xs-5 card rounded yaklasandurusmalarcard justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px; margin-left:50px;">
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Announcements" %}</h4>
 			</div>
 			{% for item in news %}
-			<div style="margin-top: 20px;">
+			<div style="margin-top: 20px; margin-left:10px;">
 				<span class="card-text">
 					{{ item.title }}
 					{{ item.text }}
@@ -172,21 +174,21 @@
 			</div>
 			{% endfor %}
 		</div>
+		<br/>
+		<br/>
 
 
-		<div class= "text-center col-lg-4" style="margin-left: 100px;">
-			
+		<div class= "col-xs-5 justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px;margin-left:50px;">
 			<div class="card-header" style="background-color:white;">
-				<h4 class="card-title card-block">{% trans "Upcoming Trials" %}</h4>
+				<h4 class="card-title text-center card-block">{% trans "Upcoming Trials" %}</h4>
 			</div>
-
 			{% for trial in upcoming_trials|slice:":4" %}
 			<br/>
-			<div class="card-header" style="background-color: white;">
+			<div class="card-header border-dark shadow bg-white" style="background-color: white;">
 				<span class="card-text justify-content-center">
 					<!--a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"-->
-                        <h4 class="card-title">{{ trial.case.name }}</h4>
-                    <!--/a-->
+					<h4 class="card-title">{{ trial.case.name }}</h4>
+					<!--/a-->
 					<i class="far fa-calendar-alt"></i>
 					<span class="card-text align-middle">{{ trial.time_next|date }}</span>
 					<div>
@@ -246,14 +248,14 @@
 				</div>
 			</div>
 
-			<div class="col-lg-4">
-				<div class="card-body contact text-center h-100 white-text" style="margin-right:100px;">
+			<div class="col-xs-4">
+				<div class="card-body contact text-center white-text flex-nowrap" style="margin-right:10rem;">
 					<br/>
 					<br/>
 					<br/>
 
-					<h3 class="my-4">İletişim Bilgilerimiz:</h3>
-					<ul class="list-unstyled ml-4">
+					<h3>İletişim Bilgilerimiz:</h3>
+					<ul class="list-unstyled">
 						<li>
 							<p><i class="fas fa-envelope"></i> contact@example.com</p>
 
@@ -283,10 +285,10 @@
 
 	$(document).ready(function() {
 
-        $('#myCarousel').carousel();
+		$('#myCarousel').carousel();
 
-    });
+	});
 
-	</script>
+</script>
 
-	{% endblock %}
+{% endblock %}
