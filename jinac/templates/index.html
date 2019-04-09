@@ -97,20 +97,29 @@
 <section>
 	<div class="container">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
+            <ol class="carousel-indicators">
+				{% for item in carousel %}
+                  <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
 					<img src="{{ item.image.url }}" width= "1100" height="500" class="d-block w-100">				
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ item.text }}</h5>
+                    </div>
 				</div>
-				{% endfor %}
+                {% endfor %}
 			</div>
-			<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+
+			<a class="carousel-control-prev" data-target="#myCarousel" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
+				<span class="sr-only">{% trans "Previous" %}</span>
 			</a>
-			<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+			<a class="carousel-control-next" data-target="#myCarousel" role="button" data-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+				<span class="sr-only">{% trans "Next" %}</span>
 			</a>
 		</div>
 	</div>
@@ -127,7 +136,7 @@
 					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
 						<p style="margin-top: 10px; font-family: Lato;"><strong>390</strong></p>
 					</div>
-					<h4 style="margin-top:10px;"> YARGILANANLAR</h4>
+					<h4 style="margin-top:10px;">YARGILANANLAR</h4>
 				</div>
 
 				<div class="col-sm-4">
@@ -141,7 +150,7 @@
 					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s">
 						<p style="margin-top: 10px; font-family: Lato;"><strong>231</strong></p>
 					</div>
-					<h4 style="margin-top:10px;"> TUTUKSUZ YARGILANANLAR</h4>
+					<h4 style="margin-top:10px;">TUTUKSUZ YARGILANANLAR</h4>
 				</div>
 			</div>
 		</div>
@@ -276,9 +285,11 @@
 
 <script>
 
-	$(document).ready(function(){
+	$(document).ready(function() {
 
-		$('.carousel').carousel({});
+        $('#myCarousel').carousel();
+
+    });
 
 	</script>
 
