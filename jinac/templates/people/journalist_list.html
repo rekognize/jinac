@@ -23,11 +23,11 @@
 
         {% for journalist in journalist_list %}
 
-        <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard text-center">
+        <div class="card col-xs-3 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard text-center justify-content-md-start" style="margin-right: 5%">
             <div class="card-header pt-5" style="background-color:white;">
                 <div>
                     <a href= "{{ journalist.get_absolute_url }}" style="color:black">
-                        <img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/>
+                        <img class="gazetecigorseli mx-auto text-center d-blok justify-content-md-center" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/>
                     </a>
                 </div>
                 <div>

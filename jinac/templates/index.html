@@ -2,8 +2,6 @@
 {% load i18n staticfiles %}<!DOCTYPE html>
 
 
-
-
 {% block navbar %}{% endblock %}
 
 
@@ -26,15 +24,12 @@
 </div>
 
 <br/>
-<br/>
-<br/>
-<br/>
 
 <section id="cover" >
 	<div class="container">
 		<div class="row">
-			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light" style="">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light" style="position: relative;">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
@@ -283,6 +278,7 @@
 
 <script>
 
+
 	$(document).ready(function() {
 
 		$('#myCarousel').carousel();
@@ -290,5 +286,6 @@
 	});
 
 </script>
+
 
 {% endblock %}
