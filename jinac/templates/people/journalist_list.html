@@ -24,16 +24,15 @@
 
             {% for journalist in journalist_list %}
 
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-                 <div style="padding-top: 7%;">
-                    <div class="card-header" style="background-color:white;">
+                <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+                    <div class="card-header pt-5" style="background-color:white;">
                         <div>
                           <a href= "{{ journalist.get_absolute_url }}" style="color:black">
-                            <img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/> </a>
-                          </div>
-                          <div>
-                       <h4 class="card-title card-block"> {{ journalist.name }}</h4>
+                            <img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/>
+                          </a>
+                        </div>
+                        <div>
+                          <h4 class="card-title card-block">{{ journalist.name }}</h4>
                         </div>
                     </div>
                     <div>
@@ -41,14 +40,10 @@
                       <span>
                           {% if journalist.short_bio %}
                               {{ journalist.short_bio }}
-                          {% else %}
-                              <span class="text-muted"></span>
                           {% endif %}
                       </span>
                     </div>
-                 </div>
                 </div>
-              </div>
 
             {% endfor %}
 
