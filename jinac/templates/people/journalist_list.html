@@ -8,7 +8,7 @@
 
     <br/>
 
-    <div class="row">
+    <div class="row text-center">
         <div class="gazeteciler-top text-center">
             <a href="" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
             {% for c in "ABCÇDEFGHIİJKLMNOÖPRSTUÜVYZ" %}
@@ -23,7 +23,7 @@
 
         {% for journalist in journalist_list %}
 
-        <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 mx-2 bg-white rounded gazetecicard">
+        <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard text-center">
             <div class="card-header pt-5" style="background-color:white;">
                 <div>
                     <a href= "{{ journalist.get_absolute_url }}" style="color:black">
