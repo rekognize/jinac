@@ -6,11 +6,15 @@
 
 <div class="container">
 
-      <div class="gazeteciler-top text-center">
+    <br/>
 
-        <br/>
+    <div class="gazeteciler-top text-center">
 
         <a href="" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
+
+    </div>
+
+    <div class="row">
 
         {% for c in "ABCÇDEFGHIİJKLMNOÖPRSTUÜVYZ" %}
             <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
@@ -18,35 +22,32 @@
 
         <br/><br/>
 
-        <div class="gazeteciler-top text-center">
+        {% for journalist in journalist_list %}
 
-          <div class="gazeteciler-content text-center">
-
-            {% for journalist in journalist_list %}
-
-                <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
-                    <div class="card-header pt-5" style="background-color:white;">
-                        <div>
-                          <a href= "{{ journalist.get_absolute_url }}" style="color:black">
-                            <img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/>
-                          </a>
-                        </div>
-                        <div>
-                          <h4 class="card-title card-block">{{ journalist.name }}</h4>
-                        </div>
-                    </div>
-                    <div>
-                      <br/>
-                      <span>
-                          {% if journalist.short_bio %}
-                              {{ journalist.short_bio }}
-                          {% endif %}
-                      </span>
-                    </div>
+        <div class="card col-lg-4 col-md-6 col-sm-12 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard">
+            <div class="card-header pt-5" style="background-color:white;">
+                <div>
+                    <a href= "{{ journalist.get_absolute_url }}" style="color:black">
+                        <img class="gazetecigorseli" src="{% if journalist.photo %}{{ journalist.photo.url }}{% else %}http://placehold.it/160x160{% endif %}" style="object-fit: cover; width: 200px; height: 200px; border-radius: 100px;"/>
+                    </a>
                 </div>
+                <div>
+                    <h4 class="card-title card-block">{{ journalist.name }}</h4>
+                </div>
+            </div>
+            <div>
+                <br/>
+                <span>
+                    {% if journalist.short_bio %}
+                    {{ journalist.short_bio }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
 
-            {% endfor %}
+        {% endfor %}
 
+    </div>
 
 </div>
 
