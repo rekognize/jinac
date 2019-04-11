@@ -21,7 +21,7 @@
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle">
-                {{ journalist.bio }}
+                {{ journalist.bio|linebreaks }}
             </p>
             {% endif %}
           </div>
