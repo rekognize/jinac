@@ -17,11 +17,11 @@
         </div>
 
         <div class="col-md-8 px-3">
-          <div class="card-block">
+          <div class="card-block" style="text-align:justify;padding-right: 5px;  ">
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle">
-                {{ journalist.bio|linebreaks }}
+                {{ journalist.bio }}
             </p>
             {% endif %}
           </div>

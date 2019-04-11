@@ -19,13 +19,13 @@
           {%  endif %}
 
           <div class="col-md-12 px-3" align="center">
-            <div class="card-block">
+            <div class="card-block" >
               <h2 class="card-title">{{ article.title }}</h2>
 
               {% if article.subtitle %}
               <h3 class="card-title">{{ article.subtitle }}</h3>
               {% endif %}
-              <p class="card-text analiz-detay-text">
+              <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
                   {{ article.summary|linebreaks }}
               </p>
             </div>
@@ -45,7 +45,7 @@
               </div>
               {%  endif %}
               {% if section.text %}
-              <p class="card-text analiz-detay-text">
+              <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
                   {{ section.text|linebreaks }}
               </p>
               {% endif %}
