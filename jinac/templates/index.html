@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles %}<!DOCTYPE html>
 
-
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
 {% block navbar %}{% endblock %}
 
 
@@ -27,14 +27,14 @@
 
 <section id="cover" >
 	<div class="container">
-		<div class="row">
-			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light" style="position: relative;">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<div class="row" >
+			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light " style="position: relative;">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-					<ul class="navbar-nav">
+					<ul class="navbar-nav mr-auto">
 
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
@@ -53,7 +53,7 @@
 						</li>
 						<li>
 							<div class="wrapper" >
-								<div class="icon-search-container" data-ic-class="search-trigger">
+								<div class="icon-search-container" data-ic-class="search-trigger" style="padding-right:10rem">
 									<span class="fa fa-search" ></span>
 									<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
 									<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
@@ -98,7 +98,7 @@
 				<img src="{{ carousel.0.image.url }}" width= "1100" height="500" class="d-block w-100">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
-					<div class="carousel-caption d-none d-md-block">
+					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black ">
 						<b>{{ item.text }}</b>
 					</div>
 				</div>
