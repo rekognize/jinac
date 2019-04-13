@@ -72,7 +72,7 @@ class Journalist(Person):
     class Meta:
         verbose_name = _('journalist')
         verbose_name_plural = _('journalists')
-        ordering = ('name',)
+        ordering = ('slug', 'name',)
 
 
 class JournalistStatus(models.Model):
