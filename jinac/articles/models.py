@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as _p
 from django.conf import settings
+from tinymce.models import HTMLField
 
 
 class Article(models.Model):
@@ -11,7 +12,7 @@ class Article(models.Model):
     slug = models.SlugField(unique=True)
     subtitle = models.CharField(_('subtitle'), max_length=200, blank=True, null=True)
     image = models.ImageField(_('image'), upload_to='articles/', blank=True, null=True)
-    summary = models.TextField(_('summary'))
+    summary = HTMLField(_('summary'))
     lang = models.CharField(_('language'), max_length=5, choices=settings.LANGUAGES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
@@ -41,7 +42,7 @@ class Article(models.Model):
 class Section(models.Model):
     article = models.ForeignKey(Article, verbose_name=_('article'), on_delete=models.CASCADE)
     title = models.CharField(_('title'), max_length=200, blank=True, null=True)
-    text = models.TextField(_('text'), blank=True, null=True)
+    text = HTMLField(_('text'), blank=True, null=True)
     image = models.ImageField(_('image'), upload_to='articles/', blank=True, null=True)
 
     def __str__(self):

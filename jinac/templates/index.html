@@ -159,7 +159,7 @@
 			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
 				<span class="card-text">
 					{{ item.title }}
-					{{ item.text }}
+					{{ item.text|safe }}
 					{% if item.link %}
 					<a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
 					{% endif %}

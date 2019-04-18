@@ -38,7 +38,7 @@
                 <br/>
                 <span>
                     {% if journalist.short_bio %}
-                    {{ journalist.short_bio }}
+                    {{ journalist.short_bio|safe|linebreaks }}
                     {% endif %}
                 </span>
             </div>

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     #'django_extensions',
     'translations',
+    'tinymce',
 
     'jinac.people.apps.PeopleConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
