@@ -10,7 +10,7 @@
 
     <div class="row justify-content-md-center">
         <div class="gazeteciler-top text-center">
-            <a href="" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
+            <a href="?f=" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
             {% for c in "ABCÇDEFGHIİJKLMNOÖPRSTUÜVYZ" %}
                 <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
             {% endfor %}
