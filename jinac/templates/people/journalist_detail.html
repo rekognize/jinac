@@ -21,7 +21,7 @@
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle">
-                {{ journalist.bio }}
+                {{ journalist.bio|safe }}
             </p>
             {% endif %}
           </div>
@@ -65,7 +65,7 @@
 
               {% for note in notes %}
               <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                {{ note.note|safe|linebreaks }}
+                {{ note.note|safe }}
               </div>
               {% endfor %}
 
@@ -112,7 +112,7 @@
                     <!--/a-->
 
                     <p>
-                        {{ trial.summary|safe|linebreaks }}
+                        {{ trial.summary|safe }}
                     </p>
                 {% endfor %}
 
