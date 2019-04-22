@@ -22,7 +22,7 @@
                 <div class="card border-dark col-md-12 shadow p-3 mb-5 bg-white rounded justify-content-center">
                     <div class="col-md-12 px-3">
                         <div class="container flex-container">
-                            <h4 class="card-title">
+                            <h4 class="card-title durusma-tab" style="font-family: 'Raleway Black', sans-serif;">
                                 <b>
                                 {{ trial.case.name }}
                                 {% blocktrans with trial.session_no as session_no %}{{ session_no }}. Standing{% endblocktrans %}
@@ -54,7 +54,7 @@
                                 <div id="kunye-{{ trial.id }}" class="tab-pane fade">
                                     <p>
                                     <br/>
-                                    {{ trial.summary|safe }}
+                                    {{ trial.summary|linebreaks }}
                                     {% if trial.time_next %}
                                     <br/><br/>
                                     <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
@@ -66,7 +66,7 @@
                                     <div id="note{{ note.id }}" class="tab-pane fade">
                                         <p>
                                             <br/>
-                                            {{ note|safe }}
+                                            {{ note|linebreaks }}
                                         </p>
                                     </div>
                                 {% endfor %}

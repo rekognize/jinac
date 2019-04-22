@@ -54,7 +54,7 @@ h2{
 }
 
 .item-circle{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway Black', sans-serif;
 }
 
 
@@ -315,6 +315,9 @@ h2{
   margin-left: 100px;
 }
 
+.durusma-tab{
+  font-family: 'Raleway Black', sans-serif;
+}
 
 
 /* Search button */
