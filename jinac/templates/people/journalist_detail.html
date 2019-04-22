@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles html_extras %}
 
 
 {% block title %}{{ journalist.name }} - {{ block.super }}{% endblock %}
@@ -21,7 +21,7 @@
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle">
-                {{ journalist.bio|safe }}
+                {{ journalist.bio|safe|remove_p }}
             </p>
             {% endif %}
           </div>
@@ -65,7 +65,7 @@
 
               {% for note in notes %}
               <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                {{ note.note|safe }}
+                {{ note.note|safe|remove_p }}
               </div>
               {% endfor %}
 
@@ -112,7 +112,7 @@
                     <!--/a-->
 
                     <p>
-                        {{ trial.summary|safe }}
+                        {{ trial.summary|safe|remove_p }}
                     </p>
                 {% endfor %}
 
