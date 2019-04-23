@@ -11,6 +11,7 @@ class JurisdictionAdmin(admin.ModelAdmin):
 @admin.register(CaseNote)
 class CaseNoteAdmin(admin.ModelAdmin):
     list_display = ['journalist', 'case', 'type', 'time']
+    list_editable = ['case', 'type']
 
 
 class CaseInline(admin.TabularInline):
