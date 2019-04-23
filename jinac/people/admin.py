@@ -1,13 +1,16 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
-from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff,\
-    JournalistNote, JournalistNoteType, Complainant
+from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
 
 
-@admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType, Complainant, CaseNote)
+@admin.register(Attorney, Prosecutor, Judge, Plaintiff, Complainant)
 class JurisdictionAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(CaseNote)
+class CaseNoteAdmin(admin.ModelAdmin):
+    list_display = ['journalist', 'case', 'type', 'time']
 
 
 class CaseInline(admin.TabularInline):
@@ -17,11 +20,6 @@ class CaseInline(admin.TabularInline):
 
 class StatusInline(admin.TabularInline):
     model = JournalistStatus
-    extra = 1
-
-
-class JournalistNoteInline(admin.TabularInline):
-    model = JournalistNote
     extra = 1
 
 
