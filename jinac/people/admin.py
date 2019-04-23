@@ -12,6 +12,7 @@ class JurisdictionAdmin(admin.ModelAdmin):
 class CaseNoteAdmin(admin.ModelAdmin):
     list_display = ['journalist', 'case', 'type', 'time']
     list_editable = ['case', 'type']
+    search_fields = ['case__name', 'journalist__name']
 
 
 class CaseInline(admin.TabularInline):
