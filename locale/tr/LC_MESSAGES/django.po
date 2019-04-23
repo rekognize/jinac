@@ -1575,7 +1575,7 @@ msgstr "duruşma raporu"
 
 #: jinac/cases/models.py:243
 msgid "trial briefs"
-msgstr "duruşma raporları"
+msgstr "dava raporları"
 
 #: jinac/cases/models.py:254
 msgid "session"
@@ -1952,7 +1952,7 @@ msgstr "Bu davada yargılanan diğer gazeteciler"
 
 #: jinac/templates/people/journalist_detail.html:73
 msgid "Trial Briefs"
-msgstr "Duruşma Raporları"
+msgstr "Dava Raporları"
 
 #: jinac/templates/people/journalist_detail.html:105
 msgid "Case status"
