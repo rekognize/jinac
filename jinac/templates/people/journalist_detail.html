@@ -74,14 +74,14 @@
               {% endfor %}
               {% if case.trial_set.all %}
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-trials" role="tab">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
                         {% trans "Trial Briefs" %}
                     </a>
                 </li>
               {% endif %}
               {% if case.documents or case.trial_documents %}
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-docs" role="tab">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-docs{{ case.id }}" role="tab">
                         {% trans "Documents" %}
                     </a>
                 </li>
@@ -99,7 +99,7 @@
                   {% endfor %}
 
                   {% if case.trial_set.all %}
-                  <div class="tab-pane" id="tab-trials">
+                  <div class="tab-pane" id="tab-trials{{ case.id }}">
                     {% for trial in case.trial_set.all %}
                         <!--a href="{{ trial.get_absolute_url }}"-->
                             <h5>
@@ -117,7 +117,7 @@
                   {% endif %}
 
                   {% if case.documents or case.trial_documents %}
-                  <div class="tab-pane" id="tab-docs">
+                  <div class="tab-pane" id="tab-docs{{ case.id }}">
                       {% for doc in case.documents %}
                           <p>
                               {{ doc.case }}
