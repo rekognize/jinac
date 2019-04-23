@@ -239,8 +239,8 @@ class CaseNote(Translatable):
         return self.type.type
 
     class Meta:
-        verbose_name = _('journalist note')
-        verbose_name_plural = _('journalist notes')
+        verbose_name = _('trial brief')
+        verbose_name_plural = _('trial briefs')
         ordering = ('case', 'type')
 
     class TranslatableMeta:
