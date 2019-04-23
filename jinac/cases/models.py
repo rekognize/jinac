@@ -236,7 +236,7 @@ class CaseNote(Translatable):
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.type.type
+        return self.type and self.type.type
 
     class Meta:
         verbose_name = _('trial brief')
