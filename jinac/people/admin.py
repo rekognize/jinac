@@ -5,7 +5,7 @@ from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecut
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
 
 
-@admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType, Complainant)
+@admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType, Complainant, CaseNote)
 class JurisdictionAdmin(admin.ModelAdmin):
     pass
 
