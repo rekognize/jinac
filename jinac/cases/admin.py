@@ -27,19 +27,15 @@ class CaseDecisionInline(admin.TabularInline):
     extra = 1
 
 
-class CaseNoteInline(admin.TabularInline):
-    model = CaseNote
-    extra = 1
-
-
 class CaseDocumentInline(admin.TabularInline):
     model = CaseDocument
     extra = 1
 
 
-class CaseJournalistInline(admin.TabularInline):
+class CaseJournalistInline(admin.StackedInline):
     model = CaseJournalist
     extra = 1
+    filter_horizontal = ['attorneys']
 
 
 class CaseStatusInline(admin.TabularInline):
@@ -53,7 +49,6 @@ class CaseAdmin(admin.ModelAdmin):
         CaseJournalistInline,
         CaseIndictmentInline,
         CaseDocumentInline,
-        CaseNoteInline,
         CaseDecisionInline,
         CaseStatusInline,
     ]

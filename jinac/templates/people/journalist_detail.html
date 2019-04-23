@@ -29,144 +29,153 @@
 
       </div>
 
-      {% with journalist.journalistnote_set.all as notes %}
       {% with journalist.casejournalist_set.all as journalist_cases %}
       {% with journalist.get_related_docs as docs %}
+      {% with journalist.journalistnote_set.all as notes %}
 
-      <div class="col col-md-12 card-nav-tab">
+      {% for journalist_case in journalist_cases %}
 
-        <ul class="nav nav-tabs">
-          {% for note in notes %}
-            <li class="nav-item">
-                <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
-                    {{ note.type }}
-                </a>
-            </li>
-          {% endfor %}
-          {% if journalist_cases %}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#tab-cases" role="tab">
-                    {% trans "Trial Details" %}
-                </a>
-            </li>
-          {% endif %}
-          {% if docs %}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#tab-docs" role="tab">
-                    {% trans "Documents" %}
-                </a>
-            </li>
-          {% endif %}
-        </ul>
+          {% with journalist_case.case as case %}
 
-        <div class="card card-tabs-1">
-          <div class="card-block">
-            <div class="tab-content">
+          <!--a href="{{ case.get_absolute_url }}"-->
+              <h5 class="mt-4">{{ case.name }}</h5>
+          <!--/a-->
 
+          {% with case.casejournalist_set.all as case_journalists %}
+              {% if case_journalists|length > 1 %}
+              <p>
+                  {% trans "Other journalists trialed in this case" %}:
+                  {% for case_journalist in case_journalists %}
+                      {% with case_journalist.journalist as other_journalist %}
+                          {% if journalist != other_journalist %}
+                              <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
+                          {% endif %}
+                      {% endwith %}
+                  {% endfor %}
+              </p>
+              {% endif %}
+          {% endwith %}
+
+
+          <div class="col col-md-12 card-nav-tab">
+
+            <ul class="nav nav-tabs">
               {% for note in notes %}
-              <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                {{ note.note|remove_p|safe }}
-              </div>
+                <li class="nav-item">
+                    <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
+                        {{ note.type }}
+                    </a>
+                </li>
               {% endfor %}
-
               {% if journalist_cases %}
-              <div class="tab-pane" id="tab-cases">
-              {% for journalist_case in journalist_cases %}
-
-                {% with journalist_case.case as case %}
-
-                <!--a href="{{ case.get_absolute_url }}"-->
-                    <h5 class="mt-4">{{ case.name }}</h5>
-                <!--/a-->
-
-                {% with case.casestatus_set.all as statuses %}
-                    {% if statuses %}
-                    <p>
-                        {% trans "Case status" %}: {{ statuses.0.get_status_display }}
-                    </p>
-                    {% endif %}
-                {% endwith %}
-
-                {% with case.casejournalist_set.all as case_journalists %}
-                    {% if case_journalists|length > 1 %}
-                    <p>
-                        {% trans "Other journalists trialed in this case" %}:
-                        {% for case_journalist in case_journalists %}
-                            {% with case_journalist.journalist as other_journalist %}
-                                {% if journalist != other_journalist %}
-                                    <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
-                                {% endif %}
-                            {% endwith %}
-                        {% endfor %}
-                    </p>
-                    {% endif %}
-                {% endwith %}
-
-                {% for trial in case.trial_set.all %}
-                    <!--a href="{{ trial.get_absolute_url }}"-->
-                        <h5>
-                            {{ trial.session_no }}. {% trans "Standing" %}
-                            -
-                            {{ trial.time_start|date }}
-                        </h5>
-                    <!--/a-->
-
-                    <p>
-                        {{ trial.summary|remove_p|safe }}
-                    </p>
-                {% endfor %}
-
-                {% endwith %}
-
-              {% endfor %}
-              </div>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-cases" role="tab">
+                        {% trans "Trial Briefs" %}
+                    </a>
+                </li>
               {% endif %}
-
               {% if docs %}
-              <div class="tab-pane" id="tab-docs">
-                  {% for doc in docs.journo_case_docs %}
-                      <p>
-                          {{ doc.case }}
-                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                      </p>
-                  {% endfor %}
-
-                  {% for doc in docs.journo_trial_docs %}
-                      <p>
-                          {{ doc.trial.case }}
-                          {{ doc.trial.session_no }}. {% trans "Standing" %}
-                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                      </p>
-                  {% endfor %}
-
-                  {% for doc in docs.case_docs %}
-                      <p>
-                          {{ doc.case }}
-                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                      </p>
-                  {% endfor %}
-
-                  {% for doc in docs.trial_docs %}
-                      <p>
-                          {{ doc.trial.case }}
-                          {{ doc.trial.session_no }}. {% trans "Standing" %}
-                          {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                          <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                      </p>
-                  {% endfor %}
-              </div>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-docs" role="tab">
+                        {% trans "Documents" %}
+                    </a>
+                </li>
               {% endif %}
+            </ul>
+
+            <div class="card card-tabs-1">
+              <div class="card-block">
+                <div class="tab-content">
+
+                  {% for note in notes %}
+                  <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
+                    {{ note.note|remove_p|safe }}
+                  </div>
+                  {% endfor %}
+
+                  {% if journalist_cases %}
+                  <div class="tab-pane" id="tab-cases">
+                  {% for journalist_case in journalist_cases %}
+
+                    {% with journalist_case.case as case %}
+
+                    {% with case.casestatus_set.all as statuses %}
+                        {% if statuses %}
+                        <p>
+                            {% trans "Case status" %}: {{ statuses.0.get_status_display }}
+                        </p>
+                        {% endif %}
+                    {% endwith %}
+
+                    {% for trial in case.trial_set.all %}
+                        <!--a href="{{ trial.get_absolute_url }}"-->
+                            <h5>
+                                {{ trial.session_no }}. {% trans "Standing" %}
+                                -
+                                {{ trial.time_start|date }}
+                            </h5>
+                        <!--/a-->
+
+                        <p>
+                            {{ trial.summary|remove_p|safe }}
+                        </p>
+                    {% endfor %}
+
+                    {% endwith %}
+
+                  {% endfor %}
+                  </div>
+                  {% endif %}
+
+                  {% if docs %}
+                  <div class="tab-pane" id="tab-docs">
+                      {% for doc in docs.journo_case_docs %}
+                          <p>
+                              {{ doc.case }}
+                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                          </p>
+                      {% endfor %}
+
+                      {% for doc in docs.journo_trial_docs %}
+                          <p>
+                              {{ doc.trial.case }}
+                              {{ doc.trial.session_no }}. {% trans "Standing" %}
+                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                          </p>
+                      {% endfor %}
+
+                      {% for doc in docs.case_docs %}
+                          <p>
+                              {{ doc.case }}
+                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                          </p>
+                      {% endfor %}
+
+                      {% for doc in docs.trial_docs %}
+                          <p>
+                              {{ doc.trial.case }}
+                              {{ doc.trial.session_no }}. {% trans "Standing" %}
+                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
+                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                          </p>
+                      {% endfor %}
+                  </div>
+                  {% endif %}
 
 
 
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-      </div>
+          </div>
+
+          {% endwith %}
+
+      {% endfor %}
 
       {% endwith %}
       {% endwith %}

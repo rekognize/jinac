@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff,\
     JournalistNote, JournalistNoteType, Complainant
-from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment
+from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
 
 
 @admin.register(Attorney, Prosecutor, Judge, Plaintiff, JournalistNote, JournalistNoteType, Complainant)
@@ -25,6 +25,11 @@ class JournalistNoteInline(admin.TabularInline):
     extra = 1
 
 
+class CaseNoteInline(admin.StackedInline):
+    model = CaseNote
+    extra = 1
+
+
 class CaseIndictmentInline(admin.TabularInline):
     model = CaseIndictment
     extra = 1
@@ -44,7 +49,7 @@ class JournalistAdmin(admin.ModelAdmin):
         StatusInline,
         CaseInline,
         CaseIndictmentInline,
-        JournalistNoteInline,
+        CaseNoteInline,
         CaseDocumentInline,
     ]
 

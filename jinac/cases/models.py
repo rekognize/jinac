@@ -114,6 +114,9 @@ class CaseJournalist(models.Model):
     )
     attorneys = models.ManyToManyField(Attorney, verbose_name=_('attorney'), blank=True)
 
+    def __str__(self):
+        return f"{self.case.__str__()} - {self.journalist.__str__()}"
+
     class Meta:
         verbose_name = _('case - journalist relation')
         verbose_name_plural = _('case - journalist relations')
@@ -131,6 +134,9 @@ class CaseDecision(models.Model):
     punishment_month = models.PositiveSmallIntegerField(_('month'), blank=True, null=True)
     punishment_day = models.PositiveSmallIntegerField(_('day'), blank=True, null=True)
     punishment_fine = models.CharField(_('fine'), max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.case.__str__()}'
 
     class Meta:
         verbose_name = _('case - decision relation')
@@ -218,7 +224,10 @@ class CaseNoteType(models.Model):
 
 
 class CaseNote(Translatable):
-    case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
+    journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'),
+                                   blank=True, null=True, on_delete=models.SET_NULL)
+    case = models.ForeignKey(Case, verbose_name=_('case'),
+                             blank=True, null=True, on_delete=models.SET_NULL)
     type = models.ForeignKey(
         CaseNoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
@@ -227,11 +236,11 @@ class CaseNote(Translatable):
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.note
+        return self.type.type
 
     class Meta:
-        verbose_name = _('case note')
-        verbose_name_plural = _('case notes')
+        verbose_name = _('journalist note')
+        verbose_name_plural = _('journalist notes')
         ordering = ('case', 'type')
 
     class TranslatableMeta:
