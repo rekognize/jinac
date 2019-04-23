@@ -37,6 +37,16 @@
               <h5 class="mt-4">{{ case.name }}</h5>
           <!--/a-->
 
+          {% with case.casestatus_set.all as statuses %}
+              {% if statuses %}
+              <p>
+                  {% trans "Case status" %}: {{ statuses.0.get_status_display }}
+              </p>
+              {% endif %}
+          {% endwith %}
+
+          {{ case.summary|safe }}
+
           {% with case.casejournalist_set.all as case_journalists %}
               {% if case_journalists|length > 1 %}
               <p>
@@ -51,7 +61,6 @@
               </p>
               {% endif %}
           {% endwith %}
-
 
           <div class="col col-md-12 card-nav-tab">
 
@@ -88,17 +97,6 @@
                   {% endfor %}
 
                   <div class="tab-pane" id="tab-cases">
-                  {% for journalist_case in journalist_cases %}
-
-                    {% with journalist_case.case as case %}
-
-                    {% with case.casestatus_set.all as statuses %}
-                        {% if statuses %}
-                        <p>
-                            {% trans "Case status" %}: {{ statuses.0.get_status_display }}
-                        </p>
-                        {% endif %}
-                    {% endwith %}
 
                     {% for trial in case.trial_set.all %}
                         <!--a href="{{ trial.get_absolute_url }}"-->
@@ -114,9 +112,6 @@
                         </p>
                     {% endfor %}
 
-                    {% endwith %}
-
-                  {% endfor %}
                   </div>
 
                   {% if case.documents or case.trial_documents %}
