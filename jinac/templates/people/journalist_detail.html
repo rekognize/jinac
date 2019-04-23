@@ -29,13 +29,9 @@
 
       </div>
 
-      {% with journalist.casejournalist_set.all as journalist_cases %}
-      {% with journalist.get_related_docs as docs %}
-      {% with journalist.journalistnote_set.all as notes %}
+      {% with journalist.get_case_context as cases %}
 
-      {% for journalist_case in journalist_cases %}
-
-          {% with journalist_case.case as case %}
+      {% for case in cases %}
 
           <!--a href="{{ case.get_absolute_url }}"-->
               <h5 class="mt-4">{{ case.name }}</h5>
@@ -60,21 +56,19 @@
           <div class="col col-md-12 card-nav-tab">
 
             <ul class="nav nav-tabs">
-              {% for note in notes %}
+              {% for note in case.notes %}
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
                         {{ note.type }}
                     </a>
                 </li>
               {% endfor %}
-              {% if journalist_cases %}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" data-target="#tab-cases" role="tab">
                         {% trans "Trial Briefs" %}
                     </a>
                 </li>
-              {% endif %}
-              {% if docs %}
+              {% if case.documents or case.trial_documents %}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" data-target="#tab-docs" role="tab">
                         {% trans "Documents" %}
@@ -87,13 +81,12 @@
               <div class="card-block">
                 <div class="tab-content">
 
-                  {% for note in notes %}
+                  {% for note in case.notes %}
                   <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
                     {{ note.note|remove_p|safe }}
                   </div>
                   {% endfor %}
 
-                  {% if journalist_cases %}
                   <div class="tab-pane" id="tab-cases">
                   {% for journalist_case in journalist_cases %}
 
@@ -125,41 +118,29 @@
 
                   {% endfor %}
                   </div>
-                  {% endif %}
 
-                  {% if docs %}
+                  {% if case.documents or case.trial_documents %}
                   <div class="tab-pane" id="tab-docs">
-                      {% for doc in docs.journo_case_docs %}
+                      {% for doc in case.documents %}
                           <p>
                               {{ doc.case }}
-                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% if doc.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% else %}
+                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% endif %}
                           </p>
                       {% endfor %}
 
-                      {% for doc in docs.journo_trial_docs %}
+                      {% for doc in case.trial_documents %}
                           <p>
                               {{ doc.trial.case }}
                               {{ doc.trial.session_no }}. {% trans "Standing" %}
-                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                          </p>
-                      {% endfor %}
-
-                      {% for doc in docs.case_docs %}
-                          <p>
-                              {{ doc.case }}
-                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
-                          </p>
-                      {% endfor %}
-
-                      {% for doc in docs.trial_docs %}
-                          <p>
-                              {{ doc.trial.case }}
-                              {{ doc.trial.session_no }}. {% trans "Standing" %}
-                              {% if doc.type %}(<a href="{{ doc.file.url }}">{{ doc.type }}</a>){% endif %}
-                              <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% if doc.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% else %}
+                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% endif %}
                           </p>
                       {% endfor %}
                   </div>
@@ -173,12 +154,8 @@
 
           </div>
 
-          {% endwith %}
-
       {% endfor %}
 
-      {% endwith %}
-      {% endwith %}
       {% endwith %}
 
     </div>

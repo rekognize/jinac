@@ -70,6 +70,17 @@ class Journalist(Person):
             documents['trial_docs'] = trial_docs
         return documents
 
+    def get_case_context(self):
+        cases = []
+        for case in self.case_set.all():
+            case.notes = self.casenote_set.filter(case=case)
+            case_docs = self.casedocument_set.filter(publish=True).filter(case=case)
+            case.documents = case_docs.filter(journalist__isnull=True) | case_docs.filter(journalist=self)
+            trial_docs = self.trialdocument_set.filter(publish=True).filter(trial__case=case)
+            case.trial_documents = trial_docs.filter(journalist__isnull=True) | trial_docs.filter(journalist=self)
+            cases.append(case)
+        return cases
+
     class Meta:
         verbose_name = _('journalist')
         verbose_name_plural = _('journalists')

@@ -241,7 +241,7 @@ class CaseNote(Translatable):
     class Meta:
         verbose_name = _('trial brief')
         verbose_name_plural = _('trial briefs')
-        ordering = ('case', 'type')
+        ordering = ('case__name', 'type')
 
     class TranslatableMeta:
         fields = ['note']
