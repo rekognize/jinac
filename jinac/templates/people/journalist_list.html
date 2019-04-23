@@ -23,7 +23,7 @@
 
         {% for journalist in journalist_list %}
 
-        <div class="card col-xs-3 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard text-center justify-content-md-start" style="margin-right: 5%; height:580px !important">
+        <div class="card col-xs-3 border-dark shadow p-3 mb-5 bg-white rounded gazetecicard text-center justify-content-md-start" style="margin-right: 5%; height:600px !important">
             <div class="card-header pt-5" style="background-color:white;">
                 <div>
                     <a href= "{{ journalist.get_absolute_url }}" style="color:black">
@@ -34,7 +34,7 @@
                     <h4 class="card-title card-block">{{ journalist.name }}</h4>
                 </div>
             </div>
-            <div style="text-align:justify;padding-right: 5px;  ">
+            <div style="text-align:justify;padding-right: 5px; ">
                 <br/>
                 <span>
                     {% if journalist.short_bio %}
