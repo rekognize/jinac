@@ -28,7 +28,9 @@ urlpatterns = [
 
     path('lang/', set_language, name='set_lang'),
 
-    path(r'tinymce/', include('tinymce.urls')),
+    #path(r'tinymce/', include('tinymce.urls')),
+    path('martor/', include('martor.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

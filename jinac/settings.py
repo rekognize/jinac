@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 
     #'django_extensions',
     'translations',
-    'tinymce',
+    #'tinymce',
+    'martor',
 
     'jinac.people.apps.PeopleConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
@@ -151,6 +152,12 @@ LOCALE_PATHS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 #MEDIA_URL = 'http://pressinarrest.s3.amazonaws.com/'
+
+
+MARTOR_ENABLE_CONFIGS = {
+    'jquery': 'true',    # to include/revoke jquery (require for admin default django)
+    'living': 'false',   # to enable/disable live updates in preview
+}
 
 
 try:

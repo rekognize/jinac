@@ -3,7 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from django.contrib.auth.models import User
 from translations.models import Translatable
-from tinymce.models import HTMLField
+#from tinymce.models import HTMLField
+from martor.models import MartorField
 from jinac.jurisdiction.models import Court
 from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff, Complainant
 from jinac.institutions.models import Institution
@@ -36,7 +37,7 @@ class Case(models.Model):
     complainant = models.ManyToManyField(Complainant, verbose_name=_('complainant'), blank=True)
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
-    summary = HTMLField(_('case summary'), blank=True, null=True)
+    summary = MartorField(_('case summary'), blank=True, null=True)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
 
@@ -76,7 +77,7 @@ class CaseStatus(models.Model):
             (2, _('denied')),
         ), blank=True, null=True
     )
-    details = HTMLField(_('details'), blank=True, null=True)
+    details = MartorField(_('details'), blank=True, null=True)
 
     def __str__(self):
         return self.get_status_display()
@@ -232,7 +233,7 @@ class CaseNote(Translatable):
         CaseNoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
     )
-    note = HTMLField(_('note'))
+    note = MartorField(_('note'))
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -256,7 +257,7 @@ class Trial(models.Model):
     time_start = models.DateTimeField(_('start time'), blank=True, null=True)
     time_next = models.DateTimeField(_('next trial time'), blank=True, null=True)
     observers = models.ManyToManyField(Institution, verbose_name=_('institutional observers'), blank=True)
-    summary = HTMLField(_('case summary'))
+    summary = MartorField(_('case summary'))
     judge = models.ForeignKey(Judge, verbose_name=_('presiding judge'), blank=True, null=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Judge, verbose_name=_('board of judges'),
                                    related_name='board_memberships', blank=True)
@@ -314,7 +315,7 @@ class TrialNote(models.Model):
         blank=True, null=True,
         on_delete=models.SET_NULL,
     )
-    note = HTMLField(_('note'), blank=True, null=True)
+    note = MartorField(_('note'), blank=True, null=True)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
