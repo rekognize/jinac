@@ -3,7 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from django.contrib.auth.models import User
 from translations.models import Translatable
-#from tinymce.models import HTMLField
 from martor.models import MartorField
 from jinac.jurisdiction.models import Court
 from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff, Complainant
@@ -77,7 +76,7 @@ class CaseStatus(models.Model):
             (2, _('denied')),
         ), blank=True, null=True
     )
-    details = MartorField(_('details'), blank=True, null=True)
+    details = models.TextField(_('details'), blank=True, null=True)
 
     def __str__(self):
         return self.get_status_display()

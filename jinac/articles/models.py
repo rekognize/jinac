@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as _p
 from django.conf import settings
-#from tinymce.models import HTMLField
 from martor.models import MartorField
 
 

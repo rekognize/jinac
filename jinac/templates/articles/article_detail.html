@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles martortags %}
 
 
 {% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
@@ -26,7 +26,7 @@
               <h3 class="card-title">{{ article.subtitle }}</h3>
               {% endif %}
               <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
-                  {{ article.summary|safe|linebreaks }}
+                  {{ article.summary|safe_markdown }}
               </p>
             </div>
           </div>
@@ -46,7 +46,7 @@
               {%  endif %}
               {% if section.text %}
               <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
-                  {{ section.text|safe|linebreaks }}
+                  {{ section.text|safe_markdown }}
               </p>
               {% endif %}
 

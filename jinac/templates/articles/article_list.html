@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles martortags %}
 
 
 {% block content %}
 
-
-
-            {% for article in article_list %}
+        {% for article in article_list %}
 
             {% with article.get_image as thumbnail %}
 
@@ -23,8 +21,8 @@
                           <h4 class="card-title">{{ article.title }}</h4>
                         </a>
                         <span class="card-text">
-                            {{ article.summary }}
-                            <a href= "{{ article.get_absolute_url }}" style="color:black"> ({% trans "more" %}...)<a>
+                            {{ article.summary|safe_markdown }}
+                            <a href= "{{ article.get_absolute_url }}" style="color:black"> ({% trans "more" %}...)</a>
                         </span>
                         </div>
                       </div>
@@ -33,11 +31,8 @@
                 </div>
             </section>
 
-
             {% endwith %}
 
-            {% endfor %}
-
-
+        {% endfor %}
 
 {% endblock %}

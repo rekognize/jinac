@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from tinymce.models import HTMLField
+from martor.models import MartorField
 
 
 class Carousel(models.Model):
@@ -21,7 +21,7 @@ class Carousel(models.Model):
 
 class News(models.Model):
     title = models.CharField(_('title'), max_length=100)
-    text = HTMLField(_('text'))
+    text = MartorField(_('text'))
     link = models.URLField(_('link'), blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
     publish = models.BooleanField(_('publish'), default=True)

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles martortags %}
 
 
 {% block content %}
@@ -38,7 +38,7 @@
                 <br/>
                 <span>
                     {% if journalist.short_bio %}
-                    {{ journalist.short_bio|safe }}
+                    {{ journalist.short_bio|safe_markdown }}
                     {% endif %}
                 </span>
             </div>

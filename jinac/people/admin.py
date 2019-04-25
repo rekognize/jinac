@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from martor.widgets import AdminMartorWidget
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
 
@@ -28,6 +30,9 @@ class StatusInline(admin.TabularInline):
 class CaseNoteInline(admin.StackedInline):
     model = CaseNote
     extra = 1
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
 
 
 class CaseIndictmentInline(admin.TabularInline):
@@ -52,6 +57,9 @@ class JournalistAdmin(admin.ModelAdmin):
         CaseNoteInline,
         CaseDocumentInline,
     ]
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)

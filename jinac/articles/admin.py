@@ -9,7 +9,6 @@ from martor.widgets import AdminMartorWidget
 class SectionAdmin(admin.ModelAdmin):
     list_display = ['article', 'title']
     search_fields = ['title', 'user', 'summary']
-
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
@@ -18,7 +17,6 @@ class SectionAdmin(admin.ModelAdmin):
 class SectionInline(admin.StackedInline):
     model = Section
     extra = 1
-
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
@@ -32,7 +30,6 @@ class ArticleAdmin(admin.ModelAdmin):
     exclude = ['user']
     list_filter = ['publish', 'added', 'modified', 'user', 'lang']
     inlines = [SectionInline]
-
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles html_extras %}
+{% load i18n staticfiles martortags %}
 
 
 {% block title %}{{ journalist.name }} - {{ block.super }}{% endblock %}
@@ -21,7 +21,7 @@
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle">
-                {{ journalist.bio|remove_p|safe }}
+                {{ journalist.bio|safe_markdown }}
             </p>
             {% endif %}
           </div>
@@ -36,16 +36,6 @@
           <!--a href="{{ case.get_absolute_url }}"-->
               <h5 class="mt-4">{{ case.name }}</h5>
           <!--/a-->
-
-          {% with case.casestatus_set.all as statuses %}
-              {% if statuses %}
-              <p>
-                  {% trans "Case status" %}: {{ statuses.0.get_status_display }}
-              </p>
-              {% endif %}
-          {% endwith %}
-
-          {{ case.summary|safe }}
 
           {% with case.casejournalist_set.all as case_journalists %}
               {% if case_journalists|length > 1 %}
@@ -75,7 +65,7 @@
               {% if case.trial_set.all %}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
-                        {% trans "Trial Briefs" %}
+                        {% trans "Trial Reports" %}
                     </a>
                 </li>
               {% endif %}
@@ -94,7 +84,7 @@
 
                   {% for note in case.notes %}
                   <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                    {{ note.note|remove_p|safe }}
+                    {{ note.note|safe_markdown }}
                   </div>
                   {% endfor %}
 
@@ -110,7 +100,7 @@
                         <!--/a-->
 
                         <p>
-                            {{ trial.summary|remove_p|safe }}
+                            {{ trial.summary|safe_markdown }}
                         </p>
                     {% endfor %}
                   </div>

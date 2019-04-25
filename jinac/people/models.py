@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from polymorphic.models import PolymorphicModel
-from tinymce.models import HTMLField
+from martor.models import MartorField
 from jinac.jurisdiction.models import Prison
 
 
@@ -17,8 +17,8 @@ class Person(PolymorphicModel):
             ('f', _('female')),
         )
     )
-    short_bio = HTMLField(_('short bio'), blank=True, null=True)
-    bio = HTMLField(_('biography'), blank=True, null=True)
+    short_bio = MartorField(_('short bio'), blank=True, null=True)
+    bio = MartorField(_('biography'), blank=True, null=True)
 
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)
@@ -127,7 +127,7 @@ class JournalistNote(models.Model):
         JournalistNoteType, verbose_name=_('type'),
         blank=True, null=True, on_delete=models.SET_NULL,
     )
-    note = HTMLField(_('note'))
+    note = MartorField(_('note'))
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

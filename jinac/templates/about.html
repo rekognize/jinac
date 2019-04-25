@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles martortags %}
 
 
 {% block title %}{{ article.title }} - {{ block.super }}{% endblock %}
@@ -23,7 +23,7 @@
             {% endif %}
             {% if article.summary %}
             <p class="lead">
-                {{ article.summary }}
+                {{ article.summary|safe_markdown }}
             </p>
             {% endif %}
 
@@ -43,7 +43,7 @@
                     {% endif %}
                     {% if section.text %}
                     <p class="card-text align-middle">
-                        {{ section.text }}
+                        {{ section.text|safe_markdown }}
                     </p>
                     {% endif %}
                   </div>
@@ -53,7 +53,6 @@
 
         </div>
       </div>
-    </section>
-
+  </section>
 
 {% endblock %}

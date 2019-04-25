@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles martortags %}
 
 
 {% block title %}{% trans "Trial Reports" %} - {{ block.super }}{% endblock %}
@@ -54,7 +54,7 @@
                                 <div id="kunye-{{ trial.id }}" class="tab-pane fade">
                                     <p>
                                     <br/>
-                                    {{ trial.summary|linebreaks }}
+                                    {{ trial.summary|safe_markdown }}
                                     {% if trial.time_next %}
                                     <br/><br/>
                                     <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
@@ -66,7 +66,7 @@
                                     <div id="note{{ note.id }}" class="tab-pane fade">
                                         <p>
                                             <br/>
-                                            {{ note|linebreaks }}
+                                            {{ note|safe_markdown }}
                                         </p>
                                     </div>
                                 {% endfor %}

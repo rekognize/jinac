@@ -1,10 +1,12 @@
 from django.contrib import admin
+from django.db import models
+from martor.widgets import AdminMartorWidget
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from django.contrib.admin import SimpleListFilter
 from django.utils import timezone
 from translations.admin import TranslatableAdmin, TranslationInline
-from jinac.cases.models import CaseIndictment, Case, CaseNote, CaseDocument, ViolationType, TrialViolation,\
+from jinac.cases.models import CaseIndictment, Case, CaseDocument, ViolationType, TrialViolation,\
     Trial, TrialDocumentType, TrialDocument, TrialNote, CaseNoteType, TrialNoteType, CaseJournalist, \
     WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision, TrialDecision
 
@@ -58,6 +60,9 @@ class CaseAdmin(admin.ModelAdmin):
     filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
     actions = ['publish']
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
 
     def get_actions(self, request):
         actions = super().get_actions(request)
@@ -104,6 +109,9 @@ class CaseAdmin(admin.ModelAdmin):
 class TrialNoteInline(admin.TabularInline):
     model = TrialNote
     extra = 1
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
 
 
 class TrialDocumentInline(admin.TabularInline):
@@ -150,6 +158,9 @@ class TrialAdmin(admin.ModelAdmin):
     filter_horizontal = ['observers', 'board']
     list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter']
     actions = ['publish']
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
 
     def get_actions(self, request):
         actions = super().get_actions(request)

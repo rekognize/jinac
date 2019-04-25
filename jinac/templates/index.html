@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}<!DOCTYPE html>
+{% load i18n staticfiles martortags %}<!DOCTYPE html>
 
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
 {% block navbar %}{% endblock %}
@@ -159,7 +159,7 @@
 			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
 				<span class="card-text">
 					{{ item.title }}
-					{{ item.text|safe }}
+					{{ item.text|safe_markdown }}
 					{% if item.link %}
 					<a href= "{{ item.link }}" style="color:black">{% trans "Read more" %}</a>
 					{% endif %}
