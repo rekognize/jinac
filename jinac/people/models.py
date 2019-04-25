@@ -17,7 +17,7 @@ class Person(PolymorphicModel):
             ('f', _('female')),
         )
     )
-    short_bio = MartorField(_('short bio'), blank=True, null=True)
+    short_bio = models.TextField(_('short bio'), blank=True, null=True)
     bio = MartorField(_('biography'), blank=True, null=True)
 
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
