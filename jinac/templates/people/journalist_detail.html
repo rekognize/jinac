@@ -99,9 +99,73 @@
                             </h5>
                         <!--/a-->
 
-                        <p>
-                            {{ trial.summary|safe_markdown }}
-                        </p>
+                            {% with trial.trialdocument_set.all as trial_documents %}
+
+                                <div class="tab-content">
+                                    <div class="col-md-12 px-3">
+                                        <div class="container flex-container">
+
+                                            <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
+
+                                                </li>
+                                                {% for note in trial.notes %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
+                                                    </li>
+                                                {% endfor %}
+
+                                                {% if trial_documents %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
+                                                    </li>
+                                                {% endif %}
+
+                                            </ul>
+
+                                            <div class="tab-content">
+
+                                                <div id="kunye-{{ trial.id }}" class="tab-pane fade">
+                                                    <p>
+                                                    <br/>
+                                                    {{ trial.summary|safe_markdown }}
+                                                    {% if trial.time_next %}
+                                                    <br/><br/>
+                                                    <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
+                                                    {% endif %}
+
+                                                </div>
+
+                                                {% for note in trial.notes %}
+                                                    <div id="note{{ note.id }}" class="tab-pane fade">
+                                                        <p>
+                                                            <br/>
+                                                            {{ note.note|safe_markdown }}
+                                                        </p>
+                                                    </div>
+                                                {% endfor %}
+
+                                                {% if trial_documents %}
+                                                    <div id="docs-{{ trial.id }}" class="tab-pane fade ">
+                                                        <p>
+                                                        {% for trial_document in trial_documents %}
+                                                            <br/>
+                                                            <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                                        {% endfor %}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endwith %}
+
+
+
                     {% endfor %}
                   </div>
                   {% endif %}
