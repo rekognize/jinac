@@ -37,7 +37,7 @@ class Case(models.Model):
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
     summary = MartorField(_('case summary'), blank=True, null=True)
-    order = models.PositiveSmallIntegerField(default=0)
+    order = models.PositiveSmallIntegerField(_('order'), default=0)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
 
