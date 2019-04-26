@@ -37,6 +37,7 @@
               <h5 class="mt-4">{{ case.name }}</h5>
           <!--/a-->
 
+          {% comment %}
           {% with case.casejournalist_set.all as case_journalists %}
               {% if case_journalists|length > 1 %}
               <p>
@@ -51,6 +52,7 @@
               </p>
               {% endif %}
           {% endwith %}
+          {% endcomment %}
 
           <div class="col col-md-12 card-nav-tab">
 
@@ -90,7 +92,7 @@
 
                   {% if case.trial_set.all %}
                   <div class="tab-pane" id="tab-trials{{ case.id }}">
-                    {% for trial in case.trial_set.all %}
+                    {% for trial in case.trial_set.all reversed %}
                         <!--a href="{{ trial.get_absolute_url }}"-->
                             <h5>
                                 {{ trial.session_no }}. {% trans "Standing" %}
