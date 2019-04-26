@@ -21,7 +21,9 @@
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
             <p class="card-text align-middle small">
+            <small>
                 {{ journalist.bio|safe_markdown }}
+            </small>
             </p>
             {% endif %}
           </div>
