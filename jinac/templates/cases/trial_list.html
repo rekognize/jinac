@@ -66,7 +66,7 @@
                                     <div id="note{{ note.id }}" class="tab-pane fade">
                                         <p>
                                             <br/>
-                                            {{ note|safe_markdown }}
+                                            {{ note.note|safe_markdown }}
                                         </p>
                                     </div>
                                 {% endfor %}
