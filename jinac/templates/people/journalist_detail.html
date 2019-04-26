@@ -20,7 +20,7 @@
           <div class="card-block" style="text-align:justify;padding-right: 5px;  ">
             <h4 class="card-title">{{ journalist.name }}</h4>
             {% if journalist.bio %}
-            <p class="card-text align-middle">
+            <p class="card-text align-middle small">
                 {{ journalist.bio|safe_markdown }}
             </p>
             {% endif %}
