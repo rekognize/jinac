@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-23 12:33+0000\n"
+"POT-Creation-Date: 2019-04-26 07:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,1238 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: env3/lib/python3.7/site-packages/django/contrib/messages/apps.py:7
-msgid "Messages"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/contrib/sitemaps/apps.py:7
-msgid "Site Maps"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/paginator.py:42
-msgid "That page number is not an integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/paginator.py:44
-msgid "That page number is less than 1"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/paginator.py:49
-msgid "That page contains no results"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:31
-msgid "Enter a valid value."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:102
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:657
-msgid "Enter a valid URL."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:154
-msgid "Enter a valid integer."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:165
-msgid "Enter a valid email address."
-msgstr ""
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: env3/lib/python3.7/site-packages/django/core/validators.py:239
-msgid ""
-"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:246
-msgid ""
-"Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:255
-#: env3/lib/python3.7/site-packages/django/core/validators.py:275
-msgid "Enter a valid IPv4 address."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:260
-#: env3/lib/python3.7/site-packages/django/core/validators.py:276
-msgid "Enter a valid IPv6 address."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:270
-#: env3/lib/python3.7/site-packages/django/core/validators.py:274
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:304
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:310
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:341
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:350
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:360
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:375
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:394
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:289
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:324
-msgid "Enter a number."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:396
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:401
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:406
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:468
-#, python-format
-msgid ""
-"File extension '%(extension)s' is not allowed. Allowed extensions are: "
-"'%(allowed_extensions)s'."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/core/validators.py:520
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/base.py:1111
-#: env3/lib/python3.7/site-packages/django/forms/models.py:752
-msgid "and"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/base.py:1113
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:105
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:106
-msgid "This field cannot be null."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:107
-msgid "This field cannot be blank."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:108
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-#. Eg: "Title must be unique for pub_date year"
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:112
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:129
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:898
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1766
-msgid "Integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:902
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1764
-#, python-format
-msgid "'%(value)s' value must be an integer."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:977
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1833
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:989
-#, python-format
-msgid "'%(value)s' value must be either True or False."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:990
-#, python-format
-msgid "'%(value)s' value must be either True, False, or None."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:992
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1034
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1098
-msgid "Comma-separated integers"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1147
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1149
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1292
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1152
-msgid "Date (without time)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1290
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1294
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1298
-msgid "Date (with time)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1446
-#, python-format
-msgid "'%(value)s' value must be a decimal number."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1448
-msgid "Decimal number"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1587
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1590
-msgid "Duration"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1640
-msgid "Email address"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1663
-msgid "File path"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1729
-#, python-format
-msgid "'%(value)s' value must be a float."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1731
-msgid "Floating point number"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1849
-msgid "IPv4 address"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1880
-msgid "IP address"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1960
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1961
-#, python-format
-msgid "'%(value)s' value must be either None, True or False."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1963
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1998
-msgid "Positive integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2011
-msgid "Positive small integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2025
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2057
-msgid "Small integer"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2064
-msgid "Text"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2092
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2094
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2097
-msgid "Time"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2223
-msgid "URL"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2245
-msgid "Raw binary data"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2295
-#, python-format
-msgid "'%(value)s' is not a valid UUID."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/files.py:221
-msgid "File"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/files.py:360
-msgid "Image"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:778
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:780
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:1001
-msgid "One-to-one relationship"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:1051
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:1052
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/db/models/fields/related.py:1094
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: env3/lib/python3.7/site-packages/django/forms/boundfield.py:146
-msgid ":?.!"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:52
-msgid "This field is required."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:244
-msgid "Enter a whole number."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:395
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:1126
-msgid "Enter a valid date."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:419
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:1127
-msgid "Enter a valid time."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:441
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:470
-msgid "Enter a valid duration."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:471
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:531
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:532
-msgid "No file was submitted."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:533
-msgid "The submitted file is empty."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:535
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:538
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:599
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:761
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:851
-#: env3/lib/python3.7/site-packages/django/forms/models.py:1272
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:852
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:967
-#: env3/lib/python3.7/site-packages/django/forms/models.py:1271
-msgid "Enter a list of values."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:968
-msgid "Enter a complete value."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/fields.py:1185
-msgid "Enter a valid UUID."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: env3/lib/python3.7/site-packages/django/forms/forms.py:86
-msgid ":"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/forms.py:212
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:91
-msgid "ManagementForm data is missing or has been tampered with"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:338
-#, python-format
-msgid "Please submit %d or fewer forms."
-msgid_plural "Please submit %d or fewer forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:345
-#, python-format
-msgid "Please submit %d or more forms."
-msgid_plural "Please submit %d or more forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:371
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:373
-msgid "Order"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/formsets.py:375
-msgid "Delete"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:747
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:751
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:757
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:766
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:1093
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:1160
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/models.py:1274
-#, python-format
-msgid "\"%(pk)s\" is not a valid value."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/utils.py:162
-#, python-format
-msgid ""
-"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:383
-msgid "Clear"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:384
-msgid "Currently"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:385
-msgid "Change"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:699
-msgid "Unknown"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:700
-msgid "Yes"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/forms/widgets.py:701
-msgid "No"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:788
-msgid "yes,no,maybe"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:817
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:834
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:836
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:838
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:840
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:842
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/template/defaultfilters.py:844
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:62
-msgid "p.m."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:63
-msgid "a.m."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:68
-msgid "PM"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:69
-msgid "AM"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:150
-msgid "midnight"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dateformat.py:152
-msgid "noon"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Monday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Tuesday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Wednesday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Thursday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Friday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:7
-msgid "Saturday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:7
-msgid "Sunday"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Mon"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Tue"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Wed"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Thu"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Fri"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:11
-msgid "Sat"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:11
-msgid "Sun"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "January"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "February"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "March"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "April"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "May"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "June"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "July"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "August"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "September"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "October"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "November"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:16
-msgid "December"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "jan"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "feb"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "mar"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "apr"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "may"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "jun"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "jul"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "aug"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "sep"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "oct"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "nov"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "dec"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:23
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:24
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:25
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:26
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:27
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:28
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:29
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:30
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:31
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:32
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:33
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:34
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:37
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:38
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:39
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:40
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:41
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:42
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:43
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:44
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:45
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:46
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:47
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/dates.py:48
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/text.py:70
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s..."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/text.py:237
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: env3/lib/python3.7/site-packages/django/utils/text.py:256
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:83
-msgid ", "
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:14
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: env3/lib/python3.7/site-packages/django/utils/timesince.py:72
-msgid "0 minutes"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:110
-msgid "Forbidden"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:111
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:115
-msgid ""
-"You are seeing this message because this HTTPS site requires a 'Referer "
-"header' to be sent by your Web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:120
-msgid ""
-"If you have configured your browser to disable 'Referer' headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for 'same-"
-"origin' requests."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:124
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the 'Referrer-Policy: no-referrer' header, please remove them. The "
-"CSRF protection requires the 'Referer' header to do strict referer checking. "
-"If you're concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" ...> for links to third-party sites."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:132
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:137
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for 'same-origin' requests."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/csrf.py:142
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:41
-msgid "No year specified"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:61
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:111
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:208
-msgid "Date out of range"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:90
-msgid "No month specified"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:142
-msgid "No day specified"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:188
-msgid "No week specified"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:338
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:367
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:585
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/dates.py:619
-#, python-format
-msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/detail.py:54
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/list.py:67
-msgid "Page is not 'last', nor can it be converted to an int."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/list.py:72
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/generic/list.py:154
-#, python-format
-msgid "Empty list and '%(class_name)s.allow_empty' is False."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/static.py:40
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/static.py:42
-#, python-format
-msgid "\"%(path)s\" does not exist"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/static.py:80
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:6
-msgid "Django: the Web framework for perfectionists with deadlines."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:345
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:367
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:368
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:383
-msgid "Django Documentation"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:384
-msgid "Topics, references, &amp; how-to's"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:395
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:396
-msgid "Get started with Django"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:407
-msgid "Django Community"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:408
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/tinymce/views.py:67
-msgid "Error running spellchecker"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/apps.py:7
-#: env3/lib/python3.7/site-packages/translations/models.py:60
-msgid "translations"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:20
-msgid "content type"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:21
-msgid "the content type of the object to translate"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:26
-msgid "object id"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:27
-msgid "the id of the object to translate"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:35
-msgid "field"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:36
-msgid "the field of the object to translate"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:40
-#: jinac/articles/models.py:16
-msgid "language"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:41
-msgid "the language of the translation"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:46
-#: jinac/articles/models.py:45 jinac/news/models.py:8 jinac/news/models.py:24
-msgid "text"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:47
-msgid "the text of the translation"
-msgstr ""
-
-#: env3/lib/python3.7/site-packages/translations/models.py:59
-msgid "translation"
-msgstr ""
-
 #: jinac/articles/apps.py:7
 msgid "blog"
 msgstr "analizler"
 
 #: jinac/articles/models.py:11 jinac/articles/models.py:44
-#: jinac/news/models.py:23
+#: jinac/news/models.py:24
 msgid "title"
 msgstr "başlık"
 
@@ -1265,11 +39,15 @@ msgstr "görsel"
 msgid "summary"
 msgstr "özet"
 
-#: jinac/articles/models.py:18 jinac/cases/admin.py:79 jinac/cases/admin.py:167
+#: jinac/articles/models.py:16
+msgid "language"
+msgstr ""
+
+#: jinac/articles/models.py:18 jinac/cases/admin.py:84 jinac/cases/admin.py:178
 #: jinac/cases/models.py:44 jinac/cases/models.py:204 jinac/cases/models.py:214
 #: jinac/cases/models.py:266 jinac/cases/models.py:298
-#: jinac/cases/models.py:371 jinac/news/models.py:11 jinac/news/models.py:27
-#: jinac/people/models.py:39 jinac/people/models.py:103
+#: jinac/cases/models.py:371 jinac/news/models.py:12 jinac/news/models.py:28
+#: jinac/people/models.py:39 jinac/people/models.py:114
 msgid "publish"
 msgstr "yayınla"
 
@@ -1282,6 +60,10 @@ msgstr "hakkımızda sayfası"
 msgid "article"
 msgstr "analiz"
 
+#: jinac/articles/models.py:45 jinac/news/models.py:9 jinac/news/models.py:25
+msgid "text"
+msgstr ""
+
 #: jinac/articles/models.py:52
 msgid "section"
 msgstr "bölüm"
@@ -1290,16 +72,16 @@ msgstr "bölüm"
 msgid "sections"
 msgstr "bölümler"
 
-#: jinac/cases/admin.py:72 jinac/cases/models.py:103 jinac/cases/models.py:127
-#: jinac/cases/models.py:381 jinac/people/models.py:75
+#: jinac/cases/admin.py:77 jinac/cases/models.py:103 jinac/cases/models.py:127
+#: jinac/cases/models.py:381 jinac/people/models.py:86
 msgid "journalists"
 msgstr "gazeteciler"
 
-#: jinac/cases/admin.py:125
+#: jinac/cases/admin.py:133
 msgid "upcoming trials"
 msgstr "gelecek duruşmalar"
 
-#: jinac/cases/admin.py:130
+#: jinac/cases/admin.py:138
 msgid "Upcoming"
 msgstr "Gelecek"
 
@@ -1364,11 +146,11 @@ msgstr "gazeteci sanık sayısı"
 msgid "coup attempt related"
 msgstr "darbe girişimi kapsamında"
 
-#: jinac/cases/models.py:35 jinac/people/models.py:168
+#: jinac/cases/models.py:35 jinac/people/models.py:179
 msgid "plaintiff"
 msgstr "davacı"
 
-#: jinac/cases/models.py:36 jinac/people/models.py:176
+#: jinac/cases/models.py:36 jinac/people/models.py:187
 msgid "complainant"
 msgstr "şikayetçi"
 
@@ -1399,7 +181,7 @@ msgstr "değiştirilme tarihi"
 #: jinac/cases/models.py:58 jinac/cases/models.py:64 jinac/cases/models.py:102
 #: jinac/cases/models.py:126 jinac/cases/models.py:172
 #: jinac/cases/models.py:199 jinac/cases/models.py:229
-#: jinac/cases/models.py:253 jinac/people/models.py:93
+#: jinac/cases/models.py:253 jinac/people/models.py:104
 msgid "case"
 msgstr "dava"
 
@@ -1448,7 +230,7 @@ msgstr "görevi"
 msgid "institution"
 msgstr "kurum"
 
-#: jinac/cases/models.py:115 jinac/people/models.py:144
+#: jinac/cases/models.py:115 jinac/people/models.py:155
 msgid "attorney"
 msgstr "avukat"
 
@@ -1511,8 +293,8 @@ msgstr "ceza tipi"
 
 #: jinac/cases/models.py:173 jinac/cases/models.py:202
 #: jinac/cases/models.py:227 jinac/cases/models.py:369
-#: jinac/people/models.py:74 jinac/people/models.py:80
-#: jinac/people/models.py:114
+#: jinac/people/models.py:85 jinac/people/models.py:91
+#: jinac/people/models.py:125
 msgid "journalist"
 msgstr "gazeteci"
 
@@ -1525,8 +307,8 @@ msgstr "suçlamalar"
 #: jinac/cases/models.py:297 jinac/cases/models.py:313
 #: jinac/cases/models.py:330 jinac/cases/models.py:354
 #: jinac/cases/models.py:368 jinac/jurisdiction/models.py:21
-#: jinac/jurisdiction/models.py:50 jinac/people/models.py:102
-#: jinac/people/models.py:116 jinac/people/models.py:136
+#: jinac/jurisdiction/models.py:50 jinac/people/models.py:113
+#: jinac/people/models.py:127 jinac/people/models.py:147
 msgid "type"
 msgstr "tip"
 
@@ -1556,16 +338,16 @@ msgstr "dava doküman"
 msgid "case documents"
 msgstr "dava dokümanları"
 
-#: jinac/cases/models.py:221 jinac/people/models.py:109
+#: jinac/cases/models.py:221 jinac/people/models.py:120
 msgid "case note type"
 msgstr "dava notu tipi"
 
-#: jinac/cases/models.py:222 jinac/people/models.py:110
+#: jinac/cases/models.py:222 jinac/people/models.py:121
 msgid "case note types"
 msgstr "dava notu tipleri"
 
 #: jinac/cases/models.py:235 jinac/cases/models.py:317
-#: jinac/people/models.py:119
+#: jinac/people/models.py:130
 msgid "note"
 msgstr "not"
 
@@ -1728,7 +510,8 @@ msgstr "Anayasa Mahkemesi"
 msgid "courts"
 msgstr "mahkemeler"
 
-#: jinac/jurisdiction/models.py:48 jinac/people/models.py:12
+#: jinac/jurisdiction/models.py:48 jinac/news/models.py:40
+#: jinac/people/models.py:12
 msgid "name"
 msgstr "isim"
 
@@ -1740,7 +523,7 @@ msgstr "E tipi"
 msgid "Type F"
 msgstr "F tipi"
 
-#: jinac/jurisdiction/models.py:61 jinac/people/models.py:90
+#: jinac/jurisdiction/models.py:61 jinac/people/models.py:101
 msgid "prison"
 msgstr "cezaevi"
 
@@ -1748,21 +531,29 @@ msgstr "cezaevi"
 msgid "prisons"
 msgstr "cezaevleri"
 
-#: jinac/news/apps.py:7 jinac/news/models.py:33 jinac/news/models.py:34
+#: jinac/news/apps.py:7 jinac/news/models.py:34 jinac/news/models.py:35
 msgid "news"
 msgstr "haberler"
 
-#: jinac/news/models.py:7 jinac/people/models.py:38
+#: jinac/news/models.py:8 jinac/people/models.py:38
 msgid "photo"
 msgstr "fotoğraf"
 
-#: jinac/news/models.py:9 jinac/news/models.py:25
+#: jinac/news/models.py:10 jinac/news/models.py:26
 msgid "link"
 msgstr "bağlantı"
 
-#: jinac/news/models.py:17 jinac/news/models.py:18
+#: jinac/news/models.py:18 jinac/news/models.py:19
 msgid "carousel"
 msgstr "karusel"
+
+#: jinac/news/models.py:42
+msgid "value"
+msgstr ""
+
+#: jinac/news/models.py:53 jinac/news/models.py:54
+msgid "Info"
+msgstr ""
 
 #: jinac/people/apps.py:7 jinac/people/models.py:32
 msgid "people"
@@ -1792,99 +583,99 @@ msgstr "biyografi"
 msgid "person"
 msgstr "kişi"
 
-#: jinac/people/models.py:81
+#: jinac/people/models.py:92
 msgid "status"
 msgstr "durum"
 
-#: jinac/people/models.py:82
+#: jinac/people/models.py:93
 msgid "Not detained"
 msgstr "Tutuksuz yargılama"
 
-#: jinac/people/models.py:83
+#: jinac/people/models.py:94
 msgid "Detained"
 msgstr "Gözaltı"
 
-#: jinac/people/models.py:84
+#: jinac/people/models.py:95
 msgid "Imprisoned"
 msgstr "Tutuklu"
 
-#: jinac/people/models.py:85
+#: jinac/people/models.py:96
 msgid "Convicted"
 msgstr "Hükümlü"
 
-#: jinac/people/models.py:86
+#: jinac/people/models.py:97
 msgid "Fugitive"
 msgstr "Firari"
 
-#: jinac/people/models.py:87
+#: jinac/people/models.py:98
 msgid "Postponed"
 msgstr "Erteleme"
 
-#: jinac/people/models.py:88
+#: jinac/people/models.py:99
 msgid "Judgement receded"
 msgstr "HAGB"
 
-#: jinac/people/models.py:91
+#: jinac/people/models.py:102
 msgid "start date"
 msgstr "başlama tarihi"
 
-#: jinac/people/models.py:92
+#: jinac/people/models.py:103
 msgid "end date"
 msgstr "bitiş tarihi"
 
-#: jinac/people/models.py:96 jinac/people/models.py:97
+#: jinac/people/models.py:107 jinac/people/models.py:108
 msgid "journalist status"
 msgstr "gazeteci durumu"
 
-#: jinac/people/models.py:126
+#: jinac/people/models.py:137
 msgid "journalist note"
 msgstr "gazeteci özeti"
 
-#: jinac/people/models.py:127
+#: jinac/people/models.py:138
 msgid "journalist notes"
 msgstr "gazeteci özetleri"
 
-#: jinac/people/models.py:138
+#: jinac/people/models.py:149
 msgid "defence"
 msgstr "savunma"
 
-#: jinac/people/models.py:139
+#: jinac/people/models.py:150
 msgid "prosecution"
 msgstr "müşteki"
 
-#: jinac/people/models.py:145
+#: jinac/people/models.py:156
 msgid "attorneys"
 msgstr "avukatlar"
 
-#: jinac/people/models.py:152
+#: jinac/people/models.py:163
 msgid "judge"
 msgstr "hakim"
 
-#: jinac/people/models.py:153
+#: jinac/people/models.py:164
 msgid "judges"
 msgstr "hakimler"
 
-#: jinac/people/models.py:160
+#: jinac/people/models.py:171
 msgid "prosecutor"
 msgstr "savcı"
 
-#: jinac/people/models.py:161
+#: jinac/people/models.py:172
 msgid "prosecutors"
 msgstr "savcılar"
 
-#: jinac/people/models.py:169
+#: jinac/people/models.py:180
 msgid "plaintiffs"
 msgstr "davacılar"
 
-#: jinac/people/models.py:177
+#: jinac/people/models.py:188
 msgid "complainants"
 msgstr "şikayetçiler"
 
-#: jinac/templates/articles/article_list.html:27
+#: jinac/templates/articles/article_list.html:25
 msgid "more"
 msgstr "devamı"
 
-#: jinac/templates/base.html:11 jinac/urls.py:35
+#: jinac/templates/base.html:11 jinac/urls.py:37
 msgid "Press in Arrest"
 msgstr "Tutuklu Basın"
 
@@ -1894,6 +685,7 @@ msgstr "Anasayfa"
 
 #: jinac/templates/base.html:65 jinac/templates/cases/trial_list.html:5
 #: jinac/templates/index.html:40
+#: jinac/templates/people/journalist_detail.html:68
 msgid "Trial Reports"
 msgstr "Duruşma Raporları"
 
@@ -1914,15 +706,18 @@ msgid "Search"
 msgstr "Arama"
 
 #: jinac/templates/cases/trial_list.html:35
+#: jinac/templates/people/journalist_detail.html:110
 msgid "Case Summary"
 msgstr "Dava Özeti"
 
 #: jinac/templates/cases/trial_list.html:46
-#: jinac/templates/people/journalist_detail.html:80
+#: jinac/templates/people/journalist_detail.html:75
+#: jinac/templates/people/journalist_detail.html:121
 msgid "Documents"
 msgstr "Dokümanlar"
 
 #: jinac/templates/cases/trial_list.html:60
+#: jinac/templates/people/journalist_detail.html:135
 msgid "Next Trial"
 msgstr "Gelecek Duruşma"
 
@@ -1933,6 +728,18 @@ msgstr "Önceki"
 #: jinac/templates/index.html:113
 msgid "Next"
 msgstr "Sonraki"
+
+#: jinac/templates/index.html:130
+msgid "YARGILANANLAR"
+msgstr ""
+
+#: jinac/templates/index.html:137
+msgid "CEZAEVİNDEKİLER"
+msgstr ""
+
+#: jinac/templates/index.html:144
+msgid "TUTUKSUZ YARGILANANLAR"
+msgstr ""
 
 #: jinac/templates/index.html:156
 msgid "Announcements"
@@ -1946,28 +753,17 @@ msgstr "Daha fazla"
 msgid "Upcoming Trials"
 msgstr "Yaklaşan Duruşmalar"
 
-#: jinac/templates/people/journalist_detail.html:47
+#: jinac/templates/people/journalist_detail.html:43
 msgid "Other journalists trialed in this case"
 msgstr "Bu davada yargılanan diğer gazeteciler"
 
-#: jinac/templates/people/journalist_detail.html:73
-msgid "Trial Briefs"
-msgstr "Dava Raporları"
-
-#: jinac/templates/people/journalist_detail.html:105
-msgid "Case status"
-msgstr "Dava durumu"
-
-#: jinac/templates/people/journalist_detail.html:113
-#: jinac/templates/people/journalist_detail.html:143
-#: jinac/templates/people/journalist_detail.html:160
+#: jinac/templates/people/journalist_detail.html:96
+#: jinac/templates/people/journalist_detail.html:189
 msgid "Standing"
 msgstr "Duruşma"
 
-#: jinac/templates/people/journalist_detail.html:136
-#: jinac/templates/people/journalist_detail.html:145
-#: jinac/templates/people/journalist_detail.html:153
-#: jinac/templates/people/journalist_detail.html:162
+#: jinac/templates/people/journalist_detail.html:181
+#: jinac/templates/people/journalist_detail.html:193
 msgid "Download"
 msgstr "İndir"
 
@@ -1975,13 +771,19 @@ msgstr "İndir"
 msgid "All"
 msgstr "Tümü"
 
-#: jinac/urls.py:36
+#: jinac/urls.py:38
 msgid "Press in Arrest Administration"
 msgstr "Tutuklu Basın Yönetimi"
 
-#: jinac/urls.py:37
+#: jinac/urls.py:39
 msgid "Press in Arrest Management"
 msgstr "Tutuklu Basın Yönetimi"
+
+#~ msgid "Trial Briefs"
+#~ msgstr "Dava Raporları"
+
+#~ msgid "Case status"
+#~ msgstr "Dava durumu"
 
 #~ msgid "Trial summary"
 #~ msgstr "Dava özeti"

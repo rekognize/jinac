@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
 from martor.models import MartorField
 
 
@@ -33,3 +34,21 @@ class News(models.Model):
         verbose_name = _('news')
         verbose_name_plural = _('news')
         ordering = ('-added',)
+
+
+class Info(models.Model):
+    name = models.CharField(_('name'), max_length=50)
+    slug = models.SlugField()
+    value = models.CharField(_('value'), max_length=50)
+
+    def __str__(self):
+        return f"{self.name}: {self.value}"
+
+    def save(self, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name).replace('-', '_')
+        return super().save(**kwargs)
+
+    class Meta:
+        verbose_name = _('Info')
+        verbose_name_plural = _('Info')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jinac.news.models import Carousel, News
+from jinac.news.models import Carousel, News, Info
 from django.db import models
 from martor.widgets import AdminMartorWidget
 
@@ -17,3 +17,10 @@ class NewsAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
+
+
+@admin.register(Info)
+class InfoAdmin(admin.ModelAdmin):
+    list_display = ['name', 'value']
+    list_editable = ['value']
+    prepopulated_fields = {"slug": ("name",)}
