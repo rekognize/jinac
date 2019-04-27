@@ -1,88 +1,180 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles humanize %}
+{% load i18n staticfiles humanize martortags %}
 
 
 {% block content %}
 
 <div class="container">
 
-    {{ case }}
+          <h2 class="mt-4">{{ case.name }}</h2>
 
-    <br>
+          <div class="col col-md-12 card-nav-tab">
 
-    yargilanan gazeteciler:
+            <ul class="nav nav-tabs">
+              {% for note in case.notes %}
+                <li class="nav-item">
+                    <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
+                        {{ note.type }}
+                    </a>
+                </li>
+              {% endfor %}
+              {% if case.trial_set.all %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
+                        {% trans "Trial Reports" %}
+                    </a>
+                </li>
+              {% endif %}
+              {% if case.documents or case.trial_documents %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-docs{{ case.id }}" role="tab">
+                        {% trans "Documents" %}
+                    </a>
+                </li>
+              {% endif %}
+            </ul>
 
-    <br>
+            <div class="card card-tabs-1">
+              <div class="card-block">
+                <div class="tab-content">
 
-    {% for casejournalist in case.casejournalist_set.all %}
+                  {% for note in case.notes %}
+                  <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
+                    {{ note.note|safe_markdown }}
+                  </div>
+                  {% endfor %}
 
-        <a href="{{ casejournalist.journalist.get_absolute_url }}">{{ casejournalist.journalist }}</a>
+                  {% if case.trial_set.all %}
+                  <div class="tab-pane" id="tab-trials{{ case.id }}">
+                    {% for trial in case.trial_set.all reversed %}
+                        <!--a href="{{ trial.get_absolute_url }}"-->
+                            <h5>
+                                {{ trial.session_no }}. {% trans "Standing" %}
+                                -
+                                {{ trial.time_start|date }}
+                            </h5>
+                        <!--/a-->
 
-        {{ casejournalist.institution }}
+                            {% with trial.trialdocument_set.all as trial_documents %}
 
-        {{ casejournalist.position }}
+                                <div class="tab-content">
+                                    <div class="col-md-12 px-3">
+                                        <div class="container flex-container">
 
-        {{ casejournalist.get_decision_type_display }}
+                                            <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
 
-        {{ casejournalist.punishment_amount }}
+                                                </li>
+                                                {% for note in trial.notes %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
+                                                    </li>
+                                                {% endfor %}
 
-        <br>
+                                                {% if trial_documents %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
+                                                    </li>
+                                                {% endif %}
 
-    {% endfor %}
+                                            </ul>
+
+                                            <div class="tab-content">
+
+                                                <div id="kunye-{{ trial.id }}" class="tab-pane fade">
+                                                    <p>
+                                                    <br/>
+                                                    {{ trial.summary|safe_markdown }}
+                                                    {% if trial.time_next %}
+                                                    <br/><br/>
+                                                    <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
+                                                    {% endif %}
+
+                                                </div>
+
+                                                {% for note in trial.notes %}
+                                                    <div id="note{{ note.id }}" class="tab-pane fade">
+                                                        <p>
+                                                            <br/>
+                                                            {{ note.note|safe_markdown }}
+                                                        </p>
+                                                    </div>
+                                                {% endfor %}
+
+                                                {% if trial_documents %}
+                                                    <div id="docs-{{ trial.id }}" class="tab-pane fade ">
+                                                        <p>
+                                                        {% for trial_document in trial_documents %}
+                                                            <br/>
+                                                            <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                                        {% endfor %}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endwith %}
 
 
-    suclamalar:
 
-    <br>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
 
-    {% for indictment in case.indictment_set.all %}
+                  {% if case.documents or case.trial_documents %}
+                  <div class="tab-pane" id="tab-docs{{ case.id }}">
+                      {% for doc in case.documents %}
+                          <p>
+                              {{ doc.case }}
+                              {% if doc.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% else %}
+                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% endif %}
+                          </p>
+                      {% endfor %}
 
-        {{ indictment }}
-
-        <br>
-
-    {% endfor %}
-
-
-    dokumanlar:
-
-    <br>
-
-    {% for document in case.casedocument_set.all %}
-
-        <a href="{{ document.file.url }}">{{ document.type }}</a>
-
-        <br>
-
-    {% endfor %}
-
-
-    notlar:
-
-    <br>
-
-    {% for note in case.casenote_set.all %}
-
-        {{ note.type }}:
-        {{ note.note }}
-
-        <br>
-
-    {% endfor %}
+                      {% for doc in case.trial_documents %}
+                          <p>
+                              {{ doc.trial.case }}
+                              {{ doc.trial.session_no }}. {% trans "Standing" %}
+                              {% if doc.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% else %}
+                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                              {% endif %}
+                          </p>
+                      {% endfor %}
+                  </div>
+                  {% endif %}
 
 
-    durusmalar:
 
-    <br>
+                </div>
+              </div>
+            </div>
 
-    {% for trial in case.trial_set.all %}
+          </div>
 
-        <a href="{{ trial.get_absolute_url }}">{{ trial.time }}</a> ({{ trial.time|naturaltime }})
-
-        <br>
-
-    {% endfor %}
-
+          {% with case.casejournalist_set.all as case_journalists %}
+              {% if case_journalists|length > 1 %}
+              <p class="mt-4">
+                  {% trans "Other journalists trialed in this case" %}:
+                  {% for case_journalist in case_journalists %}
+                      {% with case_journalist.journalist as other_journalist %}
+                          {% if journalist != other_journalist %}
+                              <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
+                          {% endif %}
+                      {% endwith %}
+                  {% endfor %}
+              </p>
+              {% endif %}
+          {% endwith %}
 
 </div>
 

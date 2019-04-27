@@ -283,7 +283,8 @@ class Trial(models.Model):
             case.save()
 
     def get_absolute_url(self):
-        return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
+        #return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
+        return reverse('case_detail', kwargs={'pk': self.case.id})
 
     def notes(self):
         return self.trialnote_set.filter(type__publish=True)

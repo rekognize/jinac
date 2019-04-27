@@ -37,6 +37,10 @@
 					<ul class="navbar-nav mr-auto">
 
 						<li class="nav-item">
+							<a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
+						</li>
+
+						<li class="nav-item">
 							<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
 						</li>
 
@@ -204,12 +208,12 @@
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="card-body form">
-					<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>İletişim:</h3>
+					<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>{%  trans "Contact" %}:</h3>
 					<br/>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="md-form mb-0">
-								<input type="text" id="form-contact-name" class="form-control" placeholder="İsim">
+								<input type="text" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
 								<br/>
 							</div>
 						</div>
@@ -218,7 +222,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="md-form mb-0">
-								<input type="text" id="form-contact-email" class="form-control" placeholder="Mail">
+								<input type="text" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
 								<br/>
 							</div>
 						</div>
@@ -228,10 +232,10 @@
 
 						<div class="col-md-6">
 							<div class="md-form mb-0">
-								<textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="Mesajınız"></textarea>
+								<textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
 								<br/>
 								<a class=" btn-lg ">
-									<button><i class="far fa-paper-plane"> Gönder</i> </button>
+									<button><i class="far fa-paper-plane"></i> {% trans "Submit" %}</button>
 								</a>
 							</div>
 						</div>
@@ -245,11 +249,10 @@
 					<br/>
 					<br/>
 
-					<h3>İletişim Bilgilerimiz:</h3>
+					<h3>{% trans "Contact information" %}:</h3>
 					<ul class="list-unstyled">
 						<li>
 							<p><i class="fas fa-envelope"></i> contact@example.com</p>
-
 						</li>
 					</ul>
 					<hr class="hr-light my-4">

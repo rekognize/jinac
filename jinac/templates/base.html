@@ -61,6 +61,10 @@
                 <a class="nav-link" href="/">{% trans 'Homepage' %}{% if request.path == '/' %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
+              <li class="nav-item {% if request.path|slice:':5' == case_list_url|slice:':5' %}active{% endif %}">
+                <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path|slice:":5" == case_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+
               <li class="nav-item {% if request.path|slice:':5' == trial_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ trial_list_url }}">{% trans 'Trial Reports' %}{% if request.path|slice:":5" == trial_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>

@@ -75,7 +75,7 @@ class Feed(models.Model):
 @receiver([post_save], sender=Article)
 @receiver([post_save], sender=Trial)
 def add_to_feed(sender, instance, created, **kwargs):
-    if created:
+    #if created:
         Feed.objects.create(
             object=instance
         )

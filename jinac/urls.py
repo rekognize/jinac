@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('davalar/', CaseListView.as_view(), name='case_list'),
     path('davalar/<int:pk>/', CaseDetailView.as_view(), name='case_detail'),
-    path('davalar/raporlar/', TrialListView.as_view(), name='trial_list'),
+    path('raporlar/', TrialListView.as_view(), name='trial_list'),
     path('davalar/<int:case>/<int:pk>/', TrialDetailView.as_view(), name='trial_detail'),
 
     path('gazeteciler/', JournalistListView.as_view(), name='journalist_list'),
