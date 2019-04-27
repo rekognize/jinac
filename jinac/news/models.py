@@ -1,7 +1,13 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from martor.models import MartorField
+from jinac.articles.models import Article
+from jinac.cases.models import Case, Trial
 
 
 class Carousel(models.Model):
@@ -52,3 +58,25 @@ class Info(models.Model):
     class Meta:
         verbose_name = _('Info')
         verbose_name_plural = _('Info')
+
+
+class Feed(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    object = GenericForeignKey('content_type', 'object_id')
+    time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('Feed')
+        verbose_name_plural = _('Feed')
+        ordering = ('-time',)
+
+
+@receiver([post_save], sender=Article)
+@receiver([post_save], sender=Case)
+@receiver([post_save], sender=Trial)
+def add_to_feed(sender, instance, created, **kwargs):
+    if created:
+        Feed.objects.create(
+            object=instance
+        )

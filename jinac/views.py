@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from jinac.cases.models import Case, Trial
-from jinac.news.models import Carousel, News, Info
+from jinac.news.models import Carousel, News, Info, Feed
 
 
 class IndexView(TemplateView):
@@ -19,7 +19,8 @@ class IndexView(TemplateView):
             'carousel': Carousel.objects.filter(publish=True),
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
-            'info': {i.slug: i.value for i in Info.objects.all()}
+            'info': {i.slug: i.value for i in Info.objects.all()},
+            'feed': Feed.objects.all()[:5],
         })
         return context
 
