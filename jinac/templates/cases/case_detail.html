@@ -48,7 +48,7 @@
                   <div class="tab-pane" id="tab-trials{{ case.id }}">
                     {% for trial in case.trial_set.all reversed %}
                         <!--a href="{{ trial.get_absolute_url }}"-->
-                            <h5>
+                            <h5 class="mt-2">
                                 {{ trial.session_no }}. {% trans "Standing" %}
                                 -
                                 {{ trial.time_start|date }}

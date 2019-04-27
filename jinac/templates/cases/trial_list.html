@@ -25,7 +25,7 @@
                             <h4 class="card-title durusma-tab" style="font-family: 'Raleway Black', sans-serif;">
                                 <b>
                                 {{ trial.case.name }}
-                                {% blocktrans with trial.session_no as session_no %}{{ session_no }}. Standing{% endblocktrans %}
+                                {{ session_no }}. {% trans "Standing" %}
                                 ({{ trial.time_start|date }})
                                 </b>
                             </h4>

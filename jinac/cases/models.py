@@ -240,8 +240,8 @@ class CaseNote(Translatable):
         return self.type and self.type.type or '-'
 
     class Meta:
-        verbose_name = _('trial brief')
-        verbose_name_plural = _('trial briefs')
+        verbose_name = _('trial notes')
+        verbose_name_plural = _('trial notes')
         ordering = ('case__name', 'type')
 
     class TranslatableMeta:
@@ -270,7 +270,7 @@ class Trial(models.Model):
     modified = models.DateTimeField(_('modified time'), auto_now=True)
 
     def __str__(self):
-        standing = _("%(session_no)s. Standing" % {'session_no': self.session_no})
+        standing = "%s. %s" % (self.session_no, _('Standing'))
         return f'{self.case}: {standing}'
 
     def save(self, *args, **kwargs):

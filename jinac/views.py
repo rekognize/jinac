@@ -21,6 +21,7 @@ class IndexView(TemplateView):
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
             'info': {i.slug: i.value for i in Info.objects.all()},
             'feed': Feed.objects.all()[:5],
+            'trials': Trial.objects.filter(publish=True).order_by('-time_start')[:5]
         })
         return context
 

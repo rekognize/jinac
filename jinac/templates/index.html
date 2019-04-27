@@ -131,21 +131,21 @@
 					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
 						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
 					</div>
-					<h4 style="margin-top:10px;">{% trans "YARGILANANLAR" %}</h4>
+					<h4 style="margin-top:10px;">{% trans "PROSECUTED" %}</h4>
 				</div>
 
 				<div class="col-sm-4">
 					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s">
 						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
 					</div>
-					<h4 style="margin-top:10px;">{% trans "CEZAEVİNDEKİLER" %}</h4>
+					<h4 style="margin-top:10px;">{% trans "JAILED" %}</h4>
 				</div>
 
 				<div class="col-sm-4">
 					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s">
 						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
 					</div>
-					<h4 style="margin-top:10px;">{% trans "TUTUKSUZ YARGILANANLAR" %}</h4>
+					<h4 style="margin-top:10px;">{% trans "PENDING TRIAL" %}</h4>
 				</div>
 			</div>
 		</div>
@@ -159,11 +159,12 @@
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Announcements" %}</h4>
 			</div>
-			{% for item in feed %}
+			{% for trial in trials %}
 			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
 				<span class="card-text">
-					<h5>{{ item.object }}</h5>
-					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
+					<h4>{{ trial.case }}</h4>
+					<h5>{{ trial.session_no }}. {% trans "Standing" %}</h5>
+					<a href="{{ trial.case.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
 				<hr>
 			</div>
