@@ -159,12 +159,13 @@
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Announcements" %}</h4>
 			</div>
-			{% for trial in trials %}
+			{% for item in feed %}
 			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
 				<span class="card-text">
-					<h4>{{ trial.case }}</h4>
-					<h5>{{ trial.session_no }}. {% trans "Standing" %}</h5>
-					<a href="{{ trial.case.get_absolute_url }}">{% trans "Read more" %}</a>
+					<h5>
+                        {{ item.object }}
+                    </h5>
+					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
 				<hr>
 			</div>

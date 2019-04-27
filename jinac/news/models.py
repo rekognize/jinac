@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from martor.models import MartorField
 from jinac.articles.models import Article
 from jinac.cases.models import Case, Trial
+from jinac.people.models import Journalist
 
 
 class Carousel(models.Model):
@@ -65,6 +66,7 @@ class Feed(models.Model):
     object_id = models.PositiveIntegerField()
     object = GenericForeignKey('content_type', 'object_id')
     time = models.DateTimeField(auto_now_add=True)
+    created = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = _('Feed')
@@ -73,9 +75,11 @@ class Feed(models.Model):
 
 
 @receiver([post_save], sender=Article)
+@receiver([post_save], sender=Journalist)
+@receiver([post_save], sender=Case)
 @receiver([post_save], sender=Trial)
 def add_to_feed(sender, instance, created, **kwargs):
-    #if created:
-        Feed.objects.create(
-            object=instance
-        )
+    Feed.objects.create(
+        object=instance,
+        created=created,
+    )
