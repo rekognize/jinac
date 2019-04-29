@@ -77,11 +77,11 @@ class CaseAdmin(admin.ModelAdmin):
     journalist_names.short_description = _('journalists')
 
     def publish(self, request, queryset):
-        for trial in queryset:
-            trial.publish = True
-            trial.save()
-            trial.trialdocument_set.update(publish=True)
-    publish.short_description = _('publish')
+        for case in queryset:
+            case.publish = True
+            case.save()
+            case.casedocument_set.update(publish=True)
+    publish.short_description = _('Publish')
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)

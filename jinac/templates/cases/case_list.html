@@ -29,6 +29,8 @@
           {% endwith %}
           {% endcomment %}
 
+          {% with case.casedocument_set.all as case_documents %}
+
           <div class="col col-md-12 card-nav-tab">
 
             <ul class="nav nav-tabs">
@@ -46,7 +48,7 @@
                     </a>
                 </li>
               {% endif %}
-              {% if case.documents or case.trial_documents %}
+              {% if case_documents %}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" data-target="#tab-docs{{ case.id }}" role="tab">
                         {% trans "Documents" %}
@@ -145,9 +147,9 @@
                   </div>
                   {% endif %}
 
-                  {% if case.documents or case.trial_documents %}
+                  {% if case_documents %}
                   <div class="tab-pane" id="tab-docs{{ case.id }}">
-                      {% for doc in case.documents %}
+                      {% for doc in case_documents %}
                           <p>
                               {{ doc.case }}
                               {% if doc.type %}
@@ -179,6 +181,8 @@
             </div>
 
           </div>
+
+          {% endwith %}
 
       {% endfor %}
 
