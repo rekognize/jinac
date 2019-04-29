@@ -20,7 +20,7 @@ class IndexView(TemplateView):
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
             'info': {i.slug: i.value for i in Info.objects.all()},
-            'feed': Feed.objects.filter(object__publish=True)[:5],
+            'feed': Feed.objects.all()[:5],
             'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5]
         })
         return context
