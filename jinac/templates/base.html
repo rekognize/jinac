@@ -65,9 +65,11 @@
                 <a class="nav-link" href="{{ case_list_url }}">{% trans 'Cases' %}{% if request.path|slice:":5" == case_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
+            {% comment %}
               <li class="nav-item {% if request.path|slice:':5' == trial_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ trial_list_url }}">{% trans 'Trial Reports' %}{% if request.path|slice:":5" == trial_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
+            {% endcomment %}
 
               <li class="nav-item {% if request.path|slice:':5' == journalist_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ journalist_list_url }}">{% trans 'Journalists' %}{% if request.path|slice:":5" == journalist_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
@@ -108,7 +110,6 @@
                 {% endif %}
                 {% if not forloop.last %} | {% endif %}
             {% endfor %}
-
 
         </div>
       </div>
