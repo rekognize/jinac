@@ -11,7 +11,6 @@ body,
 }
 
 
-
 .navbar{
   font-family: 'Raleway', sans-serif;
 }
@@ -61,7 +60,6 @@ h2{
 .veriler-top h3{
   text-align: center;
   font-family: 'Raleway', sans-serif;
-  font-size: 40px;
   font-weight: bold;
   margin-bottom: 85px;
   margin-top: 85px;
@@ -70,28 +68,26 @@ h2{
 
 .item-circle{
 
-  width: 150px;
-  height: 150px;
   margin: 0 auto;
-  border-radius: 75px;
+  border-radius: 30px;
   line-height: 125px;
 }
 
 .c1{
-  background-color: #0B9296 ;
-  border:3px solid #0B9296;
+  background-color: red;
+  border:3px solid red;
   color:white;
 }
 
 .c2{
-  background-color: #ED8A15;
-  border:3px solid #ED8A15;
+  background-color: black;
+  border:3px solid black;
   color:white;
 }
 
 .c3{
-  background-color: #2A2857;
-  border:3px solid #2A2857;
+  background-color: rgb(255,209,0);
+  border:3px solid rgb(255,209,0);
   color:white;
 }
 
@@ -338,7 +334,7 @@ h2{
   .icon-search-container.active {
     width: 250px;
 
-    border: 1px solid #d9d9d9;
+    border: 1px solid black;
     border-radius: 40px;}
     
     .icon-search-container.active .fa-times-circle{
@@ -349,7 +345,7 @@ h2{
 
 
         .fa-search {
-          color: #2980b9;
+          color: black;
           font-size: 20px;
           position: absolute;
           top: 8px;
@@ -358,7 +354,7 @@ h2{
 
           .fa-times-circle {
             opacity: 0;
-            color: #d9d9d9;
+            color: black;
             font-size: 20px;
             position: absolute;
             top: 8px;

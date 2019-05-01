@@ -7,33 +7,34 @@
 
 {% block content %}
 
-<div id="home-header">
+<div id="home-header" style="min-width:65%; float:none; margin: 0 auto">
 	{% get_current_language as LANGUAGE_CODE %}
-	<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 24rem; height: 8rem; margin-top: 6rem; display: block;">
+	<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 18rem; height: 6rem; margin-top: 3%; display: block;">
 	<br/>
 
-	<div class="col-lg-9 site-title-info mx-auto" style="width:80%; display: block; margin-left:19%; margin-top:2%">
+
+	<div class="col-lg-5 site-title-info mx-auto" style="width: 30rem; display: block; text-align: justify; color: rgb(168,168,168); ">
 		<span>
 			Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
 			Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
-			<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+			<!-- <a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
 				<i class="fab fa-twitter"></i>
-			</a>
+			</a> -->
 		</span>
 	</div>
 </div>
-
+<br/>
 <br/>
 
-<section id="cover" >
+<!-- <section id="cover" >
 	<div class="container">
 		<div class="row" >
-			<nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light " style="position: relative;">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(255,209,0, 0.85); border-radius: 5px; margin-left: 1rem;">
+				<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+				<div class="collapse navbar-collapse justify-content-center" id="navbarNav" >
 					<ul class="navbar-nav mr-auto">
 
 						<li class="nav-item">
@@ -59,7 +60,7 @@
 						</li>
 						<li>
 							<div class="wrapper" >
-								<div class="icon-search-container" data-ic-class="search-trigger" style="padding-right:10rem">
+								<div class="icon-search-container" data-ic-class="search-trigger">
 									<span class="fa fa-search" ></span>
 									<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
 									<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
@@ -71,29 +72,67 @@
 			</nav>
 		</div>
 	</div>
-</section>
+</section> -->
 
-<div class="float-right" style="margin-right: 15%;font-family: 'Raleway', sans-serif;">
-
-	{% get_current_language as LANGUAGE_CODE %}
-	{% get_available_languages as LANGUAGES %}
-	{% get_language_info_list for LANGUAGES as languages %}
-
-	{% for language in languages %}
-	{% if language.code != LANGUAGE_CODE %}
-	<a href="{% url 'set_lang' %}?lang={{ language.code }}">{{ language.name_local }}</a>
-	{% else %}
-	{{ language.name_local }}
-	{% endif %}
-	{% if not forloop.last %} | {% endif %}
-	{% endfor %}
-
-</div>
-<br/>
-<br/>
 
 <section>
-	<div class="container">
+	<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(123,158,158,0.5); left: 9%; width: 65rem;">
+		<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
+				</li>
+
+				{% comment %}
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
+				</li>
+				{% endcomment %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'article_list' %}">{% trans 'Analysis' %}</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'about' %}">{% trans 'What do we do?' %}</a>
+				</li>
+				<li>
+					<div class="wrapper" >
+						<div class="icon-search-container" data-ic-class="search-trigger">
+							<span class="fa fa-search" ></span>
+							<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
+							<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="float-right" style="margin-right: 3%; font-family: 'Raleway', sans-serif;">
+
+				{% get_current_language as LANGUAGE_CODE %}
+				{% get_available_languages as LANGUAGES %}
+				{% get_language_info_list for LANGUAGES as languages %}
+
+				{% for language in languages %}
+				{% if language.code != LANGUAGE_CODE %}
+				<a href="{% url 'set_lang' %}?lang={{ language.code }}">{{ language.name_local }}</a>
+				{% else %}
+				{{ language.name_local }}
+				{% endif %}
+				{% if not forloop.last %} | {% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</nav>
+	<div class="container row" style="margin-left:8.09%;min-width:65%; float:none;">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				{% for item in carousel %}
@@ -101,10 +140,10 @@
 				{% endfor %}
 			</ol>
 			<div class="carousel-inner">
-				<img src="{{ carousel.0.image.url }}" width= "1100" height="500" class="d-block w-100">
+				<img src="{{ carousel.0.image.url }}" width= "700" height="425" class=" d-block">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
-					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black; background-color: rgb(226,212,191, 0.6); height: 6rem; bottom: 6rem; position:relative; ">
+					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:22px;background-color: rgb(226,212,191, 0.6); height: 6rem; bottom: 6rem; position:relative;  ">
 						<b>{{ item.text }}</b>
 					</div>
 				</div>
@@ -119,16 +158,65 @@
 				<span class="sr-only">{% trans "Next" %}</span>
 			</a>
 		</div>
+
+		<div class="veriler-content text-center" style="margin-top:1rem; margin-left:7%;">
+			<div class="column">
+				<div class="col-xs-2">
+					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84); color:white;width: 100px; height: 100px;">
+						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
+					</div>
+					<h4 style="margin-top:10px; font-size:16px">{% trans "PROSECUTED" %}</h4>
+				</div>
+
+				<div class="col-xs-2">
+					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s" style="background-color: rgb(123,158,158); border:3px solid rgb(123,158,158); color:white; color:white; width: 100px; height: 100px;">
+						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
+					</div>
+					<h4 style="margin-top:10px; font-size:16px">{% trans "JAILED" %}</h4>
+				</div>
+
+				<div class="col-xs-2">
+					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84);  color:white; width: 100px; height: 100px;">
+						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
+					</div>
+					<h4 style="margin-top:10px; font-size:16px">{% trans "PENDING TRIAL" %}</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<div class= "row" style="margin-left: 5rem; min-width:65%; float:none; margin: 0 auto">
+		{% for trial in upcoming_trials|slice:":4" %}
+		<div class=" card card-header border-dark shadow bg-white" style="background-color: white; width:300px; height:200px; margin-right: 2rem;">
+			<span class="card-text justify-content-center">
+
+				<h4 class="card-title">{{ trial.case.name }}</h4>
+
+				<i class="far fa-calendar-alt"></i>
+				<span class="card-text align-middle">{{ trial.time_next|date }}</span>
+				<div>
+					<i class="far fa-clock"></i>
+					<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+				</div>
+				<div>
+					<i class="fas fa-map-marker-alt"></i>
+					<span class="card-text align-middle">{{ trial.case.court }}</span>
+				</div>
+			</span>
+		</div>
+		{% endfor %}
+
 	</div>
 </section>
 
-<section id="veriler">
+<!-- <section id="veriler">
 	<div class="container" style="padding-top: 50px; padding-bottom:20px;">
 		<div class="veriler-top wow fadeInDown data-wow-duration=2s">
 		</div>
 
 		<div class="veriler-content text-center">
-			<div class="row">
+			<div class="column">
 				<div class="col-sm-4">
 					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
 						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
@@ -152,12 +240,12 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
-<section id="yaklasandurusmalar" style="height:unset">
-	<div class="row card-group justify-content-center">
+<section id="yaklasandurusmalar" style="height:unset; min-width:65%; float:none; margin: 0 auto">
+	<div class="row ">
 		
-		<div class="yaklasandurusmalar-top yaklasandurusmalar-content col-xs-5 card rounded yaklasandurusmalarcard justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px; margin-left:50px;">
+		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Lastest additions" %}</h4>
 			</div>
@@ -165,8 +253,8 @@
 			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
 				<span class="card-text">
 					<h5>
-                        {{ item.object }}
-                    </h5>
+						{{ item.object }}
+					</h5>
 					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
 				<hr>
@@ -177,7 +265,7 @@
 		<br/>
 
 
-		<div class= "col-xs-5 justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px;margin-left:50px;">
+	<!-- 	<div class= "col-xs-5 justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px;margin-left:50px;">
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Upcoming Trials" %}</h4>
 			</div>
@@ -185,9 +273,9 @@
 			<br/>
 			<div class="card-header border-dark shadow bg-white" style="background-color: white;">
 				<span class="card-text justify-content-center">
-					<!--a href="{% url "case_detail" pk=trial.case.id %}" style="color:black"-->
+					
 					<h4 class="card-title">{{ trial.case.name }}</h4>
-					<!--/a-->
+					
 					<i class="far fa-calendar-alt"></i>
 					<span class="card-text align-middle">{{ trial.time_next|date }}</span>
 					<div>
@@ -202,13 +290,13 @@
 			</div>
 			{% endfor %}
 
-		</div>
+		</div> -->
 	</div>
 </div>
 </section>
 
-<section class="contact-section my-5">
-	<div class="card" style="margin-left: 100px;">
+<section class="contact-section my-5" style="min-width:60%; float:none; margin: 0 auto">
+	<div class="card" style="margin-left: 10%">
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="card-body form">
@@ -254,11 +342,7 @@
 					<br/>
 
 					<h3>{% trans "Contact information" %}:</h3>
-					<ul class="list-unstyled">
-						<li>
-							<p><i class="fas fa-envelope"></i> contact@example.com</p>
-						</li>
-					</ul>
+					
 					<hr class="hr-light my-4">
 					<ul class="list-inline text-center list-unstyled">
 						<li class="list-inline-item">

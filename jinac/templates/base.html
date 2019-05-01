@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <link rel="icon" href="{% static 'icon.png' %}">
 
     <title>{% block title %}{% trans "Press in Arrest" %}{% endblock %}</title>
@@ -40,7 +41,7 @@
   {% url 'article_list' as article_list_url %}
   {% url 'about' as about_url %}
 
-  <section id="gazeteciler">
+  <section id="gazeteciler" style="min-width:80%; float:none; margin: 0 auto">
     <div class="container">
       <div class="row">
         <nav class="navbar fixed-top navbar-toggleable-sm navbar-expand-lg navbar-light">
