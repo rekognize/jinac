@@ -84,3 +84,8 @@ def add_to_feed(sender, instance, created, **kwargs):
             object=instance,
             created=created,
         )
+    else:
+        Feed.objects.filter(
+            content_type=ContentType.objects.get_for_model(sender),
+            object_id=instance.id
+        ).delete()
