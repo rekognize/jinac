@@ -6,15 +6,13 @@
 
 
 {% block content %}
-<section style="max-width:75rem; min-width:65rem">
-<div id="home-header" style="float:none; margin: 0 auto; margin-left:7rem">
-	{% get_current_language as LANGUAGE_CODE %}
-	<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 18rem; height: 6rem; margin-top: 3%; display: block;">
-	<br/>
-
-
-	<div class="col-lg-5 site-title-info mx-auto" style="width: 30rem; display: block; text-align: justify; color: rgb(168,168,168); ">
-		<span>
+<section class="container">
+	<div id="home-header" style="float:none; margin: 0 auto; text-align: justify; width: 20rem;">
+		{% get_current_language as LANGUAGE_CODE %}
+		<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="height: 6rem; margin-top: 2%;">
+		<br/>
+		<br/>
+		<span style="color: rgb(168,168,168); ">
 			Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
 			Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
 			<!-- <a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
@@ -22,9 +20,8 @@
 			</a> -->
 		</span>
 	</div>
-</div>
-<br/>
-<br/>
+	<br/>
+	<br/>
 
 <!-- <section id="cover" >
 	<div class="container">
@@ -75,8 +72,8 @@
 </section> -->
 
 
-<section>
-	<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(123,158,158,0.5); left: 5em; margin-right:12%">
+<section style="float:none; margin: 0 auto; text-align: justify;">
+	<nav class="navbar navbar-toggleable-sm navbar-expand-lg col-md-12" style="background-color: rgb(123,158,158,0.5);">
 		<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -132,18 +129,20 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container row" style="margin-left:4.2rem; float:none;">
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<br/>
+
+	<div class="container row col-md-12">
+		<div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel">
 			<ol class="carousel-indicators">
 				{% for item in carousel %}
 				<li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
 				{% endfor %}
 			</ol>
 			<div class="carousel-inner">
-				<img src="{{ carousel.0.image.url }}" width= "650" height="425" class=" d-block">
+				<img src="{{ carousel.0.image.url }}" width= "650" height="425" class="w-100 d-block">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
-					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;background-color: rgb(226,212,191, 0.6); height: 6rem;  position:absolute; width:35rem;text-align:left; ">
+					<div class="carousel-caption d-none d-md-block col-md-8" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px; background-color: rgb(226,212,191, 0.6); height: 6rem;  position:absolute; text-align:left; ">
 						<b>{{ item.text }}</b>
 					</div>
 				</div>
@@ -159,10 +158,10 @@
 			</a>
 		</div>
 
-		<div class="veriler-content text-center" style="margin-top:1rem; margin-left:2%;">
-			<div class="column">
+		<div class="veriler-content text-center col-md-3" style="margin-top:1rem; float: right;">
+			<div class="column justify-content-center">
 				<div class="col-xs-2">
-					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84); color:white;width: 100px; height: 100px;">
+					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84); color:white;width: 100px; height:100px;">
 						<p style="font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
 					</div>
 					<h4 style="margin-top:10px; font-size:16px">{% trans "PROSECUTED" %}</h4>
@@ -300,7 +299,7 @@
 <section class="contact-section my-5" style="float:none; margin: 0 auto">
 	<div class="card" style="margin-left: 5rem">
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-md-8">
 				<div class="card-body form">
 					<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>{%  trans "Contact" %}:</h3>
 					<br/>
@@ -355,7 +354,6 @@
 					</ul>
 
 				</div>
-
 			</div>
 		</div>
 	</div>
