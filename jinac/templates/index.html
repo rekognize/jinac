@@ -6,8 +6,8 @@
 
 
 {% block content %}
-
-<div id="home-header" style="min-width:65%; float:none; margin: 0 auto">
+<section style="max-width:75rem; min-width:65rem">
+<div id="home-header" style="float:none; margin: 0 auto; margin-left:7rem">
 	{% get_current_language as LANGUAGE_CODE %}
 	<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="width: 18rem; height: 6rem; margin-top: 3%; display: block;">
 	<br/>
@@ -76,7 +76,7 @@
 
 
 <section>
-	<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(123,158,158,0.5); left: 9%; width: 65rem;">
+	<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(123,158,158,0.5); left: 5em; margin-right:12%">
 		<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -115,7 +115,7 @@
 					</div>
 				</li>
 			</ul>
-			<div class="float-right" style="margin-right: 3%; font-family: 'Raleway', sans-serif;">
+			<div class="float-right" style=" font-family: 'Raleway', sans-serif;">
 
 				{% get_current_language as LANGUAGE_CODE %}
 				{% get_available_languages as LANGUAGES %}
@@ -132,7 +132,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container row" style="margin-left:8.09%;min-width:65%; float:none;">
+	<div class="container row" style="margin-left:4.2rem; float:none;">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				{% for item in carousel %}
@@ -140,10 +140,10 @@
 				{% endfor %}
 			</ol>
 			<div class="carousel-inner">
-				<img src="{{ carousel.0.image.url }}" width= "700" height="425" class=" d-block">
+				<img src="{{ carousel.0.image.url }}" width= "650" height="425" class=" d-block">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
-					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:22px;background-color: rgb(226,212,191, 0.6); height: 6rem; bottom: 6rem; position:relative;  ">
+					<div class="carousel-caption d-none d-md-block" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;background-color: rgb(226,212,191, 0.6); height: 6rem;  position:absolute; width:35rem;text-align:left; ">
 						<b>{{ item.text }}</b>
 					</div>
 				</div>
@@ -159,25 +159,25 @@
 			</a>
 		</div>
 
-		<div class="veriler-content text-center" style="margin-top:1rem; margin-left:7%;">
+		<div class="veriler-content text-center" style="margin-top:1rem; margin-left:2%;">
 			<div class="column">
 				<div class="col-xs-2">
 					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84); color:white;width: 100px; height: 100px;">
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
+						<p style="font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
 					</div>
 					<h4 style="margin-top:10px; font-size:16px">{% trans "PROSECUTED" %}</h4>
 				</div>
 
 				<div class="col-xs-2">
 					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s" style="background-color: rgb(123,158,158); border:3px solid rgb(123,158,158); color:white; color:white; width: 100px; height: 100px;">
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
+						<p style=" font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
 					</div>
 					<h4 style="margin-top:10px; font-size:16px">{% trans "JAILED" %}</h4>
 				</div>
 
 				<div class="col-xs-2">
 					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s" style="background-color: rgb(211,119,84); border:3px solid rgb(211,119,84);  color:white; width: 100px; height: 100px;">
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
+						<p style="font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
 					</div>
 					<h4 style="margin-top:10px; font-size:16px">{% trans "PENDING TRIAL" %}</h4>
 				</div>
@@ -186,9 +186,9 @@
 	</div>
 	<br/>
 	<br/>
-	<div class= "row" style="margin-left: 5rem; min-width:65%; float:none; margin: 0 auto">
+	<div class= "row" style="margin-left: 20%; float:none;">
 		{% for trial in upcoming_trials|slice:":4" %}
-		<div class=" card card-header border-dark shadow bg-white" style="background-color: white; width:300px; height:200px; margin-right: 2rem;">
+		<div class=" card card-header border-dark shadow bg-white col-md-4" style="margin-top:5em; background-color: white; width:300px; height:200px; margin-right: 2rem;">
 			<span class="card-text justify-content-center">
 
 				<h4 class="card-title">{{ trial.case.name }}</h4>
@@ -209,6 +209,8 @@
 
 	</div>
 </section>
+<br/>
+<br/>
 
 <!-- <section id="veriler">
 	<div class="container" style="padding-top: 50px; padding-bottom:20px;">
@@ -241,8 +243,8 @@
 		</div>
 	</div>
 </section> -->
-
-<section id="yaklasandurusmalar" style="height:unset; min-width:65%; float:none; margin: 0 auto">
+<hr>
+<section id="yaklasandurusmalar" style="background-color: white; height:unset;float:none; margin: 0 auto">
 	<div class="row ">
 		
 		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
@@ -295,8 +297,8 @@
 </div>
 </section>
 
-<section class="contact-section my-5" style="min-width:60%; float:none; margin: 0 auto">
-	<div class="card" style="margin-left: 10%">
+<section class="contact-section my-5" style="float:none; margin: 0 auto">
+	<div class="card" style="margin-left: 5rem">
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="card-body form">
@@ -336,7 +338,7 @@
 			</div>
 
 			<div class="col-xs-4">
-				<div class="card-body contact text-center white-text flex-nowrap" style="margin-right:10rem;">
+				<div class="card-body contact text-center white-text flex-nowrap" style="margin-right:5rem;">
 					<br/>
 					<br/>
 					<br/>
@@ -357,6 +359,7 @@
 			</div>
 		</div>
 	</div>
+</section>
 </section>
 
 {% endblock %}
