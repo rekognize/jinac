@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 09:38+0000\n"
+"POT-Creation-Date: 2019-05-02 18:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -464,6 +464,31 @@ msgstr "karar"
 msgid "trial - decision relations"
 msgstr "kararlar"
 
+#: jinac/contact/apps.py:7
+msgid "contact"
+msgstr "iletişim"
+
+#: jinac/contact/models.py:6 jinac/jurisdiction/models.py:48
+#: jinac/news/models.py:47 jinac/people/models.py:12
+msgid "name"
+msgstr "isim"
+
+#: jinac/contact/models.py:7
+msgid "email"
+msgstr "eposta"
+
+#: jinac/contact/models.py:8 jinac/contact/models.py:15
+msgid "message"
+msgstr "mesaj"
+
+#: jinac/contact/models.py:9
+msgid "time"
+msgstr "zaman"
+
+#: jinac/contact/models.py:16
+msgid "messages"
+msgstr "mesajlar"
+
 #: jinac/institutions/apps.py:7 jinac/institutions/models.py:13
 msgid "institutions"
 msgstr "kurumlar"
@@ -511,11 +536,6 @@ msgstr "Anayasa Mahkemesi"
 #: jinac/jurisdiction/models.py:43
 msgid "courts"
 msgstr "mahkemeler"
-
-#: jinac/jurisdiction/models.py:48 jinac/news/models.py:47
-#: jinac/people/models.py:12
-msgid "name"
-msgstr "isim"
 
 #: jinac/jurisdiction/models.py:52
 msgid "Type E"
@@ -681,40 +701,44 @@ msgstr "şikayetçiler"
 msgid "more"
 msgstr "devamı"
 
-#: jinac/templates/base.html:11 jinac/urls.py:37
+#: jinac/templates/base.html:12 jinac/urls.py:37
 msgid "Press in Arrest"
 msgstr "Tutuklu Basın"
 
-#: jinac/templates/base.html:61
+#: jinac/templates/base.html:62
 msgid "Homepage"
 msgstr "Anasayfa"
 
-#: jinac/templates/base.html:65 jinac/templates/index.html:40
+#: jinac/templates/base.html:66 jinac/templates/index.html:41
+#: jinac/templates/index.html:89
 msgid "Cases"
 msgstr "Davalar"
 
-#: jinac/templates/base.html:69 jinac/templates/cases/case_detail.html:24
-#: jinac/templates/cases/case_list.html:48
-#: jinac/templates/cases/trial_list.html:5 jinac/templates/index.html:44
-#: jinac/templates/people/journalist_detail.html:73
-msgid "Trial Reports"
-msgstr "Duruşma Raporları"
-
-#: jinac/templates/base.html:73 jinac/templates/index.html:48
+#: jinac/templates/base.html:77 jinac/templates/index.html:52
+#: jinac/templates/index.html:100
 msgid "Journalists"
 msgstr "Gazeteciler"
 
-#: jinac/templates/base.html:77 jinac/templates/index.html:52
+#: jinac/templates/base.html:81 jinac/templates/index.html:56
+#: jinac/templates/index.html:104
 msgid "Analysis"
 msgstr "Analizler"
 
-#: jinac/templates/base.html:81 jinac/templates/index.html:56
+#: jinac/templates/base.html:85 jinac/templates/index.html:60
+#: jinac/templates/index.html:108
 msgid "What do we do?"
 msgstr "Ne yapıyoruz?"
 
-#: jinac/templates/base.html:88
+#: jinac/templates/base.html:92
 msgid "Search"
 msgstr "Arama"
+
+#: jinac/templates/cases/case_detail.html:24
+#: jinac/templates/cases/case_list.html:48
+#: jinac/templates/cases/trial_list.html:5
+#: jinac/templates/people/journalist_detail.html:73
+msgid "Trial Reports"
+msgstr "Duruşma Raporları"
 
 #: jinac/templates/cases/case_detail.html:31
 #: jinac/templates/cases/case_detail.html:77
@@ -753,59 +777,59 @@ msgstr "İndir"
 msgid "Other journalists trialed in this case"
 msgstr "Bu davada yargılanan diğer gazeteciler"
 
-#: jinac/templates/index.html:113
+#: jinac/templates/index.html:156
 msgid "Previous"
 msgstr "Önceki"
 
-#: jinac/templates/index.html:117
+#: jinac/templates/index.html:160
 msgid "Next"
 msgstr "Sonraki"
 
-#: jinac/templates/index.html:134
+#: jinac/templates/index.html:170 jinac/templates/index.html:226
 msgid "PROSECUTED"
 msgstr "YARGILANANLAR"
 
-#: jinac/templates/index.html:141
+#: jinac/templates/index.html:177 jinac/templates/index.html:233
 msgid "JAILED"
 msgstr "CEZAEVİNDEKİLER"
 
-#: jinac/templates/index.html:148
+#: jinac/templates/index.html:184 jinac/templates/index.html:240
 msgid "PENDING TRIAL"
 msgstr "TUTUKSUZ YARGILANANLAR"
 
-#: jinac/templates/index.html:160
+#: jinac/templates/index.html:252
 msgid "Lastest additions"
 msgstr "Son Eklenenler"
 
-#: jinac/templates/index.html:168
+#: jinac/templates/index.html:260
 msgid "Read more"
 msgstr "Daha fazla"
 
-#: jinac/templates/index.html:180
+#: jinac/templates/index.html:272
 msgid "Upcoming Trials"
 msgstr "Yaklaşan Duruşmalar"
 
-#: jinac/templates/index.html:213
+#: jinac/templates/index.html:305
 msgid "Contact"
 msgstr "İletişim"
 
-#: jinac/templates/index.html:218
+#: jinac/templates/index.html:310
 msgid "Name"
 msgstr "İsim"
 
-#: jinac/templates/index.html:227
+#: jinac/templates/index.html:319
 msgid "Email"
 msgstr "Eposta"
 
-#: jinac/templates/index.html:237
+#: jinac/templates/index.html:329
 msgid "Message"
 msgstr "Mesaj"
 
-#: jinac/templates/index.html:240
+#: jinac/templates/index.html:332
 msgid "Submit"
 msgstr "Gönder"
 
-#: jinac/templates/index.html:254
+#: jinac/templates/index.html:346
 msgid "Contact information"
 msgstr "İletişim bilgileri"
 
@@ -897,9 +921,6 @@ msgstr "Tutuklu Basın Yönetimi"
 
 #~ msgid "notes"
 #~ msgstr "notlar"
-
-#~ msgid "time"
-#~ msgstr "zaman"
 
 #~ msgid "released"
 #~ msgstr "tahliye"
