@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles martortags %}
+
+
+{% block title %}{% trans "Contact" %} - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+
+
+<form action="{% url "contact_message" %}" method="post">
+{% csrf_token %}
+
+  <section id="cover">
+    <div class="container">
+      <div class="col-md-12 p-3" align="center">
+
+          <h2>
+              {% trans "Contact form" %}
+          </h2>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="md-form mb-0">
+								<input type="text" name="name" required="required" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
+								<br/>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="md-form mb-0">
+								<input type="email" name="email" required="required" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
+								<br/>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="md-form mb-0">
+								<textarea type="text" name="message" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
+
+								<br/>
+
+                                <button type="submit" class="btn-lg"><i class="far fa-paper-plane"></i> {% trans "Submit" %}</button>
+							</div>
+						</div>
+					</div>
+
+
+      </div>
+  </section>
+
+</form>
+
+{% endblock %}

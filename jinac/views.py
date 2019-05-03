@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
+from django.forms import ModelForm
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
+from jinac.contact.models import Message
 
 
 class IndexView(TemplateView):
@@ -43,3 +45,26 @@ def set_language(request):
         domain=settings.LANGUAGE_COOKIE_DOMAIN,
     )
     return response
+
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Message
+        fields = ['name', 'email', 'message']
+
+
+def contact_message(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            message = form.save()
+            return render(request, 'contact/done.html')
+    else:
+        form = ContactForm()
+    return render(
+        request,
+        'contact/form.html',
+        {
+            'form': form,
+        }
+    )

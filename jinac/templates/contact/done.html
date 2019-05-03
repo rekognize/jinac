@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles martortags %}
+
+
+{% block title %}{% trans "Contact" %} - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+
+  <section id="cover">
+    <div class="container">
+      <div class="col-md-12 p-3" align="center">
+
+          <h2>
+              {% trans "Thank you for your feedback!" %}
+          </h2>
+
+          <p>
+              {% trans "We got your message and we will contact you at the earliest convenience." %}
+          </p>
+
+      </div>
+  </section>
+
+{% endblock %}
