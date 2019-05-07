@@ -187,11 +187,10 @@
 			</div>
 		</div>
 	</div>
-	<br/>
-	<br/>
+	
 	<div class= "row card-group col-md-12" style="float:none;">
 		{% for trial in upcoming_trials|slice:":4" %}
-		<div class=" card card-header border-dark shadow bg-white col-md-3" style="margin-top:5em; background-color: white; width:300px; height:290px; margin-right: 1rem;">
+		<div class=" card card-header border-dark shadow bg-white col-md-3" style="margin-top:5em; background-color: white; margin-right: 1rem;">
 			<span class="card-text justify-content-center">
 
 				<h4 class="card-title" style="text-align:left">{{ trial.case.name }}</h4>
