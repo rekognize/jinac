@@ -23,8 +23,10 @@
 			</span>
 		</div>
 	</div>
-	<br/>
-	<br/>
+	
+
+<br/>
+<br/>
 
 <!-- <section id="cover" >
 	<div class="container">
@@ -207,9 +209,9 @@
 			</span>
 		</div>
 		{% endfor %}
-
 	</div>
 </section>
+
 <br/>
 <br/>
 
@@ -245,7 +247,7 @@
 	</div>
 </section> -->
 <hr>
-<section id="yaklasandurusmalar" style="background-color: white; height:unset;float:none; margin: 0 auto">
+<section id="yaklasandurusmalar" style="margin-top: 15rem; background-color: white; height:unset;float:none;">
 	<div class="row col-md-12">
 		
 		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
@@ -265,10 +267,6 @@
 			<hr>
 			{% endfor %}
 		</div>
-		<br/>
-		<br/>
-
-
 	<!-- 	<div class= "col-xs-5 justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px;margin-left:50px;">
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Upcoming Trials" %}</h4>
@@ -298,6 +296,9 @@
 	</div>
 </div>
 </section>
+</section>
+<br/>
+<hr>
 
 <form action="{% url "contact_message" %}" method="post">
 	{% csrf_token %}
