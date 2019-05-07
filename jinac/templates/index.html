@@ -7,18 +7,21 @@
 
 {% block content %}
 <section class="container">
-	<div id="home-header" style="float:none; margin: 0 auto; text-align: justify; width: 20rem;">
-		{% get_current_language as LANGUAGE_CODE %}
-		<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="height: 6rem; margin-top: 2%;">
+	<div id="home-header" style="margin: 0 auto;" class="d-flex flex-column align-items-center justify-content-center">
+		<div  class="d-flex col-md-4 align-items-center justify-content-center">
+			{% get_current_language as LANGUAGE_CODE %}
+			<img class="mx-auto" src="{% if LANGUAGE_CODE == 'tr' %}{% static 'PiA_logo_eng.png' %}{% else %}{% static 'PiA_logo_eng.png' %}{% endif %}" style="height: 4rem; margin-top: 2%;">
+		</div>
 		<br/>
-		<br/>
-		<span style="color: rgb(168,168,168); ">
-			Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
-			Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
-			<!-- <a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
-				<i class="fab fa-twitter"></i>
-			</a> -->
-		</span>
+		<div class="d-flex col-md-7 align-items-center justify-content-center" style="text-align: justify;">
+			<span style="color: rgb(168,168,168); font-size: 15px;">
+				Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
+				Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
+				<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+					<i class="fab fa-twitter"></i>
+				</a>
+			</span>
+		</div>
 	</div>
 	<br/>
 	<br/>
@@ -81,29 +84,29 @@
 		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
 
-				<li class="nav-item">
+				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
 				</li>
 
 				{% comment %}
-				<li class="nav-item">
+				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
 				</li>
 				{% endcomment %}
 
-				<li class="nav-item">
+				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'article_list' %}">{% trans 'Analysis' %}</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'about' %}">{% trans 'What do we do?' %}</a>
 				</li>
 				<li>
-					<div class="wrapper" >
+					<div class="wrapper" style="font-size: 18px;">
 						<div class="icon-search-container" data-ic-class="search-trigger">
 							<span class="fa fa-search" ></span>
 							<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
@@ -112,7 +115,7 @@
 					</div>
 				</li>
 			</ul>
-			<div class="float-right" style=" font-family: 'Raleway', sans-serif;">
+			<div class="float-right" style="font-size: 18px;">
 
 				{% get_current_language as LANGUAGE_CODE %}
 				{% get_available_languages as LANGUAGES %}
@@ -129,7 +132,6 @@
 			</div>
 		</div>
 	</nav>
-	<br/>
 
 	<div class="container row col-md-12">
 		<div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel">
@@ -185,22 +187,22 @@
 	</div>
 	<br/>
 	<br/>
-	<div class= "row" style="margin-left: 20%; float:none;">
+	<div class= "row card-group col-md-12" style="float:none;">
 		{% for trial in upcoming_trials|slice:":4" %}
-		<div class=" card card-header border-dark shadow bg-white col-md-4" style="margin-top:5em; background-color: white; width:300px; height:200px; margin-right: 2rem;">
+		<div class=" card card-header border-dark shadow bg-white col-md-3" style="margin-top:5em; background-color: white; width:300px; height:290px; margin-right: 1rem;">
 			<span class="card-text justify-content-center">
 
-				<h4 class="card-title">{{ trial.case.name }}</h4>
+				<h4 class="card-title" style="text-align:left">{{ trial.case.name }}</h4>
 
 				<i class="far fa-calendar-alt"></i>
-				<span class="card-text align-middle">{{ trial.time_next|date }}</span>
+				<span class="card-text align-middle" style="text-align:left">{{ trial.time_next|date }}</span>
 				<div>
 					<i class="far fa-clock"></i>
-					<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+					<span class="card-text align-middle" style="text-align:left">{{ trial.time_next|time }}</span>
 				</div>
 				<div>
 					<i class="fas fa-map-marker-alt"></i>
-					<span class="card-text align-middle">{{ trial.case.court }}</span>
+					<span class="card-text align-middle" style="text-align:left">{{ trial.case.court }}</span>
 				</div>
 			</span>
 		</div>
@@ -244,22 +246,23 @@
 </section> -->
 <hr>
 <section id="yaklasandurusmalar" style="background-color: white; height:unset;float:none; margin: 0 auto">
-	<div class="row ">
+	<div class="row col-md-12">
 		
 		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
 			<div class="card-header" style="background-color:white;">
 				<h4 class="card-title text-center card-block">{% trans "Lastest additions" %}</h4>
 			</div>
 			{% for item in feed %}
-			<div style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
-				<span class="card-text">
+			<div class="row" style="margin-top: 20px; margin-left:10px; padding-right: 5px; text-align:justify">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Unknown_Member.jpg" style="width:100px; height:100px;">
+				<span class="card-text col-md-9">
 					<h5>
 						{{ item.object }}
 					</h5>
 					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
-				<hr>
 			</div>
+			<hr>
 			{% endfor %}
 		</div>
 		<br/>
@@ -297,70 +300,70 @@
 </section>
 
 <form action="{% url "contact_message" %}" method="post">
-{% csrf_token %}
+	{% csrf_token %}
 
-<section class="contact-section my-5" style="float:none; margin: 0 auto">
-	<div class="card" style="margin-left: 5rem">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="card-body form">
-					<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>{%  trans "Contact" %}:</h3>
-					<br/>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="md-form mb-0">
-								<input type="text" name="name" required="required" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
-								<br/>
+	<section class="contact-section my-5" style="float:none; margin: 0 auto">
+		<div class="card" style="margin-left: 5rem">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="card-body form">
+						<h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>{%  trans "Contact" %}:</h3>
+						<br/>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="md-form mb-0">
+									<input type="text" name="name" required="required" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
+									<br/>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-md-6">
-							<div class="md-form mb-0">
-								<input type="email" name="email" required="required" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
-								<br/>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="md-form mb-0">
+									<input type="email" name="email" required="required" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
+									<br/>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="row">
+						<div class="row">
 
-						<div class="col-md-6">
-							<div class="md-form mb-0">
-								<textarea type="text" name="message" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
+							<div class="col-md-6">
+								<div class="md-form mb-0">
+									<textarea type="text" name="message" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
 
-								<br/>
+									<br/>
 
-                                <button type="submit" class="btn-lg"><i class="far fa-paper-plane"></i> {% trans "Submit" %}</button>
+									<button type="submit" class="btn-lg"><i class="far fa-paper-plane"></i> {% trans "Submit" %}</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-xs-4">
-				<div class="card-body contact text-center white-text flex-nowrap" style="margin-right:5rem;">
-					<br/>
-					<br/>
-					<br/>
+				<div class="col-xs-4">
+					<div class="card-body contact text-center white-text flex-nowrap" style="margin-right:5rem;">
+						<br/>
+						<br/>
+						<br/>
 
-					<h3>{% trans "Contact information" %}:</h3>
-					
-					<hr class="hr-light my-4">
-					<ul class="list-inline text-center list-unstyled">
-						<li class="list-inline-item">
-							<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
-								<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-					</ul>
+						<h3>{% trans "Contact information" %}:</h3>
 
+						<hr class="hr-light my-4">
+						<ul class="list-inline text-center list-unstyled">
+							<li class="list-inline-item">
+								<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+						</ul>
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 </form>
 
