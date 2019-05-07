@@ -104,6 +104,11 @@ class CaseAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 
+@admin.register(CaseDecision)
+class CaseDecisionAdmin(admin.ModelAdmin):
+    list_display = ['case', 'journalist', 'get_decision_type_display', 'get_punishment']
+
+
 # trials
 
 class TrialNoteInline(admin.TabularInline):
