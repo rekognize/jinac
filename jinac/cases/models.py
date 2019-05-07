@@ -139,6 +139,20 @@ class CaseDecision(models.Model):
     def __str__(self):
         return f'{self.case.__str__()}'
 
+    def get_punishment(self):
+        if self.punishment_fine:
+            return f'{self.punishment_fine} TL'
+        else:
+            punishment = []
+            if self.punishment_year:
+                punishment.append('%s %s' % (self.punishment_year, _('year')))
+            if self.punishment_month:
+                punishment.append('%s %s' % (self.punishment_month, _('month')))
+            if self.punishment_day:
+                punishment.append('%s %s' % (self.punishment_day, _('day')))
+            return punishment and ', '.join(punishment) or '-'
+    get_punishment.short_description = _('punishment')
+
     class Meta:
         verbose_name = _('case - decision relation')
         verbose_name_plural = _('case - decision relations')

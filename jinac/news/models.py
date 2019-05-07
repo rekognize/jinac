@@ -79,13 +79,12 @@ class Feed(models.Model):
 @receiver([post_save], sender=Case)
 @receiver([post_save], sender=Trial)
 def add_to_feed(sender, instance, created, **kwargs):
+    Feed.objects.filter(
+        content_type=ContentType.objects.get_for_model(sender),
+        object_id=instance.id
+    ).delete()
     if instance.publish:
         Feed.objects.create(
             object=instance,
             created=created,
         )
-    else:
-        Feed.objects.filter(
-            content_type=ContentType.objects.get_for_model(sender),
-            object_id=instance.id
-        ).delete()
