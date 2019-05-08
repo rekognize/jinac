@@ -55,7 +55,7 @@ class CaseAdmin(admin.ModelAdmin):
         CaseStatusInline,
     ]
     list_display = ['name', 'no', 'journalist_names', 'court', 'status', 'reporter', 'added', 'modified']
-    search_fields = ['journalists__name', 'court__city__name']
+    search_fields = ['name', 'journalists__name', 'court__city__name']
     readonly_fields = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
