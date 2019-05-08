@@ -58,7 +58,7 @@ class Case(models.Model):
         return self.casestatus_set.last()
 
     def notes(self):
-        return self.casenote_set.filter(type__publish=True)
+        return self.casenote_set.filter(type__publish=True).filter(journalist__isnull=True)
 
     class Meta:
         verbose_name = _('case')
