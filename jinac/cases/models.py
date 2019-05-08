@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.conf import settings
 from translations.models import Translatable
 from martor.models import MartorField
 from jinac.jurisdiction.models import Court
@@ -37,6 +38,7 @@ class Case(models.Model):
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
     summary = MartorField(_('case summary'), blank=True, null=True)
+    summary_en = MartorField(_('case summary (EN)'), blank=True, null=True)
     order = models.PositiveSmallIntegerField(_('order'), default=0)
 
     related_cases = models.ManyToManyField('self', verbose_name=_('related cases'), blank=True)
@@ -54,6 +56,9 @@ class Case(models.Model):
 
     def status(self):
         return self.casestatus_set.last()
+
+    def notes(self):
+        return self.casenote_set.filter(type__publish=True)
 
     class Meta:
         verbose_name = _('case')
@@ -248,6 +253,7 @@ class CaseNote(Translatable):
         blank=True, null=True, on_delete=models.SET_NULL,
     )
     note = MartorField(_('note'))
+    lang = models.CharField(_('language'), max_length=5, default=settings.LANGUAGE_CODE, choices=settings.LANGUAGES)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

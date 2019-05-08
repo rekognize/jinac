@@ -19,6 +19,8 @@ class Person(PolymorphicModel):
     )
     short_bio = models.TextField(_('short bio'), blank=True, null=True)
     bio = MartorField(_('biography'), blank=True, null=True)
+    short_bio_en = models.TextField(_('short bio (EN)'), blank=True, null=True)
+    bio_en = MartorField(_('biography (EN)'), blank=True, null=True)
 
     reporter = models.ForeignKey(User, verbose_name=_('reporter'), blank=True, null=True, on_delete=models.SET_NULL)
     added = models.DateTimeField(_('added time'), auto_now_add=True)

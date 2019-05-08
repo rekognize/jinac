@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles martortags %}
 
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
 
@@ -34,6 +35,10 @@
           <div class="col col-md-12 card-nav-tab">
 
             <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ case.id }}" style="color:black;">{% trans "Case Summary" %}</a>
+
+              </li>
               {% for note in case.notes %}
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
@@ -61,6 +66,16 @@
               <div class="card-block">
                 <div class="tab-content">
 
+                  <div id="kunye-{{ case.id }}" class="tab-pane fade">
+                      <p>{{ LANGUAGE_CODE }}$$$$$$$$$$
+                      {% if case.summary_en and LANGUAGE_CODE == 'en' %}
+                          {{ case.summary_en|safe_markdown }}
+                      {% elif case.summary and LANGUAGE_CODE == 'tr' %}
+                          {{ case.summary|safe_markdown }}
+                      {% endif %}
+                      </p>
+                  </div>
+
                   {% for note in case.notes %}
                   <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
                     {{ note.note|safe_markdown }}
@@ -85,10 +100,6 @@
                                         <div class="container flex-container">
 
                                             <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ trial.id }}" style="color:black;">{% trans "Case Summary" %}</a>
-
-                                                </li>
                                                 {% for note in trial.notes %}
                                                     <li class="nav-item">
                                                         <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
@@ -104,17 +115,6 @@
                                             </ul>
 
                                             <div class="tab-content">
-
-                                                <div id="kunye-{{ trial.id }}" class="tab-pane fade">
-                                                    <p>
-                                                    <br/>
-                                                    {{ trial.summary|safe_markdown }}
-                                                    {% if trial.time_next %}
-                                                    <br/><br/>
-                                                    <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
-                                                    {% endif %}
-
-                                                </div>
 
                                                 {% for note in trial.notes %}
                                                     <div id="note{{ note.id }}" class="tab-pane fade">

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles martortags %}
 
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}{{ journalist.name }} - {{ block.super }}{% endblock %}
 
@@ -19,13 +20,15 @@
         <div class="col-md-8 px-3">
           <div class="card-block" style="text-align:justify;padding-right: 5px;  ">
             <h4 class="card-title">{{ journalist.name }}</h4>
-            {% if journalist.bio %}
             <p class="card-text align-middle small">
             <small>
-                {{ journalist.bio|safe_markdown }}
+                  {% if journalist.bio_en and LANGUAGE_CODE == 'en' %}
+                      {{ journalist.bio_en|safe_markdown }}
+                  {% elif journalist.bio and LANGUAGE_CODE == 'tr' %}
+                      {{ journalist.bio|safe_markdown }}
+                  {% endif %}
             </small>
             </p>
-            {% endif %}
           </div>
         </div>
 
@@ -60,11 +63,13 @@
 
             <ul class="nav nav-tabs">
               {% for note in case.notes %}
+                {% if note.lang == LANGUAGE_CODE %}
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
                         {{ note.type }}
                     </a>
                 </li>
+                {% endif %}
               {% endfor %}
               {% if case.trial_set.all %}
                 <li class="nav-item">
@@ -87,9 +92,11 @@
                 <div class="tab-content">
 
                   {% for note in case.notes %}
-                  <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                    {{ note.note|safe_markdown }}
-                  </div>
+                    {% if note.lang == LANGUAGE_CODE %}
+                      <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
+                      {{ note.note|safe_markdown }}
+                      </div>
+                    {% endif %}
                   {% endfor %}
 
                   {% if case.trial_set.all %}

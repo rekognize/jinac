@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles martortags %}
 
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
 
@@ -37,9 +38,11 @@
             <div style="text-align:justify;padding-right: 5px; ">
                 <br/>
                 <span>
-                    {% if journalist.short_bio %}
-                    {{ journalist.short_bio|safe_markdown }}
-                    {% endif %}
+                  {% if journalist.short_bio_en and LANGUAGE_CODE == 'en' %}
+                      {{ journalist.short_bio_en|safe_markdown }}
+                  {% elif journalist.short_bio and LANGUAGE_CODE == 'tr' %}
+                      {{ journalist.short_bio|safe_markdown }}
+                  {% endif %}
                 </span>
             </div>
         </div>
