@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.conf import settings
 from translations.models import Translatable
+from django.template.defaultfilters import slugify
 from martor.models import MartorField
 from jinac.jurisdiction.models import Court
 from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff, Complainant
@@ -25,6 +26,7 @@ DECISION_TYPES = (
 
 class Case(models.Model):
     name = models.CharField(_('case name'), max_length=100)
+    slug = models.SlugField(blank=True, null=True)
     no = models.CharField(_('file number'), max_length=20)
     court = models.ForeignKey(Court, verbose_name=_('court'), on_delete=models.CASCADE)
     filing_date = models.DateField(_('case filing date'), blank=True, null=True)  # iddianame tarihi
@@ -51,6 +53,11 @@ class Case(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(**kwargs)
+
     def get_absolute_url(self):
         return reverse('case_detail', args=[self.id])
 
@@ -63,7 +70,7 @@ class Case(models.Model):
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')
-        ordering = ('name', 'order', '-modified',)
+        ordering = ('slug', 'order', '-modified',)
 
 
 class CaseStatus(models.Model):
