@@ -231,6 +231,7 @@ class CaseDocument(models.Model):
 
 class CaseNoteType(models.Model):
     type = models.CharField(_('type'), max_length=100)
+    type_en = models.CharField(_('type (EN)'), max_length=100, blank=True, null=True)
     publish = models.BooleanField(_('publish'), default=True)
     order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
@@ -253,7 +254,7 @@ class CaseNote(Translatable):
         blank=True, null=True, on_delete=models.SET_NULL,
     )
     note = MartorField(_('note'))
-    lang = models.CharField(_('language'), max_length=5, default=settings.LANGUAGE_CODE, choices=settings.LANGUAGES)
+    note_en = MartorField(_('note (EN)'), blank=True, null=True)
     time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
