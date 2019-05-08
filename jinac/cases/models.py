@@ -63,7 +63,7 @@ class Case(models.Model):
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')
-        ordering = ('order', '-modified',)
+        ordering = ('name', 'order', '-modified',)
 
 
 class CaseStatus(models.Model):
