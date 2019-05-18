@@ -73,12 +73,14 @@
                     </a>
                 </li>
               {% endfor %}
-              {% if case.trial_set.all %}
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
-                        {% trans "Trial Reports" %}
-                    </a>
-                </li>
+              {% if LANGUAGE_CODE != 'en' %}
+                  {% if case.trial_set.all %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
+                            {% trans "Trial Reports" %}
+                        </a>
+                    </li>
+                  {% endif %}
               {% endif %}
               {% if case.documents or case.trial_documents %}
                 <li class="nav-item">
