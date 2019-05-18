@@ -66,9 +66,9 @@
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
                     {% if LANGUAGE_CODE == 'en' %}
-                        {{ note.type_en }}
+                        {{ note.type.type_en }}
                     {% else %}
-                        {{ note.type }}
+                        {{ note.type.type }}
                     {% endif %}
                     </a>
                 </li>
