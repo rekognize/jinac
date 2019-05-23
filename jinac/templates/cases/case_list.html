@@ -209,3 +209,25 @@
 </div>
 
 {% endblock %}
+
+
+{% block foot %}
+
+<script>
+
+// tab üzerine ikinci kez tıklayınca tab'ı kapat
+
+$('[data-toggle=tab]').click(function(){
+    console.log($(this).hasClass('active'));
+    if ($(this).hasClass('active')){
+        var tab = $(this).data('target').substring(1);
+        console.log(tab);
+        $(this).removeClass('active');
+        $('#'+ tab).removeClass('active').removeClass('show');
+        return false;
+    }
+});
+
+</script>
+
+{% endblock %}

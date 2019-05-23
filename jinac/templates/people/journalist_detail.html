@@ -96,7 +96,7 @@
                 <div class="tab-content">
 
                   {% for note in case.notes %}
-                      <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
+                      <div class="tab-pane" id="tab-note{{ note.id }}">
                       {% if LANGUAGE_CODE == 'en' and note.note_en %}
                         {{ note.note_en|safe_markdown }}
                       {% else %}
