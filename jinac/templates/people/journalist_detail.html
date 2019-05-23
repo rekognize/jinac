@@ -64,7 +64,7 @@
             <ul class="nav nav-tabs">
               {% for note in case.notes %}
                 <li class="nav-item">
-                    <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
                     {% if LANGUAGE_CODE == 'en' %}
                         {{ note.type.type_en }}
                     {% else %}
