@@ -161,6 +161,7 @@ MARTOR_ENABLE_CONFIGS = {
     'living': 'false',   # to enable/disable live updates in preview
 }
 
+MARTOR_ENABLE_LABEL = True
 
 try:
     from .settings_local import *

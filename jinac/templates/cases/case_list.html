@@ -23,7 +23,13 @@
 
           <a name="{{ case.id }}"></a>
 
-          <h5 class="mt-4">{{ case.name }}</h5>
+          <h5 class="mt-4">
+            {% if case.name_en and LANGUAGE_CODE == 'en' %}
+                {{ case.name_en }}
+            {% else %}
+                {{ case.name }}
+            {% endif %}
+          </h5>
 
           {% comment %}
           {% with case.casejournalist_set.all as case_journalists %}
