@@ -7,8 +7,12 @@ class ArticleListView(ListView):
     model = Article
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        return qs.filter(publish=True)
+        qs = super().get_queryset().filter(publish=True)
+        if self.request.LANGUAGE_CODE == 'en':
+            qs = qs.filter(lang='en')
+        else:
+            qs = qs.filter(lang='tr')
+        return qs
 
 
 class ArticleDetailView(DetailView):

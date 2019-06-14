@@ -12,7 +12,7 @@ class Article(models.Model):
     slug = models.SlugField(unique=True)
     subtitle = models.CharField(_('subtitle'), max_length=200, blank=True, null=True)
     image = models.ImageField(_('image'), upload_to='articles/', blank=True, null=True)
-    summary = MartorField(_('summary'))
+    summary = MartorField(_('summary'), blank=True, null=True)
     lang = models.CharField(_('language'), max_length=5, choices=settings.LANGUAGES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
