@@ -4,6 +4,7 @@
 *.pyc
 /env*
 /media/
+/docs/
 /data/
 *.conf
 settings_local.py
