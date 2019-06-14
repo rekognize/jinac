@@ -68,12 +68,14 @@
                     </a>
                 </li>
               {% endfor %}
-              {% if case.trial_set.all %}
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
-                        {% trans "Trial Reports" %}
-                    </a>
-                </li>
+              {% if LANGUAGE_CODE != 'en' %}
+                  {% if case.trial_set.all %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
+                            {% trans "Trial Reports" %}
+                        </a>
+                    </li>
+                  {% endif %}
               {% endif %}
               {% if case_documents %}
                 <li class="nav-item">
@@ -108,69 +110,71 @@
                   </div>
                   {% endfor %}
 
-                  {% if case.trial_set.all %}
-                  <div class="tab-pane" id="tab-trials{{ case.id }}">
-                    {% for trial in case.trial_set.all reversed %}
-                        <!--a href="{{ trial.get_absolute_url }}"-->
-                            <h5 class="mt-2">
-                                {{ trial.session_no }}. {% trans "Standing" %}
-                                -
-                                {{ trial.time_start|date }}
-                            </h5>
-                        <!--/a-->
+                  {% if LANGUAGE_CODE != 'en' %}
+                      {% if case.trial_set.all %}
+                      <div class="tab-pane" id="tab-trials{{ case.id }}">
+                        {% for trial in case.trial_set.all reversed %}
+                            <!--a href="{{ trial.get_absolute_url }}"-->
+                                <h5 class="mt-2">
+                                    {{ trial.session_no }}. {% trans "Standing" %}
+                                    -
+                                    {{ trial.time_start|date }}
+                                </h5>
+                            <!--/a-->
 
-                            {% with trial.trialdocument_set.all as trial_documents %}
+                                {% with trial.trialdocument_set.all as trial_documents %}
 
-                                <div class="tab-content">
-                                    <div class="col-md-12 px-3">
-                                        <div class="container flex-container">
+                                    <div class="tab-content">
+                                        <div class="col-md-12 px-3">
+                                            <div class="container flex-container">
 
-                                            <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
-                                                {% for note in trial.notes %}
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
-                                                    </li>
-                                                {% endfor %}
+                                                <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
+                                                    {% for note in trial.notes %}
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
+                                                        </li>
+                                                    {% endfor %}
 
-                                                {% if trial_documents %}
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
-                                                    </li>
-                                                {% endif %}
+                                                    {% if trial_documents %}
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
+                                                        </li>
+                                                    {% endif %}
 
-                                            </ul>
+                                                </ul>
 
-                                            <div class="tab-content">
+                                                <div class="tab-content">
 
-                                                {% for note in trial.notes %}
-                                                    <div id="note{{ note.id }}" class="tab-pane fade">
-                                                        <p>
-                                                            <br/>
-                                                            {{ note.note|safe_markdown }}
-                                                        </p>
-                                                    </div>
-                                                {% endfor %}
+                                                    {% for note in trial.notes %}
+                                                        <div id="note{{ note.id }}" class="tab-pane fade">
+                                                            <p>
+                                                                <br/>
+                                                                {{ note.note|safe_markdown }}
+                                                            </p>
+                                                        </div>
+                                                    {% endfor %}
 
-                                                {% if trial_documents %}
-                                                    <div id="docs-{{ trial.id }}" class="tab-pane fade ">
-                                                        <p>
-                                                        {% for trial_document in trial_documents %}
-                                                            <br/>
-                                                            <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
-                                                        {% endfor %}
-                                                        </p>
-                                                    </div>
-                                                {% endif %}
+                                                    {% if trial_documents %}
+                                                        <div id="docs-{{ trial.id }}" class="tab-pane fade ">
+                                                            <p>
+                                                            {% for trial_document in trial_documents %}
+                                                                <br/>
+                                                                <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                                            {% endfor %}
+                                                            </p>
+                                                        </div>
+                                                    {% endif %}
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            {% endwith %}
+                                {% endwith %}
 
-                    {% endfor %}
-                  </div>
+                        {% endfor %}
+                      </div>
+                      {% endif %}
                   {% endif %}
 
                   {% if case_documents %}
