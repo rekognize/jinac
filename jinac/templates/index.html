@@ -147,7 +147,7 @@
 				<img src="{{ carousel.0.image.url }}" width= "650" height="425" class="w-100 d-block img-fluid" style="margin-left:1rem">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
-					<div class="carousel-caption" style="right:0% !important; padding-top:10px !important; font-family: 'Raleway Black', sans-serif; color:black; font-size:18px; background-color: rgb(226,212,191, 0.6); height: auto; text-align:left;">
+					<div class="carousel-caption" style="right:0% !important; padding-top:10px !important; font-family: 'Raleway Black', sans-serif; color:black; font-size:3vw; background-color: rgb(226,212,191, 0.6); height: auto; text-align:left;">
 						<b>{{ item.text }}</b>
 					</div>
 				</div>
@@ -249,7 +249,7 @@
 	<div class="col-md-6 card-group">
 		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
 			<div class="card-header" style="background-color:white;">
-				<h4 class="card-title text-center card-block">{% trans "Lastest additions" %}</h4>
+				<h4 class="card-title text-md-center text-xs-right card-block">{% trans "Lastest additions" %}</h4>
 			</div>
 			{% for item in feed %}
 			<div style="margin-top: 2rem; margin-left:1rem; text-align:justify">
@@ -260,7 +260,7 @@
 					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
 			</div>
-			<hr>
+			
 			{% endfor %}
 		</div>
 	</div>
