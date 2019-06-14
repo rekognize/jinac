@@ -9,6 +9,8 @@ class JournalistListView(ListView):
         qs = super().get_queryset()
         qs = qs.filter(publish=True).exclude(short_bio__isnull=True).exclude(photo__isnull=True).\
             exclude(short_bio='').exclude(photo='')
+        if self.request.LANGUAGE_CODE == 'en':
+            qs = qs.exclude(bio_en__isnull=True).exclude(bio_en='')
         if self.request.GET.get('f'):
             qs = qs.filter(name__istartswith=self.request.GET.get('f'))
         return qs
