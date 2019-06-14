@@ -12,7 +12,7 @@
     <div class="row justify-content-md-center" style="min-width:80%; float:none; margin: 0 auto">
         <div class="gazeteciler-top text-center">
             <a href="?f=" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
-            {% for c in "ABCÇDEFGHIİJKLMNOÖPRSTUÜVYZ" %}
+            {% for c in "ABCÇDEFGHIİJKLMNOÖPRSŞTUÜVYZ" %}
                 <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
             {% endfor %}
         </div>
