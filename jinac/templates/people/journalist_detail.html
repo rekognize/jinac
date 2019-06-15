@@ -20,15 +20,13 @@
         <div class="col-md-8 px-3">
           <div class="card-block" style="text-align:justify;padding-right: 5px;  ">
             <h4 class="card-title">{{ journalist.name }}</h4>
-            <p class="card-text align-middle small">
-            <small>
-                  {% if journalist.bio_en and LANGUAGE_CODE == 'en' %}
-                      {{ journalist.bio_en|safe_markdown }}
-                  {% elif journalist.bio and LANGUAGE_CODE == 'tr' %}
-                      {{ journalist.bio|safe_markdown }}
-                  {% endif %}
-            </small>
-            </p>
+            <div class="card-text align-middle small">
+              {% if journalist.bio_en and LANGUAGE_CODE == 'en' %}
+                  {{ journalist.bio_en|safe_markdown }}
+              {% elif journalist.bio and LANGUAGE_CODE == 'tr' %}
+                  {{ journalist.bio|safe_markdown }}
+              {% endif %}
+            </div>
           </div>
         </div>
 
