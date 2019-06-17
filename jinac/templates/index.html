@@ -166,24 +166,30 @@
 		<div class="veriler-content text-center col-md-3 d-none d-md-block d-l-block d-xl-block" style="margin-top:1rem; float: right;">
 			<div class="column justify-content-center">
 				<div class="col-xs-2">
-					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3); color:white;width: 100px; height:100px; line-height: 100px !important;">
-						<p style="font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "PROSECUTED" %}</h4>
+					<a href="{% url 'journalist_list' %}" style="text-decoration:none">
+						<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3); color:white;width: 100px; height:100px; line-height: 100px !important;">
+							<p style="font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
+						</div>
+						<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "PROSECUTED" %}</h4>
+					</a>
 				</div>
 
 				<div class="col-xs-2">
-					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s" style="background-color: rgb(123,158,158,0.7); border:3px solid rgb(123,158,158,0.3); color:white; color:white; width: 100px; height: 100px; line-height: 100px !important;">
-						<p style=" font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "JAILED" %}</h4>
+					<a href="{% url 'journalist_list' %}" style="text-decoration:none">
+						<div class="item-circle c2 wow fadeInUp data-wow-duration=2s" style="background-color: rgb(123,158,158,0.7); border:3px solid rgb(123,158,158,0.3); color:white; color:white; width: 100px; height: 100px; line-height: 100px !important;">
+							<p style=" font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
+						</div>
+						<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "JAILED" %}</h4>
+					</a>
 				</div>
 
 				<div class="col-xs-2">
-					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3);  color:white; width: 100px; height: 100px; line-height: 100px !important;">
-						<p style="font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "PENDING TRIAL" %}</h4>
+					<a href="{% url 'journalist_list' %}" style="text-decoration:none">
+						<div class="item-circle c3 wow fadeInRight data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3);  color:white; width: 100px; height: 100px; line-height: 100px !important;">
+							<p style="font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
+						</div>
+						<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "PENDING TRIAL" %}</h4>
+					</a>
 				</div>
 			</div>
 		</div>
