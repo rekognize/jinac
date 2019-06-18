@@ -1,5 +1,8 @@
 from django.contrib import admin
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from django.db.models import Q
+from django.contrib.admin import SimpleListFilter
 from martor.widgets import AdminMartorWidget
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
@@ -45,12 +48,46 @@ class CaseDocumentInline(admin.TabularInline):
     extra = 1
 
 
+class PhotoFilter(SimpleListFilter):
+    title = _('photo')
+    parameter_name = 'photo'
+
+    def lookups(self, request, model_admin):
+        return [('y', _('Yes')), ('n', _('No'))]
+
+    def queryset(self, request, qs):
+        if self.value() == 'y':
+            qs = qs.exclude(photo__isnull=True).exclude(photo='')
+        if self.value() == 'n':
+            qs = qs.filter(Q(photo__isnull=True) | Q(photo=''))
+        return qs
+
+
+class ShortBioFilter(SimpleListFilter):
+    title = _('short bio')
+    parameter_name = 'photo'
+
+    def lookups(self, request, model_admin):
+        return [('y', _('Yes')), ('n', _('No'))]
+
+    def queryset(self, request, qs):
+        if self.value() == 'y':
+            qs = qs.exclude(short_bio__isnull=True).exclude(short_bio='')
+        if self.value() == 'n':
+            qs = qs.filter(Q(short_bio__isnull=True) | Q(short_bio=''))
+        return qs
+
+
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
     list_display = ['name', 'reporter', 'added', 'modified', 'publish']
     search_fields = ('name',)
     list_editable = ('publish',)
-    list_filter = ('publish',)
+    list_filter = (
+        'publish',
+        PhotoFilter,
+        ShortBioFilter,
+    )
     prepopulated_fields = {"slug": ("name",)}
     inlines = [
         StatusInline,
