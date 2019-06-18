@@ -47,8 +47,9 @@ class CaseDocumentInline(admin.TabularInline):
 
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
-    list_display = ['name', 'reporter', 'added', 'modified']
+    list_display = ['name', 'reporter', 'added', 'modified', 'publish']
     search_fields = ('name',)
+    list_editable = ('publish',)
     list_filter = ('publish',)
     prepopulated_fields = {"slug": ("name",)}
     inlines = [
