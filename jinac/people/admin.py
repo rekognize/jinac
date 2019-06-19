@@ -4,7 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 from django.contrib.admin import SimpleListFilter
 from martor.widgets import AdminMartorWidget
-from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant
+from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant, \
+    JOURNALIST_STATUS_CHOICES
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote
 
 
@@ -78,6 +79,28 @@ class ShortBioFilter(SimpleListFilter):
         return qs
 
 
+class JournalistStatusFilter(SimpleListFilter):
+    title = _('journalist status')
+    parameter_name = 'status'
+
+    def lookups(self, request, model_admin):
+        return JOURNALIST_STATUS_CHOICES
+
+    def queryset(self, request, qs):
+        if self.value():
+            print(self.value())
+            ids = []
+            for j in qs.all():
+                status = j.current_status()
+                if status:
+                    print(status.status)
+                    if status.status == int(self.value()):
+                        ids.append(j.id)
+            print(ids)
+            qs = qs.filter(id__in=ids)
+        return qs
+
+
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
     list_display = ['name', 'reporter', 'added', 'modified', 'publish']
@@ -87,6 +110,7 @@ class JournalistAdmin(admin.ModelAdmin):
         'publish',
         PhotoFilter,
         ShortBioFilter,
+        JournalistStatusFilter,
     )
     prepopulated_fields = {"slug": ("name",)}
     inlines = [

@@ -90,17 +90,20 @@ class Journalist(Person):
         ordering = ('slug', 'name',)
 
 
+JOURNALIST_STATUS_CHOICES = (
+    (1, _('Not detained')),
+    (2, _('Detained')),
+    (3, _('Imprisoned')),
+    (4, _('Convicted')),
+    (5, _('Fugitive')),
+    (6, _('Postponed')),
+    (7, _('Judgement receded')),
+)
+
+
 class JournalistStatus(models.Model):
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'), on_delete=models.CASCADE)
-    status = models.PositiveSmallIntegerField(_('status'), choices=(
-        (1, _('Not detained')),
-        (2, _('Detained')),
-        (3, _('Imprisoned')),
-        (4, _('Convicted')),
-        (5, _('Fugitive')),
-        (6, _('Postponed')),
-        (7, _('Judgement receded')),
-    ))
+    status = models.PositiveSmallIntegerField(_('status'), choices=JOURNALIST_STATUS_CHOICES)
     prison = models.ForeignKey(Prison, verbose_name=_('prison'), blank=True, null=True, on_delete=models.SET_NULL)
     start_date = models.DateField(_('start date'), blank=True, null=True)
     end_date = models.DateField(_('end date'), blank=True, null=True)
