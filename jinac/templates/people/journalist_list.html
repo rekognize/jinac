@@ -13,7 +13,7 @@
         <div class="gazeteciler-top text-center">
             <a href="?f=" class="btn btn-sm btn-outline-secondary {% if not filter %}text-white btn-secondary{% endif %}">{% trans "All" %}</a>
             {% for c in "ABCÇDEFGHIİJKLMNOÖPRSŞTUÜVYZ" %}
-                <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
+            <a class="btn btn-sm btn-outline-secondary {% if filter == c %}text-white btn-secondary{% endif %}" href="?f={{ c }}">{{ c }}</a>
             {% endfor %}
         </div>
     </div>
@@ -32,24 +32,28 @@
                     </a>
                 </div>
                 <div>
-                    <h4 class="card-title card-block">{{ journalist.name }}</h4>
+                    <a href= "{{ journalist.get_absolute_url }}" style="color:black; text-decoration:none">
+                        <h4 class="card-title card-block">{{ journalist.name }}</h4>
+                    </a>
                 </div>
             </div>
             <div style="text-align:justify;padding-right: 5px; ">
                 <br/>
-                <span>
-                  {% if journalist.short_bio_en and LANGUAGE_CODE == 'en' %}
+                <a href= "{{ journalist.get_absolute_url }}" style="color:black; text-decoration:none">
+                    <span>
+                      {% if journalist.short_bio_en and LANGUAGE_CODE == 'en' %}
                       {{ journalist.short_bio_en|safe_markdown }}
-                  {% elif journalist.short_bio and LANGUAGE_CODE == 'tr' %}
+                      {% elif journalist.short_bio and LANGUAGE_CODE == 'tr' %}
                       {{ journalist.short_bio|safe_markdown }}
-                  {% endif %}
-                </span>
-            </div>
-        </div>
+                      {% endif %}
+                  </span>
+              </a>
+          </div>
+      </div>
 
-        {% endfor %}
+      {% endfor %}
 
-    </div>
+  </div>
 
 </div>
 

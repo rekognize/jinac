@@ -136,15 +136,15 @@
 		</div>
 	</nav>
 
-	<div class="container row col-md-12">
-		<div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel">
+	<div class="container row col-md-12" style="padding:0px; margin:0px;">
+		<div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel" style="padding:0px;">
 			<ol class="carousel-indicators">
 				{% for item in carousel %}
 				<li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
 				{% endfor %}
 			</ol>
 			<div class="carousel-inner">
-				<img src="{{ carousel.0.image.url }}" class="w-100 d-block img-fluid" style="margin-left:1rem; max-height:450px!important;">
+				<img src="{{ carousel.0.image.url }}" class="w-100 d-block img-fluid" style="max-height:450px!important;">
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
 					<div class="carousel-caption" style="right:0% !important; padding-top:10px !important; font-family: 'Raleway Black', sans-serif; color:black; font-size:1.7vmax; background-color: rgb(226,212,191, 0.6); height: auto; text-align:left;">
