@@ -28,54 +28,6 @@
 	<br/>
 	<br/>
 
-<!-- <section id="cover" >
-	<div class="container">
-		<div class="row" >
-			<nav class="navbar navbar-toggleable-sm navbar-expand-lg" style="background-color: rgb(255,209,0, 0.85); border-radius: 5px; margin-left: 1rem;">
-				<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse justify-content-center" id="navbarNav" >
-					<ul class="navbar-nav mr-auto">
-
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
-						</li>
-
-                        {% comment %}
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
-						</li>
-                        {% endcomment %}
-
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'article_list' %}">{% trans 'Analysis' %}</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'about' %}">{% trans 'What do we do?' %}</a>
-						</li>
-						<li>
-							<div class="wrapper" >
-								<div class="icon-search-container" data-ic-class="search-trigger">
-									<span class="fa fa-search" ></span>
-									<input type="text" class="search-input" id="myInput" data-ic-class="search-input" placeholder="Search"/>
-									<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-</section> -->
-
 
 <section style="float:none; margin: 0 auto; text-align: justify;">
 	<nav class="navbar navbar-toggleable-sm navbar-expand-lg col-md-12" style="background-color: rgb(123,158,158,0.5);">
@@ -88,14 +40,8 @@
 			<ul class="navbar-nav mr-auto">
 
 				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
-					<a class="nav-link" href="{% url 'case_list' %}">{% trans 'Cases' %}</a>
+					<a class="nav-link" href="{% url 'case_list' %}">{% if LANGUAGE_CODE == 'tr' %}{% trans "Cases" %}{% else %}Trials{% endif %}</a>
 				</li>
-
-				{% comment %}
-				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
-					<a class="nav-link" href="{% url 'trial_list' %}">{% trans 'Trial Reports' %}</a>
-				</li>
-				{% endcomment %}
 
 				<li class="nav-item" style="font-family: 'Raleway Black', sans-serif; color:black; font-size:20px;">
 					<a class="nav-link" href="{% url 'journalist_list' %}">{% trans 'Journalists' %}</a>

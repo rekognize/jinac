@@ -54,7 +54,7 @@
 
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ case.id }}" style="color:black;">{% trans "Case Summary" %}</a>
+                <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ case.id }}" style="color:black;">{% if LANGUAGE_CODE == 'tr' %}{% trans "Case Summary" %}{% else %}Trial Summary{% endif %}</a>
 
               </li>
               {% for note in case.notes %}
