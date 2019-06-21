@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
@@ -29,12 +29,11 @@ class IndexView(TemplateView):
 
 
 def set_language(request):
-    #next = request.META.get('HTTP_REFERER')
-    next = '/'
-    response = HttpResponseRedirect(next) if next else HttpResponse(status=204)
+    next_page = request.META.get('HTTP_REFERER')
+    response = HttpResponseRedirect(next_page) if next_page else HttpResponseRedirect('/')
     lang_code = request.GET.get('lang')
-    next_trans = translate_url(next, lang_code)
-    if next_trans != next:
+    next_trans = translate_url(next_page, lang_code)
+    if next_trans != next_page:
         response = HttpResponseRedirect(next_trans)
     if hasattr(request, 'session'):
         request.session[LANGUAGE_SESSION_KEY] = lang_code
