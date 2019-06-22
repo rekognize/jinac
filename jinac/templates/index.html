@@ -164,50 +164,33 @@
 	</div>
 </section>
 
-<!-- <section id="veriler">
-	<div class="container" style="padding-top: 50px; padding-bottom:20px;">
-		<div class="veriler-top wow fadeInDown data-wow-duration=2s">
-		</div>
-
-		<div class="veriler-content text-center">
-			<div class="column">
-				<div class="col-sm-4">
-					<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" >
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.yargilananlar }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px;">{% trans "PROSECUTED" %}</h4>
-				</div>
-
-				<div class="col-sm-4">
-					<div class="item-circle c2 wow fadeInUp data-wow-duration=2s">
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.cezaevindekiler }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px;">{% trans "JAILED" %}</h4>
-				</div>
-
-				<div class="col-sm-4">
-					<div class="item-circle c3 wow fadeInRight data-wow-duration=2s">
-						<p style="margin-top: 10px; font-family: Lato;"><strong>{{ info.tutuksuz_yargilananlar }}</strong></p>
-					</div>
-					<h4 style="margin-top:10px;">{% trans "PENDING TRIAL" %}</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
 <hr/>
 
 <section class="row col-md-12" id="yaklasandurusmalar" style="margin-top:3rem; background-color: white; height:unset;float:none;">
 	<div class="col-md-6 card-group">
 		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
 			<div class="card-header" style="background-color:white;">
-				<h4 class="card-title text-md-center text-xs-right card-block">{% trans "Lastest additions" %}</h4>
+				<h4 class="card-title text-md-center text-xs-right card-block">{% trans "Lastest entries" %}</h4>
 			</div>
 			{% for item in feed %}
 			<div style="margin-top: 2rem; margin-left:1rem; text-align:justify">
 				<span class="card-text col-md-6">
 					<h5>
-						{{ item.object }}
+                        {% if item.object.lang %} {# filter articles by lang #}
+                            {% if LANGUAGE_CODE == item.object.lang %}
+                                {{ item.object }}
+                            {% endif %}
+                        {% else %}
+                            {% if LANGUAGE_CODE == 'en' %}
+                                {% if item.object.name_en %}  {# cases & trials #}
+                                    {{ item.object.name_en }}
+                                {% else %}
+                                    {{ item.object }}
+                                {% endif %}
+                            {% else %}  {# journalist #}
+                                {{ item.object }}
+                            {% endif %}
+                        {% endif %}
 					</h5>
 					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
 				</span>
@@ -217,32 +200,7 @@
 		</div>
 	</div>
 	<div class="col-md-1" style=" margin-left:2rem; border-left: 0.5px solid rgb(223,223,223);"></div>
-	<!-- 	<div class= "col-xs-5 justify-content-center mx-auto" style="align-content:center !important; ; max-width: 300px; min-width: 300px;margin-left:50px;">
-			<div class="card-header" style="background-color:white;">
-				<h4 class="card-title text-center card-block">{% trans "Upcoming Trials" %}</h4>
-			</div>
-			{% for trial in upcoming_trials|slice:":4" %}
-			<br/>
-			<div class="card-header border-dark shadow bg-white" style="background-color: white;">
-				<span class="card-text justify-content-center">
-					
-					<h4 class="card-title">{{ trial.case.name }}</h4>
-					
-					<i class="far fa-calendar-alt"></i>
-					<span class="card-text align-middle">{{ trial.time_next|date }}</span>
-					<div>
-						<i class="far fa-clock"></i>
-						<span class="card-text align-middle">{{ trial.time_next|time }}</span>
-					</div>
-					<div>
-						<i class="fas fa-map-marker-alt"></i>
-						<span class="card-text align-middle">{{ trial.case.court }}</span>
-					</div>
-				</span>
-			</div>
-			{% endfor %}
 
-		</div> -->
 		<hr>
 		
 		<div class="col-md-4 contact-section" style="float:none; margin: 0 auto">

@@ -300,7 +300,11 @@ class Trial(models.Model):
 
     def __str__(self):
         standing = "%s. %s" % (self.session_no, _('Standing'))
-        return f'{self.case}: {standing}'
+        return f'{self.case.name}: {standing}'
+
+    def name_en(self):
+        standing = "%s. %s" % (self.session_no, _('Standing'))
+        return f'{self.case.name_en}: {standing}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
