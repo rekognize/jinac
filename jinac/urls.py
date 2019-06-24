@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('yonetim/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
-    path('/arama/', SearchResultView.as_view(), name='search'),
+    path('arama/', SearchResultView.as_view(), name='search'),
 
     path('davalar/', CaseListView.as_view(), name='case_list'),
     path('davalar/<int:pk>/', CaseDetailView.as_view(), name='case_detail'),
