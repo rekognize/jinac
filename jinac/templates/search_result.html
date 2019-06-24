@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles martortags %}<!DOCTYPE html>
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
+
+
+{% block content %}
+
+<div class="container">
+
+    <br>
+
+    <h2>{% trans "Search results" %}</h2>
+
+
+    {% if articles %}
+
+        <h3>{% trans "Articles" %}</h3>
+
+        {% for article in articles %}
+
+            <h5><a href="{{ article.get_absolute_url }}">{{ article }}</a></h5>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    {% if journalists %}
+
+        <h3>{% trans "Journalists" %}</h3>
+
+        {% for journalist in journalists %}
+
+            <h5><a href="{{ journalist.get_absolute_url }}">{{ journalist }}</a></h5>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    {% if cases %}
+
+        <h3>{% trans "Cases" %}</h3>
+
+        {% for case in cases %}
+
+            <h5>
+            <a href="{{ case.get_absolute_url }}">
+            {% if LANGUAGE_CODE == 'en' %}
+                {% if case.name_en %}  {# cases & trials #}
+                    {{ case.name_en }}
+                {% else %}
+                    {{ case }}
+                {% endif %}
+            {% else %}
+                {{ case }}
+            {% endif %}
+            </a>
+            </h5>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+</div>
+
+
+{% endblock %}

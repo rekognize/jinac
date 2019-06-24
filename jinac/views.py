@@ -6,8 +6,11 @@ from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.forms import ModelForm
+from django.db.models import Q
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
+from jinac.people.models import Journalist
+from jinac.articles.models import Article
 from jinac.contact.models import Message
 
 
@@ -24,6 +27,20 @@ class IndexView(TemplateView):
             'info': {i.slug: i.value for i in Info.objects.all()},
             'feed': Feed.objects.all()[:5],
             'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5]
+        })
+        return context
+
+
+class SearchResultView(TemplateView):
+    template_name = 'search_result.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        q = self.request.GET.get('q')
+        context.update({
+            'articles': Article.objects.filter(title__icontains=q),
+            'journalists': Journalist.objects.filter(name__icontains=q),
+            'cases': Case.objects.filter(Q(name__icontains=q) | Q(name_en__icontains=q)),
         })
         return context
 
@@ -67,3 +84,5 @@ def contact_message(request):
             'form': form,
         }
     )
+
+
