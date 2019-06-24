@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost', 'local.host', '127.0.0.1',
     'ec2-3-92-31-176.compute-1.amazonaws.com',
-    'pressinarrest.rekognize.io', 'pressinarrest.com',
+    'pressinarrest.rekognize.io',
+    'pressinarrest.com', 'pressinarrest.net', 'pressinarrest.org',
 ]
 
 
