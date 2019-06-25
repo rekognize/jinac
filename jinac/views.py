@@ -38,9 +38,15 @@ class SearchResultView(TemplateView):
         context = super().get_context_data()
         q = self.request.GET.get('q')
         context.update({
-            'articles': q and Article.objects.filter(title__icontains=q),
-            'journalists': q and Journalist.objects.filter(name__icontains=q),
-            'cases': q and Case.objects.filter(Q(name__icontains=q) | Q(name_en__icontains=q)),
+            'articles': q and Article.objects.filter(
+                Q(title__icontains=q) | Q(subtitle__icontains=q) | Q(summary__icontains=q)),
+            'journalists': q and Journalist.objects.filter(
+                Q(name__icontains=q) | Q(short_bio__icontains=q) | Q(short_bio_en__icontains=q) |
+                Q(bio__icontains=q) | Q(bio_en__icontains=q)
+            ),
+            'cases': q and Case.objects.filter(
+                Q(name__icontains=q) | Q(name_en__icontains=q) | Q(summary__icontains=q) | Q(summary_en__icontains=q)
+            ),
             'q': q,
         })
         return context
