@@ -64,6 +64,13 @@
     {% endif %}
 
 
+    {% if not articles and not cases and not journalists %}
+
+        {% trans "No items matched the query" %}: "{{ q }}"
+
+    {% endif %}
+
+
 </div>
 
 
