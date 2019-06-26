@@ -14,7 +14,7 @@ from jinac.people.models import Journalist
 class Carousel(models.Model):
     image = models.ImageField(_('photo'), upload_to='carousel/')
     text = models.CharField(_('text'), max_length=250, blank=True, null=True)
-    text_en = models.CharField(_('text'), max_length=250, blank=True, null=True)
+    text_en = models.CharField(_('text (EN)'), max_length=250, blank=True, null=True)
     link = models.URLField(_('link'), blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
     publish = models.BooleanField(_('publish'), default=True)
