@@ -15,8 +15,12 @@
 		<br/>
 		<div class="d-flex col-md-7 align-items-center justify-content-center" style="text-align: justify;">
 			<span style="color: rgb(168,168,168); font-size: 15px;">
+            {% if LANGUAGE_CODE == 'en' %}
+                Press in Arrest is a work of monitoring, documenting and constructing a memory of journalists' trials in Turkey.
+            {% else %}
 				Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalastırma çalışmasıdır.
 				Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
+            {% endif %}
 				<a class="p-2 fa-lg tw-ic" href="https://twitter.com/TutukluBasin" target="_blank">
 					<i class="fab fa-twitter"></i>
 				</a>
@@ -96,7 +100,13 @@
 				{% for item in carousel %}
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
 					<div class="carousel-caption" style="right:0% !important; padding-top:10px !important; font-family: 'Raleway Black', sans-serif; color:black; font-size:1.7vmax; background-color: rgb(226,212,191, 0.6); height: auto; text-align:left;">
-						<b>{{ item.text }}</b>
+						<b>
+                        {% if LANGUAGE_CODE == 'en' %}
+                            {{ item.text_en }}
+                        {% else %}
+                            {{ item.text }}
+                        {% endif %}
+                        </b>
 					</div>
 				</div>
 				{% endfor %}
