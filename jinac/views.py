@@ -7,6 +7,7 @@ from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.forms import ModelForm
 from django.db.models import Q
+from django.template.defaultfilters import slugify
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
 from jinac.people.models import Journalist
@@ -39,15 +40,17 @@ class SearchResultView(TemplateView):
         q = self.request.GET.get('q')
         context.update({
             'articles': q and Article.objects.filter(
-                Q(title__icontains=q) | Q(subtitle__icontains=q) | Q(summary__icontains=q)),
+                Q(title__icontains=q) | Q(subtitle__icontains=q) | Q(summary__icontains=q)
+            ).distinct(),
             'journalists': q and Journalist.objects.filter(
                 Q(name__icontains=q) | Q(short_bio__icontains=q) | Q(short_bio_en__icontains=q) |
                 Q(bio__icontains=q) | Q(bio_en__icontains=q)
-            ),
+            ).distinct(),
             'cases': q and Case.objects.filter(
                 Q(name__icontains=q) | Q(name_en__icontains=q) | Q(summary__icontains=q) | Q(summary_en__icontains=q) |
                 Q(casenote__note__icontains=q) | Q(casenote__note_en__icontains=q) |
-                Q(trial__trialnote__note__icontains=q)
+                Q(trial__trialnote__note__icontains=q) |
+                Q(journalists__name=q)
             ).distinct(),
             'q': q,
         })
