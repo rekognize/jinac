@@ -31,24 +31,9 @@
             {% endif %}
           </h5>
 
-          {% comment %}
-          {% with case.casejournalist_set.all as case_journalists %}
-              {% if case_journalists|length > 1 %}
-              <p>
-                  {% trans "Other journalists trialed in this case" %}:
-                  {% for case_journalist in case_journalists %}
-                      {% with case_journalist.journalist as other_journalist %}
-                          {% if journalist != other_journalist %}
-                              <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
-                          {% endif %}
-                      {% endwith %}
-                  {% endfor %}
-              </p>
-              {% endif %}
-          {% endwith %}
-          {% endcomment %}
 
           {% with case.casedocument_set.all as case_documents %}
+          {% with case.journalists.all as case_journalists %}
 
           <div class="col col-md-12 card-nav-tab">
 
@@ -81,6 +66,13 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" data-target="#tab-docs{{ case.id }}" role="tab">
                         {% trans "Documents" %}
+                    </a>
+                </li>
+              {% endif %}
+              {% if case_journalists %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-target="#tab-journos{{ case.id }}" role="tab">
+                        {% trans "Journalists" %}
                     </a>
                 </li>
               {% endif %}
@@ -204,7 +196,17 @@
                   </div>
                   {% endif %}
 
-
+                  {% if case_journalists %}
+                  <div class="tab-pane" id="tab-journos{{ case.id }}">
+                      {% for case_journalist in case_journalists %}
+                          {% with case_journalist.journalist as other_journalist %}
+                              {% if journalist != other_journalist %}
+                                  <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
+                              {% endif %}
+                          {% endwith %}
+                      {% endfor %}
+                  </div>
+                  {% endif %}
 
                 </div>
               </div>
@@ -212,6 +214,7 @@
 
           </div>
 
+          {% endwith %}
           {% endwith %}
 
       {% endfor %}
