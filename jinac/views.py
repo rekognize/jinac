@@ -45,8 +45,10 @@ class SearchResultView(TemplateView):
                 Q(bio__icontains=q) | Q(bio_en__icontains=q)
             ),
             'cases': q and Case.objects.filter(
-                Q(name__icontains=q) | Q(name_en__icontains=q) | Q(summary__icontains=q) | Q(summary_en__icontains=q)
-            ),
+                Q(name__icontains=q) | Q(name_en__icontains=q) | Q(summary__icontains=q) | Q(summary_en__icontains=q) |
+                Q(casenote__note__icontains=q) | Q(casenote__note_en__icontains=q) |
+                Q(trial__trialnote__note__icontains=q)
+            ).distinct(),
             'q': q,
         })
         return context
