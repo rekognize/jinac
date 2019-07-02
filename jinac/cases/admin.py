@@ -1,3 +1,6 @@
+import csv
+from io import StringIO, BytesIO
+from django.http import HttpResponse
 from django.contrib import admin
 from django.db import models
 from martor.widgets import AdminMartorWidget
@@ -59,7 +62,7 @@ class CaseAdmin(admin.ModelAdmin):
     readonly_fields = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
     list_filter = ['publish', 'opening_date', 'modified', 'coup_related', 'reporter']
-    actions = ['publish']
+    actions = ['publish', 'download']
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
@@ -82,6 +85,20 @@ class CaseAdmin(admin.ModelAdmin):
             case.save()
             case.casedocument_set.update(publish=True)
     publish.short_description = _('Publish')
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for case in qs:
+            writer.writerow([case.name, case.no, self.journalist_names(case), case.court, case.status()])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="davalar.csv"'
+        return response
+    download.short_description = _('Download')
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
@@ -106,7 +123,23 @@ class CaseAdmin(admin.ModelAdmin):
 
 @admin.register(CaseDecision)
 class CaseDecisionAdmin(admin.ModelAdmin):
-    list_display = ['case', 'journalist', 'get_decision_type_display', 'get_punishment']
+    list_display = ['case', 'journalist', 'decision_type', 'get_punishment']
+    actions = ['download']
+    list_filter = ['decision_type']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for decision in qs:
+            writer.writerow([decision.case.name, decision.journalist.name, decision.get_decision_type_display(), decision.get_punishment()])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="kararlar.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 # trials

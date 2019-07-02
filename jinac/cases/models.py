@@ -424,6 +424,9 @@ class TrialDecision(models.Model):
     punishment_day = models.PositiveSmallIntegerField(_('day'), blank=True, null=True)
     punishment_fine = models.CharField(_('fine'), max_length=100, blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.trial.__str__()} - {self.get_decision_type_display()}'
+
     class Meta:
         verbose_name = _('trial - decision relation')
         verbose_name_plural = _('trial - decision relations')
