@@ -76,7 +76,7 @@ class CaseAdmin(admin.ModelAdmin):
         return actions
 
     def journalist_names(self, obj):
-        return ', '.join([j.name for j in obj.journalists.all()])
+        return ', '.join([j.name for j in obj.journalists.all().distinct()])
     journalist_names.short_description = _('journalists')
 
     def publish(self, request, queryset):
@@ -182,6 +182,20 @@ class UpcomingTrialsFilter(SimpleListFilter):
         return queryset
 
 
+class ViolationsFilter(SimpleListFilter):
+    title = _('violations')
+    parameter_name = 'violation'
+
+    def lookups(self, request, model_admin):
+        return [(v.id, v.type) for v in ViolationType.objects.all()]
+
+    def queryset(self, request, qs):
+        if self.value():
+            ids = [tv.trial.id for tv in TrialViolation.objects.filter(type__id=self.value())]
+            qs = qs.filter(id__in=ids)
+        return qs
+
+
 @admin.register(Trial)
 class TrialAdmin(admin.ModelAdmin):
     inlines = [
@@ -190,11 +204,11 @@ class TrialAdmin(admin.ModelAdmin):
         TrialDocumentInline,
         TrialDecisionInline,
     ]
-    list_display = ['case', 'session_no', 'reporter', 'added', 'modified', 'time_next']
+    list_display = ['case', 'session_no', 'reporter', 'added', 'modified', 'time_next', 'violations']
     readonly_fields = ['reporter']
     search_fields = ['case__name']
     filter_horizontal = ['observers', 'board']
-    list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter']
+    list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter', ViolationsFilter]
     actions = ['publish']
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
@@ -207,6 +221,10 @@ class TrialAdmin(admin.ModelAdmin):
             if 'publish' in actions:
                 del actions['publish']
         return actions
+
+    def violations(self, obj):
+        return ', '.join([v.type.type for v in obj.trialviolation_set.all()])
+    violations.short_description = _('Violations')
 
     def publish(self, request, queryset):
         for trial in queryset:

@@ -231,6 +231,9 @@ class CaseDocument(models.Model):
                                    blank=True, null=True, on_delete=models.SET_NULL)
     publish = models.BooleanField(_('publish'), default=False)
 
+    def __str__(self):
+        return f'{self.case.__str__()} - {self.file}'
+
     class Meta:
         verbose_name = _('case document')
         verbose_name_plural = _('case documents')
@@ -379,6 +382,9 @@ class TrialViolation(models.Model):
     type = models.ForeignKey(ViolationType, verbose_name=_('violation type'), on_delete=models.CASCADE)
     details = models.TextField(_('details'), blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.trial.__str__()} - {self.type.type}'
+
     class Meta:
         verbose_name = _('right violation')
         verbose_name_plural = _('right violations')
@@ -404,6 +410,9 @@ class TrialDocument(models.Model):
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalist'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
     publish = models.BooleanField(_('publish'), default=False)
+
+    def __str__(self):
+        return f'{self.trial.__str__()} - {self.file}'
 
     class Meta:
         verbose_name = _('trial document')
