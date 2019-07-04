@@ -114,7 +114,7 @@ class JournalistPositionFilter(SimpleListFilter):
 
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
-    list_display = ['name', 'get_institutions', 'reporter', 'added', 'modified', 'publish']
+    list_display = ['name', 'institutions', 'reporter', 'added', 'modified', 'publish']
     search_fields = ('name',)
     list_editable = ('publish',)
     list_filter = (
@@ -137,7 +137,7 @@ class JournalistAdmin(admin.ModelAdmin):
         models.TextField: {'widget': AdminMartorWidget},
     }
 
-    def get_institutions(self, obj):
+    def institutions(self, obj):
         institutions = []
         for case_journalist in obj.casejournalist_set.all():
             institution = []
@@ -148,6 +148,7 @@ class JournalistAdmin(admin.ModelAdmin):
             if institution:
                 institutions.append(' - '.join(institution))
         return '; '.join(institutions)
+    institutions.short_description = _('institutions')
 
     def get_fields(self, request, obj=None):
         fields = super().get_fields(request, obj)
