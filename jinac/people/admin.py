@@ -200,7 +200,9 @@ class JournalistAdmin(admin.ModelAdmin):
     }
 
     def get_current_status(self, obj):
-        return obj.get_current_status_display()
+        current_status = obj.current_status()
+        if current_status:
+            return current_status.get_status_display()
     get_current_status.short_description = _('status')
 
     def institutions(self, obj):
