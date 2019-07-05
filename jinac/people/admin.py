@@ -6,12 +6,74 @@ from django.contrib.admin import SimpleListFilter
 from martor.widgets import AdminMartorWidget
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant, \
     JOURNALIST_STATUS_CHOICES
-from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote, WorkPosition
+from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote, WorkPosition, Case
 
 
-@admin.register(Attorney, Prosecutor, Judge, Plaintiff, Complainant)
+@admin.register(Attorney, Judge)
 class JurisdictionAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Prosecutor)
+class ProsecutorAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'indictment_cases_count',
+        'indictment_cases',
+        'trials_count',
+        'trials',
+    )
+
+    def indictment_cases_count(self, obj):
+        return obj.case_set.count()
+    indictment_cases_count.short_description = _('indictment prosecutor')
+
+    def indictment_cases(self, obj):
+        return '; '.join([c.__str__() for c in obj.case_set.all()])
+    indictment_cases.short_description = _('indictment prosecutor')
+
+    def trials_count(self, obj):
+        return obj.trial_set.values_list('case').distinct().count()
+    trials_count.short_description = _('trial prosecutor')
+
+    def trials(self, obj):
+        case_ids = obj.trial_set.values_list('case').distinct()
+        return '; '.join([c.__str__() for c in Case.objects.filter(id__in=case_ids)])
+    trials.short_description = _('trial prosecutor')
+
+
+@admin.register(Plaintiff)
+class PlaintiffAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'cases_count',
+        'cases',
+    )
+
+    def cases_count(self, obj):
+        return obj.case_set.count()
+    cases_count.short_description = _('cases')
+
+    def cases(self, obj):
+        return '; '.join([c.__str__() for c in obj.case_set.all()])
+    cases.short_description = _('cases')
+
+
+@admin.register(Complainant)
+class ComplainantAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'cases_count',
+        'cases',
+    )
+
+    def cases_count(self, obj):
+        return obj.case_set.count()
+    cases_count.short_description = _('cases')
+
+    def cases(self, obj):
+        return '; '.join([c.__str__() for c in obj.case_set.all()])
+    cases.short_description = _('cases')
 
 
 @admin.register(CaseNote)

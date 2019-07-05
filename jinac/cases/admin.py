@@ -15,12 +15,27 @@ from jinac.cases.models import CaseIndictment, Case, CaseDocument, ViolationType
 
 
 @admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument, TrialDecision,
-                CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType, CaseIndictment, Article)
+                CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
 
 # cases
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('type', 'indictment', 'no', 'punishment_type')
+
+
+@admin.register(CaseIndictment)
+class CaseIndictmentAdmin(admin.ModelAdmin):
+    list_display = ('case', 'journalist', 'get_articles')
+    list_filter = ('articles__type', 'articles__indictment')
+
+    def get_articles(self, obj):
+        return '; '.join([a.__str__() for a in obj.articles.all()])
+    get_articles.short_description = _('articles')
+
 
 class CaseIndictmentInline(admin.TabularInline):
     model = CaseIndictment
@@ -48,6 +63,20 @@ class CaseStatusInline(admin.TabularInline):
     extra = 1
 
 
+class ArticlesFilter(SimpleListFilter):
+    title = _('articles')
+    parameter_name = 'article'
+
+    def lookups(self, request, model_admin):
+        return [(a.id, v.type) for a in Article.objects.all()]
+
+    def queryset(self, request, qs):
+        if self.value():
+            ids = [tv.trial.id for tv in TrialViolation.objects.filter(type__id=self.value())]
+            qs = qs.filter(id__in=ids)
+        return qs
+
+
 @admin.register(Case)
 class CaseAdmin(admin.ModelAdmin):
     inlines = [
@@ -57,7 +86,7 @@ class CaseAdmin(admin.ModelAdmin):
         CaseDecisionInline,
         CaseStatusInline,
     ]
-    list_display = ['name', 'no', 'journalist_names', 'court', 'status', 'reporter', 'added', 'modified']
+    list_display = ['name', 'no', 'journalist_names', 'court', 'status', 'prosecutor', 'reporter', 'added', 'modified']
     search_fields = ['name', 'journalists__name', 'court__city__name']
     readonly_fields = ['reporter']
     filter_horizontal = ['related_cases', 'plaintiff']
