@@ -109,6 +109,9 @@ class JournalistStatus(models.Model):
     end_date = models.DateField(_('end date'), blank=True, null=True)
     case = models.ForeignKey('cases.Case', verbose_name=_('case'), blank=True, null=True, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return f'{self.journalist.name} - {self.get_status_display()}'
+
     class Meta:
         verbose_name = _('journalist status')
         verbose_name_plural = _('journalist status')

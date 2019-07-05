@@ -176,7 +176,7 @@ class JournalistPositionFilter(SimpleListFilter):
 
 @admin.register(Journalist)
 class JournalistAdmin(admin.ModelAdmin):
-    list_display = ['name', 'institutions', 'reporter', 'added', 'modified', 'publish']
+    list_display = ['name', 'institutions', 'get_current_status', 'reporter', 'added', 'modified', 'publish']
     search_fields = ('name',)
     list_editable = ('publish',)
     list_filter = (
@@ -198,6 +198,10 @@ class JournalistAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
+
+    def get_current_status(self, obj):
+        return obj.get_current_status_display()
+    get_current_status.short_description = _('status')
 
     def institutions(self, obj):
         institutions = []

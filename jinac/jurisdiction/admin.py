@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from jinac.jurisdiction.models import City, Court, Prison
 from jinac.cases.models import Case
+from jinac.people.models import Journalist
 
 
 @admin.register(Court)
@@ -39,5 +40,25 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(Prison)
 class PrisonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type',)
+    list_display = ('name', 'type', 'journalist_count', 'journalists')
     list_filter = ('type',)
+
+    def journalist_count(self, obj):
+        journalist_ids = []
+        for js in obj.journaliststatus_set.filter(prison=obj):
+            current_status = js.journalist.current_status()
+            if current_status and js.status == current_status.status:
+                journalist_ids.append(js.journalist.id)
+                break
+        return Journalist.objects.filter(id__in=journalist_ids).distinct().count()
+    journalist_count.short_description = _('journalists')
+
+    def journalists(self, obj):
+        journalist_ids = []
+        for js in obj.journaliststatus_set.filter(prison=obj):
+            current_status = js.journalist.current_status()
+            if current_status and js.status == current_status.status:
+                journalist_ids.append(js.journalist.id)
+                break
+        return '; '.join([j.name for j in Journalist.objects.filter(id__in=journalist_ids)])
+    journalists.short_description = _('journalists')
