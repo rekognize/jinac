@@ -9,7 +9,8 @@ from django.contrib.admin import SimpleListFilter
 from martor.widgets import AdminMartorWidget
 from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, \
     JOURNALIST_STATUS_CHOICES
-from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote, WorkPosition, Case
+from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote, WorkPosition, Case, \
+    TrialDocument
 
 
 @admin.register(Attorney, Judge)
@@ -130,6 +131,11 @@ class CaseDocumentInline(admin.TabularInline):
     extra = 1
 
 
+class TrialDocumentInline(admin.TabularInline):
+    model = TrialDocument
+    extra = 1
+
+
 class PhotoFilter(SimpleListFilter):
     title = _('photo')
     parameter_name = 'photo'
@@ -213,6 +219,7 @@ class JournalistAdmin(admin.ModelAdmin):
         CaseIndictmentInline,
         CaseNoteInline,
         CaseDocumentInline,
+        TrialDocumentInline,
     ]
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},

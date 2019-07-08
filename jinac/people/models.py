@@ -49,7 +49,7 @@ class Journalist(Person):
         return reverse('journalist_detail', kwargs={'slug': self.slug})
 
     def current_status(self):
-        return self.journaliststatus_set.order_by('start_date').last()
+        return self.journaliststatus_set.order_by('start_date').filter(end_date__isnull=True).last()
 
     def get_related_docs(self):
         # return related case and trial documents
