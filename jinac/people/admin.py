@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 from django.contrib.admin import SimpleListFilter
 from martor.widgets import AdminMartorWidget
-from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, Complainant, \
+from jinac.people.models import Journalist, JournalistStatus, Attorney, Prosecutor, Judge, Plaintiff, \
     JOURNALIST_STATUS_CHOICES
 from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, CaseNote, WorkPosition, Case
 
@@ -44,23 +44,6 @@ class ProsecutorAdmin(admin.ModelAdmin):
 
 @admin.register(Plaintiff)
 class PlaintiffAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'cases_count',
-        'cases',
-    )
-
-    def cases_count(self, obj):
-        return obj.case_set.count()
-    cases_count.short_description = _('cases')
-
-    def cases(self, obj):
-        return '; '.join([c.__str__() for c in obj.case_set.all()])
-    cases.short_description = _('cases')
-
-
-@admin.register(Complainant)
-class ComplainantAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'cases_count',

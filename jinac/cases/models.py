@@ -7,7 +7,7 @@ from translations.models import Translatable
 from django.template.defaultfilters import slugify
 from martor.models import MartorField
 from jinac.jurisdiction.models import Court
-from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff, Complainant
+from jinac.people.models import Journalist, Judge, Prosecutor, Attorney, Plaintiff
 from jinac.institutions.models import Institution
 
 
@@ -37,7 +37,6 @@ class Case(models.Model):
     coup_related = models.BooleanField(_('coup attempt related'), default=False)
     journalists = models.ManyToManyField(Journalist, through='CaseJournalist')
     plaintiff = models.ManyToManyField(Plaintiff, verbose_name=_('plaintiff'), blank=True)
-    complainant = models.ManyToManyField(Complainant, verbose_name=_('complainant'), blank=True)
     prosecutor = models.ForeignKey(Prosecutor, verbose_name=_('indictment prosecutor'),
                                    blank=True, null=True, on_delete=models.SET_NULL)
     summary = MartorField(_('case summary'), blank=True, null=True)
