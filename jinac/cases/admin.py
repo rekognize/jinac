@@ -1,5 +1,5 @@
 import csv
-from io import StringIO, BytesIO
+from io import StringIO
 from django.http import HttpResponse
 from django.contrib import admin
 from django.db import models
@@ -14,8 +14,7 @@ from jinac.cases.models import CaseIndictment, Case, CaseDocument, ViolationType
     WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision, TrialDecision
 
 
-@admin.register(ViolationType, TrialViolation, TrialDocumentType, TrialDocument, TrialDecision,
-                CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType)
+@admin.register(ViolationType, TrialDocumentType, CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType)
 class CasesAdmin(admin.ModelAdmin):
     pass
 
@@ -31,10 +30,27 @@ class ArticleAdmin(admin.ModelAdmin):
 class CaseIndictmentAdmin(admin.ModelAdmin):
     list_display = ('case', 'journalist', 'get_articles')
     list_filter = ('articles__type', 'articles__indictment')
+    actions = ['download']
 
     def get_articles(self, obj):
         return '; '.join([a.__str__() for a in obj.articles.all()])
     get_articles.short_description = _('articles')
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj.case.__str__(), obj.journalist, self.get_articles(obj),
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="suclamalar.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 class CaseIndictmentInline(admin.TabularInline):
@@ -154,7 +170,7 @@ class CaseAdmin(admin.ModelAdmin):
 class CaseDecisionAdmin(admin.ModelAdmin):
     list_display = ['case', 'journalist', 'decision_type', 'get_punishment']
     actions = ['download']
-    list_filter = ['decision_type']
+    list_filter = ['decision_type', 'articles']
 
     def download(self, request, qs):
         f = StringIO()
@@ -311,3 +327,58 @@ class TrialAdmin(admin.ModelAdmin):
                         punishment_fine=trial_decision.punishment_fine,
                     )
                     case_decision.articles.add(*trial_decision.articles.all())
+
+
+@admin.register(TrialViolation)
+class TrialViolationAdmin(admin.ModelAdmin):
+    list_display = ['case_name', 'trial_no', 'type']
+    list_filter = ['type', 'trial__case']
+
+    def case_name(self, obj):
+        return obj.trial.case.name
+
+    def trial_no(self, obj):
+        return "%s. %s" % (obj.trial.session_no, _('Standing'))
+
+@admin.register(TrialDecision)
+class TrialDecisionAdmin(admin.ModelAdmin):
+    list_display = ['case_name', 'trial_no', 'journalist', 'decision_type']
+    list_filter = ['decision_type', 'articles', 'trial__case']
+    actions = ['download']
+
+    def case_name(self, obj):
+        return obj.trial.case.name
+
+    def trial_no(self, obj):
+        return "%s. %s" % (obj.trial.session_no, _('Standing'))
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                self.case_name(obj), self.trial_no(obj),
+                obj.journalist, obj.get_decision_type_display(),
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="kararlar.csv"'
+        return response
+    download.short_description = _('Download')
+
+
+@admin.register(TrialDocument)
+class TrialDocumentAdmin(admin.ModelAdmin):
+    list_display = ['case_name', 'trial_no', 'journalist', 'type', 'publish']
+    list_filter = ['type', 'publish', 'trial__case']
+    list_editable = ['publish']
+
+    def case_name(self, obj):
+        return obj.trial.case.name
+
+    def trial_no(self, obj):
+        return "%s. %s" % (obj.trial.session_no, _('Standing'))
+

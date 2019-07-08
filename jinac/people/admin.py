@@ -1,3 +1,6 @@
+import csv
+from io import StringIO
+from django.http import HttpResponse
 from django.contrib import admin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -23,6 +26,7 @@ class ProsecutorAdmin(admin.ModelAdmin):
         'trials_count',
         'trials',
     )
+    actions = ['download']
 
     def indictment_cases_count(self, obj):
         return obj.case_set.count()
@@ -41,6 +45,23 @@ class ProsecutorAdmin(admin.ModelAdmin):
         return '; '.join([c.__str__() for c in Case.objects.filter(id__in=case_ids)])
     trials.short_description = _('trial prosecutor')
 
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj.name, self.indictment_cases_count(obj), self.indictment_cases(obj),
+                self.trials_count(obj), self.trials(obj),
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="savcilar.csv"'
+        return response
+    download.short_description = _('Download')
+
 
 @admin.register(Plaintiff)
 class PlaintiffAdmin(admin.ModelAdmin):
@@ -49,6 +70,7 @@ class PlaintiffAdmin(admin.ModelAdmin):
         'cases_count',
         'cases',
     )
+    actions = ['download']
 
     def cases_count(self, obj):
         return obj.case_set.count()
@@ -57,6 +79,20 @@ class PlaintiffAdmin(admin.ModelAdmin):
     def cases(self, obj):
         return '; '.join([c.__str__() for c in obj.case_set.all()])
     cases.short_description = _('cases')
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([obj.name, self.cases_count(obj), self.cases(obj)])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="davacilar.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 @admin.register(CaseNote)
@@ -181,6 +217,7 @@ class JournalistAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
+    actions = ['download']
 
     def get_current_status(self, obj):
         current_status = obj.current_status()
@@ -211,3 +248,20 @@ class JournalistAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.reporter = request.user
         super().save_model(request, obj, form, change)
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj.name, self.institutions(obj), self.get_current_status(obj),
+                obj.reporter, obj.added, obj.modified,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="gazeteciler.csv"'
+        return response
+    download.short_description = _('Download')

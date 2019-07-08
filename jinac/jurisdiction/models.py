@@ -45,6 +45,7 @@ class Court(models.Model):
 
 
 class Prison(models.Model):
+    city = models.ForeignKey(City, verbose_name=_('city'), on_delete=models.SET_NULL, blank=True, null=True)
     name = models.CharField(_('name'), max_length=200, unique=True)
     type = models.CharField(
         _('type'), max_length=1, blank=True, null=True,
