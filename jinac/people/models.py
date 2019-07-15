@@ -98,6 +98,8 @@ JOURNALIST_STATUS_CHOICES = (
     (5, _('Fugitive')),
     (6, _('Postponed')),
     (7, _('Judgement receded')),
+    (8, _('Prisoner on remand')),
+    (9, _('Acquitted')),
 )
 
 
