@@ -252,7 +252,7 @@ class TrialAdmin(admin.ModelAdmin):
     list_display = ['case', 'session_no', 'reporter', 'added', 'modified', 'time_next', 'violations']
     readonly_fields = ['reporter']
     search_fields = ['case__name']
-    filter_horizontal = ['observers', 'board']
+    filter_horizontal = ['inst_observers', 'board']
     list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter', ViolationsFilter]
     actions = ['publish']
     formfield_overrides = {
