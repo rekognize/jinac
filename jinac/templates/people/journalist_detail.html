@@ -37,7 +37,13 @@
       {% for case in cases %}
 
           <!--a href="{{ case.get_absolute_url }}"-->
-              <h5 class="mt-4">{{ case.name }}</h5>
+          <h5 class="mt-4">
+            {% if case.name_en and LANGUAGE_CODE == 'en' %}
+                {{ case.name_en }}
+            {% else %}
+                {{ case.name }}
+            {% endif %}
+          </h5>
           <!--/a-->
 
           {% comment %}
