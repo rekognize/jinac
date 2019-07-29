@@ -195,8 +195,14 @@
                   <div class="tab-pane" id="tab-docs{{ case.id }}">
                       {% for doc in case.documents %}
                           <p>
-                              {{ doc.case }}
-                              {% if doc.type %}
+                              {% if doc.case.name_en and LANGUAGE_CODE == 'en' %}
+                                  {{ doc.case.name_en }}
+                              {% else %}
+                                  {{ doc.case.name }}
+                              {% endif %}
+                              {% if doc.type_en and LANGUAGE_CODE == 'en' %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type_en }}</a>)
+                              {% elif doc.type %}
                                   (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
                               {% else %}
                                   <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
@@ -206,9 +212,15 @@
 
                       {% for doc in case.trial_documents %}
                           <p>
-                              {{ doc.trial.case }}
+                              {% if doc.trial.case.name_en and LANGUAGE_CODE == 'en' %}
+                                  {{ doc.trial.case.name_en }}
+                              {% else %}
+                                  {{ doc.trial.case.name }}
+                              {% endif %}
                               {{ doc.trial.session_no }}. {% trans "Standing" %}
-                              {% if doc.type %}
+                              {% if doc.type_en and LANGUAGE_CODE == 'en' %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type_en }}</a>)
+                              {% elif doc.type %}
                                   (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
                               {% else %}
                                   <a href="{{ doc.file.url }}">{% trans "Download" %}</a>

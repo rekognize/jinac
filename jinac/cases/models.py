@@ -211,6 +211,7 @@ class CaseIndictment(models.Model):
 
 class CaseDocumentType(models.Model):
     type = models.CharField(_('type'), max_length=50)
+    type_en = models.CharField(_('type'), max_length=50, blank=True, null=True)
     order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
@@ -392,6 +393,7 @@ class TrialViolation(models.Model):
 
 class TrialDocumentType(models.Model):
     type = models.CharField(_('type'), max_length=50)
+    type_en = models.CharField(_('type'), max_length=50, blank=True, null=True)
     order = models.PositiveSmallIntegerField(_('order'), blank=True, null=True)
 
     def __str__(self):
