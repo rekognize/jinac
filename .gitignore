@@ -6,6 +6,7 @@
 /media/
 /docs/
 /data/
+/whoosh_index/
 *.conf
 settings_local.py
 
