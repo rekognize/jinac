@@ -1,0 +1,5 @@
+{{ object.name }}
+{{ object.short_bio }}
+{{ object.short_bio_en }}
+{{ object.bio }}
+{{ object.bio_en }}

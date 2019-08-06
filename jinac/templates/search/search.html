@@ -1,0 +1,47 @@
+{% extends 'base.html' %}{% load i18n staticfiles martortags %}<!DOCTYPE html>
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <br>
+
+    <h2>{% trans "Search results" %}</h2>
+
+
+    {% for result in page.object_list %}
+        <p>
+            <a href="{{ result.object.get_absolute_url }}">
+                {%  if result.model_name == 'case' and LANGUAGE_CODE == 'en' and result.object.name_en %}
+
+                    {{ result.object.name_en }}
+
+                {% else %}
+
+                    {{ result.object }}
+
+                {% endif %}
+            </a>
+        </p>
+
+    {% empty %}
+        <p>{% trans "No items matched the query" %}.</p>
+    {% endfor %}
+
+
+    {% if page.has_previous or page.has_next %}
+        <div class="small mt-5">
+            {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; {% trans "Previous" %}{% if page.has_previous %}</a>{% endif %}
+            |
+            {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}{%  trans "Next" %} &raquo;{% if page.has_next %}</a>{% endif %}
+        </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

@@ -13,7 +13,6 @@ urlpatterns = [
 
     path('yonetim/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
-    path('arama/', SearchResultView.as_view(), name='search'),
 
     path('davalar/', CaseListView.as_view(), name='case_list'),
     path('davalar/<int:pk>/', CaseDetailView.as_view(), name='case_detail'),
@@ -31,8 +30,9 @@ urlpatterns = [
 
     path('lang/', set_language, name='set_lang'),
 
-    #path(r'tinymce/', include('tinymce.urls')),
     path('martor/', include('martor.urls')),
+
+    path('search/', include('haystack.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

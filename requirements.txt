@@ -6,3 +6,6 @@ django-polymorphic
 django-storages
 django-tinymce
 martor
+whoosh
+django-haystack
+unidecode

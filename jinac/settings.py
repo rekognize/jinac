@@ -46,8 +46,8 @@ INSTALLED_APPS = [
 
     #'django_extensions',
     'translations',
-    #'tinymce',
     'martor',
+    'haystack',
 
     'jinac.people.apps.PeopleConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
@@ -163,6 +163,17 @@ MARTOR_ENABLE_CONFIGS = {
 }
 
 MARTOR_ENABLE_LABEL = True
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
 
 try:
     from .settings_local import *

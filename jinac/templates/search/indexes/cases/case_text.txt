@@ -1,0 +1,8 @@
+{{ object.name }}
+{{ object.name_en }}
+{{ object.summary }}
+{{ object.summary_en }}
+{% for j in object.journalists.all %}{{ j.name }}{% endfor %}
+{% for n in object.casenote_set.all %}{{ n.note }}{% endfor %}
+{% for n in object.casenote_set.all %}{{ n.note_en }}{% endfor %}
+{% for t in object.trial_set.all %}{{ t.note }}{% endfor %}
