@@ -172,7 +172,15 @@
                                                         <p>
                                                         {% for trial_document in trial_documents %}
                                                             <br/>
-                                                            <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                                            <a href="{{ trial_document.file.url }}">
+                                                                {% if trial_document.type.type_en and LANGUAGE_CODE == 'en' %}
+                                                                    {{ trial_document.type.type_en }}
+                                                                {% elif trial_document.type.type %}
+                                                                    {{ trial_document.type.type }}
+                                                                {% else %}
+                                                                    {{ trial_document.file.name }}
+                                                                {% endif %}
+                                                            </a>
                                                         {% endfor %}
                                                         </p>
                                                     </div>
@@ -200,10 +208,10 @@
                               {% else %}
                                   {{ doc.case.name }}
                               {% endif %}
-                              {% if doc.type_en and LANGUAGE_CODE == 'en' %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type_en }}</a>)
-                              {% elif doc.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% if doc.type.type_en and LANGUAGE_CODE == 'en' %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type.type_en }}</a>)
+                              {% elif doc.type.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type.type }}</a>)
                               {% else %}
                                   <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                               {% endif %}
@@ -218,10 +226,10 @@
                                   {{ doc.trial.case.name }}
                               {% endif %}
                               {{ doc.trial.session_no }}. {% trans "Standing" %}
-                              {% if doc.type_en and LANGUAGE_CODE == 'en' %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type_en }}</a>)
-                              {% elif doc.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                              {% if doc.type.type_en and LANGUAGE_CODE == 'en' %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type.type_en }}</a>)
+                              {% elif doc.type.type %}
+                                  (<a href="{{ doc.file.url }}">{{ doc.type.type }}</a>)
                               {% else %}
                                   <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
                               {% endif %}
