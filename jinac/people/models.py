@@ -41,8 +41,7 @@ class Journalist(Person):
     publish = models.BooleanField(_('publish'), default=True)
 
     def save(self, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        self.slug = slugify(self.name)
         return super().save(**kwargs)
 
     def get_absolute_url(self):
