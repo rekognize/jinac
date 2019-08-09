@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'ec2-3-92-31-176.compute-1.amazonaws.com',
     'pressinarrest.rekognize.io',
     'pressinarrest.com', 'pressinarrest.net', 'pressinarrest.org',
+    'www.pressinarrest.com', 'www.pressinarrest.net', 'www.pressinarrest.org',
 ]
 
 
