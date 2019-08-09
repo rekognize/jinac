@@ -1,7 +1,7 @@
+from slugify import slugify
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
-from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from polymorphic.models import PolymorphicModel
 from martor.models import MartorField

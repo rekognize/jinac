@@ -9,3 +9,4 @@ martor
 whoosh
 django-haystack
 unidecode
+python-slugify
