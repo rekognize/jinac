@@ -172,7 +172,7 @@
                                                         <p>
                                                         {% for trial_document in trial_documents %}
                                                             <br/>
-                                                            <a href="{{ trial_document.file.url }}">
+                                                            <a href="{{ trial_document.file.url }}" target="_blank">
                                                                 {% if trial_document.type.type_en and LANGUAGE_CODE == 'en' %}
                                                                     {{ trial_document.type.type_en }}
                                                                 {% elif trial_document.type.type %}
@@ -209,11 +209,11 @@
                                   {{ doc.case.name }}
                               {% endif %}
                               {% if doc.type.type_en and LANGUAGE_CODE == 'en' %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type.type_en }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type_en }}</a>)
                               {% elif doc.type.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type.type }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type }}</a>)
                               {% else %}
-                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                               {% endif %}
                           </p>
                       {% endfor %}
@@ -227,11 +227,11 @@
                               {% endif %}
                               {{ doc.trial.session_no }}. {% trans "Standing" %}
                               {% if doc.type.type_en and LANGUAGE_CODE == 'en' %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type.type_en }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type_en }}</a>)
                               {% elif doc.type.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type.type }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type }}</a>)
                               {% else %}
-                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                               {% endif %}
                           </p>
                       {% endfor %}

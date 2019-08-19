@@ -88,9 +88,8 @@ class PrisonAdmin(admin.ModelAdmin):
             current_status = js.journalist.current_status()
             if current_status and js.status == current_status.status:
                 journalist_ids.append(js.journalist.id)
-                break
         return Journalist.objects.filter(id__in=journalist_ids).distinct().count()
-    journalist_count.short_description = _('journalists')
+    journalist_count.short_description = _('journalist count')
 
     def journalists(self, obj):
         journalist_ids = []
@@ -98,7 +97,6 @@ class PrisonAdmin(admin.ModelAdmin):
             current_status = js.journalist.current_status()
             if current_status and js.status == current_status.status:
                 journalist_ids.append(js.journalist.id)
-                break
         return '; '.join([j.name for j in Journalist.objects.filter(id__in=journalist_ids)])
     journalists.short_description = _('journalists')
 

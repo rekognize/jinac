@@ -151,7 +151,7 @@
                                                             <p>
                                                             {% for trial_document in trial_documents %}
                                                                 <br/>
-                                                                <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                                                <a href="{{ trial_document.file.url }}" target="_blank">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
                                                             {% endfor %}
                                                             </p>
                                                         </div>
@@ -175,9 +175,9 @@
                           <p>
                               {{ doc.case }}
                               {% if doc.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
                               {% else %}
-                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                               {% endif %}
                           </p>
                       {% endfor %}
@@ -187,9 +187,9 @@
                               {{ doc.trial.case }}
                               {{ doc.trial.session_no }}. {% trans "Standing" %}
                               {% if doc.type %}
-                                  (<a href="{{ doc.file.url }}">{{ doc.type }}</a>)
+                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
                               {% else %}
-                                  <a href="{{ doc.file.url }}">{% trans "Download" %}</a>
+                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                               {% endif %}
                           </p>
                       {% endfor %}

@@ -76,7 +76,7 @@
                                         <p>
                                         {% for trial_document in trial_documents %}
                                             <br/>
-                                            <a href="{{ trial_document.file.url }}">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
+                                            <a href="{{ trial_document.file.url }}" target="_blank">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
                                         {% endfor %}
                                         </p>
                                     </div>

@@ -7,10 +7,11 @@ from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.forms import ModelForm
 from django.db.models import Q
+from django.db.models import Max
 from django.template.defaultfilters import slugify
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
-from jinac.people.models import Journalist
+from jinac.people.models import Journalist, JournalistStatus
 from jinac.articles.models import Article
 from jinac.contact.models import Message
 
@@ -25,9 +26,21 @@ class IndexView(TemplateView):
             'carousel': Carousel.objects.filter(publish=True),
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
-            'info': {i.slug: i.value for i in Info.objects.all()},
+#            'info': {i.slug: i.value for i in Info.objects.all()},
+            'info': {
+                'prosecuted': JournalistStatus.objects.filter(end_date__isnull=True).filter(
+                    status__in=[1, 2, 3, 4, 5]
+                ).count(),
+                'jailed': JournalistStatus.objects.filter(end_date__isnull=True).filter(
+                    status__in=[2, 3, 4, 8]
+                ).count(),
+                'pending_trial': JournalistStatus.objects.filter(end_date__isnull=True).filter(
+                    status__in=[5, 6, 7]
+                ).count(),
+            },
             'feed': Feed.objects.all()[:5],
-            'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5]
+            'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
+            'pending_trial': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
         })
         return context
 
