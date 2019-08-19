@@ -75,14 +75,16 @@ class Case(models.Model):
 
 class CaseStatus(models.Model):
     case = models.ForeignKey(Case, verbose_name=_('case'), on_delete=models.CASCADE)
-    status = models.PositiveSmallIntegerField(default=1, choices=(
+    status = models.PositiveSmallIntegerField(blank=True, choices=(
         (0, _('local')),
         (1, _('appeal')),
         (2, _('supreme',)),
-        (3, _('constitutional')),
-        (4, _('ECHR')),
+        #(3, _('constitutional')),
+        #(4, _('ECHR')),
+        (5, _('abatement of action')),  # dusme
+        (6, _('decision of reversal')),  # bozma
     ))
-    date = models.DateField(blank=True, null=True)
+    #date = models.DateField(blank=True, null=True)
     decision = models.PositiveSmallIntegerField(
         choices=(
             (1, _('approved')),
@@ -97,7 +99,7 @@ class CaseStatus(models.Model):
     class Meta:
         verbose_name = _('case status')
         verbose_name_plural = _('case status')
-        ordering = ('date',)
+        #ordering = ('date',)
 
 
 class WorkPosition(models.Model):
@@ -143,10 +145,14 @@ class CaseDecision(models.Model):
         choices=DECISION_TYPES
     )
     articles = models.ManyToManyField('Article', verbose_name=_('articles'), blank=True)
+    punishment_fine = models.CharField(_('fine'), max_length=100, blank=True, null=True)
     punishment_year = models.PositiveSmallIntegerField(_('year'), blank=True, null=True)
     punishment_month = models.PositiveSmallIntegerField(_('month'), blank=True, null=True)
     punishment_day = models.PositiveSmallIntegerField(_('day'), blank=True, null=True)
-    punishment_fine = models.CharField(_('fine'), max_length=100, blank=True, null=True)
+    punishment_life_sentence = models.PositiveSmallIntegerField(_('life sentence'), blank=True, null=True, choices=(
+        (1, _('life sentence')),
+        (2, _('aggravated life sentence')),
+    ))
 
     def __str__(self):
         return f'{self.case.__str__()}'
