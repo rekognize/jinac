@@ -83,6 +83,7 @@ class CaseStatus(models.Model):
         #(4, _('ECHR')),
         (5, _('abatement of action')),  # dusme
         (6, _('decision of reversal')),  # bozma
+        (7, _('rejected')),  # reddedildi
     ))
     #date = models.DateField(blank=True, null=True)
     decision = models.PositiveSmallIntegerField(

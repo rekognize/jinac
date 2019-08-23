@@ -101,7 +101,6 @@ JOURNALIST_STATUS_CHOICES = (
     (9, _('Acquitted')),
     (10, _('Judicial fine')),  # para cezasi
     (11, _('Execution completed')),  # infazi tamamlandi
-    (12, _('Rejected')),  # reddedildi
 )
 
 
