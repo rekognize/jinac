@@ -179,45 +179,9 @@
 
 <hr/>
 
-<section class="row col-md-12" id="yaklasandurusmalar" style="margin-top:2rem; background-color: white; height:unset;float:none;">
-	<div class="col-md-6 card-group">
-		<div class="yaklasandurusmalar-top yaklasandurusmalar-content card rounded yaklasandurusmalarcard justify-content-center mx-auto">
-			<div class="card-header" style="background-color:white;">
-				<h4 class="card-title text-md-center text-xs-right card-block">{% trans "Lastest entries" %}</h4>
-			</div>
-			{% for item in feed %}
-			<div style="margin-top: 2rem; margin-left:1rem; text-align:justify">
-				<span class="card-text col-md-6">
-					<h5>
-                        {% if item.object.lang %} {# filter articles by lang #}
-                            {% if LANGUAGE_CODE == item.object.lang %}
-                                {{ item.object }}
-                            {% endif %}
-                        {% else %}
-                            {% if LANGUAGE_CODE == 'en' %}
-                                {% if item.object.name_en %}  {# cases & trials #}
-                                    {{ item.object.name_en }}
-                                {% else %}
-                                    {{ item.object }}
-                                {% endif %}
-                            {% else %}  {# journalist #}
-                                {{ item.object }}
-                            {% endif %}
-                        {% endif %}
-					</h5>
-					<a href="{{ item.object.get_absolute_url }}">{% trans "Read more" %}</a>
-				</span>
-				<hr>
-			</div>
-			
-			{% endfor %}
-		</div>
-	</div>
-	<div class="col-md-1" style=" margin-left:2rem; border-left: 0.5px solid rgb(223,223,223);"></div>
-
-		<hr>
-		
-		<div class="col-md-4 contact-section" style="float:none; margin: 0 auto">
+<section class="row col-md-12" id="yaklasandurusmalar" style="background-color: white; height:unset;float:none;">
+	
+		<div class="contact-section" style="float:none; margin: 0 auto; position:absolute">
 			<form  action="{% url "contact_message" %}" method="post">
 				{% csrf_token %}
 
@@ -228,21 +192,21 @@
 							<br/>
 							<div class="row">
 								<div class="md-form mb-0">
-									<input type="text" name="name" required="required" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
+									<input type="text" name="name" style="padding-right:50%; " required="required" id="form-contact-name" class="form-control" placeholder="{% trans "Name" %}">
 									<br/>
 								</div>						
 							</div>
 
 							<div class="row">
 								<div class="md-form mb-0">
-									<input type="email" name="email" required="required" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
+									<input type="email" name="email"  style="padding-right:50%;" required="required" id="form-contact-email" class="form-control" placeholder="{% trans "Email" %}">
 									<br/>
 								</div>
 							</div>
 
 							<div class="row">							
 								<div class="md-form mb-0">
-									<textarea type="text" name="message" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
+									<textarea type="text" name="message" style="padding-right:50%;" id="form-contact-message" class="form-control md-textarea" rows="3" placeholder="{% trans "Message" %}"></textarea>
 									<br/>
 									<button type="submit" class="btn-lg"><i class="far fa-paper-plane"></i> {% trans "Submit" %}</button>
 								</div>
