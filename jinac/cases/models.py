@@ -181,7 +181,9 @@ class Article(models.Model):
     type = models.PositiveSmallIntegerField(choices=(
         (1, _('TCK')),
         (2, _('TMK')),
-        (3, _('Constitution')),
+        #(3, _('Constitution')),
+        (4, _('MİT')),
+        (5, _('TGYK')),
     ))
     description = models.TextField(_('article'), blank=True, null=True)
     indictment = models.CharField(_('indictment'), max_length=200, blank=True, null=True)
