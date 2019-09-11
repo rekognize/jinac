@@ -16,12 +16,9 @@
 		<div class="d-flex col-md-7 align-items-center justify-content-center" style="text-align: justify;">
 			<span style="color: rgb(168,168,168); font-size: 15px;">
             {% if LANGUAGE_CODE == 'en' %}
-                Press in Arrest is a commitment to a reinvigorated freedom of speech through the observation and documentation of collective memories related to the trials of journalists in Turkey. Through our work, we hope to facilitate a healthy functioning freedom of press, opinion and expression that incorporates the rights to information.
-                Press in Arrest is a study to observe, document and strengthen the collective memory concerning the trials of journalists in Turkey.
-                It aims at contributing to reinvigorating a healthy functioning freedom of press, opinion and expression as well as right to information.
+                {{ info.logo_yazi_en }}
             {% else %}
-				Press in Arrest, Türkiye’deki gazeteci yargılamalarını izleme, belgeleme ve hafızalaştırma çalışmasıdır.
-				Basın, düşünce ve ifade özgürlüğü ile halkın haber alma haklarının yeniden sağlıklı bir şekilde işletilmesine katkıda bulunmayı hedefler.
+                {{ info.logo_yazi_tr }}
             {% endif %}
 				<a class="p-2 fa-lg tw-ic" href="https://twitter.com/pressinarrest" target="_blank">
 					<i class="fab fa-twitter"></i>
