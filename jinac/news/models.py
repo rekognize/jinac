@@ -47,7 +47,7 @@ class News(models.Model):
 class Info(models.Model):
     name = models.CharField(_('name'), max_length=50)
     slug = models.SlugField()
-    value = models.CharField(_('value'), max_length=250)
+    value = models.CharField(_('value'), max_length=500)
 
     def __str__(self):
         return f"{self.name}: {self.value}"
