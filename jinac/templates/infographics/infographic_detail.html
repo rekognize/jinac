@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles martortags %}
+
+
+{% block title %}{{ infographic.title }} - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+
+
+<section>
+  <div class="container py-3">
+    <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
+      <div class="row card-header analiz-detay-header">
+          {% if infographic.image %}
+          <div class="col-xs-8 align-middle">
+              <img style="margin-left:9%; width: 80%; height:300px;" src="{{ infographic.image.url }}" />
+          </div>
+          {%  endif %}
+
+          <div class="col-md-12 px-3" align="center">
+            <div class="card-block" >
+              <h2 class="card-title">{{ infographic.title }}</h2>
+
+              <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
+                  {{ infographic.description|safe_markdown }}
+              </p>
+            </div>
+          </div>
+
+          {{ infographic.embed_code }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

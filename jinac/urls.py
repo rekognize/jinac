@@ -7,6 +7,7 @@ from jinac.views import IndexView, SearchResultView, set_language, contact_messa
 from jinac.cases.views import CaseListView, CaseDetailView, TrialListView, TrialDetailView
 from jinac.people.views import JournalistListView, JournalistDetailView
 from jinac.articles.views import ArticleListView, ArticleDetailView, AboutView
+from jinac.infographics.views import InfographicListView, InfographicDetailView
 
 
 urlpatterns = [
@@ -25,6 +26,9 @@ urlpatterns = [
     path('analizler/', ArticleListView.as_view(), name='article_list'),
     path('analizler/<slug:slug>/', ArticleDetailView.as_view(), name='article_detail'),
     path('ne-yapiyoruz/', AboutView.as_view(), name='about'),
+
+    path('infografik/', InfographicListView.as_view(), name='infographic_list'),
+    path('infografik/<slug:slug>/', InfographicDetailView.as_view(), name='infographic_detail'),
 
     path('iletisim/', contact_message, name='contact_message'),
 
