@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-23 12:00+0000\n"
+"POT-Creation-Date: 2019-09-18 07:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "blog"
 msgstr "analizler"
 
 #: jinac/articles/models.py:11 jinac/articles/models.py:44
-#: jinac/news/models.py:32
+#: jinac/infographics/models.py:10 jinac/news/models.py:32
 msgid "title"
 msgstr "başlık"
 
@@ -32,6 +32,7 @@ msgid "subtitle"
 msgstr "alt başlık"
 
 #: jinac/articles/models.py:14 jinac/articles/models.py:46
+#: jinac/infographics/models.py:12
 msgid "image"
 msgstr "görsel"
 
@@ -39,15 +40,16 @@ msgstr "görsel"
 msgid "summary"
 msgstr "özet"
 
-#: jinac/articles/models.py:16
+#: jinac/articles/models.py:16 jinac/infographics/models.py:15
 msgid "language"
 msgstr "dil"
 
 #: jinac/articles/models.py:18 jinac/cases/admin.py:279
-#: jinac/cases/models.py:49 jinac/cases/models.py:239 jinac/cases/models.py:253
-#: jinac/cases/models.py:306 jinac/cases/models.py:343
-#: jinac/cases/models.py:420 jinac/news/models.py:20 jinac/news/models.py:36
-#: jinac/people/models.py:41 jinac/people/models.py:126
+#: jinac/cases/models.py:49 jinac/cases/models.py:242 jinac/cases/models.py:256
+#: jinac/cases/models.py:309 jinac/cases/models.py:346
+#: jinac/cases/models.py:423 jinac/infographics/models.py:17
+#: jinac/news/models.py:20 jinac/news/models.py:36 jinac/people/models.py:41
+#: jinac/people/models.py:126
 msgid "publish"
 msgstr "yayınla"
 
@@ -55,8 +57,8 @@ msgstr "yayınla"
 msgid "about page"
 msgstr "hakkımızda sayfası"
 
-#: jinac/articles/models.py:43 jinac/cases/models.py:186
-#: jinac/cases/models.py:201
+#: jinac/articles/models.py:43 jinac/cases/models.py:189
+#: jinac/cases/models.py:204
 msgid "article"
 msgstr "analiz"
 
@@ -73,8 +75,8 @@ msgid "sections"
 msgstr "bölümler"
 
 #: jinac/cases/admin.py:37 jinac/cases/admin.py:83 jinac/cases/models.py:148
-#: jinac/cases/models.py:202 jinac/cases/models.py:208
-#: jinac/cases/models.py:438
+#: jinac/cases/models.py:205 jinac/cases/models.py:211
+#: jinac/cases/models.py:441
 msgid "articles"
 msgstr "kanun maddeleri"
 
@@ -92,7 +94,7 @@ msgid "Download"
 msgstr "İndir"
 
 #: jinac/cases/admin.py:125 jinac/cases/models.py:119 jinac/cases/models.py:143
-#: jinac/cases/models.py:433 jinac/jurisdiction/admin.py:101
+#: jinac/cases/models.py:436 jinac/jurisdiction/admin.py:101
 #: jinac/people/models.py:88
 msgid "journalists"
 msgstr "gazeteciler"
@@ -118,7 +120,7 @@ msgid "Violations"
 msgstr "İhlaller"
 
 #: jinac/cases/admin.py:341 jinac/cases/admin.py:353 jinac/cases/admin.py:383
-#: jinac/cases/models.py:312 jinac/cases/models.py:316
+#: jinac/cases/models.py:315 jinac/cases/models.py:319
 #: jinac/templates/cases/case_detail.html:52
 #: jinac/templates/cases/case_detail.html:145
 #: jinac/templates/cases/case_list.html:111
@@ -140,12 +142,12 @@ msgstr "davalar"
 msgid "acquittal"
 msgstr "beraat"
 
-#: jinac/cases/models.py:17 jinac/cases/models.py:149 jinac/cases/models.py:192
-#: jinac/cases/models.py:442
+#: jinac/cases/models.py:17 jinac/cases/models.py:149 jinac/cases/models.py:195
+#: jinac/cases/models.py:445
 msgid "fine"
 msgstr "para cezası"
 
-#: jinac/cases/models.py:18 jinac/cases/models.py:193
+#: jinac/cases/models.py:18 jinac/cases/models.py:196
 msgid "imprisonment"
 msgstr "hapis cezası"
 
@@ -205,7 +207,7 @@ msgstr "davacı / şikayetçi"
 msgid "indictment prosecutor"
 msgstr "iddianame savcısı"
 
-#: jinac/cases/models.py:42 jinac/cases/models.py:299
+#: jinac/cases/models.py:42 jinac/cases/models.py:302
 msgid "case summary"
 msgstr "dava özeti"
 
@@ -213,9 +215,9 @@ msgstr "dava özeti"
 msgid "case summary (EN)"
 msgstr "dava özeti (İNG)"
 
-#: jinac/cases/models.py:44 jinac/cases/models.py:222 jinac/cases/models.py:254
-#: jinac/cases/models.py:344 jinac/cases/models.py:376
-#: jinac/cases/models.py:404
+#: jinac/cases/models.py:44 jinac/cases/models.py:225 jinac/cases/models.py:257
+#: jinac/cases/models.py:347 jinac/cases/models.py:379
+#: jinac/cases/models.py:407
 msgid "order"
 msgstr "sıralama"
 
@@ -223,22 +225,22 @@ msgstr "sıralama"
 msgid "related cases"
 msgstr "ilgili davalar"
 
-#: jinac/cases/models.py:48 jinac/cases/models.py:307 jinac/people/models.py:25
+#: jinac/cases/models.py:48 jinac/cases/models.py:310 jinac/people/models.py:25
 msgid "reporter"
 msgstr "raportör"
 
-#: jinac/cases/models.py:50 jinac/cases/models.py:308 jinac/people/models.py:26
+#: jinac/cases/models.py:50 jinac/cases/models.py:311 jinac/people/models.py:26
 msgid "added time"
 msgstr "eklenme tarihi"
 
-#: jinac/cases/models.py:51 jinac/cases/models.py:309 jinac/people/models.py:27
+#: jinac/cases/models.py:51 jinac/cases/models.py:312 jinac/people/models.py:27
 msgid "modified time"
 msgstr "değiştirilme tarihi"
 
 #: jinac/cases/models.py:71 jinac/cases/models.py:77 jinac/cases/models.py:118
-#: jinac/cases/models.py:142 jinac/cases/models.py:206
-#: jinac/cases/models.py:234 jinac/cases/models.py:268
-#: jinac/cases/models.py:293 jinac/people/models.py:113
+#: jinac/cases/models.py:142 jinac/cases/models.py:209
+#: jinac/cases/models.py:237 jinac/cases/models.py:271
+#: jinac/cases/models.py:296 jinac/people/models.py:113
 msgid "case"
 msgstr "dava"
 
@@ -263,7 +265,6 @@ msgid "decision of reversal"
 msgstr "karar bozuldu"
 
 #: jinac/cases/models.py:86
-#| msgid "Rejected"
 msgid "rejected"
 msgstr "reddedildi"
 
@@ -275,7 +276,7 @@ msgstr "onaylandı"
 msgid "denied"
 msgstr "reddedildi"
 
-#: jinac/cases/models.py:95 jinac/cases/models.py:209 jinac/cases/models.py:390
+#: jinac/cases/models.py:95 jinac/cases/models.py:212 jinac/cases/models.py:393
 msgid "details"
 msgstr "detaylar"
 
@@ -304,22 +305,22 @@ msgstr "dava - gazeteci ilişkisi"
 msgid "case - journalist relations"
 msgstr "dava - gazeteci ilişkileri"
 
-#: jinac/cases/models.py:145 jinac/cases/models.py:435
+#: jinac/cases/models.py:145 jinac/cases/models.py:438
 msgid "decision type"
 msgstr "karar tipi"
 
 #: jinac/cases/models.py:150 jinac/cases/models.py:167
-#: jinac/cases/models.py:439
+#: jinac/cases/models.py:442
 msgid "year"
 msgstr "yıl"
 
 #: jinac/cases/models.py:151 jinac/cases/models.py:169
-#: jinac/cases/models.py:440
+#: jinac/cases/models.py:443
 msgid "month"
 msgstr "ay"
 
 #: jinac/cases/models.py:152 jinac/cases/models.py:171
-#: jinac/cases/models.py:441
+#: jinac/cases/models.py:444
 msgid "day"
 msgstr "gün"
 
@@ -351,180 +352,188 @@ msgstr "TCK"
 msgid "TMK"
 msgstr "TMK"
 
-#: jinac/cases/models.py:184
-msgid "Constitution"
-msgstr "Anayasa"
+#: jinac/cases/models.py:185
+msgid "MİT"
+msgstr ""
 
-#: jinac/cases/models.py:187 jinac/cases/models.py:215
+#: jinac/cases/models.py:186
+msgid "TGYK"
+msgstr ""
+
+#: jinac/cases/models.py:187
+msgid "Press Law"
+msgstr "Basın Kanunu"
+
+#: jinac/cases/models.py:190 jinac/cases/models.py:218
 msgid "indictment"
 msgstr "suçlama"
 
-#: jinac/cases/models.py:190
+#: jinac/cases/models.py:193
 msgid "punishment type"
 msgstr "ceza tipi"
 
-#: jinac/cases/models.py:207 jinac/cases/models.py:237
-#: jinac/cases/models.py:266 jinac/cases/models.py:418
+#: jinac/cases/models.py:210 jinac/cases/models.py:240
+#: jinac/cases/models.py:269 jinac/cases/models.py:421
 #: jinac/people/models.py:87 jinac/people/models.py:108
 #: jinac/people/models.py:137
 msgid "journalist"
 msgstr "gazeteci"
 
-#: jinac/cases/models.py:216
+#: jinac/cases/models.py:219
 msgid "indictments"
 msgstr "suçlamalar"
 
-#: jinac/cases/models.py:220 jinac/cases/models.py:221
-#: jinac/cases/models.py:236 jinac/cases/models.py:251
-#: jinac/cases/models.py:271 jinac/cases/models.py:342
-#: jinac/cases/models.py:358 jinac/cases/models.py:375
-#: jinac/cases/models.py:402 jinac/cases/models.py:403
-#: jinac/cases/models.py:417 jinac/jurisdiction/models.py:21
+#: jinac/cases/models.py:223 jinac/cases/models.py:224
+#: jinac/cases/models.py:239 jinac/cases/models.py:254
+#: jinac/cases/models.py:274 jinac/cases/models.py:345
+#: jinac/cases/models.py:361 jinac/cases/models.py:378
+#: jinac/cases/models.py:405 jinac/cases/models.py:406
+#: jinac/cases/models.py:420 jinac/jurisdiction/models.py:21
 #: jinac/jurisdiction/models.py:51 jinac/people/models.py:125
 #: jinac/people/models.py:139 jinac/people/models.py:159
 msgid "type"
 msgstr "tip"
 
-#: jinac/cases/models.py:228
+#: jinac/cases/models.py:231
 msgid "case document type"
 msgstr "dava doküman tipi"
 
-#: jinac/cases/models.py:229
+#: jinac/cases/models.py:232
 msgid "case document types"
 msgstr "dava doküman tipleri"
 
-#: jinac/cases/models.py:235 jinac/cases/models.py:416
+#: jinac/cases/models.py:238 jinac/cases/models.py:419
 msgid "file"
 msgstr "dosya"
 
-#: jinac/cases/models.py:245
+#: jinac/cases/models.py:248
 msgid "case document"
 msgstr "dava doküman"
 
-#: jinac/cases/models.py:246
+#: jinac/cases/models.py:249
 msgid "case documents"
 msgstr "dava dokümanları"
 
-#: jinac/cases/models.py:252
+#: jinac/cases/models.py:255
 msgid "type (EN)"
 msgstr "tip (İNG)"
 
-#: jinac/cases/models.py:260 jinac/people/models.py:132
+#: jinac/cases/models.py:263 jinac/people/models.py:132
 msgid "case note type"
 msgstr "yargılama özeti tipi"
 
-#: jinac/cases/models.py:261 jinac/people/models.py:133
+#: jinac/cases/models.py:264 jinac/people/models.py:133
 msgid "case note types"
 msgstr "yargılama özeti tipleri"
 
-#: jinac/cases/models.py:274 jinac/cases/models.py:362
+#: jinac/cases/models.py:277 jinac/cases/models.py:365
 #: jinac/people/models.py:142
 msgid "note"
 msgstr "not"
 
-#: jinac/cases/models.py:275
+#: jinac/cases/models.py:278
 msgid "note (EN)"
 msgstr "not (İNG)"
 
-#: jinac/cases/models.py:282 jinac/cases/models.py:283
+#: jinac/cases/models.py:285 jinac/cases/models.py:286
 msgid "case notes"
 msgstr "yargılama özetleri"
 
-#: jinac/cases/models.py:294
+#: jinac/cases/models.py:297
 msgid "session"
 msgstr "duruşma"
 
-#: jinac/cases/models.py:295
+#: jinac/cases/models.py:298
 msgid "announced time"
 msgstr "ilan edilen zaman"
 
-#: jinac/cases/models.py:296
+#: jinac/cases/models.py:299
 msgid "start time"
 msgstr "başlama zamanı"
 
-#: jinac/cases/models.py:297
+#: jinac/cases/models.py:300
 msgid "next trial time"
 msgstr "gelecek duruşma zamanı"
 
-#: jinac/cases/models.py:298
+#: jinac/cases/models.py:301
 msgid "institutional observers"
 msgstr "kurumsal gözlemciler"
 
-#: jinac/cases/models.py:300
+#: jinac/cases/models.py:303
 msgid "presiding judge"
 msgstr "mahkeme başkanı"
 
-#: jinac/cases/models.py:301
+#: jinac/cases/models.py:304
 msgid "board of judges"
 msgstr "mahkeme heyeti"
 
-#: jinac/cases/models.py:303 jinac/people/admin.py:42 jinac/people/admin.py:47
+#: jinac/cases/models.py:306 jinac/people/admin.py:42 jinac/people/admin.py:47
 msgid "trial prosecutor"
 msgstr "duruşma savcı"
 
-#: jinac/cases/models.py:336 jinac/cases/models.py:356
-#: jinac/cases/models.py:388 jinac/cases/models.py:415
-#: jinac/cases/models.py:432
+#: jinac/cases/models.py:339 jinac/cases/models.py:359
+#: jinac/cases/models.py:391 jinac/cases/models.py:418
+#: jinac/cases/models.py:435
 msgid "trial"
 msgstr "duruşma"
 
-#: jinac/cases/models.py:337
+#: jinac/cases/models.py:340
 msgid "trials"
 msgstr "duruşmalar"
 
-#: jinac/cases/models.py:350
+#: jinac/cases/models.py:353
 msgid "trial note type"
 msgstr "duruşma notu tipi"
 
-#: jinac/cases/models.py:351
+#: jinac/cases/models.py:354
 msgid "trial note types"
 msgstr "duruşma notu tipleri"
 
-#: jinac/cases/models.py:369
+#: jinac/cases/models.py:372
 msgid "trial note"
 msgstr "duruşma notu"
 
-#: jinac/cases/models.py:370
+#: jinac/cases/models.py:373
 msgid "trial notes"
 msgstr "duruşma notları"
 
-#: jinac/cases/models.py:382 jinac/cases/models.py:389
+#: jinac/cases/models.py:385 jinac/cases/models.py:392
 msgid "violation type"
 msgstr "ihlal tipi"
 
-#: jinac/cases/models.py:383
+#: jinac/cases/models.py:386
 msgid "violation types"
 msgstr "ihlal tipleri"
 
-#: jinac/cases/models.py:396
+#: jinac/cases/models.py:399
 msgid "right violation"
 msgstr "hak ihlali"
 
-#: jinac/cases/models.py:397
+#: jinac/cases/models.py:400
 msgid "right violations"
 msgstr "hak ihlalleri"
 
-#: jinac/cases/models.py:410
+#: jinac/cases/models.py:413
 msgid "trial document type"
 msgstr "doküman tipi"
 
-#: jinac/cases/models.py:411
+#: jinac/cases/models.py:414
 msgid "trial document types"
 msgstr "doküman tipleri"
 
-#: jinac/cases/models.py:426
+#: jinac/cases/models.py:429
 msgid "trial document"
 msgstr "doküman"
 
-#: jinac/cases/models.py:427
+#: jinac/cases/models.py:430
 msgid "trial documents"
 msgstr "dokümanlar"
 
-#: jinac/cases/models.py:448
+#: jinac/cases/models.py:451
 msgid "trial - decision relation"
 msgstr "duruşma kararı"
 
-#: jinac/cases/models.py:449
+#: jinac/cases/models.py:452
 msgid "trial - decision relations"
 msgstr "duruşma kararları"
 
@@ -552,6 +561,19 @@ msgstr "zaman"
 #: jinac/contact/models.py:16
 msgid "messages"
 msgstr "mesajlar"
+
+#: jinac/infographics/apps.py:7
+#| msgid "biography"
+msgid "infographics"
+msgstr "infografik"
+
+#: jinac/infographics/models.py:13
+msgid "description"
+msgstr "tanım"
+
+#: jinac/infographics/models.py:14
+msgid "embed code"
+msgstr "yerleştirme kodu"
 
 #: jinac/institutions/apps.py:7 jinac/institutions/models.py:13
 #: jinac/people/admin.py:246
@@ -825,10 +847,11 @@ msgid "complainants"
 msgstr "şikayetçiler"
 
 #: jinac/templates/articles/article_list.html:25
+#: jinac/templates/infographics/infographic_list.html:23
 msgid "more"
 msgstr "devamı"
 
-#: jinac/templates/base.html:12 jinac/urls.py:40
+#: jinac/templates/base.html:12 jinac/urls.py:44
 msgid "Press in Arrest"
 msgstr "Tutuklu Basın"
 
@@ -836,25 +859,25 @@ msgstr "Tutuklu Basın"
 msgid "Homepage"
 msgstr "Anasayfa"
 
-#: jinac/templates/base.html:66 jinac/templates/index.html:48
+#: jinac/templates/base.html:66 jinac/templates/index.html:46
 #: jinac/templates/search_result.html:44
 msgid "Cases"
 msgstr "Davalar"
 
 #: jinac/templates/base.html:77 jinac/templates/cases/case_list.html:75
-#: jinac/templates/index.html:52 jinac/templates/search_result.html:31
+#: jinac/templates/index.html:50 jinac/templates/search_result.html:31
 msgid "Journalists"
 msgstr "Gazeteciler"
 
-#: jinac/templates/base.html:81 jinac/templates/index.html:56
+#: jinac/templates/base.html:81 jinac/templates/index.html:54
 msgid "Analysis"
 msgstr "Analizler"
 
-#: jinac/templates/base.html:85 jinac/templates/index.html:60
+#: jinac/templates/base.html:85 jinac/templates/index.html:58
 msgid "What do we do?"
 msgstr "Ne yapıyoruz?"
 
-#: jinac/templates/base.html:93 jinac/templates/index.html:67
+#: jinac/templates/base.html:93 jinac/templates/index.html:65
 msgid "Search"
 msgstr "Arama"
 
@@ -898,7 +921,7 @@ msgid "All"
 msgstr "Tümü"
 
 #: jinac/templates/contact/done.html:5 jinac/templates/contact/form.html:5
-#: jinac/templates/index.html:227
+#: jinac/templates/index.html:189
 msgid "Contact"
 msgstr "İletişim"
 
@@ -915,51 +938,43 @@ msgstr "Mesajınızı aldık. Sizinle en kısa zamanda iletişime geçeceğiz."
 msgid "Contact form"
 msgstr "İletişim formu"
 
-#: jinac/templates/contact/form.html:25 jinac/templates/index.html:231
+#: jinac/templates/contact/form.html:25 jinac/templates/index.html:193
 msgid "Name"
 msgstr "İsim"
 
-#: jinac/templates/contact/form.html:34 jinac/templates/index.html:238
+#: jinac/templates/contact/form.html:34 jinac/templates/index.html:200
 msgid "Email"
 msgstr "Eposta"
 
-#: jinac/templates/contact/form.html:44 jinac/templates/index.html:245
+#: jinac/templates/contact/form.html:44 jinac/templates/index.html:207
 msgid "Message"
 msgstr "Mesaj"
 
-#: jinac/templates/contact/form.html:48 jinac/templates/index.html:247
+#: jinac/templates/contact/form.html:48 jinac/templates/index.html:209
 msgid "Submit"
 msgstr "Gönder"
 
-#: jinac/templates/index.html:117 jinac/templates/search/search.html:38
+#: jinac/templates/index.html:115 jinac/templates/search/search.html:38
 msgid "Previous"
 msgstr "Önceki"
 
-#: jinac/templates/index.html:121 jinac/templates/search/search.html:40
+#: jinac/templates/index.html:119 jinac/templates/search/search.html:40
 msgid "Next"
 msgstr "Sonraki"
 
-#: jinac/templates/index.html:132
+#: jinac/templates/index.html:130
 msgid "PROSECUTED"
 msgstr "YARGILANANLAR"
 
-#: jinac/templates/index.html:141
+#: jinac/templates/index.html:139
 msgid "JAILED"
 msgstr "CEZAEVİNDEKİLER"
 
-#: jinac/templates/index.html:150
+#: jinac/templates/index.html:148
 msgid "PENDING TRIAL"
 msgstr "TUTUKSUZ YARGILANANLAR"
 
-#: jinac/templates/index.html:186
-msgid "Lastest entries"
-msgstr "Son eklenenler"
-
-#: jinac/templates/index.html:208
-msgid "Read more"
-msgstr "Daha fazla"
-
-#: jinac/templates/index.html:253
+#: jinac/templates/index.html:215
 msgid "Contact information"
 msgstr "İletişim bilgileri"
 
@@ -975,13 +990,22 @@ msgstr "Arama kriterine uygun sonuç bulunamadı"
 msgid "Articles"
 msgstr "Analizler"
 
-#: jinac/urls.py:41
+#: jinac/urls.py:45
 msgid "Press in Arrest Administration"
 msgstr "Tutuklu Basın Yönetimi"
 
-#: jinac/urls.py:42
+#: jinac/urls.py:46
 msgid "Press in Arrest Management"
 msgstr "Tutuklu Basın Yönetimi"
+
+#~ msgid "Constitution"
+#~ msgstr "Anayasa"
+
+#~ msgid "Lastest entries"
+#~ msgstr "Son eklenenler"
+
+#~ msgid "Read more"
+#~ msgstr "Daha fazla"
 
 #~ msgid "constitutional"
 #~ msgstr "anayasa mahkemesi"
@@ -1024,9 +1048,6 @@ msgstr "Tutuklu Basın Yönetimi"
 
 #~ msgid "Case History"
 #~ msgstr "Dava geçmişi"
-
-#~ msgid "description"
-#~ msgstr "tanım"
 
 #~ msgid "Legal status"
 #~ msgstr "Yasal durum"

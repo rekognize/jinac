@@ -184,6 +184,7 @@ class Article(models.Model):
         #(3, _('Constitution')),
         (4, _('MİT')),
         (5, _('TGYK')),
+        (6, _('Press Law')),
     ))
     description = models.TextField(_('article'), blank=True, null=True)
     indictment = models.CharField(_('indictment'), max_length=200, blank=True, null=True)
