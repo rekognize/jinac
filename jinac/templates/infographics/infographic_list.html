@@ -11,7 +11,17 @@
                 <div class="card border-dark shadow p-3 bg-white rounded">
                   <div class="row card-header analiz-card-header">
                     <div class="col-xs-6">
-                      <img class="analizgorseli" src="{% if infographic.image %}{{ infographic.image.url }}{% else %}http://placehold.it/160x160{% endif %}"/>
+
+                    {% if infographic.image %}
+
+                      <img class="analizgorseli" src="{{ infographic.image.url }}"/>
+
+                    {% else %}
+
+                        {{ infographic.embed_code|safe }}
+
+                    {% endif %}
+
                     </div>
                     <div class="col-xs-6" style="margin-left:5%">
                       <div class="card-block">

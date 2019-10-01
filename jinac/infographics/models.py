@@ -11,7 +11,7 @@ class Infographic(models.Model):
     slug = models.SlugField(unique=True)
     image = models.ImageField(_('image'), upload_to='infographics/', blank=True, null=True)
     description = MartorField(_('description'), blank=True, null=True)
-    embed_code = models.TextField(_('embed code'))
+    embed_code = models.TextField(_('embed code'), blank=True, null=True)
     lang = models.CharField(_('language'), max_length=5, choices=settings.LANGUAGES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
