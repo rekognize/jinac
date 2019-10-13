@@ -27,6 +27,7 @@ class Court(models.Model):
             (4, _('Supreme Court')),
             (5, _('Constitutional Court')),
             (6, _('ECHR')),
+            (7, _('Commercial Court')),
         )
     )
 
