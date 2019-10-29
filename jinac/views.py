@@ -6,8 +6,7 @@ from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.forms import ModelForm
-from django.db.models import Q
-from django.db.models import Max
+from django.db.models import Max, F, Q
 from django.template.defaultfilters import slugify
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
@@ -21,6 +20,11 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
+        stats = JournalistStatus.objects.filter(
+            end_date__isnull=True
+        ).annotate(current_status=F('status')).annotate(
+            last_date=Max('start_date')
+        ).filter(start_date=F('last_date'))
         context.update({
             'cases': Case.objects.filter(publish=True),
             'carousel': Carousel.objects.filter(publish=True),
@@ -28,14 +32,14 @@ class IndexView(TemplateView):
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
             #'info': {i.slug: i.value for i in Info.objects.all()},
             'info': {
-                'prosecuted': JournalistStatus.objects.filter(end_date__isnull=True).filter(
-                    status__in=[1, 3, 5, 8]  # [1, 2, 3, 4, 5]
+                'prosecuted': stats.filter(
+                    current_status__in=[1, 3, 5, 8]  # [1, 2, 3, 4, 5]
                 ).count(),
-                'jailed': JournalistStatus.objects.filter(end_date__isnull=True).filter(
-                    status__in=[3, 4, 8]  # [2, 3, 4, 8]
+                'jailed': stats.filter(end_date__isnull=True).filter(
+                    current_status__in=[3, 4, 8]  # [2, 3, 4, 8]
                 ).count(),
-                'pending_trial': JournalistStatus.objects.filter(end_date__isnull=True).filter(
-                    status__in=[1]  # [5, 6, 7]
+                'pending_trial': stats.filter(end_date__isnull=True).filter(
+                    current_status__in=[1]  # [5, 6, 7]
                 ).count(),
             },
             'feed': Feed.objects.all()[:5],
