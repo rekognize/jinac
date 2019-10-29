@@ -32,9 +32,7 @@ class IndexView(TemplateView):
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
             #'info': {i.slug: i.value for i in Info.objects.all()},
             'info': {
-                'prosecuted': stats.filter(
-                    current_status__in=[1, 3, 5, 8]  # [1, 2, 3, 4, 5]
-                ).count(),
+                'prosecuted': Journalist.objects.all().count(),
                 'jailed': stats.filter(end_date__isnull=True).filter(
                     current_status__in=[3, 4, 8]  # [2, 3, 4, 8]
                 ).count(),
