@@ -30,8 +30,8 @@ class IndexView(TemplateView):
             'carousel': Carousel.objects.filter(publish=True),
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
-            #'info': {i.slug: i.value for i in Info.objects.all()},
-            'info': {
+            'info': {i.slug: i.value for i in Info.objects.all()},
+            'stats': {
                 'prosecuted': Journalist.objects.filter(publish=True).count(),
                 'jailed': stats.filter(end_date__isnull=True).filter(
                     current_status__in=[3, 4, 8]  # [2, 3, 4, 8]
