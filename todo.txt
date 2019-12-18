@@ -1,0 +1,25 @@
+journalist detail:
+metnin icine link koyabilme?
+durusma detaylari tab'i: hangi davalarda kimlerle birlikte yargilaniyor?
+
+
+index:
+faili belli takvimi
+haberler / notifications
+
+
+tercumeler
+- gazeteciler
+  - bio
+  - yargilama ozetleri
+- analizler
+- dava ozeti
+- durusma ozeti
+https://github.com/ulule/django-linguist ??
+
+
+done:
+durusma ozeti olmayacak
+short_bio => listeye
+hukuki durum kalkiyor, bio ile birlestiriliyor, detay sayfasinda bio yerinde gosterilecek
+alt basliklar yana tab'lerle acilacak

@@ -1,13 +1,20 @@
+import os
+import json
+import uuid
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 from django.urls import translate_url
 from django.utils.translation import LANGUAGE_SESSION_KEY
 from django.forms import ModelForm
 from django.db.models import Max, F, Q
-from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.decorators import login_required
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from martor.utils import LazyEncoder
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
 from jinac.people.models import Journalist, JournalistStatus
@@ -113,3 +120,37 @@ def contact_message(request):
     )
 
 
+@login_required
+def markdown_uploader(request):
+    """
+    Makdown image upload for locale storage
+    and represent as json to markdown editor.
+    """
+    if request.method == 'POST' and request.is_ajax():
+        if 'markdown-image-upload' in request.FILES:
+            image = request.FILES['markdown-image-upload']
+            image_types = [
+                'image/png', 'image/jpg',
+                'image/jpeg', 'image/pjpeg', 'image/gif'
+            ]
+            if image.content_type not in image_types:
+                data = json.dumps({
+                    'status': 405,
+                    'error': _('Bad image format.')
+                }, cls=LazyEncoder)
+                return HttpResponse(
+                    data, content_type='application/json', status=405)
+
+            img_uuid = "{0}-{1}".format(uuid.uuid4().hex[:10], image.name.replace(' ', '-'))
+            tmp_file = os.path.join(settings.MARTOR_UPLOAD_PATH, img_uuid)
+            def_path = default_storage.save(tmp_file, ContentFile(image.read()))
+            img_url = os.path.join(settings.MEDIA_URL, def_path)
+
+            data = json.dumps({
+                'status': 200,
+                'link': img_url,
+                'name': image.name
+            })
+            return HttpResponse(data, content_type='application/json')
+        return HttpResponse(_('Invalid request!'))
+    return HttpResponse(_('Invalid request!'))

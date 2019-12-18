@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.conf.urls.static import static
-from jinac.views import IndexView, SearchResultView, set_language, contact_message
+from jinac.views import IndexView, SearchResultView, set_language, contact_message, markdown_uploader
 from jinac.cases.views import CaseListView, CaseDetailView, TrialListView, TrialDetailView
 from jinac.people.views import JournalistListView, JournalistDetailView
 from jinac.articles.views import ArticleListView, ArticleDetailView, AboutView
@@ -38,6 +38,9 @@ urlpatterns = [
 
     path('search/', include('haystack.urls')),
 
+    path(
+        'api/uploader/', markdown_uploader, name='markdown_uploader_page'
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
