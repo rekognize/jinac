@@ -115,7 +115,7 @@ class WorkPosition(models.Model):
 
 
 class CaseJournalist(models.Model):
-    case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.CASCADE)
+    case = models.ForeignKey('Case', verbose_name=_('case'), on_delete=models.SET_NULL, blank=True, null=True)
     journalist = models.ForeignKey(Journalist, verbose_name=_('journalists'), on_delete=models.CASCADE)
     institution = models.ForeignKey(
         Institution,
