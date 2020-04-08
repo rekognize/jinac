@@ -13,9 +13,42 @@ from jinac.cases.models import CaseJournalist, CaseDocument, CaseIndictment, Cas
     TrialDocument
 
 
-@admin.register(Attorney, Judge)
-class JurisdictionAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Attorney)
+class AttorneyAdmin(admin.ModelAdmin):
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([obj.name])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="avukatlar.csv"'
+        return response
+    download.short_description = _('Download')
+
+
+@admin.register(Judge)
+class JudgeAdmin(admin.ModelAdmin):
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([obj.name])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="hakimler.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 @admin.register(Prosecutor)
