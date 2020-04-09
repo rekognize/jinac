@@ -14,9 +14,51 @@ from jinac.cases.models import CaseIndictment, Case, CaseDocument, ViolationType
     WorkPosition, CaseDocumentType, CaseStatus, Article, CaseDecision, TrialDecision
 
 
-@admin.register(ViolationType, TrialDocumentType, CaseNoteType, TrialNoteType, WorkPosition, CaseDocumentType)
+@admin.register(TrialDocumentType, CaseNoteType, TrialNoteType, CaseDocumentType)
 class CasesAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(WorkPosition)
+class WorkPositionAdmin(admin.ModelAdmin):
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="gorevler.csv"'
+        return response
+    download.short_description = _('Download')
+
+
+@admin.register(ViolationType)
+class ViolationTypeAdmin(admin.ModelAdmin):
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="ihlal_tipleri.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 # cases
@@ -24,6 +66,23 @@ class CasesAdmin(admin.ModelAdmin):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('type', 'indictment', 'no', 'punishment_type')
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj.type, obj.indictment, obj.no, obj.punishment_type,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="kanun_maddeleri.csv"'
+        return response
+    download.short_description = _('Download')
 
 
 @admin.register(CaseIndictment)
@@ -258,6 +317,23 @@ class TrialAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
+    actions = ['download']
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                obj.case, obj.session_no, obj.reporter, obj.added, self.violations(obj),
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="durusmalar.csv"'
+        return response
+    download.short_description = _('Download')
 
     def get_actions(self, request):
         actions = super().get_actions(request)
@@ -333,12 +409,30 @@ class TrialAdmin(admin.ModelAdmin):
 class TrialViolationAdmin(admin.ModelAdmin):
     list_display = ['case_name', 'trial_no', 'type']
     list_filter = ['type', 'trial__case']
+    actions = ['download']
 
     def case_name(self, obj):
         return obj.trial.case.name
 
     def trial_no(self, obj):
         return "%s. %s" % (obj.trial.session_no, _('Standing'))
+
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                self.case_name(obj), self.trial_no(obj), obj.type,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="ihlaller.csv"'
+        return response
+    download.short_description = _('Download')
+
 
 @admin.register(TrialDecision)
 class TrialDecisionAdmin(admin.ModelAdmin):
@@ -375,6 +469,7 @@ class TrialDocumentAdmin(admin.ModelAdmin):
     list_display = ['case_name', 'trial_no', 'journalist', 'type', 'publish']
     list_filter = ['type', 'publish', 'trial__case']
     list_editable = ['publish']
+    actions = ['download']
 
     def case_name(self, obj):
         return obj.trial.case.name
@@ -382,3 +477,19 @@ class TrialDocumentAdmin(admin.ModelAdmin):
     def trial_no(self, obj):
         return "%s. %s" % (obj.trial.session_no, _('Standing'))
 
+    def download(self, request, qs):
+        f = StringIO()
+        writer = csv.writer(f)
+        for obj in qs:
+            writer.writerow([
+                self.case_name(obj), self.trial_no(obj),
+                obj.journalist, obj.type,
+            ])
+        f.seek(0)
+        response = HttpResponse(
+            f.read(),
+            content_type='text/csv'
+        )
+        response['Content-Disposition'] = 'attachment; filename="dokumanlar.csv"'
+        return response
+    download.short_description = _('Download')
