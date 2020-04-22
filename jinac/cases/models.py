@@ -322,12 +322,14 @@ class Trial(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        """
         trial = Trial.objects.get(id=self.id)
         case = trial.case
         last_trial = case.trial_set.order_by('session_no').last()
         if trial == last_trial:
             case.summary = trial.summary
             case.save()
+        """
 
     def get_absolute_url(self):
         #return reverse('trial_detail', kwargs={'case': self.case.id, 'pk': self.id})
