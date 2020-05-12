@@ -1,6 +1,6 @@
 gunicorn
 boto3
-Django==2.1.5
+Django==2.2.10
 django-translations==1.1.0
 django-polymorphic
 django-storages
