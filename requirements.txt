@@ -5,6 +5,7 @@ django-translations==1.1.0
 django-polymorphic
 django-storages
 django-tinymce
+django-recaptcha
 martor
 whoosh
 django-haystack

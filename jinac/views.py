@@ -15,11 +15,20 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from martor.utils import LazyEncoder
+from captcha.fields import ReCaptchaField
 from jinac.cases.models import Case, Trial
 from jinac.news.models import Carousel, News, Info, Feed
 from jinac.people.models import Journalist, JournalistStatus
 from jinac.articles.models import Article
 from jinac.contact.models import Message
+
+
+class ContactForm(ModelForm):
+    captcha = ReCaptchaField()
+
+    class Meta:
+        model = Message
+        fields = ['name', 'email', 'message']
 
 
 class IndexView(TemplateView):
@@ -50,6 +59,7 @@ class IndexView(TemplateView):
             'feed': Feed.objects.all()[:5],
             'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
             'pending_trial': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
+            'contact_form': ContactForm(),
         })
         return context
 
@@ -98,6 +108,8 @@ def set_language(request):
 
 
 class ContactForm(ModelForm):
+    captcha = ReCaptchaField()
+
     class Meta:
         model = Message
         fields = ['name', 'email', 'message']

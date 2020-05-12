@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'translations',
     'martor',
     'haystack',
+    'captcha',
 
     'jinac.people.apps.PeopleConfig',
     'jinac.jurisdiction.apps.JurisdictionConfig',
