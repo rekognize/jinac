@@ -23,7 +23,6 @@
             <ul class="nav nav-tabs">
               <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" data-target="#kunye-{{ case.id }}" style="color:black;">{% if LANGUAGE_CODE == 'tr' %}{% trans "Case Summary" %}{% else %}Trial Summary{% endif %}</a>
-
               </li>
               {% for note in case.notes %}
                 <li class="nav-item">
@@ -65,7 +64,7 @@
               <div class="card-block">
                 <div class="tab-content">
 
-                  <div id="kunye-{{ case.id }}" class="tab-pane fade">
+                  <div id="kunye-{{ case.id }}" class="tab-pane active">
                       <p>
                       {% if case.summary_en and LANGUAGE_CODE == 'en' %}
                           {{ case.summary_en|safe_markdown }}
@@ -87,7 +86,7 @@
 
                   {% if LANGUAGE_CODE != 'en' %}
                       {% if case.trial_set.all %}
-                      <div class="tab-pane" id="tab-trials{{ case.id }}">
+                      <div class="tab-pane active" id="tab-trials{{ case.id }}">
                         {% for trial in case.trial_set.all reversed %}
                             <!--a href="{{ trial.get_absolute_url }}"-->
                                 <h5 class="mt-2">
