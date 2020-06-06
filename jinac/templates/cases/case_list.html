@@ -29,6 +29,9 @@
             {% else %}
                 {{ case.name }}
             {% endif %}
+              <small>
+                  <a href="{{ case.get_absolute_url }}" class="small">{% trans "details" %}</a>
+              </small>
           </h5>
 
 
