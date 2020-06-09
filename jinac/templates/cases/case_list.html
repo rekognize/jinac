@@ -37,7 +37,7 @@
 
 
           {% if case_journalists %}
-          <div class="tab-pane" id="tab-journos{{ case.id }}">
+          <div class="my-3">
               {% for case_journalist in case_journalists %}
                   {% with case_journalist.journalist as other_journalist %}
                       {% if journalist != other_journalist %}
@@ -49,6 +49,7 @@
           {% endif %}
 
 
+          {% comment %}
           <p>
           {% if case.summary_en and LANGUAGE_CODE == 'en' %}
               {{ case.summary_en|safe_markdown|truncatewords_html:50 }}
@@ -56,6 +57,7 @@
               {{ case.summary|safe_markdown|truncatewords_html:50 }}
           {% endif %}
           </p>
+          {% endcomment %}
 
 
 
