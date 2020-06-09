@@ -23,202 +23,78 @@
 
           <a name="{{ case.id }}"></a>
 
-          <h5 class="mt-4">
+          <h4 class="mt-4">
             {% if case.name_en and LANGUAGE_CODE == 'en' %}
                 {{ case.name_en }}
             {% else %}
                 {{ case.name }}
             {% endif %}
-              <small>
-                  <a href="{{ case.get_absolute_url }}" class="small" target="_blank">{% trans "details" %}</a>
-              </small>
-          </h5>
+          </h4>
 
 
           {% with case.casedocument_set.all as case_documents %}
           {% with case.journalists.all as case_journalists %}
 
-          <div class="col col-md-12 card-nav-tab">
 
-            <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ case.id }}" style="color:black;">{% if LANGUAGE_CODE == 'tr' %}{% trans "Case Summary" %}{% else %}Trial Summary{% endif %}</a>
-
-              </li>
-              {% for note in case.notes %}
-                <li class="nav-item">
-                    <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" data-target="#tab-note{{ note.id }}" role="tab">
-                    {% if LANGUAGE_CODE == 'en' %}
-                        {{ note.type_en }}
-                    {% else %}
-                        {{ note.type }}
-                    {% endif %}
-                    </a>
-                </li>
+          {% if case_journalists %}
+          <div class="tab-pane" id="tab-journos{{ case.id }}">
+              {% for case_journalist in case_journalists %}
+                  {% with case_journalist.journalist as other_journalist %}
+                      {% if journalist != other_journalist %}
+                          <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
+                      {% endif %}
+                  {% endwith %}
               {% endfor %}
-              {% if LANGUAGE_CODE != 'en' %}
-                  {% if case.trial_set.all %}
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" data-target="#tab-trials{{ case.id }}" role="tab">
-                            {% trans "Trial Reports" %}
-                        </a>
-                    </li>
-                  {% endif %}
-              {% endif %}
-              {% if case_documents %}
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-docs{{ case.id }}" role="tab">
-                        {% trans "Documents" %}
-                    </a>
-                </li>
-              {% endif %}
-              {% if case_journalists %}
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" data-target="#tab-journos{{ case.id }}" role="tab">
-                        {% trans "Journalists" %}
-                    </a>
-                </li>
-              {% endif %}
-            </ul>
-
-            <div class="card card-tabs-1">
-              <div class="card-block">
-                <div class="tab-content">
-
-                  <div id="kunye-{{ case.id }}" class="tab-pane fade">
-                      <p>
-                      {% if case.summary_en and LANGUAGE_CODE == 'en' %}
-                          {{ case.summary_en|safe_markdown }}
-                      {% elif case.summary and LANGUAGE_CODE == 'tr' %}
-                          {{ case.summary|safe_markdown }}
-                      {% endif %}
-                      </p>
-                  </div>
-
-                  {% for note in case.notes %}
-                  <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab-note{{ note.id }}">
-                  {% if LANGUAGE_CODE == 'en' and note.note_en %}
-                    {{ note.note_en|safe_markdown }}
-                  {% else %}
-                    {{ note.note|safe_markdown }}
-                  {% endif %}
-                  </div>
-                  {% endfor %}
-
-                  {% if LANGUAGE_CODE != 'en' %}
-                      {% if case.trial_set.all %}
-                      <div class="tab-pane" id="tab-trials{{ case.id }}">
-                        {% for trial in case.trial_set.all reversed %}
-                            <!--a href="{{ trial.get_absolute_url }}"-->
-                                <h5 class="mt-2">
-                                    {{ trial.session_no }}. {% trans "Standing" %}
-                                    -
-                                    {{ trial.time_start|date }}
-                                </h5>
-                            <!--/a-->
-
-                                {% with trial.trialdocument_set.all as trial_documents %}
-
-                                    <div class="tab-content">
-                                        <div class="col-md-12 px-3">
-                                            <div class="container flex-container">
-
-                                                <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
-                                                    {% for note in trial.notes %}
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
-                                                        </li>
-                                                    {% endfor %}
-
-                                                    {% if trial_documents %}
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" data-target="#docs-{{ trial.id }}" style="color:black;">{% trans "Documents" %}</a>
-                                                        </li>
-                                                    {% endif %}
-
-                                                </ul>
-
-                                                <div class="tab-content">
-
-                                                    {% for note in trial.notes %}
-                                                        <div id="note{{ note.id }}" class="tab-pane fade">
-                                                            <p>
-                                                                <br/>
-                                                                {{ note.note|safe_markdown }}
-                                                            </p>
-                                                        </div>
-                                                    {% endfor %}
-
-                                                    {% if trial_documents %}
-                                                        <div id="docs-{{ trial.id }}" class="tab-pane fade ">
-                                                            <p>
-                                                            {% for trial_document in trial_documents %}
-                                                                <br/>
-                                                                <a href="{{ trial_document.file.url }}" target="_blank">{% if trial_document.type %}{{ trial_document.type }}{% else %}{{ trial_document.file.name }}{% endif %}</a>
-                                                            {% endfor %}
-                                                            </p>
-                                                        </div>
-                                                    {% endif %}
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                {% endwith %}
-
-                        {% endfor %}
-                      </div>
-                      {% endif %}
-                  {% endif %}
-
-                  {% if case_documents %}
-                  <div class="tab-pane" id="tab-docs{{ case.id }}">
-                      {% for doc in case_documents %}
-                          <p>
-                              {{ doc.case }}
-                              {% if doc.type %}
-                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
-                              {% else %}
-                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
-                              {% endif %}
-                          </p>
-                      {% endfor %}
-
-                      {% for doc in case.trial_documents %}
-                          <p>
-                              {{ doc.trial.case }}
-                              {{ doc.trial.session_no }}. {% trans "Standing" %}
-                              {% if doc.type %}
-                                  (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
-                              {% else %}
-                                  <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
-                              {% endif %}
-                          </p>
-                      {% endfor %}
-                  </div>
-                  {% endif %}
-
-                  {% if case_journalists %}
-                  <div class="tab-pane" id="tab-journos{{ case.id }}">
-                      {% for case_journalist in case_journalists %}
-                          {% with case_journalist.journalist as other_journalist %}
-                              {% if journalist != other_journalist %}
-                                  <a href="{{ other_journalist.get_absolute_url }}">{{ other_journalist.name }}</a>{% if not forloop.last %}, {% endif %}
-                              {% endif %}
-                          {% endwith %}
-                      {% endfor %}
-                  </div>
-                  {% endif %}
-
-                </div>
-              </div>
-            </div>
-
           </div>
+          {% endif %}
+
+
+          <p>
+          {% if case.summary_en and LANGUAGE_CODE == 'en' %}
+              {{ case.summary_en|safe_markdown|truncatewords_html:50 }}
+          {% elif case.summary and LANGUAGE_CODE == 'tr' %}
+              {{ case.summary|safe_markdown|truncatewords_html:50 }}
+          {% endif %}
+          </p>
+
+
+
+          {% if case_documents %}
+
+          <h6>{% trans "Documents" %}</h6>
+
+          <ul>
+              {% for doc in case_documents %}
+                  <li>
+                      {% if doc.type %}
+                          <a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>
+                      {% else %}
+                          <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
+                      {% endif %}
+                  </li>
+              {% endfor %}
+
+              {% for doc in case.trial_documents %}
+                  <li>
+                      {{ doc.trial.session_no }}. {% trans "Standing" %}
+                      {% if doc.type %}
+                          <a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>
+                      {% else %}
+                          <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
+                      {% endif %}
+                  </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
 
           {% endwith %}
           {% endwith %}
+
+          <a href="{{ case.get_absolute_url }}" target="_blank">{% trans "details" %} &raquo;</a>
+
+          <br>
+          <br>
 
       {% endfor %}
 
