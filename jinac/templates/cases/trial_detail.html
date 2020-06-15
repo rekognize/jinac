@@ -12,6 +12,9 @@
             {% else %}
                 {{ trial.case.name }}
             {% endif %}
+              <small class="float-right">
+                  <a href="{{ trial.case.get_absolute_url }}" class="small">{% trans "case details" %} &raquo;</a>
+              </small>
           </h2>
 
             <h3 class="mt-2">
