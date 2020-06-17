@@ -135,6 +135,24 @@
 
 {% endblock %}
 
+<div class="text-center text-muted border-top my-4 p-4 small">
+
+    <p>
+    {% if LANGUAGE_CODE == 'en' %}
+        Press in Arrest is a database, monitoring, documentation and collective memory study of Press Research Association
+    {% else %}
+        Press in Arrest, Basın Araştırmaları Derneği'nin çalışmasıdır.
+    {% endif %}
+        <br>
+    <a href="phone:+903129451556">+90 (312) 945 15 56</a>
+    |
+    <a href="mailto:pressinarrest@gmail.com">pressinarrest@gmail.com</a>
+    </p>
+
+
+</div>
+
+
 
 <script src="{% static 'js/wow.js' %}"></script>
 <script>
