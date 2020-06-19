@@ -143,7 +143,7 @@ class ArticlesFilter(SimpleListFilter):
     parameter_name = 'article'
 
     def lookups(self, request, model_admin):
-        return [(a.id, v.type) for a in Article.objects.all()]
+        return [(a.id, a.type) for a in Article.objects.all()]
 
     def queryset(self, request, qs):
         if self.value():
@@ -313,11 +313,11 @@ class TrialAdmin(admin.ModelAdmin):
     search_fields = ['case__name']
     filter_horizontal = ['inst_observers', 'board']
     list_filter = ['publish', UpcomingTrialsFilter, 'time_start', 'modified', 'reporter', ViolationsFilter]
-    actions = ['publish']
+    actions = ['publish', 'download']
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
     }
-    actions = ['download']
+    date_hierarchy = 'time_start'
 
     def download(self, request, qs):
         f = StringIO()

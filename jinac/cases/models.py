@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.conf import settings
 from translations.models import Translatable
 from django.template.defaultfilters import slugify
 from martor.models import MartorField
