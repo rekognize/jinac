@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
+from django.utils.translation import get_language
 from django.views.generic import ListView, DetailView, TemplateView
 from jinac.articles.models import Article
 
@@ -22,6 +23,12 @@ class ArticleDetailView(DetailView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(publish=True)
+
+    def get_object(self, queryset=None):
+        article = super().get_object(queryset)
+        if article.lang != get_language() and article.translation:
+            return article.translation
+        return article
 
 
 class AboutView(TemplateView):
