@@ -12,11 +12,6 @@
               <div class="container py-3">
                 <div class="card border-dark shadow p-3 bg-white rounded">
                   <div class="row card-header analiz-card-header">
-                      {% if thumbnail %}
-                      <a href= "{{ article.get_absolute_url }}" class="text-dark">
-                          <img src="{{ thumbnail.url }}" class="w-25 float-left mr-3" />
-                      </a>
-                      {% endif %}
                       <div class="card-block">
                           <a href= "{{ article.get_absolute_url }}" class="text-dark">
                               <h4 class="card-title">
@@ -26,7 +21,12 @@
                                   </small>
                               </h4>
                           </a>
-                          <span class="card-text">
+                          <span class="card-text text-justify">
+                              {% if thumbnail %}
+                              <a href= "{{ article.get_absolute_url }}" class="text-dark">
+                                  <img src="{{ thumbnail.url }}" class="w-25 float-right ml-3" />
+                              </a>
+                              {% endif %}
                               {{ article.summary|safe_markdown }}
                               <a href= "{{ article.get_absolute_url }}" style="color:black"> ({% trans "more" %}...)</a>
                           </span>
