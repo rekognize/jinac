@@ -28,6 +28,12 @@ class ArticleDetailView(DetailView):
         qs = super().get_queryset()
         return qs.filter(publish=True)
 
+    def get(self, request, *args, **kwargs):
+        article = self.get_object()
+        if article.type == 'r' and not self.kwargs.get('report'):
+            return redirect('report_detail', slug=article.slug)
+        return super().get(request, *args, **kwargs)
+
     def get_object(self, queryset=None):
         article = super().get_object(queryset)
         if article.lang != get_language() and article.translation:
