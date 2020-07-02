@@ -10,10 +10,6 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 
-{% if article.lang != LANGUAGE_CODE and article.translation %}
-    {% with article.translation as article %}
-{% endif %}
-
 
 <section>
   <div class="container py-3">
@@ -70,8 +66,5 @@
   </div>
 </section>
 
-{% if article.lang != LANGUAGE_CODE and article.translation %}
-    {% endwith %}
-{% endif %}
 
 {% endblock %}
