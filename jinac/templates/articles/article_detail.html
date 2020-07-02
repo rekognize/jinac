@@ -8,6 +8,13 @@
 {% block content %}
 
 
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if article.lang != LANGUAGE_CODE and article.translation %}
+    {% with article.translation as article %}
+{% endif %}
+
+
 <section>
   <div class="container py-3">
     <div class="card border-dark shadow p-3 mb-5 bg-white rounded">
@@ -50,7 +57,7 @@
               </div>
               {%  endif %}
               {% if section.text %}
-              <p class="card-text analiz-detay-text" style="text-align:justify;padding-right: 5px;">
+              <p class="text-justify card-text pr-3">
                   {{ section.text|safe_markdown }}
               </p>
               {% endif %}
@@ -63,5 +70,8 @@
   </div>
 </section>
 
+{% if article.lang != LANGUAGE_CODE and article.translation %}
+    {% endwith %}
+{% endif %}
 
 {% endblock %}

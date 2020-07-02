@@ -14,6 +14,10 @@ class Article(models.Model):
     image = models.ImageField(_('image'), upload_to='articles/', blank=True, null=True)
     summary = MartorField(_('summary'), blank=True, null=True)
     lang = models.CharField(_('language'), max_length=5, choices=settings.LANGUAGES)
+    translation = models.ForeignKey(
+        'self', verbose_name=_('translation'),
+        blank=True, null=True, on_delete=models.SET_NULL
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
     about_page = models.BooleanField(_('about page'), default=False)
@@ -22,6 +26,13 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, **kwargs):
+        if self.translation:
+            if not self.translation.translation:
+                self.translation.translation = self
+                self.translation.save()
+        super().save(**kwargs)
 
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'slug': self.slug})
