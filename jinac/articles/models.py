@@ -37,6 +37,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = _p('blog', 'article')
         verbose_name_plural = _p('blog', 'articles')
+        ordering = ('-added',)
 
 
 class Section(models.Model):
