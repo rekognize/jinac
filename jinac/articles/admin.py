@@ -29,7 +29,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_editable = ['type', 'lang', 'publish']
     search_fields = ['title', 'user', 'summary']
     exclude = ['user']
-    list_filter = ['publish', 'added', 'modified', 'user', 'lang']
+    list_filter = ['publish', 'type', 'added', 'lang', 'modified', 'user']
     inlines = [SectionInline]
     formfield_overrides = {
         models.TextField: {'widget': AdminMartorWidget},
