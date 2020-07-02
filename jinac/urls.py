@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('analizler/', ArticleListView.as_view(), name='article_list'),
     path('analizler/<slug:slug>/', ArticleDetailView.as_view(), name='article_detail'),
+    path('rapor/', ArticleListView.as_view(), {'report': True}, name='report_list'),
+    path('rapor/<slug:slug>/', ArticleDetailView.as_view(), {'report': True}, name='report_detail'),
     path('ne-yapiyoruz/', AboutView.as_view(), name='about'),
 
     path('infografik/', InfographicListView.as_view(), name='infographic_list'),

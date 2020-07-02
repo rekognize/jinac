@@ -25,7 +25,8 @@ class SectionInline(admin.StackedInline):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ['title', 'user', 'added', 'modified', 'lang', 'publish']
+    list_display = ['title', 'user', 'added', 'modified', 'type', 'lang', 'publish']
+    list_editable = ['type', 'lang', 'publish']
     search_fields = ['title', 'user', 'summary']
     exclude = ['user']
     list_filter = ['publish', 'added', 'modified', 'user', 'lang']

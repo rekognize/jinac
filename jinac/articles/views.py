@@ -10,6 +10,10 @@ class ArticleListView(ListView):
     def get_queryset(self):
         qs = super().get_queryset().filter(publish=True)
         qs = qs.exclude(about_page=True)
+        if self.kwargs.get('report'):
+            qs = qs.filter(type='r')
+        else:
+            qs = qs.filter(type='a')
         if self.request.LANGUAGE_CODE == 'en':
             qs = qs.filter(lang='en')
         else:

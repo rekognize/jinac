@@ -49,6 +49,7 @@
   {% url 'trial_list' as trial_list_url %}
   {% url 'journalist_list' as journalist_list_url %}
   {% url 'article_list' as article_list_url %}
+  {% url 'report_list' as report_list_url %}
   {% url 'about' as about_url %}
 
   <section id="gazeteciler" style="min-width:80%; float:none; margin: 0 auto; height:2rem;">
@@ -88,6 +89,10 @@
 
               <li class="nav-item {% if request.path|slice:':5' == article_list_url|slice:':5' %}active{% endif %}">
                 <a class="nav-link" href="{{ article_list_url }}">{% trans 'Analysis' %}{% if request.path|slice:":5" == article_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
+              </li>
+
+              <li class="nav-item {% if request.path|slice:':5' == report_list_url|slice:':5' %}active{% endif %}">
+                <a class="nav-link" href="{{ report_list_url }}">{% trans 'Reports' %}{% if request.path|slice:":5" == report_list_url|slice:":5" %}<span class="sr-only">(current)</span>{% endif %}</a>
               </li>
 
               <li class="nav-item {% if request.path|slice:':5' == about_url|slice:':5' %}active{% endif %}">

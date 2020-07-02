@@ -18,6 +18,10 @@ class Article(models.Model):
         'self', verbose_name=_('translation'),
         blank=True, null=True, on_delete=models.SET_NULL
     )
+    type = models.CharField(max_length=1, choices=(
+        ('a', _('analysis')),
+        ('r', _('report')),
+    ), default='a')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.BooleanField(_('publish'), default=False)
     about_page = models.BooleanField(_('about page'), default=False)
@@ -35,7 +39,10 @@ class Article(models.Model):
         super().save(**kwargs)
 
     def get_absolute_url(self):
-        return reverse('article_detail', kwargs={'slug': self.slug})
+        if self.type == 'a':
+            return reverse('article_detail', kwargs={'slug': self.slug})
+        else:
+            return reverse('report_detail', kwargs={'slug': self.slug})
 
     def get_image(self):
         image = self.image
