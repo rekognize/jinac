@@ -13,7 +13,9 @@
                 <div class="card border-dark shadow p-3 bg-white rounded">
                   <div class="row card-header analiz-card-header">
                       {% if thumbnail %}
-                          <img src="{{ thumbnail.url }}" class="w-50 d-block" />
+                      <a href= "{{ article.get_absolute_url }}" class="text-dark">
+                          <img src="{{ thumbnail.url }}" class="w-25 float-left mr-3" />
+                      </a>
                       {% endif %}
                       <div class="col-xs-6">
                           <div class="card-block">
