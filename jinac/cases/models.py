@@ -24,8 +24,8 @@ DECISION_TYPES = (
 # cases
 
 class Case(models.Model):
-    name = models.CharField(_('case name'), max_length=100)
-    name_en = models.CharField(_('case name (EN)'), max_length=100, blank=True, null=True)
+    name = models.CharField(_('case name'), max_length=250)
+    name_en = models.CharField(_('case name (EN)'), max_length=250, blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
     no = models.CharField(_('file number'), max_length=20)
     court = models.ForeignKey(Court, verbose_name=_('court'), on_delete=models.CASCADE)
