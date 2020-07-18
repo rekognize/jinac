@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 15:04+0000\n"
+"POT-Creation-Date: 2020-07-18 21:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,8 +98,8 @@ msgstr "bölümler"
 #: jinac/templates/cases/case_detail.html:115
 #: jinac/templates/cases/case_detail_bak.html:162
 #: jinac/templates/cases/case_detail_bak.html:174
-#: jinac/templates/cases/case_list.html:75
-#: jinac/templates/cases/case_list.html:86
+#: jinac/templates/cases/case_list.html:79
+#: jinac/templates/cases/case_list.html:94
 #: jinac/templates/people/journalist_detail.html:217
 #: jinac/templates/people/journalist_detail.html:235
 msgid "Download"
@@ -143,7 +143,7 @@ msgstr "İhlaller"
 #: jinac/templates/cases/case_detail.html:111
 #: jinac/templates/cases/case_detail_bak.html:93
 #: jinac/templates/cases/case_detail_bak.html:170
-#: jinac/templates/cases/case_list.html:82
+#: jinac/templates/cases/case_list.html:86
 #: jinac/templates/cases/trial_detail.html:21
 #: jinac/templates/cases/trial_list.html:28
 #: jinac/templates/people/journalist_detail.html:118
@@ -297,7 +297,7 @@ msgid "denied"
 msgstr "reddedildi"
 
 #: jinac/cases/models.py:94 jinac/cases/models.py:212 jinac/cases/models.py:394
-#: jinac/templates/cases/case_list.html:97
+#: jinac/templates/cases/case_list.html:105
 msgid "details"
 msgstr "detaylar"
 
@@ -902,15 +902,15 @@ msgstr "Gazeteciler"
 msgid "Analysis"
 msgstr "Analizler"
 
-#: jinac/templates/base.html:96
+#: jinac/templates/base.html:96 jinac/templates/index.html:58
 msgid "Reports"
 msgstr "Raporlar"
 
-#: jinac/templates/base.html:100 jinac/templates/index.html:58
+#: jinac/templates/base.html:100 jinac/templates/index.html:62
 msgid "What do we do?"
 msgstr "Ne yapıyoruz?"
 
-#: jinac/templates/base.html:108 jinac/templates/index.html:65
+#: jinac/templates/base.html:108 jinac/templates/index.html:69
 msgid "Search"
 msgstr "Arama"
 
@@ -954,7 +954,7 @@ msgid "Next Trial"
 msgstr "Gelecek Duruşma"
 
 #: jinac/templates/contact/done.html:5 jinac/templates/contact/form.html:5
-#: jinac/templates/index.html:186
+#: jinac/templates/index.html:190
 msgid "Contact"
 msgstr "İletişim"
 
@@ -971,43 +971,43 @@ msgstr "Mesajınızı aldık. Sizinle en kısa zamanda iletişime geçeceğiz."
 msgid "Contact form"
 msgstr "İletişim formu"
 
-#: jinac/templates/contact/form.html:28 jinac/templates/index.html:194
+#: jinac/templates/contact/form.html:28 jinac/templates/index.html:198
 msgid "Name"
 msgstr "İsim"
 
-#: jinac/templates/contact/form.html:34 jinac/templates/index.html:200
+#: jinac/templates/contact/form.html:34 jinac/templates/index.html:204
 msgid "Email"
 msgstr "Eposta"
 
-#: jinac/templates/contact/form.html:40 jinac/templates/index.html:206
+#: jinac/templates/contact/form.html:40 jinac/templates/index.html:210
 msgid "Message"
 msgstr "Mesaj"
 
-#: jinac/templates/contact/form.html:52 jinac/templates/index.html:218
+#: jinac/templates/contact/form.html:52 jinac/templates/index.html:222
 msgid "Submit"
 msgstr "Gönder"
 
-#: jinac/templates/index.html:115 jinac/templates/search/search.html:38
+#: jinac/templates/index.html:119 jinac/templates/search/search.html:38
 msgid "Previous"
 msgstr "Önceki"
 
-#: jinac/templates/index.html:119 jinac/templates/search/search.html:40
+#: jinac/templates/index.html:123 jinac/templates/search/search.html:40
 msgid "Next"
 msgstr "Sonraki"
 
-#: jinac/templates/index.html:130
+#: jinac/templates/index.html:134
 msgid "PROSECUTED"
 msgstr "YARGILANANLAR"
 
-#: jinac/templates/index.html:139
+#: jinac/templates/index.html:143
 msgid "JAILED"
 msgstr "CEZAEVİNDEKİLER"
 
-#: jinac/templates/index.html:148
-msgid "PENDING TRIAL"
-msgstr "TUTUKSUZ YARGILANANLAR"
+#: jinac/templates/index.html:152
+msgid "CASES"
+msgstr "DAVALAR"
 
-#: jinac/templates/index.html:223
+#: jinac/templates/index.html:227
 msgid "Contact information"
 msgstr "İletişim bilgileri"
 
@@ -1038,6 +1038,9 @@ msgstr ""
 #: jinac/views.py:167 jinac/views.py:168
 msgid "Invalid request!"
 msgstr ""
+
+#~ msgid "PENDING TRIAL"
+#~ msgstr "TUTUKSUZ YARGILANANLAR"
 
 #~ msgid "Other journalists trialed in this case"
 #~ msgstr "Bu davada yargılanan diğer gazeteciler"
