@@ -47,6 +47,11 @@ class IndexView(TemplateView):
             'news': News.objects.filter(publish=True)[:3],
             'upcoming_trials': Trial.objects.filter(time_next__gte=timezone.now()).order_by('time_next'),
             'info': {i.slug: i.value for i in Info.objects.all()},
+            'latest_report': Article.objects.filter(
+                type='r',
+                publish=True,
+            ).first(),
+            """
             'stats': {
                 'prosecuted': Journalist.objects.filter(publish=True).count(),
                 'jailed': stats.filter(end_date__isnull=True).filter(
@@ -56,6 +61,7 @@ class IndexView(TemplateView):
                     current_status__in=[1]  # [5, 6, 7]
                 ).count(),
             },
+            """
             'feed': Feed.objects.all()[:5],
             'trials': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
             'pending_trial': Trial.objects.filter(publish=True).filter(case__publish=True).order_by('-modified')[:5],
