@@ -1001,7 +1001,7 @@ msgstr "YARGILANANLAR"
 
 #: jinac/templates/index.html:143
 msgid "JAILED"
-msgstr "CEZAEVİNDEKİLER"
+msgstr "HAPİSTEKİLER"
 
 #: jinac/templates/index.html:152
 msgid "CASES"
