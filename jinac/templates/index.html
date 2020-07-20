@@ -127,9 +127,9 @@
 		<div class="veriler-content text-center col-md-3 d-none d-md-block d-l-block d-xl-block" style="margin-top:1rem; float: right;">
 			<div class="column justify-content-center">
 				<div class="col-xs-2">
-					<a href="{{ latest_report.get_absolute_url }}" style="text-decoration:none">
+					<a href="{% url 'journalist_list' %}" style="text-decoration:none">
 						<div class="item-circle c1 wow fadeInLeft data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3); color:white;width: 100px; height:100px; line-height: 100px !important;">
-							<p style="font-family: Lato;"><strong>{{ info.prosecuted }}</strong></p>
+							<p style="font-family: Lato;"><strong>{{ stats.pending_trial }}</strong></p>
 						</div>
 						<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "PROSECUTED" %}</h4>
 					</a>
@@ -145,9 +145,9 @@
 				</div>
 
 				<div class="col-xs-2">
-					<a href="{{ latest_report.get_absolute_url }}" style="text-decoration:none">
+					<a href="{% url 'case_list' %}" style="text-decoration:none">
 						<div class="item-circle c3 wow fadeInRight data-wow-duration=2s" style="background-color: rgb(211,119,84,0.7); border:3px solid rgb(211,119,84,0.3);  color:white; width: 100px; height: 100px; line-height: 100px !important;">
-							<p style="font-family: Lato;"><strong>{{ info.cases }}</strong></p>
+							<p style="font-family: Lato;"><strong>{{ cases.count }}</strong></p>
 						</div>
 						<h4 style="margin-top:10px; font-size:16px; color:black">{% trans "CASES" %}</h4>
 					</a>
