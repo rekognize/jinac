@@ -26,7 +26,8 @@ class ArticleDetailView(DetailView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.filter(publish=True)
+        #return qs.filter(publish=True)  # hapisteki gazeteciler listesini yayinlamadan gosterebilmek icin kaldirildi
+        return qs
 
     def get(self, request, *args, **kwargs):
         article = self.get_object()

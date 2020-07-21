@@ -136,7 +136,7 @@
 				</div>
 
 				<div class="col-xs-2">
-					<a href="{{ latest_report.get_absolute_url }}" style="text-decoration:none">
+					<a href="{% url 'report_jailed_journalists' %}" style="text-decoration:none">
 						<div class="item-circle c2 wow fadeInUp data-wow-duration=2s" style="background-color: rgb(123,158,158,0.7); border:3px solid rgb(123,158,158,0.3); color:white; color:white; width: 100px; height: 100px; line-height: 100px !important;">
 							<p style=" font-family: Lato;"><strong>{{ info.jailed }}</strong></p>
 						</div>

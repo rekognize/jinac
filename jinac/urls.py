@@ -26,6 +26,12 @@ urlpatterns = [
     path('analizler/', ArticleListView.as_view(), name='article_list'),
     path('analizler/<slug:slug>/', ArticleDetailView.as_view(), name='article_detail'),
     path('rapor/', ArticleListView.as_view(), {'report': True}, name='report_list'),
+
+    path('rapor/hapisteki-gazeteciler/', ArticleDetailView.as_view(), {
+        'report': True,
+        'slug': 'hapisteki-gazeteciler',
+    }, name='report_jailed_journalists'),
+
     path('rapor/<slug:slug>/', ArticleDetailView.as_view(), {'report': True}, name='report_detail'),
     path('ne-yapiyoruz/', AboutView.as_view(), name='about'),
 
