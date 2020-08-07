@@ -100,8 +100,10 @@
 			</ol>
 			<div class="carousel-inner">
 				{% for item in carousel %}
-				<a href="{{ item.link }}">
 				<div class="carousel-item {% if forloop.first %}active{% endif %}">
+				{% if item.link %}
+					<a href="{{ item.link }}">
+				{% endif %}
 					<img src="{{ item.image.url }}" class="w-100 d-block img-fluid" style="max-height:450px!important;">
 					<div class="carousel-caption" style="right:0% !important; padding-top:10px !important; font-family: 'Raleway Black', sans-serif; color:black; font-size:1.7vmax; background-color: rgb(226,212,191, 0.6); height: auto; text-align:left;">
 						<b>
@@ -112,8 +114,10 @@
                         {% endif %}
                         </b>
 					</div>
+				{% if item.link %}
+					</a>
+				{% endif %}
 				</div>
-				</a>
 				{% endfor %}
 			</div>
 			<a class="carousel-control-prev" data-target="#myCarousel" role="button" data-slide="prev">
