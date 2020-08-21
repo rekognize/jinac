@@ -261,7 +261,7 @@
 
 			<div class="row">
 
-			{% for trial in upcoming_trials %}
+			{% for trial in upcoming_trials|slice:"20" %}
 
 				<div class="col-6">
 
