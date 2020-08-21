@@ -267,11 +267,13 @@
 
 					<div class="bg-white border-bottom pb-2 mb-2 w-100">
 
+						{% if trial.case.publish %}
 						<a href="{{ trial.case.get_absolute_url }}">
-
 							<h6 class="text-info">{{ trial.case.name }}</h6>
-
 						</a>
+						{% else %}
+							<h6 class="text-info">{{ trial.case.name }}</h6>
+						{% endif %}
 
 						{% if trial.time_next %}
 							<i class="far fa-calendar-alt small text-muted"></i>
