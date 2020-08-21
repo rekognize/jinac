@@ -267,17 +267,21 @@
 
 					<div class="bg-white border-bottom pb-2 mb-2 w-100">
 
-						<h6 class="">{{ trial.case.name }}</h6>
+						<a href="{{ trial.case.get_absolute_url }}">
+
+							<h6 class="text-info">{{ trial.case.name }}</h6>
+
+						</a>
 
 						{% if trial.time_next %}
-							<i class="far fa-calendar-alt small"></i>
-							<span class="small">{{ trial.time_next|date }}</span>
-							<i class="far fa-clock ml-2 small"></i>
-							<span class="small">{{ trial.time_next|time }}</span>
+							<i class="far fa-calendar-alt small text-muted"></i>
+							<span class="small text-muted">{{ trial.time_next|date }}</span>
+							<i class="far fa-clock ml-2 small text-muted"></i>
+							<span class="small text-muted">{{ trial.time_next|time }}</span>
 						{% endif %}
 
 						{% if trial.case.court %}
-						<div class="small">
+						<div class="small text-muted">
 							<i class="fas fa-map-marker-alt"></i>
 							<span class="card-text align-middle">{{ trial.case.court }}</span>
 						</div>
