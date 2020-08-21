@@ -161,7 +161,10 @@
 			</div>
 		</div>
 	</div>
-	
+
+
+	{% comment %}
+
 	<div class= "row card-group col-md-12" style="float:none;">
 		{% for trial in upcoming_trials|slice:":4" %}
 		<div class=" card card-header border-dark shadow bg-white col-md-3" style="margin-top:1.5em; background-color: white; margin-right: 1rem;">
@@ -183,6 +186,10 @@
 		</div>
 		{% endfor %}
 	</div>
+
+	{% endcomment %}
+
+
 </section>
 
 <hr/>
@@ -193,7 +200,7 @@
 
 		<div class="contact-section">
 
-			<h3 class="mb-4"><i class="fas fa-envelope pr-2"></i>{% trans "Contact" %}:</h3>
+			<h3 class="mb-4"><i class="fas fa-envelope pr-2"></i>{% trans "Contact" %}</h3>
 
 			<form action="{% url "contact_message" %}" method="post">
 
@@ -244,6 +251,56 @@
 			</form>
 		</div>
 	</div>
+
+
+	<div class="col-md-6">
+
+		<div class="contact-section">
+
+			<h3 class="mb-4"><i class="fas fa-calendar-alt pr-2"></i>{% trans "Upcoming trials" %}</h3>
+
+			{% for trial in upcoming_trials %}
+			<div class="row">
+				<div class="bg-white border-bottom pb-3 mb-3 mx-3 w-100">
+					<span class="card-text justify-content-center">
+
+						<h5 class="">{{ trial.case.name }}</h5>
+
+						{% if trial.time_next %}
+							<i class="far fa-calendar-alt"></i>
+							<span class="card-text align-middle">{{ trial.time_next|date }}</span>
+							<i class="far fa-clock ml-2"></i>
+							<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+						{% endif %}
+
+						{% if trial.case.court %}
+						<div>
+							<i class="fas fa-map-marker-alt"></i>
+							<span class="card-text align-middle">{{ trial.case.court }}</span>
+						</div>
+						{% endif %}
+
+					</span>
+				</div>
+			</div>
+
+			{% empty %}
+
+			<div class="row">
+				<div class="bg-white pb-3 mb-3 mx-3 w-100">
+
+					<h5 class="text-muted">{% trans "No upcoming trials" %}</h5>
+
+				</div>
+			</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+
 </div>
 
 </section>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 21:42+0000\n"
+"POT-Creation-Date: 2020-08-21 18:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "blog"
 msgstr "analizler"
 
 #: jinac/articles/models.py:11 jinac/articles/models.py:63
-#: jinac/infographics/models.py:10 jinac/news/models.py:32
+#: jinac/infographics/models.py:10 jinac/news/models.py:34
 msgid "title"
 msgstr "başlık"
 
@@ -60,7 +60,7 @@ msgstr "rapor"
 #: jinac/cases/models.py:48 jinac/cases/models.py:242 jinac/cases/models.py:256
 #: jinac/cases/models.py:309 jinac/cases/models.py:347
 #: jinac/cases/models.py:424 jinac/infographics/models.py:17
-#: jinac/news/models.py:20 jinac/news/models.py:36 jinac/people/models.py:41
+#: jinac/news/models.py:22 jinac/news/models.py:38 jinac/people/models.py:41
 #: jinac/people/models.py:126
 msgid "publish"
 msgstr "yayınla"
@@ -74,7 +74,7 @@ msgstr "hakkımızda sayfası"
 msgid "article"
 msgstr "analiz"
 
-#: jinac/articles/models.py:64 jinac/news/models.py:16 jinac/news/models.py:33
+#: jinac/articles/models.py:64 jinac/news/models.py:16 jinac/news/models.py:35
 msgid "text"
 msgstr "metin"
 
@@ -567,7 +567,7 @@ msgid "contact"
 msgstr "iletişim"
 
 #: jinac/contact/models.py:6 jinac/jurisdiction/models.py:50
-#: jinac/news/models.py:48 jinac/people/models.py:12
+#: jinac/news/models.py:50 jinac/people/models.py:12
 msgid "name"
 msgstr "isim"
 
@@ -685,7 +685,7 @@ msgstr "cezaevi"
 msgid "prisons"
 msgstr "cezaevleri"
 
-#: jinac/news/apps.py:7 jinac/news/models.py:42 jinac/news/models.py:43
+#: jinac/news/apps.py:7 jinac/news/models.py:44 jinac/news/models.py:45
 msgid "news"
 msgstr "haberler"
 
@@ -697,23 +697,23 @@ msgstr "fotoğraf"
 msgid "text (EN)"
 msgstr "metin (İNG)"
 
-#: jinac/news/models.py:18 jinac/news/models.py:34
+#: jinac/news/models.py:18 jinac/news/models.py:36
 msgid "link"
 msgstr "bağlantı"
 
-#: jinac/news/models.py:26 jinac/news/models.py:27
+#: jinac/news/models.py:28 jinac/news/models.py:29
 msgid "carousel"
 msgstr "karusel"
 
-#: jinac/news/models.py:50
+#: jinac/news/models.py:52
 msgid "value"
 msgstr "değer"
 
-#: jinac/news/models.py:61 jinac/news/models.py:62
+#: jinac/news/models.py:63 jinac/news/models.py:64
 msgid "Info"
 msgstr "Info"
 
-#: jinac/news/models.py:73 jinac/news/models.py:74
+#: jinac/news/models.py:75 jinac/news/models.py:76
 msgid "Feed"
 msgstr "Akış"
 
@@ -879,7 +879,7 @@ msgstr "şikayetçiler"
 msgid "more"
 msgstr "devamı"
 
-#: jinac/templates/base.html:22 jinac/urls.py:49
+#: jinac/templates/base.html:22 jinac/urls.py:55
 msgid "Press in Arrest"
 msgstr "Tutuklu Basın"
 
@@ -954,7 +954,7 @@ msgid "Next Trial"
 msgstr "Gelecek Duruşma"
 
 #: jinac/templates/contact/done.html:5 jinac/templates/contact/form.html:5
-#: jinac/templates/index.html:190
+#: jinac/templates/index.html:204
 msgid "Contact"
 msgstr "İletişim"
 
@@ -971,45 +971,53 @@ msgstr "Mesajınızı aldık. Sizinle en kısa zamanda iletişime geçeceğiz."
 msgid "Contact form"
 msgstr "İletişim formu"
 
-#: jinac/templates/contact/form.html:28 jinac/templates/index.html:198
+#: jinac/templates/contact/form.html:28 jinac/templates/index.html:212
 msgid "Name"
 msgstr "İsim"
 
-#: jinac/templates/contact/form.html:34 jinac/templates/index.html:204
+#: jinac/templates/contact/form.html:34 jinac/templates/index.html:218
 msgid "Email"
 msgstr "Eposta"
 
-#: jinac/templates/contact/form.html:40 jinac/templates/index.html:210
+#: jinac/templates/contact/form.html:40 jinac/templates/index.html:224
 msgid "Message"
 msgstr "Mesaj"
 
-#: jinac/templates/contact/form.html:52 jinac/templates/index.html:222
+#: jinac/templates/contact/form.html:52 jinac/templates/index.html:236
 msgid "Submit"
 msgstr "Gönder"
 
-#: jinac/templates/index.html:119 jinac/templates/search/search.html:38
+#: jinac/templates/index.html:125 jinac/templates/search/search.html:38
 msgid "Previous"
 msgstr "Önceki"
 
-#: jinac/templates/index.html:123 jinac/templates/search/search.html:40
+#: jinac/templates/index.html:129 jinac/templates/search/search.html:40
 msgid "Next"
 msgstr "Sonraki"
 
-#: jinac/templates/index.html:134
+#: jinac/templates/index.html:140
 msgid "PROSECUTED"
 msgstr "YARGILANANLAR"
 
-#: jinac/templates/index.html:143
+#: jinac/templates/index.html:149
 msgid "JAILED"
 msgstr "HAPİSTEKİLER"
 
-#: jinac/templates/index.html:152
+#: jinac/templates/index.html:158
 msgid "CASES"
 msgstr "DAVALAR"
 
-#: jinac/templates/index.html:227
+#: jinac/templates/index.html:241
 msgid "Contact information"
 msgstr "İletişim bilgileri"
+
+#: jinac/templates/index.html:261
+msgid "Upcoming trials"
+msgstr "Yaklaşan duruşmalar"
+
+#: jinac/templates/index.html:293
+msgid "No upcoming trials"
+msgstr "Bilinen yaklaşan duruşma yok"
 
 #: jinac/templates/search/search.html:13 jinac/templates/search_result.html:13
 msgid "Search results"
@@ -1023,19 +1031,19 @@ msgstr "Arama kriterine uygun sonuç bulunamadı"
 msgid "Articles"
 msgstr "Analizler"
 
-#: jinac/urls.py:50
+#: jinac/urls.py:56
 msgid "Press in Arrest Administration"
 msgstr "Tutuklu Basın Yönetimi"
 
-#: jinac/urls.py:51
+#: jinac/urls.py:57
 msgid "Press in Arrest Management"
 msgstr "Tutuklu Basın Yönetimi"
 
-#: jinac/views.py:151
+#: jinac/views.py:155
 msgid "Bad image format."
 msgstr ""
 
-#: jinac/views.py:167 jinac/views.py:168
+#: jinac/views.py:171 jinac/views.py:172
 msgid "Invalid request!"
 msgstr ""
 
