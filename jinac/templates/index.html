@@ -196,7 +196,7 @@
 
 <div class="row" id="yaklasandurusmalar" style="background-color: white;">
 
-	<div class="col-md-6">
+	<div class="col-md-4">
 
 		<div class="contact-section">
 
@@ -253,48 +253,51 @@
 	</div>
 
 
-	<div class="col-md-6">
+	<div class="col-md-8">
 
 		<div class="contact-section">
 
 			<h3 class="mb-4"><i class="fas fa-calendar-alt pr-2"></i>{% trans "Upcoming trials" %}</h3>
 
-			{% for trial in upcoming_trials %}
 			<div class="row">
-				<div class="bg-white border-bottom pb-3 mb-3 mx-3 w-100">
-					<span class="card-text justify-content-center">
 
-						<h5 class="">{{ trial.case.name }}</h5>
+			{% for trial in upcoming_trials %}
+
+				<div class="col-6">
+
+					<div class="bg-white border-bottom pb-2 mb-2 w-100">
+
+						<h6 class="">{{ trial.case.name }}</h6>
 
 						{% if trial.time_next %}
-							<i class="far fa-calendar-alt"></i>
-							<span class="card-text align-middle">{{ trial.time_next|date }}</span>
-							<i class="far fa-clock ml-2"></i>
-							<span class="card-text align-middle">{{ trial.time_next|time }}</span>
+							<i class="far fa-calendar-alt small"></i>
+							<span class="small">{{ trial.time_next|date }}</span>
+							<i class="far fa-clock ml-2 small"></i>
+							<span class="small">{{ trial.time_next|time }}</span>
 						{% endif %}
 
 						{% if trial.case.court %}
-						<div>
+						<div class="small">
 							<i class="fas fa-map-marker-alt"></i>
 							<span class="card-text align-middle">{{ trial.case.court }}</span>
 						</div>
 						{% endif %}
 
-					</span>
+					</div>
+
 				</div>
-			</div>
 
 			{% empty %}
 
-			<div class="row">
 				<div class="bg-white pb-3 mb-3 mx-3 w-100">
 
 					<h5 class="text-muted">{% trans "No upcoming trials" %}</h5>
 
 				</div>
-			</div>
 
 			{% endfor %}
+
+			</div>
 
 		</div>
 
