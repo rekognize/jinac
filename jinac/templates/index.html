@@ -164,7 +164,6 @@
 
 
 	{% comment %}
-
 	<div class= "row card-group col-md-12" style="float:none;">
 		{% for trial in upcoming_trials|slice:":4" %}
 		<div class=" card card-header border-dark shadow bg-white col-md-3" style="margin-top:1.5em; background-color: white; margin-right: 1rem;">
@@ -186,7 +185,6 @@
 		</div>
 		{% endfor %}
 	</div>
-
 	{% endcomment %}
 
 
@@ -269,10 +267,22 @@
 
 						{% if trial.case.publish %}
 						<a href="{{ trial.case.get_absolute_url }}">
-							<h6 class="text-info">{{ trial.case.name }}</h6>
+							<h6 class="text-info">
+							{% if LANGUAGE_CODE == 'en' and trial.case.name_en %}
+								{{ trial.case.name_en }}
+							{% else %}
+								{{ trial.case.name }}
+							{% endif %}
+							</h6>
 						</a>
 						{% else %}
-							<h6 class="text-info">{{ trial.case.name }}</h6>
+							<h6 class="text-info">
+							{% if LANGUAGE_CODE == 'en' and trial.case.name_en %}
+								{{ trial.case.name_en }}
+							{% else %}
+								{{ trial.case.name }}
+							{% endif %}
+							</h6>
 						{% endif %}
 
 						{% if trial.time_next %}
