@@ -127,10 +127,14 @@
                                         <div class="container flex-container">
 
                                             <ul class="nav nav-tabs" id="myTab" style="font-size:13px; align-content: justify; padding-top:1%;">
+
+                                                {% comment %}
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" data-target="#kunye-{{ trial.id }}" style="color:black;">{% if LANGUAGE_CODE == 'tr' %}{% trans "Case Summary" %}{% else %}Trial Summary{% endif %}</a>
 
                                                 </li>
+                                                {% endcomment %}
+
                                                 {% for note in trial.notes %}
                                                     <li class="nav-item">
                                                         <a class="nav-link" data-toggle="tab" data-target="#note{{ note.id }}" style="color:black;">{{ note.type }}</a>
@@ -147,6 +151,7 @@
 
                                             <div class="tab-content">
 
+                                                {% comment %}
                                                 <div id="kunye-{{ trial.id }}" class="tab-pane fade">
                                                     <p>
                                                     <br/>
@@ -155,8 +160,8 @@
                                                     <br/><br/>
                                                     <u>{% trans "Next Trial" %}:</u> {{ trial.time_next }}</p>
                                                     {% endif %}
-
                                                 </div>
+                                                {% endcomment %}
 
                                                 {% for note in trial.notes %}
                                                     <div id="note{{ note.id }}" class="tab-pane fade">
