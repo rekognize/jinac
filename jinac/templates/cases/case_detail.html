@@ -99,7 +99,11 @@
               {% for doc in case_documents %}
                   <p>
                       {% if doc.type %}
-                          <a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>
+                          {% if LANGUAGE_CODE != 'en' and doc.type.type_en %}
+                              <a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type_en }}</a>
+                          {% else %}
+                              <a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>
+                          {% endif %}
                       {% else %}
                           <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                       {% endif %}
@@ -110,7 +114,11 @@
                   <p>
                       {{ doc.trial.session_no }}. {% trans "Standing" %}
                       {% if doc.type %}
-                          (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
+                          {% if LANGUAGE_CODE != 'en' and doc.type.type_en %}
+                              (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type.type_en }}</a>)
+                          {% else %}
+                              (<a href="{{ doc.file.url }}" target="_blank">{{ doc.type }}</a>)
+                          {% endif %}
                       {% else %}
                           <a href="{{ doc.file.url }}" target="_blank">{% trans "Download" %}</a>
                       {% endif %}
