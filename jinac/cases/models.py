@@ -66,6 +66,9 @@ class Case(models.Model):
     def notes(self):
         return self.casenote_set.filter(type__publish=True).filter(journalist__isnull=True)
 
+    def get_journalists(self):
+        return self.journalists.filter(publish=True)
+
     class Meta:
         verbose_name = _('case')
         verbose_name_plural = _('cases')

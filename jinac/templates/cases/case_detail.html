@@ -16,7 +16,7 @@
 
 
     {% with case.casedocument_set.all as case_documents %}
-    {% with case.journalists.all as case_journalists %}
+    {% with case.get_journalists as case_journalists %}
 
     <div class="row">
 
