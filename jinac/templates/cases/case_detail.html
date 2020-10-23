@@ -134,7 +134,7 @@
 
               {% for case_journalist in case_journalists %}
                   {% with case_journalist.journalist as other_journalist %}
-                      {% if journalist != other_journalist and journalist.publish %}
+                      {% if journalist != other_journalist %}
                           <a href="{{ other_journalist.get_absolute_url }}" class="d-block">{{ other_journalist.name }}</a>
                       {% endif %}
                   {% endwith %}
