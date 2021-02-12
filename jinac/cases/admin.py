@@ -194,7 +194,17 @@ class CaseAdmin(admin.ModelAdmin):
         f = StringIO()
         writer = csv.writer(f)
         for case in qs:
-            writer.writerow([case.name, case.no, self.journalist_names(case), case.court, case.status()])
+            writer.writerow([
+                case.name,
+                case.no,
+                self.journalist_names(case),
+                case.court,
+                case.status(),
+                case.prosecutor,
+                case.reporter,
+                case.added.strftime('%Y-%m-%d %H:%M'),
+                case.modified.strftime('%Y-%m-%d %H:%M'),
+            ])
         f.seek(0)
         response = HttpResponse(
             f.read(),
